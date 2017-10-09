@@ -17405,7 +17405,7 @@
             }, 500);
         });
         /* On/Off Room Hover */
-        jQuery('.room').on('mouseleave mouseover', function(){
+        jQuery(document).on('mouseleave mouseover', '.room', function(){
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             var cogActive = true;
@@ -17417,14 +17417,14 @@
             }
         });
         /* Off Room Hover */
-        jQuery('.room').on('mouseleave', function(){
+        jQuery(document).on('mouseleave', '.room', function(){
             jQuery('.room-info-icon').removeClass('room-icon-active').addClass('room-icon-inactive');
             jQuery('.room-info-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
             jQuery('.biohazard-room-icons').removeClass('biohazard-icons-active').addClass('biohazard-icons-inactive');
             jQuery('.active-icon-wrapper').empty();
         });
         /* On Room Hover */
-        jQuery('.room').on('mouseover', function(){
+        jQuery(document).on('mouseover', '.room', function(){
             jQuery('.active-icon-wrapper').empty();
             if(jQuery('.room-info-wrapper').hasClass('room-info-inactive')) {
                 jQuery('.room-info-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
@@ -17507,7 +17507,7 @@
             }
         });
         /* On Room Click */
-        jQuery('.room').on('click', function(){
+        jQuery(document).on('click', '.room', function(){
             jQuery('.room').removeClass('toggle-state');
             jQuery(this).addClass('toggle-state');
             var detailActiveRoom = jQuery(this).attr('class').split(' ')[0];
@@ -17687,23 +17687,23 @@
             }, 1000);
         });
         /* Map Pagination */
+        function unpdateMapPagination() {
+            var dataCurrentFloor = jQuery('.floor-wrapper').attr('data-floor'),
+                dataCurrentLocation = jQuery('.floor-wrapper').attr('data-location'),
+                dataPrevLocation = jQuery('.floor-wrapper').attr('data-location-prev'),
+                dataNextLocation = jQuery('.floor-wrapper').attr('data-location-next'),
+                dataPrevFloor = jQuery('.floor-wrapper').attr('data-floor-prev'),
+                dataNextFloor = jQuery('.floor-wrapper').attr('data-floor-next');
+            jQuery('[data-location-current]').attr('data-location-current', dataCurrentLocation);
+            jQuery('[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
+            jQuery('[data-floor-next]').attr('data-floor-next', dataNextFloor);
+            jQuery('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
+            jQuery('[data-location-next]').attr('data-location-next', dataNextLocation);
+            var locationTitle = dataCurrentLocation.split('-').join(' ');
+            jQuery('#title').text(locationTitle);
+        }
         jQuery('.map-pagination').on('click', function(){
             jQuery('.floor-panel').fadeOut();
-            function unpdateMapPagination() {
-                var dataCurrentFloor = jQuery('.floor-wrapper').attr('data-floor'),
-                    dataCurrentLocation = jQuery('.floor-wrapper').attr('data-location'),
-                    dataPrevLocation = jQuery('.floor-wrapper').attr('data-location-prev'),
-                    dataNextLocation = jQuery('.floor-wrapper').attr('data-location-next'),
-                    dataPrevFloor = jQuery('.floor-wrapper').attr('data-floor-prev'),
-                    dataNextFloor = jQuery('.floor-wrapper').attr('data-floor-next');
-                jQuery('[data-location-current]').attr('data-location-current', dataCurrentLocation);
-                jQuery('[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
-                jQuery('[data-floor-next]').attr('data-floor-next', dataNextFloor);
-                jQuery('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
-                jQuery('[data-location-next]').attr('data-location-next', dataNextLocation);
-                var locationTitle = dataCurrentLocation.split('-').join(' ');
-                jQuery('#title').text(locationTitle);
-            }
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
