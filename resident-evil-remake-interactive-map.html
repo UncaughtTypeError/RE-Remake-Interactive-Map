@@ -16796,6 +16796,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
+    jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
         jQuery('.store-phrase span:eq(' + phraseSelect + ')').appendTo('.selected-phrase').fadeIn('slow').parent().fadeIn('slow');
@@ -17759,6 +17760,7 @@
                 });
             }
         });
+    });
     </script>
 </html>
 <style>
