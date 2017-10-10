@@ -17847,7 +17847,6 @@
                 }
                 var dataGetFloor = dataGetFloor+='.html';
                 jQuery('.floor-panel').load(dataGetFloor, function(){
-                    console.log('callback success');
                     jQuery('.floor-panel').fadeIn();
                     unpdateMapPagination();
                 });
@@ -17856,6 +17855,7 @@
 				   type:'GET',
 				   success: function(data){
 				       jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
+                    	console.log('callback success');
 				   }
 				});
             }
