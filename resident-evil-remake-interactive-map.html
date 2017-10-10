@@ -17860,7 +17860,8 @@
 				   url:dataGetFloor,
 				   type:'GET',
 				   success: function(data){
-				        jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html().fadeIn());
+				        jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
+	                    jQuery('.floor-panel').fadeIn();
                     	console.log('callback success');
 				   }
 				});
