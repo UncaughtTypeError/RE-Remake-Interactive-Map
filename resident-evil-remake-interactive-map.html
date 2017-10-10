@@ -17838,6 +17838,16 @@
                             jQuery('.floor-panel').fadeIn();
                             unpdateMapPagination();
                         });
+		                jQuery.ajax({
+						   url:'courtyard-1f.html',
+						   type:'GET',
+						   success: function(data){
+						       jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
+		                    	console.log('callback success');
+	                            jQuery('.floor-panel').fadeIn();
+	                            unpdateMapPagination();
+						   }
+						});
                 }
             } else if(jQuery(this).hasClass('floor-toggle')) {
                 if(jQuery(this).hasClass('next')) {
@@ -17846,15 +17856,14 @@
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 }
                 var dataGetFloor = dataGetFloor+='.html';
-                jQuery('.floor-panel').load(dataGetFloor, function(){
-                    jQuery('.floor-panel').fadeIn();
-                    unpdateMapPagination();
-                });
                 jQuery.ajax({
 				   url:dataGetFloor,
 				   type:'GET',
 				   success: function(data){
-				       jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
+				        //jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
+	                    jQuery('.floor-panel').fadeIn(function(){
+	                    	jQuery(data).find('.floor-panel').html();
+	                    });
                     	console.log('callback success');
 				   }
 				});
