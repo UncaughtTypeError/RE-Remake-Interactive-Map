@@ -17856,7 +17856,7 @@
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 }
                 var dataGetFloor = dataGetFloor+='.html';
-                jQuery.ajax({
+                /*jQuery.ajax({
 				   url:JSON.stringify(dataGetFloor),
 				   type:'GET',
 				   success: function(data){
@@ -17866,6 +17866,13 @@
    						console.log(jQuery(dataGetFloor));
    						console.log(jQuery(data));
 				   }
+				});*/
+				jQuery.get( dataGetFloor, function( data ) {
+			        jQuery('.floor-panel').append(data);
+                    jQuery('.floor-panel').fadeIn();
+                	console.log('callback success');
+					console.log(jQuery(dataGetFloor));
+					console.log(jQuery(data));
 				});
             }
         });
