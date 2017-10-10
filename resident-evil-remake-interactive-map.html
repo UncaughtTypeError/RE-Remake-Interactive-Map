@@ -17855,10 +17855,9 @@
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 }
-                var dataGetFloor = JSON.stringify(dataGetFloor);
+                var dataGetFloor = JSON.stringify(dataGetFloor+='.html');
                 jQuery.ajax({
 				   url:dataGetFloor,
-				   dataType:'html',
 				   type:'GET',
 				   success: function(data){
 				        jQuery('.floor-panel').append(data);
