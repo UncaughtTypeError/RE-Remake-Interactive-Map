@@ -17851,9 +17851,12 @@
                     jQuery('.floor-panel').fadeIn();
                     unpdateMapPagination();
                 });
-                jQuery('.floor-panel').get( dataGetFloor, function( data ) {
-				  jQuery('.floor-panel').html( data );
-				  alert( "Load was performed." );
+                jQuery(document).ajax({
+				   url:dataGetFloor,
+				   type:'GET',
+				   success: function(data){
+				       jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
+				   }
 				});
             }
         });
