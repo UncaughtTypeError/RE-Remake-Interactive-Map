@@ -17851,7 +17851,7 @@
                     jQuery('.floor-panel').fadeIn();
                     unpdateMapPagination();
                 });
-                jQuery(document).ajax({
+                jQuery.ajax({
 				   url:dataGetFloor,
 				   type:'GET',
 				   success: function(data){
