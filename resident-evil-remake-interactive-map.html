@@ -127,6 +127,10 @@
             color: #736f6f;
         }
 
+		.nocturnal-theme .grid-hexagon:before {
+		    color: #3b3b3b;
+		}
+
         .nocturnal-theme .list-group-tab-wrapper .list-group-tab {
             border-color: #504f4f;
         }
@@ -1347,6 +1351,10 @@
         .diurnal-theme .gears-panel .fa-cog.fa-2x {
             color: #b0b0b0;
         }
+
+		.diurnal-theme .grid-hexagon:before {
+		    color: #e9e9e9;
+		}
 
         .diurnal-theme .list-group-tab-wrapper .list-group-tab:hover {
             background: whitesmoke;
@@ -2990,6 +2998,78 @@
             right: -35px;
             bottom: -20px;
         }
+
+        .grid-backdrop {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    width: 300px;
+		    height: 287px;
+		    margin: auto;
+		    display: block;
+		    z-index: -1;
+		}
+
+		.grid-hexagon:before {
+		    content: "\2b21";
+		    font-size: 15em;
+		    position: absolute;
+		    left: -20px;
+		    top: 0;
+		    bottom: 0;
+		    margin: auto;
+		    transition: .7s;
+		    line-height: 150px;
+		}
+
+		.grid-hexagon {
+		    position: absolute;
+		    width: 150px;
+		    height: 150px;
+		}
+
+		.grid-hexagon:nth-child(1) {
+		    bottom: 0;
+		    left: 0;
+		}
+
+		.grid-hexagon:nth-child(3) {
+		    bottom: 0;
+		    right: 0;
+		}
+
+		.grid-hexagon:nth-child(2) {
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		}
+
+		.grid-hexagon .gears-panel {
+		    left: 0;
+		    right: 0;
+		    top: 0;
+		    bottom: 0;
+		    position: absolute;
+		    width: auto;
+		    height: auto;
+		    opacity: .5;
+		}
+
+		.grid-hexagon .gears-panel .fa-cog.fa-2x {
+		    font-size: 40px;
+		    top: 30px;
+		    left: 20px;
+		}
+
+		.grid-hexagon .gears-panel .fa-cog.fa-3x {
+		    position: absolute;
+		    font-size: 100px;
+		    bottom: 15px;
+		    right: 20px;
+		}
 
         .room-detail-wrapper {
             max-width: 95%;
@@ -10458,7 +10538,7 @@
                 <div id="audio-unmute" class="toggle-mute" onclick="document.getElementById('audio-player').muted = false"><i class="fa fa-volume-off is-mute"></i></div>
                 <audio
                     id="audio-player"
-                    src="/UncaughtTypeError/RE-Remake-Interactive-Map/master/Resident%20Evil%20Remake%20Soundtrack%20Save%20Heaven.mp3"
+                    src="file:///C:/Users/Default.DESKTOP-LI91KLR/Desktop/Temp/RE%20Mansion/Resident%20Evil%20Remake%20Soundtrack%20Save%20Heaven.mp3"
                     loop>
                     Your browser does not support the <code>audio</code> element.
                 </audio>
@@ -13615,13 +13695,13 @@
             </div>
             <div class="grid-backdrop">
                 <div class="grid-hexagon"></div>
-                <div class="grid-hexagon">
+                <div class="grid-hexagon"></div>
+            	<div class="grid-hexagon">
                     <div class="gears-panel">
                         <i class="fa fa-cog fa-2x"></i>
                         <i class="fa fa-cog fa-3x"></i>
                     </div>
                 </div>
-                <div class="grid-hexagon"></div>
             </div>
         </div>
 
@@ -17710,7 +17790,9 @@
             jQuery('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
             jQuery('[data-location-next]').attr('data-location-next', dataNextLocation);
             var locationTitle = dataCurrentLocation.split('-').join(' ');
-            jQuery('#title').text(locationTitle);
+            jQuery('#title').fadeOut(function(){
+            	jQuery('#title').text(locationTitle).fadeIn();
+            });
             jQuery('.difficulty-select.toggle-state').trigger('click');
         }
         jQuery('.map-pagination').on('click', function(){
@@ -17769,6 +17851,10 @@
                     jQuery('.floor-panel').fadeIn();
                     unpdateMapPagination();
                 });
+                jQuery('.floor-panel').get( dataGetFloor, function( data ) {
+				  jQuery('.floor-panel').html( data );
+				  alert( "Load was performed." );
+				});
             }
         });
     });
