@@ -17857,7 +17857,7 @@
                 }
                 var dataGetFloor = dataGetFloor+='.html';
                 jQuery.ajax({
-				   url:dataGetFloor,
+				   url:JSON.stringify(dataGetFloor),
 				   type:'GET',
 				   success: function(data){
 				        jQuery('.floor-panel').append(data);
