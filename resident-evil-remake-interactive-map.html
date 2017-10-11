@@ -17857,15 +17857,17 @@
                 }
                 var dataGetFloor = dataGetFloor+='.html';
                 jQuery.ajax({
-				   url:dataGetFloor,
-				   type:'GET',
-				   success: function(data){
+				   	url:dataGetFloor,
+				   	dataType:'html',
+				   	type:'GET',
+  					context: jQuery('.floor-panel')
+				   	/*success: function(data){
 				        jQuery('.floor-panel').append(jQuery(data));
 	                    jQuery('.floor-panel').fadeIn();
                     	console.log('callback success');
    						console.log(dataGetFloor);
    						console.log(jQuery(data));
-				   }
+				   	}*/
 				}).done(function(data){
 				        jQuery('.floor-panel').append(jQuery(data));
 	                    jQuery('.floor-panel').fadeIn();
