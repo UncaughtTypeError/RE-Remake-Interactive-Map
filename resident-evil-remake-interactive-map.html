@@ -17867,13 +17867,15 @@
    						console.log(jQuery(data));
 				   }
 				});*/
+					console.log(dataGetFloor);
 				jQuery.get( dataGetFloor, function( data ) {
 			        jQuery('.floor-panel').append(data);
                     jQuery('.floor-panel').fadeIn();
                 	console.log('callback success');
-					console.log(jQuery(dataGetFloor));
+					console.log(dataGetFloor);
 					console.log(jQuery(data));
 				});
+					console.log(dataGetFloor);
             }
         });
     });
