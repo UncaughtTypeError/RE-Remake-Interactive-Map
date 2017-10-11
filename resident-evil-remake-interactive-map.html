@@ -17796,58 +17796,93 @@
             jQuery('.difficulty-select.toggle-state').trigger('click');
         }
         jQuery('.map-pagination').on('click', function(){
-            jQuery('.floor-panel').fadeOut();
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
                 }
-                switch(dataGetLocation) {
-                    case 'courtyard':
-                        jQuery('.floor-panel').load('guardhouse-residence-1f.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    case 'guardhouse-residence':
-                        jQuery('.floor-panel').load('altar-1b.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    case 'altar':
-                        jQuery('.floor-panel').load('underground-laboratory-1b.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    case 'underground-laboratory':
-                        jQuery('.floor-panel').load('mansion-1f.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    default:
-                        jQuery('.floor-panel').load('courtyard-1f.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-		                jQuery.ajax({
-						   url:'courtyard-1f.html',
-						   type:'GET',
-						   success: function(data){
-						       jQuery('.floor-panel').html(jQuery(data).find('.floor-panel').html());
-		                    	console.log('callback success');
-	                            jQuery('.floor-panel').fadeIn();
-	                            unpdateMapPagination();
-						   }
-						});
+            	var dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location');
+            	if(dataCurrentLocation === dataGetLocation) {
+            		return
+            	} else {
+	            	jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
+	                switch(dataGetLocation) {
+	                    case 'courtyard':
+	                    	if(jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').length) {
+	                			jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').addClass('toggle-state').slideDown();
+	                    	} else {
+				                jQuery.ajax({
+								   	url:'guardhouse-residence-1f.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+					                unpdateMapPagination();
+								});
+		                    }
+	                    break;
+	                    case 'guardhouse-residence':
+	                    	if(jQuery('.floor-wrapper[data-floor="altar-1b"]').length) {
+	                			jQuery('.floor-wrapper[data-floor="altar-1b"]').addClass('toggle-state').slideDown();
+	                    	} else {
+				                jQuery.ajax({
+								   	url:'altar-1b.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+					                unpdateMapPagination();
+								});
+		                    }
+	                    break;
+	                    case 'altar':
+	                    	if(jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').length) {
+	                			jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').addClass('toggle-state').slideDown();
+	                    	} else {
+				                jQuery.ajax({
+								   	url:'underground-laboratory-1b.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+					                unpdateMapPagination();
+								});
+		                    }
+	                    break;
+	                    case 'underground-laboratory':
+	                    	if(jQuery('.floor-wrapper[data-floor="mansion-1f"]').length) {
+	                			jQuery('.floor-wrapper[data-floor="mansion-1f"]').addClass('toggle-state').slideDown();
+	                    	} else {
+				                jQuery.ajax({
+								   	url:'mansion-1f.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+					                unpdateMapPagination();
+								});
+		                    }
+	                    break;
+	                    default:
+	                    	if(jQuery('.floor-wrapper[data-floor="courtyard-1f"]').length) {
+	                			jQuery('.floor-wrapper[data-floor="courtyard-1f"]').addClass('toggle-state').slideDown();
+	                    	} else {
+				                jQuery.ajax({
+								   	url:'courtyard-1f.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+					                unpdateMapPagination();
+								});
+		                    }
+					}
                 }
             } else if(jQuery(this).hasClass('floor-toggle')) {
                 if(jQuery(this).hasClass('next')) {
@@ -17855,21 +17890,22 @@
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 }
-				jQuery('.floor-panel').find('.floor-wrapper').remove();
-                var dataGetFloor = dataGetFloor+='.html';
-                jQuery.ajax({
-				   	url:dataGetFloor,
-				   	dataType:'html',
-				   	type:'GET',
-  					context: jQuery('.floor-panel'),
-  					success: console.log('Reporting = true, CLEARANCE LEVEL D/7100 access enabled, output log to console, callback request = SUCCESS'),
-  					error: console.log('Reporting = true, CLEARANCE LEVEL D/7100 access enabled, output log to console, callback request = ERROR'),
-  					complete: console.log('Reporting = true, CLEARANCE LEVEL D/7100 access enabled, output log to console, callback request = COMPLETE')
-				}).done(function(data){
-			        jQuery('.floor-panel').append(jQuery(data));
-                    jQuery('.floor-panel').fadeIn();
-	                unpdateMapPagination();
-				});
+            	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
+            	if(dataCurrentFloor === dataGetFloor) {
+            		return
+            	} else {
+	            	jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
+	                var dataGetFloor = dataGetFloor+='.html';
+	                jQuery.ajax({
+					   	url:dataGetFloor,
+					   	dataType:'html',
+					   	type:'GET',
+	  					context: jQuery('.floor-wrapper'),
+					}).done(function(data){
+				        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+		                unpdateMapPagination();
+					});
+				}
             }
         });
     });
