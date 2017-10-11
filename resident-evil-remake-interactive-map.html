@@ -17900,9 +17900,8 @@
 					   	url:dataGetFloor,
 					   	dataType:'html',
 					   	type:'GET',
-	  					context: jQuery('.floor-wrapper'),
 					}).done(function(data){
-				        jQuery('.floor-panel').append(jQuery(data)).addClass('toggle-state').slideDown();
+				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
 		                unpdateMapPagination();
 					});
 				}
