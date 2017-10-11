@@ -17866,7 +17866,13 @@
    						console.log(dataGetFloor);
    						console.log(jQuery(data));
 				   }
-				});
+				}).done(function(data){
+				        jQuery('.floor-panel').append(jQuery(data));
+	                    jQuery('.floor-panel').fadeIn();
+                    	console.log('callback success');
+   						console.log(dataGetFloor);
+   						console.log(jQuery(data));
+				   });
 				/*	console.log(dataGetFloor);
 				jQuery.get( '/'+dataGetFloor, function( data ) {
 			        jQuery('.floor-panel').append(data);
