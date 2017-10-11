@@ -17860,7 +17860,7 @@
 				   url:dataGetFloor,
 				   type:'GET',
 				   success: function(data){
-				        jQuery('.floor-panel').append(data);
+				        jQuery('.floor-panel').append(jQuery(data));
 	                    jQuery('.floor-panel').fadeIn();
                     	console.log('callback success');
    						console.log(dataGetFloor);
