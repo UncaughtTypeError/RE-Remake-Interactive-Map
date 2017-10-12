@@ -17839,6 +17839,8 @@
                                     jQuery('#title').text(locationTitle).fadeIn();
                                 });
 	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'altar-1b.html',
 								   	dataType:'html',
@@ -17862,6 +17864,8 @@
                                     jQuery('#title').text(locationTitle).fadeIn();
                                 });
 	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'underground-laboratory-1b.html',
 								   	dataType:'html',
@@ -17885,6 +17889,8 @@
                                     jQuery('#title').text(locationTitle).fadeIn();
                                 });
 	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'mansion-1f.html',
 								   	dataType:'html',
@@ -17908,6 +17914,8 @@
                                     jQuery('#title').text(locationTitle).fadeIn();
                                 });
 	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'courtyard-1f.html',
 								   	dataType:'html',
@@ -17934,10 +17942,12 @@
             	if(dataCurrentFloor === dataGetFloor) {
             		return
             	} else {
+                    jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
                     if(jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').length > 0) {
                         jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').addClass('toggle-state').slideDown();
 	            	} else {
-                        jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
+                        var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                        jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
     	                var dataGetFloor = dataGetFloor+='.html';
     	                jQuery.ajax({
     					   	url:dataGetFloor,
@@ -17946,6 +17956,7 @@
     					}).done(function(data){
     				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
     		                unpdateMapPagination();
+                            jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
     					});
                     }
 				}
