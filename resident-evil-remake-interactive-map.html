@@ -127,6 +127,10 @@
             color: #736f6f;
         }
 
+		.nocturnal-theme .grid-hexagon:before {
+		    color: #3b3b3b;
+		}
+
         .nocturnal-theme .list-group-tab-wrapper .list-group-tab {
             border-color: #504f4f;
         }
@@ -1347,6 +1351,10 @@
         .diurnal-theme .gears-panel .fa-cog.fa-2x {
             color: #b0b0b0;
         }
+
+		.diurnal-theme .grid-hexagon:before {
+		    color: #e9e9e9;
+		}
 
         .diurnal-theme .list-group-tab-wrapper .list-group-tab:hover {
             background: whitesmoke;
@@ -2863,10 +2871,12 @@
 
         .difficulty-tag.difficulty-tag-active {
             right: 80px;
+            opacity: 1;
         }
 
         .difficulty-tag.difficulty-tag-inactive {
-            right: -350px;
+            right: 70px;
+            opacity: 0;
         }
 
         .difficulty-tag {
@@ -2990,6 +3000,78 @@
             right: -35px;
             bottom: -20px;
         }
+
+        .grid-backdrop {
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    width: 300px;
+		    height: 287px;
+		    margin: auto;
+		    display: block;
+		    z-index: -1;
+		}
+
+		.grid-hexagon:before {
+		    content: "\2b21";
+		    font-size: 15em;
+		    position: absolute;
+		    left: -20px;
+		    top: 0;
+		    bottom: 0;
+		    margin: auto;
+		    transition: .7s;
+		    line-height: 150px;
+		}
+
+		.grid-hexagon {
+		    position: absolute;
+		    width: 150px;
+		    height: 150px;
+		}
+
+		.grid-hexagon:nth-child(1) {
+		    bottom: 0;
+		    left: 0;
+		}
+
+		.grid-hexagon:nth-child(3) {
+		    bottom: 0;
+		    right: 0;
+		}
+
+		.grid-hexagon:nth-child(2) {
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    margin: auto;
+		}
+
+		.grid-hexagon .gears-panel {
+		    left: 0;
+		    right: 0;
+		    top: 0;
+		    bottom: 0;
+		    position: absolute;
+		    width: auto;
+		    height: auto;
+		    opacity: .5;
+		}
+
+		.grid-hexagon .gears-panel .fa-cog.fa-2x {
+		    font-size: 40px;
+		    top: 30px;
+		    left: 20px;
+		}
+
+		.grid-hexagon .gears-panel .fa-cog.fa-3x {
+		    position: absolute;
+		    font-size: 100px;
+		    bottom: 15px;
+		    right: 20px;
+		}
 
         .room-detail-wrapper {
             max-width: 95%;
@@ -10458,7 +10540,7 @@
                 <div id="audio-unmute" class="toggle-mute" onclick="document.getElementById('audio-player').muted = false"><i class="fa fa-volume-off is-mute"></i></div>
                 <audio
                     id="audio-player"
-                    src="/UncaughtTypeError/RE-Remake-Interactive-Map/master/Resident%20Evil%20Remake%20Soundtrack%20Save%20Heaven.mp3"
+                    src="/Resident%20Evil%20Remake%20Soundtrack%20Save%20Heaven.mp3"
                     loop>
                     Your browser does not support the <code>audio</code> element.
                 </audio>
@@ -13610,6 +13692,16 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-backdrop">
+                <div class="grid-hexagon"></div>
+                <div class="grid-hexagon"></div>
+            	<div class="grid-hexagon">
+                    <div class="gears-panel">
+                        <i class="fa fa-cog fa-2x"></i>
+                        <i class="fa fa-cog fa-3x"></i>
                     </div>
                 </div>
             </div>
@@ -16812,13 +16904,13 @@
             }, 1000);
             setTimeout(function() {
                 jQuery('[data-difficulty-level="JV-lvl-very-easy"]').trigger('click');
-            }, 2200);
+            }, 3200);
             setTimeout(function() {
                 jQuery('#items-list').trigger('click');
-            }, 3000);
+            }, 4000);
             setTimeout(function() {
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
-            }, 4000);
+            }, 5000);
         });
         /* Audio Control */
         jQuery('.toggle-mute').click(function(){
@@ -17688,63 +17780,167 @@
         });
         /* Map Pagination */
         function unpdateMapPagination() {
-            var dataCurrentFloor = jQuery('.floor-wrapper').attr('data-floor'),
-                dataCurrentLocation = jQuery('.floor-wrapper').attr('data-location'),
-                dataPrevLocation = jQuery('.floor-wrapper').attr('data-location-prev'),
-                dataNextLocation = jQuery('.floor-wrapper').attr('data-location-next'),
-                dataPrevFloor = jQuery('.floor-wrapper').attr('data-floor-prev'),
-                dataNextFloor = jQuery('.floor-wrapper').attr('data-floor-next');
-            jQuery('[data-location-current]').attr('data-location-current', dataCurrentLocation);
-            jQuery('[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
-            jQuery('[data-floor-next]').attr('data-floor-next', dataNextFloor);
-            jQuery('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
-            jQuery('[data-location-next]').attr('data-location-next', dataNextLocation);
+            var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor'),
+                dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location'),
+                dataPrevLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-prev'),
+                dataNextLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-next'),
+                dataPrevFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-prev'),
+                dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
+            jQuery('.map-pagination[data-location-current]').attr('data-location-current', dataCurrentLocation);
+            jQuery('.map-pagination[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
+            jQuery('.map-pagination[data-floor-next]').attr('data-floor-next', dataNextFloor);
+            jQuery('.map-pagination[data-location-prev]').attr('data-location-prev', dataPrevLocation);
+            jQuery('.map-pagination[data-location-next]').attr('data-location-next', dataNextLocation);
             var locationTitle = dataCurrentLocation.split('-').join(' ');
-            jQuery('#title').text(locationTitle);
         }
         jQuery('.map-pagination').on('click', function(){
-            jQuery('.floor-panel').fadeOut();
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
                 }
-                switch(dataGetLocation) {
-                    case 'courtyard':
-                        jQuery('.floor-panel').load('guardhouse-residence-1f.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    case 'guardhouse-residence':
-                        jQuery('.floor-panel').load('altar-1b.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    case 'altar':
-                        jQuery('.floor-panel').load('underground-laboratory-1b.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    case 'underground-laboratory':
-                        jQuery('.floor-panel').load('mansion-1f.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
-                    break;
-                    default:
-                        jQuery('.floor-panel').load('courtyard-1f.html', function(){
-                            console.log('callback success');
-                            jQuery('.floor-panel').fadeIn();
-                            unpdateMapPagination();
-                        });
+            	var dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location');
+            	if(dataCurrentLocation === dataGetLocation) {
+            		return
+            	} else {
+	            	jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
+	                switch(dataGetLocation) {
+	                    case 'courtyard':
+	                    	if(jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').length > 0) {
+	                			jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').addClass('toggle-state').slideDown();
+                                unpdateMapPagination();
+                                var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                jQuery('#title').fadeOut(function(){
+                                    jQuery('#title').text(locationTitle).fadeIn();
+                                });
+	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
+				                jQuery.ajax({
+								   	url:'guardhouse-residence-1f.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
+					                unpdateMapPagination();
+                                    var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                    jQuery('#title').fadeOut(function(){
+                                        jQuery('#title').text(locationTitle).fadeIn();
+                                    });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+								});
+		                    }
+	                    break;
+	                    case 'guardhouse-residence':
+	                    	if(jQuery('.floor-wrapper[data-floor="altar-1b"]').lengthh > 0) {
+	                			jQuery('.floor-wrapper[data-floor="altar-1b"]').addClass('toggle-state').slideDown();
+                                unpdateMapPagination();
+                                var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                jQuery('#title').fadeOut(function(){
+                                    jQuery('#title').text(locationTitle).fadeIn();
+                                });
+	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
+				                jQuery.ajax({
+								   	url:'altar-1b.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
+					                unpdateMapPagination();
+                                    var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                    jQuery('#title').fadeOut(function(){
+                                        jQuery('#title').text(locationTitle).fadeIn();
+                                    });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+								});
+		                    }
+	                    break;
+	                    case 'altar':
+	                    	if(jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').lengthh > 0) {
+	                			jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').addClass('toggle-state').slideDown();
+                                unpdateMapPagination();
+                                var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                jQuery('#title').fadeOut(function(){
+                                    jQuery('#title').text(locationTitle).fadeIn();
+                                });
+	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
+				                jQuery.ajax({
+								   	url:'underground-laboratory-1b.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
+					                unpdateMapPagination();
+                                    var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                    jQuery('#title').fadeOut(function(){
+                                        jQuery('#title').text(locationTitle).fadeIn();
+                                    });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+								});
+		                    }
+	                    break;
+	                    case 'underground-laboratory':
+	                    	if(jQuery('.floor-wrapper[data-floor="mansion-1f"]').lengthh > 0) {
+	                			jQuery('.floor-wrapper[data-floor="mansion-1f"]').addClass('toggle-state').slideDown();
+                                unpdateMapPagination();
+                                var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                jQuery('#title').fadeOut(function(){
+                                    jQuery('#title').text(locationTitle).fadeIn();
+                                });
+	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
+				                jQuery.ajax({
+								   	url:'mansion-1f.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
+					                unpdateMapPagination();
+                                    var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                    jQuery('#title').fadeOut(function(){
+                                        jQuery('#title').text(locationTitle).fadeIn();
+                                    });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+								});
+		                    }
+	                    break;
+	                    default:
+	                    	if(jQuery('.floor-wrapper[data-floor="courtyard-1f"]').lengthh > 0) {
+	                			jQuery('.floor-wrapper[data-floor="courtyard-1f"]').addClass('toggle-state').slideDown();
+                                unpdateMapPagination();
+                                var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                jQuery('#title').fadeOut(function(){
+                                    jQuery('#title').text(locationTitle).fadeIn();
+                                });
+	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
+				                jQuery.ajax({
+								   	url:'courtyard-1f.html',
+								   	dataType:'html',
+								   	type:'GET',
+				  					context: jQuery('.floor-wrapper'),
+								}).done(function(data){
+							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
+					                unpdateMapPagination();
+                                    var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
+                                    jQuery('#title').fadeOut(function(){
+                                        jQuery('#title').text(locationTitle).fadeIn();
+                                    });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+								});
+		                    }
+					}
                 }
             } else if(jQuery(this).hasClass('floor-toggle')) {
                 if(jQuery(this).hasClass('next')) {
@@ -17752,12 +17948,29 @@
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 }
-                var dataGetFloor = dataGetFloor+='.html';
-                jQuery('.floor-panel').load(dataGetFloor, function(){
-                    console.log('callback success');
-                    jQuery('.floor-panel').fadeIn();
-                    unpdateMapPagination();
-                });
+            	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
+            	if(dataCurrentFloor === dataGetFloor) {
+            		return
+            	} else {
+                    jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
+                    if(jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').length > 0) {
+                        jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').addClass('toggle-state').slideDown();
+                        unpdateMapPagination();
+	            	} else {
+                        var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                        jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
+    	                var dataGetFloor = dataGetFloor+='.html';
+    	                jQuery.ajax({
+    					   	url:dataGetFloor,
+    					   	dataType:'html',
+    					   	type:'GET',
+    					}).done(function(data){
+    				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
+    		                unpdateMapPagination();
+                            jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+    					});
+                    }
+				}
             }
         });
     });
