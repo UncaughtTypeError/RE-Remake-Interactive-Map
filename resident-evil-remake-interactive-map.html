@@ -17778,12 +17778,12 @@
         });
         /* Map Pagination */
         function unpdateMapPagination() {
-            var dataCurrentFloor = jQuery('.floor-wrapper').attr('data-floor'),
-                dataCurrentLocation = jQuery('.floor-wrapper').attr('data-location'),
-                dataPrevLocation = jQuery('.floor-wrapper').attr('data-location-prev'),
-                dataNextLocation = jQuery('.floor-wrapper').attr('data-location-next'),
-                dataPrevFloor = jQuery('.floor-wrapper').attr('data-floor-prev'),
-                dataNextFloor = jQuery('.floor-wrapper').attr('data-floor-next');
+            var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor'),
+                dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location'),
+                dataPrevLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-prev'),
+                dataNextLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-next'),
+                dataPrevFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-prev'),
+                dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
             jQuery('[data-location-current]').attr('data-location-current', dataCurrentLocation);
             jQuery('[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
             jQuery('[data-floor-next]').attr('data-floor-next', dataNextFloor);
@@ -17793,7 +17793,7 @@
             jQuery('#title').fadeOut(function(){
             	jQuery('#title').text(locationTitle).fadeIn();
             });
-            jQuery('.difficulty-select.toggle-state').trigger('click');
+            //jQuery('.difficulty-select.toggle-state').trigger('click');
         }
         jQuery('.map-pagination').on('click', function(){
             if(jQuery(this).hasClass('location-toggle')) {
