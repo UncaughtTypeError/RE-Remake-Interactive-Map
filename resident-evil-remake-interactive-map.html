@@ -17790,7 +17790,6 @@
             jQuery('.map-pagination').find('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
             jQuery('.map-pagination').find('[data-location-next]').attr('data-location-next', dataNextLocation);
             var locationTitle = dataCurrentLocation.split('-').join(' ');
-            //jQuery('.difficulty-select.toggle-state').trigger('click');
         }
         jQuery('.map-pagination').on('click', function(){
             if(jQuery(this).hasClass('location-toggle')) {
@@ -17813,6 +17812,8 @@
                                     jQuery('#title').text(locationTitle).fadeIn();
                                 });
 	                    	} else {
+                                var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'guardhouse-residence-1f.html',
 								   	dataType:'html',
@@ -17824,6 +17825,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17846,6 +17848,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17868,6 +17871,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17890,6 +17894,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17912,6 +17917,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
 								});
 		                    }
 					}
