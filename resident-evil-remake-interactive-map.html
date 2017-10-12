@@ -10540,7 +10540,7 @@
                 <div id="audio-unmute" class="toggle-mute" onclick="document.getElementById('audio-player').muted = false"><i class="fa fa-volume-off is-mute"></i></div>
                 <audio
                     id="audio-player"
-                    src="/Resident%20Evil%20Remake%20Soundtrack%20Save%20Heaven.mp3"
+                    src="Resident%20Evil%20Remake%20Soundtrack%20Save%20Heaven.mp3"
                     loop>
                     Your browser does not support the <code>audio</code> element.
                 </audio>
@@ -17816,7 +17816,6 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'guardhouse-residence-1f.html',
 								   	dataType:'html',
@@ -17829,7 +17828,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
 								});
 		                    }
                             if(jQuery(this).hasClass('prev') && jQuery('.floor-wrapper[data-floor="mansion-1f"]').length > 0) {
@@ -17841,7 +17840,6 @@
                                 });
                             } else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery.ajax({
                                     url:'mansion-1f.html',
                                     dataType:'html',
@@ -17854,7 +17852,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
                                 });
                             }
 	                    break;
@@ -17868,7 +17866,6 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'altar-1b.html',
 								   	dataType:'html',
@@ -17881,7 +17878,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
 								});
 		                    }
                             if(jQuery(this).hasClass('prev') && jQuery('.floor-wrapper[data-floor="courtyard-1f"]').length > 0) {
@@ -17893,7 +17890,6 @@
                                 });
                             } else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery.ajax({
                                     url:'courtyard-1f.html',
                                     dataType:'html',
@@ -17906,7 +17902,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
                                 });
                             }
 	                    break;
@@ -17920,7 +17916,6 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'underground-laboratory-1b.html',
 								   	dataType:'html',
@@ -17933,7 +17928,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
 								});
 		                    }
                             if(jQuery(this).hasClass('prev') && jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').length > 0) {
@@ -17945,7 +17940,6 @@
                                 });
                             } else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery.ajax({
                                     url:'guardhouse-residence-1f.html',
                                     dataType:'html',
@@ -17958,7 +17952,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
                                 });
                             }
 	                    break;
@@ -17972,7 +17966,6 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'mansion-1f.html',
 								   	dataType:'html',
@@ -17985,7 +17978,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
 								});
 		                    }
                             if(jQuery(this).hasClass('prev') && jQuery('.floor-wrapper[data-floor="altar-1b"]').length > 0) {
@@ -17997,7 +17990,6 @@
                                 });
                             } else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery.ajax({
                                     url:'altar-1b.html',
                                     dataType:'html',
@@ -18010,7 +18002,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
                                 });
                             }
 	                    break;
