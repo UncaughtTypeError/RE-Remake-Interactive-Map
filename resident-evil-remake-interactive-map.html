@@ -17784,11 +17784,11 @@
                 dataNextLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-next'),
                 dataPrevFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-prev'),
                 dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
-            jQuery('[data-location-current]').attr('data-location-current', dataCurrentLocation);
-            jQuery('[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
-            jQuery('[data-floor-next]').attr('data-floor-next', dataNextFloor);
-            jQuery('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
-            jQuery('[data-location-next]').attr('data-location-next', dataNextLocation);
+            jQuery('.map-pagination').find('[data-location-current]').attr('data-location-current', dataCurrentLocation);
+            jQuery('.map-pagination').find('[data-floor-prev]').attr('data-floor-prev', dataPrevFloor);
+            jQuery('.map-pagination').find('[data-floor-next]').attr('data-floor-next', dataNextFloor);
+            jQuery('.map-pagination').find('[data-location-prev]').attr('data-location-prev', dataPrevLocation);
+            jQuery('.map-pagination').find('[data-location-next]').attr('data-location-next', dataNextLocation);
             var locationTitle = dataCurrentLocation.split('-').join(' ');
             //jQuery('.difficulty-select.toggle-state').trigger('click');
         }
