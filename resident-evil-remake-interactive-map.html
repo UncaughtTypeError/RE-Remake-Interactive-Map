@@ -17807,7 +17807,7 @@
 	            	jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
 	                switch(dataGetLocation) {
 	                    case 'courtyard':
-	                    	if(Query('.floor-wrapper[data-floor="courtyard-1f"]').length > 0) {
+	                    	if(jQuery('.floor-wrapper[data-floor="courtyard-1f"]').length > 0) {
 	                			jQuery('.floor-wrapper[data-floor="courtyard-1f"]').addClass('toggle-state').slideDown();
                                 unpdateMapPagination();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
