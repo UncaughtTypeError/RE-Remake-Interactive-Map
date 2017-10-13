@@ -17978,7 +17978,6 @@
                         unpdateMapPagination();
 	            	} else {
                         var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
-                        jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                         jQuery('.grid-backdrop').fadeIn();
                         jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                         jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
@@ -17993,7 +17992,7 @@
                             jQuery('.grid-backdrop').fadeOut();
     				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
     		                unpdateMapPagination();
-                            jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                            jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
     					});
                     }
 				}
