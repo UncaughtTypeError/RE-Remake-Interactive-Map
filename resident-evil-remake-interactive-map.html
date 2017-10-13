@@ -17816,10 +17816,10 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery('.grid-backdrop').fadeIn();
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'courtyard-1f.html',
 								   	dataType:'html',
@@ -17834,7 +17834,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17848,10 +17848,10 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery('.grid-backdrop').fadeIn();
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'guardhouse-residence-1f.html',
 								   	dataType:'html',
@@ -17866,7 +17866,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17880,10 +17880,10 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery('.grid-backdrop').fadeIn();
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'altar-1b.html',
 								   	dataType:'html',
@@ -17898,7 +17898,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17912,10 +17912,10 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery('.grid-backdrop').fadeIn();
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'underground-laboratory-1b.html',
 								   	dataType:'html',
@@ -17930,7 +17930,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
 	                    break;
@@ -17944,10 +17944,10 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                                 jQuery('.grid-backdrop').fadeIn();
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                                 jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
-                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'mansion-1f.html',
 								   	dataType:'html',
@@ -17962,7 +17962,7 @@
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
                                     });
-                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').trigger('click');
+                                    jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').trigger('click');
 								});
 		                    }
 					}
@@ -17983,11 +17983,11 @@
                         unpdateMapPagination();
 	            	} else {
                         var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                        jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
                         jQuery('.grid-backdrop').fadeIn();
                         jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
                         jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
                         console.log(dataCurrentDiff);
-                        jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
     	                var dataGetFloor = dataGetFloor+='.html';
     	                jQuery.ajax({
     					   	url:dataGetFloor,
