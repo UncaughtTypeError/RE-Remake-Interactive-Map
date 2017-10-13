@@ -17889,7 +17889,7 @@
 								}).done(function(data){
                                     jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
                                     jQuery('.grid-backdrop').fadeOut();
-							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideUp));
+							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideUp());
 					                unpdateMapPagination();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
