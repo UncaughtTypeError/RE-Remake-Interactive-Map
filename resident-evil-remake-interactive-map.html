@@ -17816,12 +17816,16 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'courtyard-1f.html',
 								   	dataType:'html',
 								   	type:'GET',
 				  					context: jQuery('.floor-wrapper'),
 								}).done(function(data){
+                                    jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
 					                unpdateMapPagination();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
@@ -17842,12 +17846,16 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'guardhouse-residence-1f.html',
 								   	dataType:'html',
 								   	type:'GET',
 				  					context: jQuery('.floor-wrapper'),
 								}).done(function(data){
+                                    jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
 					                unpdateMapPagination();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
@@ -17868,12 +17876,16 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'altar-1b.html',
 								   	dataType:'html',
 								   	type:'GET',
 				  					context: jQuery('.floor-wrapper'),
 								}).done(function(data){
+                                    jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
 					                unpdateMapPagination();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
@@ -17894,12 +17906,16 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
+                                jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'underground-laboratory-1b.html',
 								   	dataType:'html',
 								   	type:'GET',
 				  					context: jQuery('.floor-wrapper'),
 								}).done(function(data){
+                                    jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
 					                unpdateMapPagination();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
@@ -17920,6 +17936,8 @@
                                 });
 	                    	} else {
                                 var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-2x').addClass('fa-spin-backwards');
+                                jQuery('.grid-backdrop .gears-panel').find('.fa-3x').addClass('fa-spin');
                                 jQuery('.difficulty-select.toggle-state').removeClass('toggle-state');
 				                jQuery.ajax({
 								   	url:'mansion-1f.html',
@@ -17927,6 +17945,7 @@
 								   	type:'GET',
 				  					context: jQuery('.floor-wrapper'),
 								}).done(function(data){
+                                    jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
 					                unpdateMapPagination();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
