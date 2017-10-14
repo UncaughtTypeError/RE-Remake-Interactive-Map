@@ -100,6 +100,10 @@
             background: #383838;
         }
 
+        .nocturnal-theme .navigation-menu.toggle-state .map-nav {
+            border-color: #767575;
+        }
+
         .nocturnal-theme .navigation-menu .map-nav {
             background: #3d3d3d;
             border-color: #504f4f;
@@ -170,6 +174,10 @@
             background-color: #3d3d3d;
             border-color: #504f4f;
             color: #8c8c8c;
+        }
+
+        .nocturnal-theme .icon-trigger.trigger-info:after {
+            background: #767575;
         }
 
         .nocturnal-theme .list-group-item:hover {
@@ -1347,6 +1355,11 @@
         .diurnal-theme .navigation-menu .map-nav {
             background: white;
             border-color: #ddd;
+            color: #cccccc;
+        }
+
+        .diurnal-theme .navigation-menu.toggle-state .map-nav {
+            border-color: #cccccc;
         }
 
         .diurnal-theme .navigation-menu .map-nav:hover {
@@ -1418,6 +1431,10 @@
             background-color: #fff;
             border-color: #ddd;
             color: #6a6a6a;
+        }
+
+        .diurnal-theme .icon-trigger.trigger-info:after {
+            background: #cccccc;
         }
 
         .diurnal-theme .list-group-item:hover {
@@ -1549,11 +1566,11 @@
         }
 
         .diurnal-theme .list-group-actions .icon-trigger.toggle-state {
-            border-color: #727272;
+            border-color: #9d9d9d;
         }
 
         .diurnal-theme .list-group-actions .icon-trigger.toggle-state .fa {
-            color: #727272;
+            color: #9d9d9d;
         }
 
         .diurnal-theme .list-group-actions .stars-ranking-group .stars-ranking-dropdown .stars-ranking-type {
@@ -8533,7 +8550,6 @@
             right: 0;
             display: block;
             margin: auto;
-            background: #767575;
             transition: .7s;
         }
 
@@ -18282,6 +18298,10 @@
                     }
 				}
             }
+        });
+        jQuery('.navigation').on('click', function(){
+            jQuery(this).toggleClass('toggle-state');
+            jQuery('.navigation-menu').toggleClass('toggle-state');
         });
     });
     </script>
