@@ -2737,6 +2737,7 @@
             pointer-events: none;
             top: 3px;
             font-size: 12px;
+            text-transform: capitalize;
         }
 
         .map-pagination.floor-toggle.prev:hover .floor-toggle-tooltip {
@@ -10633,13 +10634,13 @@
     <body class="nocturnal-theme">
 
         <header class="header-wrapper">
-            <div class="map-pagination location-toggle prev" data-location-prev="underground-laboratory">
+            <div class="map-pagination location-toggle prev" data-location-prev="">
                 <i class="fa fa-reply"></i>
-                <div class="location-toggle-tooltip"><span data-location-prev="underground-laboratory"></span></div>
+                <div class="location-toggle-tooltip"><span data-location-prev=""></span></div>
             </div>
-            <div class="map-pagination floor-toggle prev" data-floor-prev="mansion-bf">
+            <div class="map-pagination floor-toggle prev" data-floor-prev="">
                 <i class="fa fa-chevron-left"></i>
-                <div class="floor-toggle-tooltip"><span data-location-current="mansion-1f"></span>: <span data-floor-prev="mansion-bf"></span></div>
+                <div class="floor-toggle-tooltip"><span data-location-current=""></span>: <span data-floor-prev=""></span></div>
             </div>
             <ul class="keymenu-toggle">
                 <li>Items List <i class="fa fa-circle-o keymenu-select keymenu-inactive" id="items-list"></i></li>
@@ -10842,13 +10843,13 @@
                     </div>
                 </li>
             </ul>
-            <div class="map-pagination floor-toggle next" data-floor-next="mansion-2f">
+            <div class="map-pagination floor-toggle next" data-floor-next="">
                 <i class="fa fa-chevron-right"></i>
-                <div class="floor-toggle-tooltip"><span data-location-current="mansion-1f"></span>: <span data-floor-next="mansion-2f"></span></div>
+                <div class="floor-toggle-tooltip"><span data-location-current=""></span>: <span data-floor-next=""></span></div>
             </div>
-            <div class="map-pagination location-toggle next" data-location-next="courtyard">
+            <div class="map-pagination location-toggle next" data-location-next="">
                 <i class="fa fa-share"></i>
-                <div class="location-toggle-tooltip"><span data-location-next="courtyard"></span></div>
+                <div class="location-toggle-tooltip"><span data-location-next=""></span></div>
             </div>
         </header>
 
@@ -17028,6 +17029,7 @@
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
             }, 5000);
         });
+        unpdateMapPagination();
         /* Audio Control */
         jQuery('.toggle-mute').click(function(){
             jQuery('.toggle-mute').toggleClass('toggle-state');
@@ -17904,8 +17906,8 @@
                 dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
             var locationTitle = dataCurrentLocation.split('-').join(' ');
             jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', locationTitle);
-            jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor);
-            jQuery('[data-floor-next]').not('.floor-wrapper').attr('data-floor-next', dataNextFloor);
+            jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor.split('-').join(' '));
+            jQuery('[data-floor-next]').not('.floor-wrapper').attr('data-floor-next', dataNextFloor.split('-').join(' '));
             jQuery('[data-location-prev]').not('.floor-wrapper').attr('data-location-prev', dataPrevLocation);
             jQuery('[data-location-next]').not('.floor-wrapper').attr('data-location-next', dataNextLocation);
         }
