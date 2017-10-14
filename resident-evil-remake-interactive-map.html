@@ -2746,6 +2746,7 @@
             top: 38px;
             opacity: .5;
             font-size: 15px;
+            z-index: 99;
         }
 
         .header-wrapper > .map-pagination.location-toggle.prev {
@@ -2847,7 +2848,7 @@
             list-style: none;
         }
 
-        .navigation:hover + .navigation-menu, .navigation-menu.toggle-state {
+        .navigation:hover + .navigation-menu, .navigation-menu:hover, .navigation-menu.toggle-state {
             pointer-events: auto;
             visibility: visible;
             opacity: 1;
