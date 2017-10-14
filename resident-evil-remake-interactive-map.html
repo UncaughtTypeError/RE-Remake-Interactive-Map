@@ -17037,6 +17037,7 @@
                 dataNextLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-next'),
                 dataPrevFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-prev'),
                 dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
+                cosnole.log(dataCurrentLocation);
             var locationTitle = dataCurrentLocation.split('-').join(' ');
             jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', locationTitle);
             jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor);
