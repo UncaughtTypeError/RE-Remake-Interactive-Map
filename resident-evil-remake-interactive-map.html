@@ -17041,8 +17041,10 @@
                 nextFloorTitle = dataNextFloor.split('-').join(' '),
                 prevFloorTitle = dataPrevFloor.split('-').join(' ');
             jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', locationTitle);
-            jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor).text(prevFloorTitle);
-            jQuery('[data-floor-next]').not('.floor-wrapper').attr('data-floor-next', dataNextFloor).text(nextFloorTitle);
+            jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor);
+            jQuery('[data-floor-next]').not('.floor-wrapper').attr('data-floor-next', dataNextFloor);
+            jQuery('.floor-toggle-tooltip [data-floor-prev]').attr('data-floor-prev', dataPrevFloor).text(prevFloorTitle);
+            jQuery('.floor-toggle-tooltip [data-floor-next]').attr('data-floor-next', dataNextFloor).text(nextFloorTitle);
             jQuery('[data-location-prev]').not('.floor-wrapper').attr('data-location-prev', dataPrevLocation);
             jQuery('[data-location-next]').not('.floor-wrapper').attr('data-location-next', dataNextLocation);
         }
