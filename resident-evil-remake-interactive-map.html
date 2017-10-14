@@ -109,6 +109,10 @@
             border-color: #504f4f;
         }
 
+        .nocturnal-theme .navigation:after {
+            background: #767575;
+        }
+
         .nocturnal-theme .map-pagination {
             color: #6a6a6a;
         }
@@ -1349,13 +1353,17 @@
         }
 
         .diurnal-theme .navigation:hover {
-            color: #6a6a6a;
+            color: #cccccc;
         }
 
         .diurnal-theme .navigation-menu .map-nav {
             background: white;
             border-color: #ddd;
             color: #cccccc;
+        }
+
+        .diurnal-theme .navigation:after {
+            background: #767575;
         }
 
         .diurnal-theme .navigation-menu.toggle-state .map-nav {
@@ -2862,6 +2870,24 @@
             z-index: -1;
             pointer-events: none;
             list-style: none;
+        }
+
+        .navigation.toggle-state:after {
+            bottom: -10px;
+            height: 10px;
+        }
+
+        .navigation:after {
+            content: "";
+            width: 1px;
+            height: 0px;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            display: block;
+            margin: auto;
+            transition: .7s;
         }
 
         .navigation:hover + .navigation-menu, .navigation-menu:hover, .navigation-menu.toggle-state {
