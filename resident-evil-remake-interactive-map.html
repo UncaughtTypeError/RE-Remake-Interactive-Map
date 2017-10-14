@@ -92,7 +92,7 @@
             color: #6a6a6a;
         }
 
-        .nocturnal-theme .navigation:hover {
+        .nocturnal-theme .navigation:hover, .nocturnal-theme .navigation.toggle-state {
             color: #b5adad;
         }
 
@@ -1352,7 +1352,7 @@
             color: #ddd;
         }
 
-        .diurnal-theme .navigation:hover {
+        .diurnal-theme .navigation:hover, .diurnal-theme .navigation.toggle-state {
             color: #cccccc;
         }
 
@@ -2788,7 +2788,7 @@
             position: absolute;
             display: block;
             margin: auto;
-            padding: 5px;
+            padding: 5px 10px;
             white-space: nowrap;
             z-index: 9999;
             pointer-events: none;
@@ -2873,7 +2873,7 @@
         }
 
         .navigation.toggle-state:after {
-            bottom: -10px;
+            bottom: -5px;
             height: 10px;
         }
 
