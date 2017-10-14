@@ -2571,7 +2571,10 @@
             transform: rotate(360deg);
           }
           66% {
-            transform: rotate(0deg);
+            -webkit-animation-play-state:paused;
+            -moz-animation-play-state:paused;
+            -o-animation-play-state:paused; 
+            animation-play-state:paused;
           }
           99% {
             transform: rotate(360deg);
