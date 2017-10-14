@@ -2563,6 +2563,46 @@
             display: none;
         }
 
+        @keyframes loadingSpin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        .hexagon-loader {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            transition: 1.5s;
+            height: 25px;
+            width: 25px;
+        }
+
+        .hexagon-loader span:before {
+            content: "\2b22";
+            color: white;
+            position: absolute;
+            line-height: 0;
+        }
+
+        .hexagon-loader span:nth-child(1):before {
+            top: 7px;
+            right: 6px;
+        }
+
+        .hexagon-loader span:nth-child(2):before {
+            right: 0px;
+            top: 18px;
+        }
+
+        .hexagon-loader span:nth-child(3):before {
+            top: 18px;
+            right: 12px;
+        }
+
         .kill-transitions *, .kill-transitions *:before {
             transition: none !important;
         }
@@ -16877,6 +16917,11 @@
         </div>
 
         <div class="welcome-overlay">
+            <div class="hexagon-loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="store-phrase">
                 <span>Overcome your fears and survive</span>
                 <span>Enter the Survival Horror</span>
