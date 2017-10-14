@@ -104,6 +104,12 @@
             color: #8c8c8c;
         }
 
+        .nocturnal-theme .map-pagination.floor-toggle .floor-toggle-tooltip {
+            background: #434343;
+            border-color: #504f4f;
+            color: #bcb9b9;
+        }
+
         .nocturnal-theme ::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(11, 11, 11, 0.35);
             background: #3d3d3d;
@@ -1327,6 +1333,12 @@
 
         .diurnal-theme .map-pagination:hover {
             color: #b4b4bb;
+        }
+
+        .diurnal-theme .map-pagination.floor-toggle .floor-toggle-tooltip {
+            background: white;
+            border-color: #ddd;
+            color: #6a6a6a;
         }
 
         .diurnal-theme ::-webkit-scrollbar-track {
@@ -2709,6 +2721,55 @@
 
         .map-pagination.location-toggle.next {
             right: 10px;
+        }
+
+        .floor-toggle-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: .3s;
+            position: absolute;
+            display: block;
+            margin: auto;
+            border: 1px solid;
+            padding: 5px;
+            white-space: nowrap;
+            z-index: 9999;
+            pointer-events: none;
+            top: 3px;
+            font-size: 12px;
+        }
+
+        .map-pagination.floor-toggle.prev:hover .floor-toggle-tooltip {
+            left: 30px;
+        }
+
+        .map-pagination.floor-toggle .floor-toggle-tooltip [data-location-current]:before {
+            content: attr(data-location-current);
+        }
+
+        .map-pagination.floor-toggle.prev .floor-toggle-tooltip [data-floor-prev]:before {
+            content: attr(data-floor-prev);
+        }
+
+        .map-pagination.floor-toggle.next .floor-toggle-tooltip [data-floor-next]:before {
+            content: attr(data-floor-next);
+        }
+
+        .map-pagination.floor-toggle.next:hover .floor-toggle-tooltip {
+            right: 30px;
+        }
+
+        .map-pagination.floor-toggle:hover .floor-toggle-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .map-pagination.floor-toggle.prev .floor-toggle-tooltip {
+            left: 25px;
+        }
+
+        .map-pagination.floor-toggle.next .floor-toggle-tooltip {
+            right: 25px;
         }
 
         .navigation {
@@ -17841,12 +17902,12 @@
                 dataNextLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location-next'),
                 dataPrevFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-prev'),
                 dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
-            jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', dataCurrentLocation);
+            var locationTitle = dataCurrentLocation.split('-').join(' ');
+            jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', locationTitle);
             jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor);
             jQuery('[data-floor-next]').not('.floor-wrapper').attr('data-floor-next', dataNextFloor);
             jQuery('[data-location-prev]').not('.floor-wrapper').attr('data-location-prev', dataPrevLocation);
             jQuery('[data-location-next]').not('.floor-wrapper').attr('data-location-next', dataNextLocation);
-            var locationTitle = dataCurrentLocation.split('-').join(' ');
         }
         jQuery('.map-pagination').on('click', function(){
             if(jQuery(this).hasClass('location-toggle')) {
