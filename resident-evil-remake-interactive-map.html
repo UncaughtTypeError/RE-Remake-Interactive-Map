@@ -17974,9 +17974,11 @@
             	if(dataCurrentFloor === dataGetFloor) {
             		return
             	} else {
-                    jQuery('.floor-wrapper').removeClass('toggle-state').slideUp();
+                    jQuery('.floor-wrapper').removeClass('toggle-state').fadeOut(function(){
+                        jQuery(this).slideUp();
+                    });
                     if(jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').length > 0) {
-                        jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').addClass('toggle-state').slideUp();
+                        jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').addClass('toggle-state').slideDown();
                         unpdateMapPagination();
 	            	} else {
                         var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
@@ -17991,7 +17993,7 @@
     					}).done(function(data){
                             jQuery('.grid-backdrop .gears-panel').find('.fa').removeClass('fa-spin-backwards fa-spin');
                             jQuery('.grid-backdrop').fadeOut();
-    				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideUp());
+    				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').slideDown());
     		                unpdateMapPagination();
                             jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
     					});
