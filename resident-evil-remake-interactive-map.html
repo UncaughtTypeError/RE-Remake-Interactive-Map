@@ -17040,13 +17040,16 @@
             var locationTitle = dataCurrentLocation.split('-').join(' '),
                 nextFloorTitle = dataNextFloor.split('-').join(' '),
                 prevFloorTitle = dataPrevFloor.split('-').join(' ');
-            jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', locationTitle);
+            /* Update Pagination Data Attributes */
+            jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', dataCurrentLocation);
             jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor);
             jQuery('[data-floor-next]').not('.floor-wrapper').attr('data-floor-next', dataNextFloor);
-            jQuery('.floor-toggle-tooltip [data-floor-prev]').attr('data-floor-prev', dataPrevFloor).text(prevFloorTitle);
-            jQuery('.floor-toggle-tooltip [data-floor-next]').attr('data-floor-next', dataNextFloor).text(nextFloorTitle);
             jQuery('[data-location-prev]').not('.floor-wrapper').attr('data-location-prev', dataPrevLocation);
             jQuery('[data-location-next]').not('.floor-wrapper').attr('data-location-next', dataNextLocation);
+            /* Update Pagination Tooltips */
+            jQuery('.floor-toggle-tooltip [data-location-current]').text(locationTitle);
+            jQuery('.floor-toggle-tooltip [data-floor-prev]').text(prevFloorTitle);
+            jQuery('.floor-toggle-tooltip [data-floor-next]').text(nextFloorTitle);
         }
         unpdateMapPagination();
         /* Audio Control */
