@@ -18123,6 +18123,7 @@
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
+                    jQuery(this).addClass('toggle-state');
                 }
             	var dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location');
             	if(dataCurrentLocation === dataGetLocation) {
@@ -18293,6 +18294,7 @@
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetFloor = jQuery(this).attr('data-floor');
+                    jQuery(this).addClass('toggle-state');
                 }
                 jQuery('map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
             	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
