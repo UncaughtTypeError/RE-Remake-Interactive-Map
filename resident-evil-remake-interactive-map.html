@@ -18491,6 +18491,7 @@
         });
         jQuery('.navigation').on('click', function(){
             jQuery(this).toggleClass('toggle-state');
+            jQuery(this).find('.fa').addClass('fa-spin').toggleClass('fa-bars fa-close').removeClass('fa-spin').;
             jQuery('.navigation-menu').toggleClass('toggle-state');
         });
     });
