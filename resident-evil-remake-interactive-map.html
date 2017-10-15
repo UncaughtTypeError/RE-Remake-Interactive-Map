@@ -2910,12 +2910,18 @@
             position: relative;
         }
 
-        .navigation-menu .map-nav.toggle-state:after {
+        .navigation-menu .map-nav:after {
             content: "\f111";
             font: normal normal normal 10px/1 FontAwesome;
             position: absolute;
             right: 5px;
             color: #0b9e0b;
+            opacity: 0;
+            transition: .7s;
+        }
+
+        .navigation-menu .map-nav.toggle-state:after {
+            opacity: 1;
         }
 
         .navigation-menu .map-nav:not(:last-child) {
