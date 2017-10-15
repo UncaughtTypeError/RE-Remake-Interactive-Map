@@ -104,6 +104,10 @@
             border-color: #767575;
         }
 
+        .nocturnal-theme .navigation-menu > .map-nav:after {
+            border-color: #767575;
+        }
+
         .nocturnal-theme .navigation-menu .map-nav {
             background: #3d3d3d;
             border-color: #504f4f;
@@ -1393,6 +1397,10 @@
         }
 
         .diurnal-theme .navigation-menu.toggle-state .map-nav {
+            border-color: #cccccc;
+        }
+
+        .diurnal-theme .navigation-menu > .map-nav:after {
             border-color: #cccccc;
         }
 
@@ -2985,6 +2993,7 @@
             top: -1px;
             padding: 0;
             margin-left: 130px;
+            padding-left: 0;
             list-style: none;
             min-width: 130px;
             max-width: 200px;
@@ -2992,6 +3001,25 @@
             opacity: 0;
             transition: .7s;
             pointer-events: none;
+            z-index: -1;
+            box-sizing: content-box;
+        }
+
+        .navigation-menu > .map-nav:hover:after {
+            opacity: 1;
+            right: -12px;
+        }
+
+        .navigation-menu > .map-nav:after {
+            content: "";
+            height: 1px;
+            width: 12px;
+            position: absolute;
+            right: 0;
+            display: inline-block;
+            top: 0;
+            float: right;
+            z-index: -1;
         }
 
         .navigation-menu .map-nav-submenu .map-nav {
@@ -2999,10 +3027,11 @@
         }
 
         .navigation-menu .map-nav:hover .map-nav-submenu {
-            margin-left: 145px;
+            margin-left: 0;
             opacity: 1;
-            z-index: -1;
+            z-index: 9;
             pointer-events: auto;
+            padding-left: 155px;
         }
 
         .map-walker.toggle-state {
