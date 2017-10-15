@@ -11055,9 +11055,9 @@
             <h1 id="title">Spencer Mansion</h1>
             <div class="navigation"><i class="fa fa-bars"></i></div>
             <ul class="navigation-menu">
-                <li class="map-pagination map-nav menu-item-location location-toggle" data-location="spencer-mansion">Spencer Mansion
+                <li class="map-pagination map-nav menu-item-location location-toggle toggle-state" data-location="spencer-mansion">Spencer Mansion
                     <ul class="map-nav-submenu">
-                        <li class="map-pagination map-nav menu-item-floor floor-toggle" data-floor="mansion-1f">Mansion F1</li>
+                        <li class="map-pagination map-nav menu-item-floor floor-toggle toggle-state" data-floor="mansion-1f">Mansion F1</li>
                         <li class="map-pagination map-nav menu-item-floor floor-toggle" data-floor="mansion-2f">Mansion F2</li>
                         <li class="map-pagination map-nav menu-item-floor floor-toggle" data-floor="mansion-3f">Mansion F3</li>
                         <li class="map-pagination map-nav menu-item-floor floor-toggle" data-floor="mansion-bf">Mansion BF</li>
@@ -14103,8 +14103,8 @@
             </div>
             <div class="map-walker-panel">
                 <!-- Spencer Mansion -->
-                <div class="map-walker">
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-1f">Mansion 1F <i class="fa fa-circle-o"></i></div>
+                <div class="map-walker toggle-state">
+                    <div class="map-pagination map-nav map-walker-item floor-toggle toggle-state" data-floor="mansion-1f">Mansion 1F <i class="fa fa-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-2f">Mansion 2F <i class="fa fa-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-3f">Mansion 3F <i class="fa fa-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-bf">Mansion BF <i class="fa fa-circle-o"></i></div>
@@ -17380,8 +17380,6 @@
             jQuery('.floor-toggle-tooltip [data-floor-next]').text(nextFloorTitle);
         }
         unpdateMapPagination();
-        jQuery('.map-nav[data-location="spencer-mansion"]').trigger('click');
-        jQuery('.map-nav[data-floor="mansion-1f"]').trigger('click');
         /* Audio Control */
         jQuery('.toggle-mute').click(function(){
             jQuery('.toggle-mute').toggleClass('toggle-state');
