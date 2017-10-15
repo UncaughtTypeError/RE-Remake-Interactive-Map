@@ -18129,6 +18129,10 @@
             }, 1000);
         });
         jQuery('.map-pagination').on('click', function(){
+            if(jQuery(this).hasClass('map-nav') && jQuery(this).parents('.map-nav.menu-item-location').length) {
+                event.stopPropagation();
+                console.log('is map nav and submenu child, has parent: .map-nav.menu-item-location');
+            }
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
