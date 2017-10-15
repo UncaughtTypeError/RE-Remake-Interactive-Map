@@ -18313,6 +18313,7 @@
                 }
                 jQuery('.map-nav.menu-item-floor').removeClass('toggle-state');
                 jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
+                jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parent('.map-nav.menu-item-location').addClass('toggle-state');
             	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
             	if(dataCurrentFloor === dataGetFloor) {
             		return
