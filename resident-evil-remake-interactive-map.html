@@ -17424,7 +17424,9 @@
                 dataNextFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor-next');
             var locationTitle = dataCurrentLocation.split('-').join(' '),
                 nextFloorTitle = dataNextFloor.split('-').join(' '),
-                prevFloorTitle = dataPrevFloor.split('-').join(' ');
+                prevFloorTitle = dataPrevFloor.split('-').join(' '),
+                nextLocationTitle = dataNextLocation.split('-').join(' '),
+                prevLocationTitle = dataPrevLocation.split('-').join(' ');
             /* Update Pagination Data Attributes */
             jQuery('[data-location-current]').not('.floor-wrapper').attr('data-location-current', dataCurrentLocation);
             jQuery('[data-floor-prev]').not('.floor-wrapper').attr('data-floor-prev', dataPrevFloor);
@@ -17435,6 +17437,8 @@
             jQuery('.floor-toggle-tooltip [data-location-current]').text(locationTitle);
             jQuery('.floor-toggle-tooltip [data-floor-prev]').text(prevFloorTitle);
             jQuery('.floor-toggle-tooltip [data-floor-next]').text(nextFloorTitle);
+            jQuery('.location-toggle-tooltip [data-location-next]').text(nextLocationTitle);
+            jQuery('.location-toggle-tooltip [data-location-prev]').text(prevLocationTitle);
         }
         unpdateMapPagination();
         /* Audio Control */
