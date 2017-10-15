@@ -18253,10 +18253,13 @@
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
+                    var dataGetFloor = jQuery(this).attr('data-floor-next');
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
+                    var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
+                    var dataGetFloor = jQuery(this).attr('data-floor');
                 }
                 /* Update Map Walker */
                 jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
