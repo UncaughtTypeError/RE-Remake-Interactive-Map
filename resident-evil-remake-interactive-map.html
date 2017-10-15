@@ -18253,24 +18253,10 @@
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
-                    var dataGetFloor = jQuery(this).attr('data-floor-next');
-                    console.log(dataGetFloor);
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
-                    var dataGetFloor = jQuery(this).attr('data-floor-prev');
-                    console.log(dataGetFloor);
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
-                    var dataGetFloor = jQuery(this).attr('data-floor');
-                    console.log(dataGetFloor);
-                }
-                /* Update Map Walker */
-                jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
-                jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
-                jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
-                if(!jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parent('.map-walker').hasClass('toggle-state')) {
-                    jQuery('.map-walker').removeClass('toggle-state');
-                    jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parent('.map-walker').addClass('toggle-state');
                 }
                 /* Update Navigation */
                 jQuery('.map-nav').removeClass('toggle-state');
@@ -18313,6 +18299,14 @@
                                     jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
+                            /* Update Map Walker */
+                            jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
+                            jQuery('.map-nav[data-floor="courtyard-1f"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            if(!jQuery('.map-nav[data-floor="courtyard-1f"]').parent('.map-walker').hasClass('toggle-state')) {
+                                jQuery('.map-walker').removeClass('toggle-state');
+                                jQuery('.map-nav[data-floor="courtyard-1f"]').parent('.map-walker').addClass('toggle-state');
+                            }
 	                    break;
 	                    case 'guardhouse-residence':
 	                    	if(jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').length > 0) {
@@ -18344,6 +18338,14 @@
                                     jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
+                            /* Update Map Walker */
+                            jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
+                            jQuery('.map-nav[data-floor="guardhouse-residence-1f"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            if(!jQuery('.map-nav[data-floor="guardhouse-residence-1f"]').parent('.map-walker').hasClass('toggle-state')) {
+                                jQuery('.map-walker').removeClass('toggle-state');
+                                jQuery('.map-nav[data-floor="guardhouse-residence-1f"]').parent('.map-walker').addClass('toggle-state');
+                            }
 	                    break;
 	                    case 'altar':
 	                    	if(jQuery('.floor-wrapper[data-floor="altar-1b"]').length > 0) {
@@ -18375,6 +18377,14 @@
                                     jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
+                            /* Update Map Walker */
+                            jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
+                            jQuery('.map-nav[data-floor="altar-1b"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            if(!jQuery('.map-nav[data-floor="altar-1b"]').parent('.map-walker').hasClass('toggle-state')) {
+                                jQuery('.map-walker').removeClass('toggle-state');
+                                jQuery('.map-nav[data-floor="altar-1b"]').parent('.map-walker').addClass('toggle-state');
+                            }
 	                    break;
 	                    case 'underground-laboratory':
 	                    	if(jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').length > 0) {
@@ -18406,6 +18416,14 @@
                                     jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
+                            /* Update Map Walker */
+                            jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
+                            jQuery('.map-nav[data-floor="underground-laboratory-1b"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            if(!jQuery('.map-nav[data-floor="underground-laboratory-1b"]').parent('.map-walker').hasClass('toggle-state')) {
+                                jQuery('.map-walker').removeClass('toggle-state');
+                                jQuery('.map-nav[data-floor="underground-laboratory-1b"]').parent('.map-walker').addClass('toggle-state');
+                            }
 	                    break;
 	                    default:
 	                    	if(jQuery('.floor-wrapper[data-floor="mansion-1f"]').length > 0) {
@@ -18437,6 +18455,14 @@
                                     jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+'"]').removeClass('toggle-state').trigger('click');
 								});
 		                    }
+                            /* Update Map Walker */
+                            jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
+                            jQuery('.map-nav[data-floor="mansion-1f."]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                            if(!jQuery('.map-nav[data-floor="mansion-1f."]').parent('.map-walker').hasClass('toggle-state')) {
+                                jQuery('.map-walker').removeClass('toggle-state');
+                                jQuery('.map-nav[data-floor="mansion-1f."]').parent('.map-walker').addClass('toggle-state');
+                            }
 					}
                 }
             } else if(jQuery(this).hasClass('floor-toggle')) {
@@ -18494,9 +18520,7 @@
         });
         jQuery('.navigation').on('click', function(){
             jQuery(this).toggleClass('toggle-state');
-            jQuery(this).find('.fa').addClass('fa-spin', function() {
-                jQuery(this).toggleClass('fa-bars fa-close').removeClass('fa-spin');
-            });
+            jQuery(this).find('.fa').toggleClass('fa-bars fa-close');
             jQuery('.navigation-menu').toggleClass('toggle-state');
         });
     });
