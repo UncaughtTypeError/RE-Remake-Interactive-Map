@@ -113,6 +113,20 @@
             background: #767575;
         }
 
+        .nocturnal-theme .map-walker .map-walker-item {
+            background: #3d3d3d;
+            border-color: #504f4f;
+        }
+
+        .nocturnal-theme .map-walker-item:last-child:after, .nocturnal-theme .map-walker-item:first-child:before {
+            background: inherit;
+            border-color: #504f4f;
+        }
+
+        .nocturnal-theme .map-walker .map-walker-item:hover {
+            background: #383838;
+        }
+
         .nocturnal-theme .map-pagination {
             color: #6a6a6a;
         }
@@ -1372,6 +1386,20 @@
 
         .diurnal-theme .navigation-menu .map-nav:hover {
             background: whitesmoke;
+        }
+
+        .diurnal-theme .map-walker-item:last-child:after, .diurnal-theme .map-walker-item:first-child:before {
+            background: inherit;
+            border-color: #ddd;
+        }
+
+        .diurnal-theme .map-walker .map-walker-item:hover {
+            background: whitesmoke;
+        }
+
+        .diurnal-theme .map-walker .map-walker-item {
+            background: white;
+            border-color: #ddd;
         }
 
         .diurnal-theme .map-pagination {
@@ -2951,6 +2979,59 @@
             opacity: 1;
             z-index: -1;
             pointer-events: auto;
+        }
+
+        .map-walker.toggle-state {
+            bottom: 80px;
+            left: 0;
+            right: 0;
+            transition: .7s;
+        }
+
+        .map-walker .map-walker-item {
+            padding: 10px 33px;
+            border: 1px solid;
+            border-bottom: 0px;
+            position: relative;
+            width: auto;
+            display: inline-block;
+            cursor: pointer;
+            transition: .7s;
+        }
+
+        .map-walker {
+            position: absolute;
+            text-align: center;
+            bottom: -100px;
+        }
+
+        .map-walker-item:last-child:after {
+            content: "";
+            border: 0;
+            border-top: 1px solid;
+            width: 47px;
+            height: 45px;
+            transform: rotate(55deg);
+            display: block;
+            float: right;
+            position: absolute;
+            top: 9px;
+            right: -20px;
+        }
+
+        .map-walker-item:first-child:before {
+            content: "";
+            position: relative;
+            width: 47px;
+            height: 45px;
+            border-top: 1px solid;
+            transform: rotate(-55deg);
+            display: block;
+            float: left;
+            position: absolute;
+            top: 9px;
+            left: -20px;
+            z-index: 9;
         }
 
         .theme-toggle {
