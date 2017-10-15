@@ -131,6 +131,14 @@
             color: #b5adad;
         }
 
+        .nocturnal-theme .map-walker .map-pagination.next .location-toggle-tooltip:after {
+            border-right-color: #4e4e4e;
+        }
+
+        .nocturnal-theme .map-walker .map-pagination.prev .location-toggle-tooltip:before {
+            border-left-color: #4e4e4e;
+        }
+
         .nocturnal-theme .map-pagination {
             color: #6a6a6a;
         }
@@ -1408,6 +1416,14 @@
         .diurnal-theme .map-walker .map-walker-item {
             background: white;
             border-color: #ddd;
+        }
+        
+        .diurnal-theme .map-walker .map-pagination.next .location-toggle-tooltip:after {
+            border-right-color: #ddd;
+        }
+
+        .diurnal-theme .map-walker .map-pagination.prev .location-toggle-tooltip:before {
+            border-left-color: #ddd;
         }
 
         .diurnal-theme .map-pagination {
@@ -3058,6 +3074,54 @@
 
         .map-walker .location-toggle:last-child {
             left: 25px;
+        }
+
+        .map-walker .map-pagination.location-toggle.next .location-toggle-tooltip {
+            right: auto;
+            left: 25px;
+            top: -2px;
+        }
+
+        .map-walker .map-pagination.location-toggle.prev .location-toggle-tooltip {
+            right: 25px;
+            left: auto;
+            top: -2px;
+        }
+
+        .map-walker .map-pagination.location-toggle.next:hover .location-toggle-tooltip {
+            left: 45px;
+        }
+
+        .map-walker .map-pagination.location-toggle.prev:hover .location-toggle-tooltip {
+            right: 45px;
+        }
+
+        .map-walker .map-pagination.location-toggle.next .location-toggle-tooltip:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: auto;
+            bottom: 0;
+            left: -30px;
+            right: auto;
+            border-right: 15px solid transparent;
+            border-bottom: 12.5px solid transparent;
+            border-top: 12.5px solid transparent;
+            border-left: 15px solid transparent;
+        }
+
+        .map-walker .map-pagination.location-toggle.prev .location-toggle-tooltip:before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: auto;
+            bottom: 0;
+            right: -30px;
+            left: auto;
+            border-right: 15px solid transparent;
+            border-bottom: 12.5px solid transparent;
+            border-top: 12.5px solid transparent;
+            border-left: 15px solid transparent;
         }
 
         .theme-toggle {
