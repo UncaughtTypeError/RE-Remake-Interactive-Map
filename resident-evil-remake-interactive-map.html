@@ -18303,13 +18303,13 @@
 					}
                 }
             } else if(jQuery(this).hasClass('floor-toggle')) {
-                event.stopPropagation();
                 if(jQuery(this).hasClass('next')) {
                     var dataGetFloor = jQuery(this).attr('data-floor-next');
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetFloor = jQuery(this).attr('data-floor');
+                    event.stopPropagation();
                 }
                 jQuery('.map-nav.menu-item-floor').removeClass('toggle-state');
                 jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
