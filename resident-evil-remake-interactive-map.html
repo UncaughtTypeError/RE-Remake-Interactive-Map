@@ -17380,6 +17380,7 @@
             jQuery('.floor-toggle-tooltip [data-floor-next]').text(nextFloorTitle);
         }
         unpdateMapPagination();
+        jQuery('.map-nav[data-location="spencer-mansion"]').trigger('click');
         /* Audio Control */
         jQuery('.toggle-mute').click(function(){
             jQuery('.toggle-mute').toggleClass('toggle-state');
