@@ -18115,7 +18115,6 @@
             }, 1000);
         });
         jQuery('.map-pagination').on('click', function(){
-            jQuery('.map-nav').removeClass('toggle-state');
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
@@ -18123,6 +18122,7 @@
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
+                    jQuery('.map-nav').removeClass('toggle-state');
                     jQuery(this).addClass('toggle-state');
                 }
             	var dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location');
@@ -18294,6 +18294,7 @@
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetFloor = jQuery(this).attr('data-floor');
+                    jQuery('.map-nav').removeClass('toggle-state');
                     jQuery(this).addClass('toggle-state');
                 }
                 jQuery('map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
