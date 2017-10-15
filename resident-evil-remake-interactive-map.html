@@ -18129,6 +18129,7 @@
             }, 1000);
         });
         jQuery('.map-pagination').on('click', function(){
+            event.stopPropagation();
             if(jQuery(this).hasClass('location-toggle')) {
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
