@@ -118,7 +118,7 @@
             border-color: #504f4f;
         }
 
-        .nocturnal-theme .map-walker-item:last-child:after, .nocturnal-theme .map-walker-item:first-child:before {
+        .nocturnal-theme .map-walker-item:nth-last-child(2):after, .nocturnal-theme .map-walker-item:nth-first-child(2):before {
             background: inherit;
             border-color: #504f4f;
         }
@@ -1392,7 +1392,7 @@
             background: whitesmoke;
         }
 
-        .diurnal-theme .map-walker-item:last-child:after, .diurnal-theme .map-walker-item:first-child:before {
+        .diurnal-theme .map-walker-item::nth-last-child(2):after, .diurnal-theme .map-walker-item::nth-first-child(2):before {
             background: inherit;
             border-color: #ddd;
         }
@@ -3014,7 +3014,7 @@
             transition: .7s;
         }
 
-        .map-walker-item:last-child:after {
+        .map-walker-item::nth-last-child(2):after {
             content: "";
             border: 0;
             border-top: 1px solid;
@@ -3028,7 +3028,7 @@
             right: -20px;
         }
 
-        .map-walker-item:first-child:before {
+        .map-walker-item::nth-first-child(2):before {
             content: "";
             position: relative;
             width: 47px;
@@ -14104,10 +14104,18 @@
             <div class="map-walker-panel">
                 <!-- Spencer Mansion -->
                 <div class="map-walker toggle-state">
+                    <div class="map-pagination location-toggle prev" data-location-prev="underground-laboratory">
+                        <i class="fa fa-reply"></i>
+                        <div class="location-toggle-tooltip"><span data-location-prev="underground-laboratory"></span></div>
+                    </div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle toggle-state" data-floor="mansion-1f">Mansion 1F <i class="fa fa-dot-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-2f">Mansion 2F <i class="fa fa-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-3f">Mansion 3F <i class="fa fa-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-bf">Mansion BF <i class="fa fa-circle-o"></i></div>
+                    <div class="map-pagination location-toggle next" data-location-next="courtyard">
+                        <i class="fa fa-share"></i>
+                        <div class="location-toggle-tooltip"><span data-location-next="courtyard"></span></div>
+                    </div>
                 </div>
                 <!-- Courtyard -->
                 <div class="map-walker">
