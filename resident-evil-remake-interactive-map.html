@@ -18138,7 +18138,7 @@
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
                 }
-                jQuery('.map-nav.menu-item-location').removeClass('toggle-state');
+                jQuery('.map-nav').removeClass('toggle-state');
                 jQuery('.map-nav[data-location="'+dataGetLocation+'"]').addClass('toggle-state');
                 jQuery('.map-nav[data-location="'+dataGetLocation+'"]').find('.map-nav').first().addClass('toggle-state');
             	var dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location');
@@ -18313,7 +18313,12 @@
                 }
                 jQuery('.map-nav.menu-item-floor').removeClass('toggle-state');
                 jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
-                jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parent('.map-nav.menu-item-location').addClass('toggle-state');
+                if(jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parents('.map-nav.menu-item-location').hasClass('toggle-state')) {
+                    return
+                } else {
+                    jQuery('.map-nav.menu-item-location').removeClass('toggle-state');
+                    jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parents('.map-nav.menu-item-location').addClass('toggle-state');
+                }
             	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
             	if(dataCurrentFloor === dataGetFloor) {
             		return
