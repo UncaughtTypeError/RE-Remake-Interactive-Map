@@ -14104,16 +14104,16 @@
             <div class="map-walker-panel">
                 <!-- Spencer Mansion -->
                 <div class="map-walker">
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-1f">Mansion F1</div>
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-2f">Mansion F2</div>
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-3f">Mansion F3</div>
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-bf">Mansion BF</div>
+                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-1f">Mansion F1 <i class="fa fa-circle-o"></i></div>
+                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-2f">Mansion F2 <i class="fa fa-circle-o"></i></div>
+                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-3f">Mansion F3 <i class="fa fa-circle-o"></i></div>
+                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="mansion-bf">Mansion BF <i class="fa fa-circle-o"></i></div>
                 </div>
                 <!-- Courtyard -->
                 <div class="map-walker">
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="courtyard-1f">Courtyard F1 <i class="fa fa-circle-o"></i></div>
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="courtyard-b1">Courtyard B1 <i class="fa fa-circle-o"></i></div>
-                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="courtyard-b2">Courtyard B2 <i class="fa fa-circle-o"></i></div>
+                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="courtyard-1b">Courtyard B1 <i class="fa fa-circle-o"></i></div>
+                    <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="courtyard-2b">Courtyard B2 <i class="fa fa-circle-o"></i></div>
                     <div class="map-pagination map-nav map-walker-item floor-toggle" data-floor="courtyard-heliport">Courtyard Heliport <i class="fa fa-circle-o"></i></div>
                 </div>
                 <!-- Guardhouse Residence -->
@@ -18254,12 +18254,15 @@
                 if(jQuery(this).hasClass('next')) {
                     var dataGetLocation = jQuery(this).attr('data-location-next');
                     var dataGetFloor = jQuery(this).attr('data-floor-next');
+                    console.log(dataGetFloor);
                 } else if(jQuery(this).hasClass('prev')) {
                     var dataGetLocation = jQuery(this).attr('data-location-prev');
                     var dataGetFloor = jQuery(this).attr('data-floor-prev');
+                    console.log(dataGetFloor);
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
                     var dataGetFloor = jQuery(this).attr('data-floor');
+                    console.log(dataGetFloor);
                 }
                 /* Update Map Walker */
                 jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
@@ -18491,7 +18494,9 @@
         });
         jQuery('.navigation').on('click', function(){
             jQuery(this).toggleClass('toggle-state');
-            jQuery(this).find('.fa').addClass('fa-spin').toggleClass('fa-bars fa-close').removeClass('fa-spin');
+            jQuery(this).find('.fa').addClass('fa-spin', function() {
+                jQuery(this).toggleClass('fa-bars fa-close').removeClass('fa-spin');
+            });
             jQuery('.navigation-menu').toggleClass('toggle-state');
         });
     });
