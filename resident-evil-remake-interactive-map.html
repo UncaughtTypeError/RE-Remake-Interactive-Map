@@ -18131,6 +18131,7 @@
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetLocation = jQuery(this).attr('data-location');
                 }
+                jQuery('.map-nav.menu-item-location').removeClass('toggle-state');
                 jQuery('.map-nav[data-location="'+dataGetLocation+'"]').addClass('toggle-state');
             	var dataCurrentLocation = jQuery('.floor-wrapper.toggle-state').attr('data-location');
             	if(dataCurrentLocation === dataGetLocation) {
@@ -18302,6 +18303,7 @@
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetFloor = jQuery(this).attr('data-floor');
                 }
+                jQuery('.map-nav.menu-item-floor').removeClass('toggle-state');
                 jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
             	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
             	if(dataCurrentFloor === dataGetFloor) {
