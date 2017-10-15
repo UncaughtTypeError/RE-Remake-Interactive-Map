@@ -18395,6 +18395,10 @@
                 } else if(jQuery(this).hasClass('map-nav')) {
                     var dataGetFloor = jQuery(this).attr('data-floor');
                 }
+                /* Update Map Walker */
+                jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
+                jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
+                jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
                 /* Update Navigation */
                 jQuery('.map-nav.menu-item-floor').removeClass('toggle-state');
                 jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').addClass('toggle-state');
@@ -18402,10 +18406,6 @@
                     jQuery('.map-nav.menu-item-location').removeClass('toggle-state');
                     jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').parents('.map-nav.menu-item-location').addClass('toggle-state');
                 }
-                /* Update Map Walker */
-                jQuery('.map-nav.map-walker-item.toggle-state').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
-                jQuery('.map-nav.map-walker-item').removeClass('toggle-state');
-                jQuery('.map-nav[data-floor="'+dataGetFloor+'"]').find('.fa').toggleClass('fa-dot-circle-o fa-circle-o');
 
             	var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor');
             	if(dataCurrentFloor === dataGetFloor) {
