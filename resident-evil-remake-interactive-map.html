@@ -18420,6 +18420,7 @@
             	if(dataCurrentLocation === dataGetLocation) {
             		return
             	} else {
+                    jQuery('.room-detail-close').trigger('click');
                     jQuery('.floor-wrapper').removeClass('toggle-state').fadeOut();
 	                switch(dataGetLocation) {
 	                    case 'courtyard':
@@ -18662,6 +18663,7 @@
             	if(dataCurrentFloor === dataGetFloor) {
             		return
             	} else {
+                    jQuery('.room-detail-close').trigger('click');
                     jQuery('.floor-wrapper').removeClass('toggle-state').fadeOut();
                     if(jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').length > 0) {
                         jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').addClass('toggle-state').fadeIn();
