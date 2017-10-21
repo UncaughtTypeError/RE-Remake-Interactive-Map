@@ -818,6 +818,11 @@
             background: #383838;
         }
 
+        .nocturnal-theme .end-user-navigation {
+            background: #3d3d3d;
+            border-color: #504f4f;
+        }
+
         /* Map */
 
         .nocturnal-theme .room:hover, .nocturnal-theme .room:hover .room {
@@ -2110,6 +2115,11 @@
 
         .diurnal-theme .list-group-wrapper .icon-marker-tooltip {
             background: whitesmoke;
+        }
+
+        .diurnal-theme .end-user-navigation {
+            background: white;
+            border-color: #ddd;
         }
 
         /* Map */
@@ -3494,6 +3504,47 @@
             opacity: .3;
             top: 0;
             left: 0;
+        }
+
+        .end-user-navigation.toggle-state {
+            right: 0;
+        }
+
+        .end-user-navigation {
+            max-width: 95%;
+            margin: auto;
+            position: fixed;
+            top: 0;
+            right: -500px;
+            min-width: 350px;
+            z-index: 99;
+            height: 100%;
+            margin-top: 97px;
+            padding-top: 80px;
+            transition: 1s;
+            padding-bottom: 130px;
+            border-left: 1px solid;
+        }
+
+        .end-user-navigation ul {
+            margin: 0px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .end-user-navigation-submenu li {
+            border-left: 0px;
+            border-right: 0px;
+        }
+
+        .end-user-navigation-submenu li:last-child {
+            border-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        .end-user-navigation .end-user-navigation-submenu {
+            margin-top: 10px;
+            display: none;
         }
 
         .gears-panel {
@@ -14371,88 +14422,88 @@
             </div>
         </div>
 
-        <div class="end-user-navigation">
+        <div class="end-user-navigation list-group-wrapper">
             <ul>
-                <li data-nav-item="nav-map">Map
+                <li data-nav-item="nav-map" class="list-group-item">Map
                     <ul class="end-user-navigation-submenu">
-                        <li>Spencer Mansion
+                        <li class="list-group-item map-pagination" data-location-next="courtyard">Spencer Mansion
                             <ul class="end-user-navigation-submenu">
-                                <li>Mansion 1F</li>
-                                <li>Mansion 2F</li>
-                                <li>Mansion 3F</li>
-                                <li>Mansion B1</li>
+                                <li class="list-group-item map-pagination" data-floor="mansion-1f">Mansion 1F</li>
+                                <li class="list-group-item map-pagination" data-floor="mansion-2f">Mansion 2F</li>
+                                <li class="list-group-item map-pagination" data-floor="mansion-3f">Mansion 3F</li>
+                                <li class="list-group-item map-pagination" data-floor="mansion-b1">Mansion B1</li>
                             </ul>
                         </li>
-                        <li>Courtyard
+                        <li class="list-group-item map-pagination" data-location-next="courtyard">Courtyard
                             <ul class="end-user-navigation-submenu">
-                                <li>Courtyard 1F</li>
-                                <li>Courtyard B1</li>
-                                <li>Courtyard B2</li>
-                                <li>Heliport</li>
+                                <li class="list-group-item map-pagination" data-floor="courtyard-1f">Courtyard 1F</li>
+                                <li class="list-group-item map-pagination" data-floor="courtyard-b1">Courtyard B1</li>
+                                <li class="list-group-item map-pagination" data-floor="courtyard-b2">Courtyard B2</li>
+                                <li class="list-group-item map-pagination" data-floor="courtyard-heliport">Heliport</li>
                             </ul>
                         </li>
-                        <li>Guardhouse Residence
+                        <li class="list-group-item map-pagination" data-location-next="guardhouse-residence">Guardhouse Residence
                             <ul class="end-user-navigation-submenu">
-                                <li>Residence 1F</li>
-                                <li>Aqua Ring B1</li>
-                                <li>Aqua Ring B2</li>
+                                <li class="list-group-item map-pagination" data-floor="guardhouse-residence-1f">Residence 1F</li>
+                                <li class="list-group-item map-pagination" data-floor="aqua-ring-1b">Aqua Ring B1</li>
+                                <li class="list-group-item map-pagination" data-floor="aqua-ring-2b">Aqua Ring B2</li>
                             </ul>
                         </li>
-                        <li>Altar
+                        <li class="list-group-item map-pagination" data-location-next="altar">Altar
                             <ul class="end-user-navigation-submenu">
-                                <li>Altar B1</li>
-                                <li>Altar B2</li>
+                                <li class="list-group-item map-pagination" data-floor="altar-1b">Altar B1</li>
+                                <li class="list-group-item map-pagination" data-floor="altar-2b">Altar B2</li>
                             </ul>
                         </li>
-                        <li>Underground Laboratory
+                        <li class="list-group-item map-pagination" data-location-next="underground-laboratory">Underground Laboratory
                             <ul class="end-user-navigation-submenu">
-                                <li>Laboratory B1</li>
-                                <li>Laboratory B2</li>
-                                <li>Laboratory B3</li>
-                                <li>Laboratory B4</li>
+                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-1b">Laboratory B1</li>
+                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-2b">Laboratory B2</li>
+                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-3b">Laboratory B3</li>
+                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-4b">Laboratory B4</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li data-nav-item="nav-items">Items
+                <li data-nav-item="nav-items" class="list-group-item">Items
                     <ul class="end-user-navigation-submenu">
-                        <li>Object & Tools</li>
-                        <li>Keys</li>
-                        <li>Maps</li>
-                        <li>Recovery Items</li>
-                        <li>Items of Interest</li>
-                        <li>Persons of Interest</li>
-                        <li>Documents</li>
-                        <li>Self Defense Items</li>
-                        <li>Weapons</li>
-                        <li>Ammunition</li>
+                        <li class="list-group-item">Object & Tools</li>
+                        <li class="list-group-item">Keys</li>
+                        <li class="list-group-item">Maps</li>
+                        <li class="list-group-item">Recovery Items</li>
+                        <li class="list-group-item">Items of Interest</li>
+                        <li class="list-group-item">Persons of Interest</li>
+                        <li class="list-group-item">Documents</li>
+                        <li class="list-group-item">Self Defense Items</li>
+                        <li class="list-group-item">Weapons</li>
+                        <li class="list-group-item">Ammunition</li>
                     </ul>
                 </li>
-                <li data-nav-item="nav-biohazards">Biohazards
+                <li data-nav-item="nav-biohazards" class="list-group-item">Biohazards
                     <ul class="end-user-navigation-submenu">
-                        <li>Biohazard Array</li>
-                        <li>Biohazard Case Studies</li>
-                        <li>S.T.A.R.S. Rankings</li>
+                        <li class="list-group-item">Biohazard Array</li>
+                        <li class="list-group-item">Biohazard Case Studies</li>
+                        <li class="list-group-item">S.T.A.R.S. Rankings</li>
                     </ul>
                 </li>
-                <li data-nav-item="nav-settings">Settings
+                <li data-nav-item="nav-settings" class="list-group-item">Settings
                     <ul class="end-user-navigation-submenu">
-                        <li>Toggle Theme
+                        <li class="list-group-item">Toggle Theme
                             <ul class="end-user-navigation-submenu">
-                                <li>Diurnal Theme</li>
-                                <li>Nocturnal Theme</li>
+                                <li class="list-group-item">Diurnal Theme</li>
+                                <li class="list-group-item">Nocturnal Theme</li>
                             </ul>
                         </li>
-                        <li>Toggle Audio</li>
-                        <li>Map Display
+                        <li class="list-group-item">Toggle Audio</li>
+                        <li class="list-group-item">Map Display
                             <ul class="end-user-navigation-submenu">
-                                <li>Per Floor</li>
-                                <li>All Floors</li>
+                                <li class="list-group-item">Per Floor</li>
+                                <li class="list-group-item">All Floors</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li data-nav-item="nav-info">Info</li>
+                <li data-nav-item="nav-info" class="list-group-item">Info</li>
             </ul>
         </div>
 
