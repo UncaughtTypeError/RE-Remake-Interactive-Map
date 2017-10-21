@@ -17763,13 +17763,13 @@
             jQuery('.options-panel').trigger('click');
         });
         jQuery('.end-user-navigation li').on('click', function(){
-            console.log('update 1.8');
+            console.log('update 1.9');
             event.stopPropagation();
-            if(jQuery(this).hasClass('end-user-navigation-submenu')) {
+            if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
             } else if(jQuery(this).not('.toggle-state')) {
-                if(!jQuery(this).parent('li')) {
+                if(!jQuery(this).parent('.end-user-navigation-submenu')) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 }
