@@ -17774,13 +17774,16 @@
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
-            jQuery('.user-nav-panel').addClass('toggle-state');
+            
             jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
                 jQuery('.gears-panel.bottom-right').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 500);
+            setTimeout(function() {
+                jQuery('.user-nav-panel').addClass('toggle-state');
+            }, 1500);
         });
         /* Map Pagination */
         function unpdateMapPagination() {
