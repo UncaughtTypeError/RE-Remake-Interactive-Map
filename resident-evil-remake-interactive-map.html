@@ -14371,6 +14371,91 @@
             </div>
         </div>
 
+        <div class="end-user-navigation">
+            <ul>
+                <li data-nav-item="nav-map">Map
+                    <ul class="end-user-navigation-submenu">
+                        <li>Spencer Mansion
+                            <ul class="end-user-navigation-submenu">
+                                <li>Mansion 1F</li>
+                                <li>Mansion 2F</li>
+                                <li>Mansion 3F</li>
+                                <li>Mansion B1</li>
+                            </ul>
+                        </li>
+                        <li>Courtyard
+                            <ul class="end-user-navigation-submenu">
+                                <li>Courtyard 1F</li>
+                                <li>Courtyard B1</li>
+                                <li>Courtyard B2</li>
+                                <li>Heliport</li>
+                            </ul>
+                        </li>
+                        <li>Guardhouse Residence
+                            <ul class="end-user-navigation-submenu">
+                                <li>Residence 1F</li>
+                                <li>Aqua Ring B1</li>
+                                <li>Aqua Ring B2</li>
+                            </ul>
+                        </li>
+                        <li>Altar
+                            <ul class="end-user-navigation-submenu">
+                                <li>Altar B1</li>
+                                <li>Altar B2</li>
+                            </ul>
+                        </li>
+                        <li>Underground Laboratory
+                            <ul class="end-user-navigation-submenu">
+                                <li>Laboratory B1</li>
+                                <li>Laboratory B2</li>
+                                <li>Laboratory B3</li>
+                                <li>Laboratory B4</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li data-nav-item="nav-items">Items
+                    <ul class="end-user-navigation-submenu">
+                        <li>Object & Tools</li>
+                        <li>Keys</li>
+                        <li>Maps</li>
+                        <li>Recovery Items</li>
+                        <li>Items of Interest</li>
+                        <li>Persons of Interest</li>
+                        <li>Documents</li>
+                        <li>Self Defense Items</li>
+                        <li>Weapons</li>
+                        <li>Ammunition</li>
+                    </ul>
+                </li>
+                <li data-nav-item="nav-biohazards">Biohazards
+                    <ul class="end-user-navigation-submenu">
+                        <li>Biohazard Array</li>
+                        <li>Biohazard Case Studies</li>
+                        <li>S.T.A.R.S. Rankings</li>
+                    </ul>
+                </li>
+                <li data-nav-item="nav-settings">Settings
+                    <ul class="end-user-navigation-submenu">
+                        <li>Toggle Theme
+                            <ul class="end-user-navigation-submenu">
+                                <li>Diurnal Theme</li>
+                                <li>Nocturnal Theme</li>
+                            </ul>
+                        </li>
+                        <li>Toggle Audio</li>
+                        <li>Map Display
+                            <ul class="end-user-navigation-submenu">
+                                <li>Per Floor</li>
+                                <li>All Floors</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li data-nav-item="nav-info">Info</li>
+            </ul>
+        </div>
+
         <div class="list-group keymenu list-group-expand items keymenu-inactive" data-id="items-list">
             <div class="list-group-actions">
                 <div class="list-group-tab-wrapper">
@@ -17604,6 +17689,17 @@
                     jQuery(navItem).toggleClass('toggle-state');
                 }, index*200);
             });
+        });
+        jQuery('.user-nav-panel li').on('click', function(){
+            jQuery('.end-user-navigation').toggleClass('toggle-state');
+            var dataNavItem = jQuery(this).attr('data-nav-item');
+            jQuery('.end-user-navigation').find('[data-nav-item="'+dataNavItem+'"]').trigger('click');
+        });
+        jQuery('.end-user-navigation li').on('click', function(){
+            event.stopPropagation();
+            jQuery('.end-user-navigation').find('.toggle-state').not(this).removeClass('toggle-state');
+            jQuery(this).toggleClass('toggle-state');
+            jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state');
         });
         /* Map Pagination */
         function unpdateMapPagination() {
