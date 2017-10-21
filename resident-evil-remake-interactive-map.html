@@ -17576,26 +17576,29 @@
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
             }, 5000);
         });
-        jQuery('.options-panel').trigger('click');
+        /* End-User Navigation */
         jQuery('.options-panel').on('click', function(){
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin-backwards');
                 setTimeout(function() {
-                    jQuery(this).removeClass('fa-spin-backwards');
+                    jQuery(this).find('.fa-cog').removeClass('fa-spin-backwards');
                 }, 300);
             } else {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin');
                 setTimeout(function() {
-                    jQuery(this).removeClass('fa-spin');
+                    jQuery(this).find('.fa-cog').removeClass('fa-spin');
                 }, 300);
             }
             jQuery('.user-nav-panel').toggleClass('toggle-state');
             jQuery('.user-nav-panel li').each(function(i) {
-              jQuery(this).delay(500 * i).toggleClass('toggle-state');
+                setTimeout(function() {
+                    jQuery(this).toggleClass('toggle-state');
+                }, 200);
             });
         });
+        jQuery('.options-panel').trigger('click');
         /* Map Pagination */
         function unpdateMapPagination() {
             var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor'),
