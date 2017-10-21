@@ -17940,7 +17940,7 @@
                 jQuery(targetDataInfo).removeClass('biohazard-info-stack-left biohazard-info-stack-right').addClass('popup-active');
                 jQuery('.biohazard-info-bullet').removeClass('bullet-active');
                 jQuery('.biohazard-info-bullet[data-info="'+dataInfo+'"]').addClass('bullet-active');
-                if(jQuery(this).parents('.popup-active') && !jQuery(this).parents('.biohazards-array-wrapper')) {
+                if(jQuery(this).parents('.popup-active') && !jQuery(this).parents().hasClass('biohazards-array-wrapper')) {
                     jQuery('.popup').removeClass('popup-active');
                 }
             }
