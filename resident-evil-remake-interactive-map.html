@@ -17593,9 +17593,10 @@
                 console.log('timeout callback');
             }, 300);
             jQuery('.user-nav-panel').toggleClass('toggle-state');
-            jQuery(jQuery('.user-nav-panel').find('li')).each(function(index) {
+            jQuery('.user-nav-panel').each(function(index) {
+                var navItems = jQuery(this).find('li');
                 setTimeout(function() {
-                    jQuery(this).toggleClass('toggle-state');
+                    jQuery(navItems).get(index).toggleClass('toggle-state');
                     console.log(jQuery(this));
                     console.log(jQuery(index));
                     console.log(index);
