@@ -17765,13 +17765,11 @@
         jQuery('.end-user-navigation li').on('click', function(){
             event.stopPropagation();
             var currentNavItem = jQuery(this);
-            console.log(currentNavItem);
-            console.log(jQuery(currentNavItem));
             jQuery('.end-user-navigation-submenu.toggle-state').slideToggle(function(){
                 jQuery('.end-user-navigation').find('.toggle-state').not(currentNavItem).removeClass('toggle-state');
             });
             jQuery(this).toggleClass('toggle-state');
-            jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state').slideToggle();
+            jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state');
             jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
         });
         /* Exit End-User Navigation */
