@@ -3428,6 +3428,59 @@
             z-index: 9;
         }
 
+        .user-nav-panel {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            right: 0;
+            top: 100px;
+        }
+
+        .user-nav-panel .user-nav {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .user-nav-panel .user-nav li:after {
+            content: "\2b21";
+            position: absolute;
+            right: 0;
+            top: 10px;
+            bottom: 0;
+            font-size: 35px;
+            line-height: 0;
+        }
+
+        .user-nav-panel .user-nav li {
+            position: relative;
+            margin-bottom: 3px;
+            padding-right: 20px;
+            padding-left: 3px;
+            padding-top: 3px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .user-nav-panel .user-nav li:nth-child(even):after {
+            margin-right: -3px;
+        }
+
+        .user-nav-panel .user-nav li:nth-child(odd):after {
+            margin-right: -13px;
+        }
+
+        .user-nav-panel .user-nav li:before {
+            content: "";
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            background: gray;
+            opacity: .3;
+            top: 0;
+            left: 0;
+        }
+
         .gears-panel {
             position: absolute;
             transition: .7s;
