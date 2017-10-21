@@ -17575,6 +17575,9 @@
             setTimeout(function() {
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
             }, 5000);
+            setTimeout(function() {
+                jQuery('.options-panel').trigger('click');
+            }, 5000);
         });
         /* End-User Navigation */
         jQuery('.options-panel').on('click', function(){
@@ -17596,11 +17599,10 @@
             jQuery('.user-nav-panel').toggleClass('toggle-state');
             jQuery('.user-nav-panel li').each(function(i) {
                 setTimeout(function(i) {
-                    jQuery(this).toggleClass('toggle-state');
+                    jQuery(i).toggleClass('toggle-state');
                 }, 200);
             });
         });
-        jQuery('.options-panel').trigger('click');
         /* Map Pagination */
         function unpdateMapPagination() {
             var dataCurrentFloor = jQuery('.floor-wrapper.toggle-state').attr('data-floor'),
