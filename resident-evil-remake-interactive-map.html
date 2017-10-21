@@ -17593,7 +17593,7 @@
                 console.log('timeout callback');
             }, 300);
             jQuery('.user-nav-panel').toggleClass('toggle-state');
-            jQuery('.user-nav-panel li').each(function(index) {
+            jQuery(jQuery('.user-nav-panel').find('li')).each(function(index) {
                 setTimeout(function() {
                     jQuery(this).toggleClass('toggle-state');
                     console.log(jQuery(this));
