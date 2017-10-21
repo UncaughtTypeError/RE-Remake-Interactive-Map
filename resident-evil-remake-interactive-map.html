@@ -3785,11 +3785,11 @@
             padding: 5px;
         }
 
-        .room-info-inactive {
+        .room-detail-active {
             right: 0;
         }
 
-        .room-info-active {
+        .room-detail-inactive {
             right: -500px;
         }
 
@@ -4724,7 +4724,7 @@
             opacity: .5;
         }
 
-        .room-info-wrapper.room-info-inactive {
+        .room-info-wrapper.room-detail-active {
             right: -1500px;
         }
 
@@ -15216,7 +15216,7 @@
             </div>
         </div>
 
-        <div class="room-detail-wrapper room-info-active">
+        <div class="room-detail-wrapper room-detail-inactive">
             <div class="room-detail-header"><i class="fa fa-times room-detail-close"></i></div>
             <div class="room-detail-body">
                 <div class="puzzle-room room-function function-inactive">
@@ -17760,13 +17760,13 @@
             jQuery('.end-user-navigation-submenu.toggle-state').toggleSlide();
             jQuery(this).toggleClass('toggle-state');
             jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state').toggleSlide();
-            jQuery('.room-info-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
+            jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
         });
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
             jQuery('.user-nav-panel').addClass('toggle-state');
-            jQuery('.room-info-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
+            jQuery('.room-info-wrapper').removeClass('room-detail-active').addClass('room-detail-inactive');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
@@ -18338,7 +18338,7 @@
                     jQuery(this).removeClass('difficulty-valid').addClass('difficulty-invalid').fadeOut();
                 }
             });
-            if(jQuery('.room-info-inactive')) {
+            if(jQuery('.room-detail-active')) {
                 jQuery('.toggle-state.room').trigger('click');
             }
         });
@@ -18375,9 +18375,9 @@
         /* Exit Room Detail View */
         jQuery('.room-detail-close').on('click', function(){
             jQuery('.room').removeClass('toggle-state');
-            jQuery('.room-detail-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
-            jQuery('.difficulty-tag').removeClass('room-info-inactive').addClass('room-info-active');
-            jQuery('.room-info-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
+            jQuery('.room-detail-wrapper').removeClass('room-detail-active').addClass('room-detail-inactive');
+            jQuery('.difficulty-tag').removeClass('room-detail-active').addClass('room-detail-inactive');
+            jQuery('.room-info-wrapper').removeClass('room-detail-active').addClass('room-detail-inactive');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
@@ -18562,9 +18562,9 @@
             } else {
                 jQuery('.room-threat-level').find('.room-threat-icon').removeClass('fa-question fa-check').addClass('fa-exclamation');
             }
-            jQuery('.room-detail-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
-            jQuery('.difficulty-tag').removeClass('room-info-active').addClass('room-info-inactive');
-            jQuery('.room-info-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
+            jQuery('.room-detail-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
+            jQuery('.difficulty-tag').removeClass('room-detail-inactive').addClass('room-detail-active');
+            jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
             jQuery('.list-group-item').removeClass('list-group-active').addClass('list-group-inactive');
             jQuery(jQuery(this).find('.icon-pin.difficulty-valid')).each(function(index){
                 var difficultyQty = jQuery(this).find('.difficulty-qty-summary.difficulty-valid').text();
