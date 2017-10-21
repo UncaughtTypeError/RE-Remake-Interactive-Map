@@ -17563,10 +17563,6 @@
                 });
             }, 1000);
             setTimeout(function() {
-                jQuery('#audio-player').prop('volume', 0.1);
-                jQuery('#audio-play').trigger('click');
-            }, 1000);
-            setTimeout(function() {
                 jQuery('.options-panel').trigger('click');
             }, 2000);
             setTimeout(function() {
@@ -17577,6 +17573,10 @@
             }, 4000);
             setTimeout(function() {
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
+            }, 5000);
+            setTimeout(function() {
+                jQuery('#audio-player').prop('volume', 0.1);
+                jQuery('#audio-play').trigger('click');
             }, 5000);
         });
         /* End-User Navigation */
