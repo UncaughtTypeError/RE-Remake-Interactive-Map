@@ -4777,7 +4777,7 @@
             opacity: .5;
         }
 
-        .room-info-wrapper.room-detail-active {
+        .room-info-wrapper.room-detail-active, .room-info-wrapper.end-user-navigation-active {
             right: -1500px;
         }
 
@@ -17820,12 +17820,12 @@
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
             }
-            jQuery('.room-info-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
+            jQuery('.room-info-wrapper').removeClass('end-user-navigation-active').addClass('end-user-navigation-inactive');
         });
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
-            jQuery('.room-info-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
+            jQuery('.room-info-wrapper').removeClass('end-user-navigation-inactive').addClass('end-user-navigation-active');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
