@@ -17769,7 +17769,7 @@
                 jQuery(this).addClass('toggle-state');
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
-                if(!jQuery(this).closest('.end-user-navigation li').length) {
+                if(!jQuery(this).closest('li').length) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 }
