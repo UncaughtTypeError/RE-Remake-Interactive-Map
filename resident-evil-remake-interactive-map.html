@@ -17768,7 +17768,7 @@
                 jQuery('.end-user-navigation li').not(jQuery(this)).removeClass('toggle-state');
                 jQuery('.end-user-navigation li').not(jQuery(this)).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 jQuery(this).addClass('toggle-state');
-                jQuery(this).parents('.end-user-navigation li').addClass('toggle-state');
+                jQuery(this).parents('li').addClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
             } else {
                 jQuery(this).removeClass('toggle-state');
