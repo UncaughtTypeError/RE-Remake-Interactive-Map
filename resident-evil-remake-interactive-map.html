@@ -17584,22 +17584,18 @@
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin-backwards');
-                setTimeout(function() {
-                    jQuery(this).find('.fa-cog').removeClass('fa-spin-backwards');
-                    console.log('timeout callback');
-                }, 300);
             } else {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin');
-                setTimeout(function() {
-                    jQuery(this).find('.fa-cog').removeClass('fa-spin');
-                    console.log('timeout callback');
-                }, 300);
             }
+            setTimeout(function() {
+                jQuery(this).find('.fa-cog').removeClass('fa-spin fa-spin-backwards');
+                console.log('timeout callback');
+            }, 300);
             jQuery('.user-nav-panel').toggleClass('toggle-state');
-            jQuery('.user-nav-panel li').each(function(i) {
-                setTimeout(function(i) {
-                    jQuery(i).toggleClass('toggle-state');
+            jQuery('.user-nav-panel li').each(function() {
+                setTimeout(function() {
+                    jQuery(this).toggleClass('toggle-state');
                 }, 200);
             });
         });
