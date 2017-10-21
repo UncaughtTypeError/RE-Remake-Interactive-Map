@@ -17580,13 +17580,13 @@
         jQuery('.options-panel').on('click', function(){
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).toggleClass('toggle-state');
-                jQuery(this).addClass('fa-spin-backwards');
+                jQuery(this).find('.fa-cog').addClass('fa-spin-backwards');
                 setTimeout(function() {
                     jQuery(this).removeClass('fa-spin-backwards');
                 }, 300);
             } else {
                 jQuery(this).toggleClass('toggle-state');
-                jQuery(this).addClass('fa-spin');
+                jQuery(this).find('.fa-cog').addClass('fa-spin');
                 setTimeout(function() {
                     jQuery(this).removeClass('fa-spin');
                 }, 300);
