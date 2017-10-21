@@ -3432,8 +3432,13 @@
             padding: 0;
             margin: 0;
             position: absolute;
-            right: 0;
+            right: -100px;
             top: 100px;
+            transition: .7s;
+        }
+
+        .user-nav-panel.toggle-state {
+            right: 0px;
         }
 
         .user-nav-panel .user-nav {
@@ -3458,8 +3463,13 @@
             padding-right: 20px;
             padding-left: 3px;
             padding-top: 3px;
-            cursor: pointer;
-            white-space: nowrap;
+            cursor: pointer;    
+            transition: .7s;
+            right: -200px;
+        }
+
+        .user-nav-panel .user-nav li.toggle-state {
+            right: 0px;
         }
 
         .user-nav-panel .user-nav li:nth-child(even):after {
@@ -17565,6 +17575,26 @@
             setTimeout(function() {
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
             }, 5000);
+        });
+        jQuery('.options-panel').trigger('click');
+        jQuery('.options-panel').on('click', function(){
+            if(jQuery(this).hasClass('toggle-state')) {
+                jQuery(this).toggleClass('toggle-state');
+                jQuery(this).addClass('fa-spin-backwards');
+                setTimeout(function() {
+                    jQuery(this).removeClass('fa-spin-backwards');
+                }, 300);
+            } else {
+                jQuery(this).toggleClass('toggle-state');
+                jQuery(this).addClass('fa-spin');
+                setTimeout(function() {
+                    jQuery(this).removeClass('fa-spin');
+                }, 300);
+            }
+            jQuery('.user-nav-panel').toggleClass('toggle-state');
+            jQuery('.user-nav-panel li').each(function(i) {
+              jQuery(this).delay(500 * i).toggleClass('toggle-state');
+            });
         });
         /* Map Pagination */
         function unpdateMapPagination() {
