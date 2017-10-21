@@ -3514,6 +3514,8 @@
             position: absolute;
             top: 15px;
             left: 15px;
+            transition: .7s;
+            cursor: pointer;
         }
 
         .end-user-navigation {
@@ -17718,8 +17720,9 @@
                 });
             }, 1000);
             setTimeout(function() {
-                jQuery('.options-panel').trigger('click');
-            }, 2000);
+                jQuery('#audio-player').prop('volume', 0.1);
+                jQuery('#audio-play').trigger('click');
+            }, 1000);
             setTimeout(function() {
                 jQuery('[data-difficulty-level="JV-lvl-very-easy"]').trigger('click');
             }, 3200);
@@ -17730,8 +17733,7 @@
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
             }, 5000);
             setTimeout(function() {
-                jQuery('#audio-player').prop('volume', 0.1);
-                jQuery('#audio-play').trigger('click');
+                jQuery('.options-panel').trigger('click');
             }, 5000);
         });
         /* End-User Navigation */
