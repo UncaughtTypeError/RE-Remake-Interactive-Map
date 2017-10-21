@@ -3524,18 +3524,25 @@
             right: -500px;
             min-width: 350px;
             z-index: 99;
-            height: 100%;
-            margin-top: 97px;
             padding-top: 80px;
             transition: 1s;
             padding-bottom: 130px;
             border-left: 1px solid;
         }
 
+        .end-user-navigation.list-group-wrapper {
+            height: 100%;
+            margin-top: 97px;
+        }
+
         .end-user-navigation ul {
             margin: 0px;
             padding: 0;
             list-style: none;
+        }
+
+        .end-user-navigation .list-group-item {
+            border-left: 0px;
         }
 
         .end-user-navigation-submenu li {
@@ -17757,16 +17764,16 @@
         jQuery('.end-user-navigation li').on('click', function(){
             event.stopPropagation();
             jQuery('.end-user-navigation').find('.toggle-state').not(this).removeClass('toggle-state');
-            jQuery('.end-user-navigation-submenu.toggle-state').toggleSlide();
+            jQuery('.end-user-navigation-submenu.toggle-state').slideToggle();
             jQuery(this).toggleClass('toggle-state');
-            jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state').toggleSlide();
+            jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state').slideToggle();
             jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
         });
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
             jQuery('.user-nav-panel').addClass('toggle-state');
-            jQuery('.room-info-wrapper').removeClass('room-detail-active').addClass('room-detail-inactive');
+            jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
