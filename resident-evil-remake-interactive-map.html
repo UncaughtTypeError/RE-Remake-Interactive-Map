@@ -3553,6 +3553,42 @@
 
         .end-user-navigation .list-group-item {
             border-left: 0px;
+            position: relative;
+        }
+
+        .end-user-navigation .list-group-item:after {
+            position: absolute;
+            opacity: .5;
+            right: 15px;
+            top: 10px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .end-user-navigation .list-group-item[data-nav-item="nav-map"]:after {
+            content: "\f041";
+            font: normal normal normal 18px/1 FontAwesome;
+        }
+
+        .end-user-navigation .list-group-item[data-nav-item="nav-items"]:after {
+            content: "\f1b3";
+            font: normal normal normal 18px/1 FontAwesome;
+        }
+
+        .end-user-navigation .list-group-item[data-nav-item="nav-biohazards"]:after {
+            content: "\2623";
+            font-size: 28px;
+            line-height: 15px;
+        }
+
+        .end-user-navigation .list-group-item[data-nav-item="nav-settings"]:after {
+                content: "\f1de";
+            font: normal normal normal 18px/1 FontAwesome;
+        }
+
+        .end-user-navigation .list-group-item[data-nav-item="nav-info"]:after {
+            content: "\f05a";
+            font: normal normal normal 18px/1 FontAwesome;
         }
 
         .end-user-navigation-submenu li {
@@ -8855,7 +8891,7 @@
             top: -5px;
         }
 
-        #biohazard-Array:before {
+        #biohazard-array:before {
             content: "\f071";
             font: normal normal normal 10px/1 FontAwesome;
             position: absolute;
@@ -14452,39 +14488,39 @@
                     <ul class="end-user-navigation-submenu">
                         <li class="list-group-item map-pagination" data-location-next="courtyard">Spencer Mansion
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination" data-floor="mansion-1f">Mansion 1F</li>
-                                <li class="list-group-item map-pagination" data-floor="mansion-2f">Mansion 2F</li>
-                                <li class="list-group-item map-pagination" data-floor="mansion-3f">Mansion 3F</li>
-                                <li class="list-group-item map-pagination" data-floor="mansion-b1">Mansion B1</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-1f">Mansion 1F</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-2f">Mansion 2F</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-3f">Mansion 3F</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-b1">Mansion B1</li>
                             </ul>
                         </li>
                         <li class="list-group-item map-pagination" data-location-next="courtyard">Courtyard
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination" data-floor="courtyard-1f">Courtyard 1F</li>
-                                <li class="list-group-item map-pagination" data-floor="courtyard-b1">Courtyard B1</li>
-                                <li class="list-group-item map-pagination" data-floor="courtyard-b2">Courtyard B2</li>
-                                <li class="list-group-item map-pagination" data-floor="courtyard-heliport">Heliport</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-1f">Courtyard 1F</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-b1">Courtyard B1</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-b2">Courtyard B2</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-heliport">Heliport</li>
                             </ul>
                         </li>
                         <li class="list-group-item map-pagination" data-location-next="guardhouse-residence">Guardhouse Residence
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination" data-floor="guardhouse-residence-1f">Residence 1F</li>
-                                <li class="list-group-item map-pagination" data-floor="aqua-ring-1b">Aqua Ring B1</li>
-                                <li class="list-group-item map-pagination" data-floor="aqua-ring-2b">Aqua Ring B2</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="guardhouse-residence-1f">Residence 1F</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="aqua-ring-1b">Aqua Ring B1</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="aqua-ring-2b">Aqua Ring B2</li>
                             </ul>
                         </li>
                         <li class="list-group-item map-pagination" data-location-next="altar">Altar
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination" data-floor="altar-1b">Altar B1</li>
-                                <li class="list-group-item map-pagination" data-floor="altar-2b">Altar B2</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="altar-1b">Altar B1</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="altar-2b">Altar B2</li>
                             </ul>
                         </li>
                         <li class="list-group-item map-pagination" data-location-next="underground-laboratory">Underground Laboratory
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-1b">Laboratory B1</li>
-                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-2b">Laboratory B2</li>
-                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-3b">Laboratory B3</li>
-                                <li class="list-group-item map-pagination" data-floor="underground-laboratory-4b">Laboratory B4</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-1b">Laboratory B1</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-2b">Laboratory B2</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-3b">Laboratory B3</li>
+                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-4b">Laboratory B4</li>
                             </ul>
                         </li>
                     </ul>
@@ -14505,9 +14541,9 @@
                 </li>
                 <li data-nav-item="nav-biohazards" class="list-group-item">Biohazards
                     <ul class="end-user-navigation-submenu">
-                        <li class="list-group-item">Biohazard Array</li>
-                        <li class="list-group-item">Biohazard Case Studies</li>
-                        <li class="list-group-item">S.T.A.R.S. Rankings</li>
+                        <li class="list-group-item" id="biohazard-array">Biohazard Array</li>
+                        <li class="list-group-item" id="biohazard-info">Biohazard Case Studies</li>
+                        <li class="list-group-item" id="ranking-info">S.T.A.R.S. Rankings</li>
                     </ul>
                 </li>
                 <li data-nav-item="nav-settings" class="list-group-item">Settings
@@ -14970,7 +15006,7 @@
                         <span>Fetch Biohazards Case Studies</span>
                     </div>
                 </div>
-                <div class="icon-trigger trigger-info" id="biohazard-Array">
+                <div class="icon-trigger trigger-info" id="biohazard-array">
                     <i class="fa fa-th"></i>
                     <div class="icon-trigger-tooltip">
                         <span>Fetch Biohazards Array</span>
@@ -17082,7 +17118,7 @@
                             <span>Fetch S.T.A.R.S. Ranking Reference</span>
                         </div>
                     </div>
-                    <div class="icon-trigger trigger-info" id="biohazard-Array">
+                    <div class="icon-trigger trigger-info" id="biohazard-array">
                         <i class="fa fa-th"></i>
                         <div class="icon-trigger-tooltip">
                             <span>Fetch Biohazards Array</span>
@@ -17344,7 +17380,7 @@
                             <span>Fetch Biohazards Case Studies</span>
                         </div>
                     </div>
-                    <div class="icon-trigger trigger-info" id="biohazard-Array">
+                    <div class="icon-trigger trigger-info" id="biohazard-array">
                         <i class="fa fa-th"></i>
                         <div class="icon-trigger-tooltip">
                             <span>Fetch Biohazards Array</span>
@@ -17771,7 +17807,6 @@
             jQuery('.options-panel').trigger('click');
         });
         jQuery('.end-user-navigation li').on('click', function(){
-            console.log('update 2.0');
             event.stopPropagation();
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
@@ -17785,12 +17820,12 @@
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
             }
-            jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
+            jQuery('.room-info-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
         });
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
-            jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
+            jQuery('.room-info-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
@@ -17864,7 +17899,7 @@
             jQuery('body').removeClass('kill-transitions');
         });
         /* Fetch Pop-Ups */
-        jQuery('#ranking-info, .ranking-info, #biohazard-Array, #biohazard-info, .biohazard-info').on('click',function(){
+        jQuery('#ranking-info, .ranking-info, #biohazard-array, #biohazard-info, .biohazard-info').on('click',function(){
             if(jQuery(this).is('#ranking-info') || jQuery(this).is('.ranking-info')) {
                 if(jQuery(this).parents('.popup-active')) {
                     jQuery('.popup').removeClass('popup-active');
@@ -17877,7 +17912,7 @@
                     jQuery('#rating-system-popup, .popup-backdrop').addClass('popup-active');
                 }
             }
-            if(jQuery(this).is('#biohazard-Array')) {
+            if(jQuery(this).is('#biohazard-array')) {
                 if(jQuery(this).parents('.popup-active')) {
                     jQuery('.popup').removeClass('popup-active');
                     jQuery('#biohazards-array, .popup-backdrop').addClass('popup-active');
