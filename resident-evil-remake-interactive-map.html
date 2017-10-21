@@ -17763,7 +17763,7 @@
             jQuery('.options-panel').trigger('click');
         });
         jQuery('.end-user-navigation li').on('click', function(){
-            console.log('update 1.4');
+            console.log('update 1.5');
             event.stopPropagation();
             if(jQuery(this).not('.toggle-state')) {
                 jQuery(this).addClass('toggle-state');
@@ -17773,7 +17773,7 @@
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 }
-            } else {
+            } else if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
             }
