@@ -17593,7 +17593,7 @@
             }
             jQuery('.user-nav-panel').toggleClass('toggle-state');
             jQuery('.user-nav-panel li').each(function(i) {
-                setTimeout(function() {
+                setTimeout(function(i) {
                     jQuery(this).toggleClass('toggle-state');
                 }, 200);
             });
