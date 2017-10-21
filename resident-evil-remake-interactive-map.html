@@ -17764,11 +17764,15 @@
         });
         jQuery('.end-user-navigation li').on('click', function(){
             event.stopPropagation();
-            jQuery('.end-user-navigation li').removeClass('toggle-state');
-            jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
             if(jQuery(this).not('.toggle-state')) {
+                jQuery('.end-user-navigation li').not(jQuery(this)).removeClass('toggle-state');
+                jQuery('.end-user-navigation li').not(jQuery(this)).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 jQuery(this).addClass('toggle-state');
+                jQuery(this).parents('.end-user-navigation li').addClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
+            } else {
+                jQuery(this).removeClass('toggle-state');
+                jQuery(this).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
             }
             jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
         });
