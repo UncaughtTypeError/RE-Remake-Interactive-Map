@@ -14486,41 +14486,41 @@
             <ul>
                 <li data-nav-item="nav-map" class="list-group-item">Map
                     <ul class="end-user-navigation-submenu">
-                        <li class="list-group-item map-pagination" data-location-next="courtyard">Spencer Mansion
+                        <li class="list-group-item map-nav" data-location-next="courtyard">Spencer Mansion
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-1f">Mansion 1F</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-2f">Mansion 2F</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-3f">Mansion 3F</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="mansion-b1">Mansion B1</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="mansion-1f">Mansion 1F</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="mansion-2f">Mansion 2F</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="mansion-3f">Mansion 3F</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="mansion-bf">Mansion B1</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-pagination" data-location-next="courtyard">Courtyard
+                        <li class="list-group-item map-nav" data-location-next="courtyard">Courtyard
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-1f">Courtyard 1F</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-b1">Courtyard B1</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-b2">Courtyard B2</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="courtyard-heliport">Heliport</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-1f">Courtyard 1F</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-b1">Courtyard B1</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-b2">Courtyard B2</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-heliport">Heliport</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-pagination" data-location-next="guardhouse-residence">Guardhouse Residence
+                        <li class="list-group-item map-nav" data-location-next="guardhouse-residence">Guardhouse Residence
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="guardhouse-residence-1f">Residence 1F</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="aqua-ring-1b">Aqua Ring B1</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="aqua-ring-2b">Aqua Ring B2</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="guardhouse-residence-1f">Residence 1F</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="aqua-ring-1b">Aqua Ring B1</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="aqua-ring-2b">Aqua Ring B2</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-pagination" data-location-next="altar">Altar
+                        <li class="list-group-item map-nav" data-location-next="altar">Altar
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="altar-1b">Altar B1</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="altar-2b">Altar B2</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="altar-1b">Altar B1</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="altar-2b">Altar B2</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-pagination" data-location-next="underground-laboratory">Underground Laboratory
+                        <li class="list-group-item map-nav" data-location-next="underground-laboratory">Underground Laboratory
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-1b">Laboratory B1</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-2b">Laboratory B2</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-3b">Laboratory B3</li>
-                                <li class="list-group-item map-pagination floor-toggle" data-floor="underground-laboratory-4b">Laboratory B4</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="underground-laboratory-1b">Laboratory B1</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="underground-laboratory-2b">Laboratory B2</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="underground-laboratory-3b">Laboratory B3</li>
+                                <li class="list-group-item map-nav floor-toggle" data-floor="underground-laboratory-4b">Laboratory B4</li>
                             </ul>
                         </li>
                     </ul>
@@ -17944,17 +17944,7 @@
                 jQuery('.biohazard-info-bullet').removeClass('bullet-active');
                 jQuery('.biohazard-info-bullet[data-info="'+dataInfo+'"]').addClass('bullet-active');
             }
-            /*if(jQuery(this).is('.biohazard-info')) {
-                if(jQuery(this).parents('.popup-active')) {
-                    jQuery('.popup').removeClass('popup-active');
-                }
-            }
-            if(jQuery(this).is('#biohazard-info')) {
-                if(jQuery(this).parents('.popup-active')) {
-                    jQuery('.popup').removeClass('popup-active');
-                }
-            }*/
-            console.log('ver 2.4');
+            console.log('ver 2.5');
         });
         jQuery('.popup-close,.popup-backdrop,.popup-backdrop-close').on('click',function(){
             jQuery('.popup,.popup-backdrop').removeClass('popup-active');
@@ -17975,23 +17965,6 @@
                 jQuery('.list-group-backdrop .gears-panel.bottom-left').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 1000);
         });
-        /*jQuery('.biohazard-info').on('click', function(){
-            var dataInfo = jQuery(this).attr('data-info');
-            if(dataInfo == undefined) {
-                dataInfo = 'adder';
-            }
-            jQuery('.popup-backdrop').addClass('popup-active');
-            jQuery('.biohazards-case-study-fetch-actions').addClass('toggle-state');
-            jQuery('.biohazards-case-study-bullets').removeClass('bullets-inactive').addClass('bullets-active');
-            jQuery('.biohazard-info-paginate').removeClass('paginate-inactive').addClass('paginate-active');
-            var targetDataInfo = jQuery('.biohazards-case-study[data-info="'+dataInfo+'"]');
-            jQuery('.biohazards-case-study').removeClass('popup-active');
-            jQuery(targetDataInfo).nextAll('.biohazards-case-study').removeClass('biohazard-info-stack-left').addClass('biohazard-info-stack-right');
-            jQuery(targetDataInfo).prevAll('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
-            jQuery(targetDataInfo).removeClass('biohazard-info-stack-left biohazard-info-stack-right').addClass('popup-active');
-            jQuery('.biohazard-info-bullet').removeClass('bullet-active');
-            jQuery('.biohazard-info-bullet[data-info="'+dataInfo+'"]').addClass('bullet-active');
-        });*/
         jQuery('.biohazards-case-study .popup-close, .popup-backdrop').on('click', function(){
             jQuery('.biohazard-info-paginate').removeClass('paginate-active').addClass('paginate-inactive');
             jQuery('.biohazards-case-study-bullets').removeClass('bullets-active').addClass('bullets-inactive');
