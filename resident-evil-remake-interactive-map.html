@@ -17596,6 +17596,9 @@
             jQuery('.user-nav-panel li').each(function(index) {
                 setTimeout(function() {
                     jQuery(this).toggleClass('toggle-state');
+                    console.log(jQuery(this));
+                    console.log(jQuery(index));
+                    console.log(index);
                     console.log('timeout callback 2');
                 }, 200);
             });
