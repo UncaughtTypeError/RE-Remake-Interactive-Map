@@ -17763,7 +17763,7 @@
             jQuery('.options-panel').trigger('click');
         });
         jQuery('.end-user-navigation li').on('click', function(){
-            console.log('update 1.5');
+            console.log('update 1.6');
             event.stopPropagation();
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
@@ -17772,7 +17772,7 @@
                 jQuery(this).addClass('toggle-state');
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
-                if(!jQuery(this).closest('li').length) {
+                if(jQuery(this).closest('li').length < 0) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 }
