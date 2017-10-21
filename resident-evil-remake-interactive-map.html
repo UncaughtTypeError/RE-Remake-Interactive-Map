@@ -17820,12 +17820,12 @@
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
             }
-            jQuery('.room-info-wrapper').removeClass('end-user-navigation-active').addClass('end-user-navigation-inactive');
+            jQuery('.room-info-wrapper').removeClass('end-user-navigation-inactive').addClass('end-user-navigation-active');
         });
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
-            jQuery('.room-info-wrapper').removeClass('end-user-navigation-inactive').addClass('end-user-navigation-active');
+            jQuery('.room-info-wrapper').removeClass('end-user-navigation-active').addClass('end-user-navigation-inactive');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             setTimeout(function() {
@@ -17925,6 +17925,9 @@
                 }
             }
             if(jQuery(this).is('#biohazard-info') || jQuery(this).is('.biohazard-info')) {
+                if(jQuery(this).parents('.popup-active')) {
+                    jQuery('.popup').removeClass('popup-active');
+                }
                 var dataInfo = jQuery(this).attr('data-info');
                 if(dataInfo == undefined) {
                     dataInfo = 'adder';
@@ -17940,9 +17943,6 @@
                 jQuery(targetDataInfo).removeClass('biohazard-info-stack-left biohazard-info-stack-right').addClass('popup-active');
                 jQuery('.biohazard-info-bullet').removeClass('bullet-active');
                 jQuery('.biohazard-info-bullet[data-info="'+dataInfo+'"]').addClass('bullet-active');
-                if(jQuery(this).parents('.popup-active') && !jQuery(this).parents().hasClass('biohazards-array-wrapper')) {
-                    jQuery('.popup').removeClass('popup-active');
-                }
             }
             /*if(jQuery(this).is('.biohazard-info')) {
                 if(jQuery(this).parents('.popup-active')) {
@@ -17954,7 +17954,7 @@
                     jQuery('.popup').removeClass('popup-active');
                 }
             }*/
-            console.log('ver 2.3');
+            console.log('ver 2.4');
         });
         jQuery('.popup-close,.popup-backdrop,.popup-backdrop-close').on('click',function(){
             jQuery('.popup,.popup-backdrop').removeClass('popup-active');
