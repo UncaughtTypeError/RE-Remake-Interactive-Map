@@ -17567,6 +17567,9 @@
                 jQuery('#audio-play').trigger('click');
             }, 1000);
             setTimeout(function() {
+                jQuery('.options-panel').trigger('click');
+            }, 2000);
+            setTimeout(function() {
                 jQuery('[data-difficulty-level="JV-lvl-very-easy"]').trigger('click');
             }, 3200);
             setTimeout(function() {
@@ -17574,9 +17577,6 @@
             }, 4000);
             setTimeout(function() {
                 jQuery('.keymenu.items .key-typewriter').trigger('click');
-            }, 5000);
-            setTimeout(function() {
-                jQuery('.options-panel').trigger('click');
             }, 5000);
         });
         /* End-User Navigation */
@@ -17591,11 +17591,14 @@
             setTimeout(function() {
                 jQuery(this).find('.fa-cog').removeClass('fa-spin fa-spin-backwards');
                 console.log('timeout callback');
+                console.log(jQuery(this));
+                console.log(jQuery(this).find('.fa-cog'));
             }, 300);
             jQuery('.user-nav-panel').toggleClass('toggle-state');
             jQuery('.user-nav-panel li').each(function() {
                 setTimeout(function() {
                     jQuery(this).toggleClass('toggle-state');
+                    console.log('timeout callback 2');
                 }, 200);
             });
         });
