@@ -17747,7 +17747,6 @@
             }
             setTimeout(function() {
                 jQuery('.options-panel').find('.fa-cog').removeClass('fa-spin fa-spin-backwards');
-                console.log('timeout callback');
             }, 300);
             jQuery('.user-nav-panel').toggleClass('toggle-state');
             jQuery('.user-nav-panel').find('li').each(function(index) {
@@ -17761,12 +17760,13 @@
             jQuery('.end-user-navigation').toggleClass('toggle-state');
             var dataNavItem = jQuery(this).attr('data-nav-item');
             jQuery('.end-user-navigation').find('[data-nav-item="'+dataNavItem+'"]').trigger('click');
-            jQuery('.user-nav-panel').removeClass('toggle-state');
+            jQuery('.options-panel').trigger('click');
         });
         jQuery('.end-user-navigation li').on('click', function(){
             event.stopPropagation();
-            jQuery('.end-user-navigation').find('.toggle-state').not(this).removeClass('toggle-state');
-            jQuery('.end-user-navigation-submenu.toggle-state').slideToggle();
+            jQuery('.end-user-navigation-submenu.toggle-state').slideToggle(function(){
+                jQuery('.end-user-navigation').find('.toggle-state').not(this).removeClass('toggle-state');
+            });
             jQuery(this).toggleClass('toggle-state');
             jQuery(this).children('.end-user-navigation-submenu').toggleClass('toggle-state').slideToggle();
             jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
@@ -17774,7 +17774,6 @@
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
-            
             jQuery('.room-info-wrapper').removeClass('room-detail-inactive').addClass('room-detail-active');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
@@ -17782,8 +17781,8 @@
                 jQuery('.gears-panel.bottom-right').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 500);
             setTimeout(function() {
-                jQuery('.user-nav-panel').addClass('toggle-state');
-            }, 1000);
+                jQuery('.options-panel').trigger('click');
+            }, 800);
         });
         /* Map Pagination */
         function unpdateMapPagination() {
