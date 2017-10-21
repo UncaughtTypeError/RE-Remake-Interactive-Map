@@ -17593,15 +17593,11 @@
                 console.log('timeout callback');
             }, 300);
             jQuery('.user-nav-panel').toggleClass('toggle-state');
-            jQuery('.user-nav-panel').each(function(index) {
-                var navItems = jQuery(this).find('li');
+            jQuery('.user-nav-panel').find('li').each(function(index) {
+                var navItem = jQuery(this);
                 setTimeout(function() {
-                    jQuery(navItems).get(index).toggleClass('toggle-state');
-                    console.log(jQuery(this));
-                    console.log(jQuery(index));
-                    console.log(index);
-                    console.log('timeout callback 2');
-                }, 200);
+                    jQuery(navItem).toggleClass('toggle-state');
+                }, index*200);
             });
         });
         /* Map Pagination */
