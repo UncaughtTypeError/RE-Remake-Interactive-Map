@@ -17763,13 +17763,13 @@
             jQuery('.options-panel').trigger('click');
         });
         jQuery('.end-user-navigation li').on('click', function(){
-            console.log('update 1.1');
+            console.log('update 1.2');
             event.stopPropagation();
             if(jQuery(this).not('.toggle-state')) {
                 jQuery('.end-user-navigation li').not(jQuery(this)).removeClass('toggle-state');
                 jQuery('.end-user-navigation li').not(jQuery(this)).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
                 jQuery(this).addClass('toggle-state');
-                jQuery(this).parents('li').addClass('toggle-state');
+                jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
             } else {
                 jQuery(this).removeClass('toggle-state');
@@ -17931,6 +17931,19 @@
             jQuery('.biohazards-case-study-bullets').removeClass('bullets-active').addClass('bullets-inactive');
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
+        });
+        jQuery('.biohazard-info-bullet').on('mouseover', function(){
+            var offsetTop = jQuery(this).offset().top,
+                offsetLeft = jQuery(this).offset().left,
+                dataInfoBiohazard = jQuery(this).attr('data-info');
+            jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').css({
+                'position' : 'fixed',
+                'top' : offsetTop,
+                'left' : offsetLeft
+            }).addClass('fixed-preview');
+        });
+        jQuery('.biohazard-info-bullet').on('mouseleave', function(){
+            jQuery('.fixed-preview').removeClass('fixed-preview').removeAttr('style');
         });
         jQuery('.biohazard-info-paginate').on('click', function(){
             if(jQuery(this).hasClass('biohazard-info-paginate-next')) {
