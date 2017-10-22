@@ -17966,19 +17966,31 @@
         });
         jQuery('.user-navigation-toggle-theme').on('click', function(){
             if(jQuery(this).hasClass('toggle-diurnal')) {
-                jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
-                jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
-                jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+                if(jQuery('body').hasClass('diurnal-theme')) {
+                    jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
+                    jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
+                    jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+                } else if(jQuery('body').hasClass('nocturnal-theme')) {
+                    jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
+                    jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
+                    jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+                }
             } else if(jQuery(this).hasClass('toggle-nocturnal')) {
-                jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
-                jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
-                jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+                if(jQuery('body').hasClass('nocturnal-theme')) {
+                    jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
+                    jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
+                    jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+                } else if(jQuery('body').hasClass('diurnal-theme')) {
+                    jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
+                    jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
+                    jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+                }
             }
         });
-        jQuery('.toggle-theme').on('mouseover', function(){
+        jQuery('.toggle-theme, .user-navigation-toggle-theme').on('mouseover', function(){
             jQuery('body').addClass('kill-transitions');
         });
-        jQuery('.toggle-theme').on('mouseleave', function(){
+        jQuery('.toggle-theme, .user-navigation-toggle-theme').on('mouseleave', function(){
             jQuery('body').removeClass('kill-transitions');
         });
         /* Fetch Pop-Ups */
@@ -18053,7 +18065,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 3.9');
+        console.log('ver 4.0');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
