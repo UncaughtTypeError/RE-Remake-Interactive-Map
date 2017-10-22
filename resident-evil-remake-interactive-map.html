@@ -17783,7 +17783,7 @@
         });
         /* End-User Navigation */
         jQuery('.options-panel').on('click', function(){
-            if(jQuery('.room-detail-wrapper').hasClass('room-detail-active') && jQuery(this).not('.toggle-state')) {
+            if(jQuery('.room-detail-wrapper').hasClass('room-detail-active')) {
                 jQuery('.room-detail-close').trigger('click');
             }
             if(jQuery(this).hasClass('toggle-state')) {
@@ -17976,7 +17976,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 2.8');
+        console.log('ver 3.0');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
@@ -18460,7 +18460,7 @@
             }, 500);
         });
         /* On/Off Room Hover */
-        jQuery(document).on('mouseleave mouseover', '.room', function(){
+        jQuery('.floor-panel').on('mouseleave mouseover', '.room', function(){
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
             var cogActive = true;
@@ -18472,14 +18472,14 @@
             }
         });
         /* Off Room Hover */
-        jQuery(document).on('mouseleave', '.room', function(){
+        jQuery('.floor-panel').on('mouseleave', '.room', function(){
             jQuery('.room-info-icon').removeClass('room-icon-active').addClass('room-icon-inactive');
             jQuery('.room-info-wrapper').removeClass('room-info-active').addClass('room-info-inactive');
             jQuery('.biohazard-room-icons').removeClass('biohazard-icons-active').addClass('biohazard-icons-inactive');
             jQuery('.active-icon-wrapper').empty();
         });
         /* On Room Hover */
-        jQuery(document).on('mouseover', '.room', function(){
+        jQuery('.floor-panel').on('mouseover', '.room', function(){
             jQuery('.active-icon-wrapper').empty();
             if(jQuery('.room-info-wrapper').hasClass('room-info-inactive')) {
                 jQuery('.room-info-wrapper').removeClass('room-info-inactive').addClass('room-info-active');
@@ -18562,11 +18562,9 @@
             }
         });
         /* On Room Click */
-        jQuery(document).on('click', '.room', function(){
+        jQuery('.floor-panel').on('click', '.room', function(){
             if(jQuery('.end-user-navigation').hasClass('end-user-navigation-active')) {
                 jQuery('.end-user-navigation-close').trigger('click');
-            } else if(jQuery('.options-panel').not('.toggle-state')) {
-                jQuery('.options-panel').trigger('click');
             }
             jQuery('.room').removeClass('toggle-state');
             jQuery(this).addClass('toggle-state');
