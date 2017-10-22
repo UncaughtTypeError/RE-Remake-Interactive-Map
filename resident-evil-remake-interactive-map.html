@@ -17873,6 +17873,7 @@
                 if(!jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
+                    jQuery('.end-user-navigation li').find('.toggle-indicator').toggleClass('fa-caret-up fa-caret-down');
                 }
                 if(jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
                     jQuery(this).find('.toggle-indicator').toggleClass('fa-caret-up fa-caret-down');
@@ -18032,7 +18033,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 3.5');
+        console.log('ver 3.6');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
