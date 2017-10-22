@@ -3639,6 +3639,20 @@
             padding-bottom: 0px;
         }
 
+        .end-user-navigation .user-navigation-toggle-theme.toggle-diurnal:before {
+            content: "\f186";
+        }
+
+        .end-user-navigation .user-navigation-toggle-theme.toggle-nocturnal:before {
+            content: "\f185";
+        }
+
+        .end-user-navigation .user-navigation-toggle-theme:before {
+            font: normal normal normal 10px/1 FontAwesome;
+            position: absolute;
+            left: 0;
+        }
+
         .end-user-navigation .end-user-navigation-submenu {
             margin-top: 10px;
             display: none;
@@ -18065,7 +18079,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 4.0');
+        console.log('ver 4.1');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
