@@ -14633,7 +14633,10 @@
                                 <li class="list-group-item user-navigation-toggle-theme toggle-diurnal">Nocturnal Theme <i class="fa fa-toggle-on"></i></li>
                             </ul>
                         </li>
-                        <li class="list-group-item">Toggle Audio</li>
+                        <li class="list-group-item">Toggle Audio
+                            <div id="audio-mute" class="toggle-mute toggle-state" onclick="document.getElementById('audio-player').muted = true"><i class="fa fa-volume-up not-mute"></i></div>
+                            <div id="audio-unmute" class="toggle-mute" onclick="document.getElementById('audio-player').muted = false"><i class="fa fa-volume-off is-mute"></i></div>
+                        </li>
                         <li class="list-group-item">Map Display <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item">Per Floor</li>
