@@ -17783,9 +17783,9 @@
         });
         /* End-User Navigation */
         jQuery('.options-panel').on('click', function(){
-            if(jQuery('.room-detail-wrapper').hasClass('room-detail-active') && jQuery(this).hasClass('toggle-state')) {
+            /*if(jQuery('.room-detail-wrapper').hasClass('room-detail-active') && jQuery(this).hasClass('toggle-state')) {
                 jQuery('.room-detail-close').trigger('click');
-            }
+            }*/
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin-backwards');
@@ -17976,7 +17976,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 3.1');
+        console.log('ver 3.2');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
