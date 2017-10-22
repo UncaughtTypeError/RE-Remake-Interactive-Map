@@ -17803,6 +17803,7 @@
         });
         jQuery('.user-nav-panel li').on('click', function(){
             jQuery('.end-user-navigation').toggleClass('toggle-state');
+            jQuery('.end-user-navigation').removeClass('end-user-navigation-inactive').addClass('end-user-navigation-active');
             var dataNavItem = jQuery(this).attr('data-nav-item');
             jQuery('.end-user-navigation').find('[data-nav-item="'+dataNavItem+'"]').trigger('click');
             jQuery('.options-panel').trigger('click');
@@ -17826,6 +17827,7 @@
         /* Exit End-User Navigation */
         jQuery('.end-user-navigation-close').on('click', function(){
             jQuery('.end-user-navigation').removeClass('toggle-state');
+            jQuery('.end-user-navigation').removeClass('end-user-navigation-active').addClass('end-user-navigation-inactive');
             jQuery('.room-info-wrapper').removeClass('end-user-navigation-active').addClass('end-user-navigation-inactive');
             jQuery('.gears-panel.bottom-right').find('.fa-2x').addClass('fa-spin');
             jQuery('.gears-panel.bottom-right').find('.fa-3x').addClass('fa-spin-backwards');
@@ -17945,7 +17947,6 @@
                 jQuery('.biohazard-info-bullet').removeClass('bullet-active');
                 jQuery('.biohazard-info-bullet[data-info="'+dataInfo+'"]').addClass('bullet-active');
             }
-            console.log('ver 2.5');
         });
         jQuery('.popup-close,.popup-backdrop,.popup-backdrop-close').on('click',function(){
             jQuery('.popup,.popup-backdrop').removeClass('popup-active');
@@ -17972,6 +17973,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
+        console.log('ver 2.6');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
@@ -18558,7 +18560,9 @@
         });
         /* On Room Click */
         jQuery(document).on('click', '.room', function(){
-            jQuery('.end-user-navigation-close').trigger('click');
+            if(jQuery('.end-user-navigation').hasClass('end-user-navigation-active')) {
+                jQuery('.end-user-navigation-close').trigger('click');
+            }
             jQuery('.room').removeClass('toggle-state');
             jQuery(this).addClass('toggle-state');
             var detailActiveRoom = jQuery(this).attr('class').split(' ')[0];
