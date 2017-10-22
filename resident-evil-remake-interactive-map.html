@@ -17976,7 +17976,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 3.2');
+        console.log('ver 3.3');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
@@ -18449,7 +18449,7 @@
         });
         /* Exit Room Detail View */
         jQuery('.room-detail-close').on('click', function(){
-            if(jQuery('.options-panel').not('.toggle-state')) {
+            if(!jQuery('.options-panel').hasClass('toggle-state')) {
                 jQuery('.options-panel').trigger('click');
             }
             jQuery('.room').removeClass('toggle-state');
