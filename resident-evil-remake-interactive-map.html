@@ -3591,10 +3591,38 @@
             font: normal normal normal 18px/1 FontAwesome;
         }
 
+        .end-user-navigation-submenu li .fa:not([class*="key-alt"]) {
+            min-width: inherit;
+        }
+
+        .end-user-navigation-submenu li .fetch-actions {
+            position: absolute;
+            right: 0;
+            top: 3px;
+            opacity: .8;
+        }
+
+        .end-user-navigation-submenu li .fetch-actions .icon-trigger:hover .icon-trigger-tooltip {
+            right: 10px;
+            left: auto;
+            top: -20px;
+        }
+
+        .end-user-navigation-submenu li .fetch-actions .icon-trigger .icon-trigger-tooltip {
+            right: 20px;
+            left: auto;
+            top: -25px;
+        }
+
+        .end-user-navigation .list-group-item[data-nav-item="nav-biohazards"] li:before {
+            display: none;
+        }
+
         .end-user-navigation-submenu li {
             border-left: 0px;
             border-right: 0px;
             padding-right: 0px;
+            overflow: visible;
         }
 
         .end-user-navigation-submenu li:last-child {
