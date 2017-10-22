@@ -17783,6 +17783,9 @@
         });
         /* End-User Navigation */
         jQuery('.options-panel').on('click', function(){
+            if(jQuery('.room-detail-wrapper').hasClass('room-detail-active')) {
+                jQuery('.room-detail-close').trigger('click');
+            }
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin-backwards');
@@ -17973,7 +17976,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 2.6');
+        console.log('ver 2.7');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top,
                 offsetLeft = jQuery(this).offset().left,
@@ -18077,7 +18080,7 @@
         });
         /* Dropdowns: Map Key & Door Key */
         jQuery('#map-key-info, #door-lock-info').on('click', function(){
-             if(jQuery(this).hasClass('toggle-state')) {
+            if(jQuery(this).hasClass('toggle-state')) {
                 jQuery('.icon-trigger').removeClass('toggle-state');
                 jQuery('.icon-trigger-dropdown').removeClass('toggle-state');
             } else if(jQuery(this).not('toggle-state')) {
@@ -18562,6 +18565,8 @@
         jQuery(document).on('click', '.room', function(){
             if(jQuery('.end-user-navigation').hasClass('end-user-navigation-active')) {
                 jQuery('.end-user-navigation-close').trigger('click');
+            } else if(jQuery('.options-panel').not('.toggle-state')) {
+                jQuery('.options-panel').trigger('click');
             }
             jQuery('.room').removeClass('toggle-state');
             jQuery(this).addClass('toggle-state');
