@@ -14515,7 +14515,7 @@
             <ul>
                 <li data-nav-item="nav-map" class="list-group-item">Map
                     <ul class="end-user-navigation-submenu">
-                        <li class="list-group-item map-nav" data-location="courtyard">Spencer Mansion
+                        <li class="list-group-item map-nav" data-location="courtyard">Spencer Mansion <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item map-nav floor-toggle" data-floor="mansion-1f">Mansion 1F</li>
                                 <li class="list-group-item map-nav floor-toggle" data-floor="mansion-2f">Mansion 2F</li>
@@ -14523,7 +14523,7 @@
                                 <li class="list-group-item map-nav floor-toggle" data-floor="mansion-bf">Mansion BF</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-nav" data-location="courtyard">Courtyard
+                        <li class="list-group-item map-nav" data-location="courtyard">Courtyard <i class="fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-1f">Courtyard 1F</li>
                                 <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-b1">Courtyard B1</li>
@@ -14531,20 +14531,20 @@
                                 <li class="list-group-item map-nav floor-toggle" data-floor="courtyard-heliport">Heliport</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-nav" data-location="guardhouse-residence">Guardhouse Residence
+                        <li class="list-group-item map-nav" data-location="guardhouse-residence">Guardhouse Residence <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item map-nav floor-toggle" data-floor="guardhouse-residence-1f">Residence 1F</li>
                                 <li class="list-group-item map-nav floor-toggle" data-floor="aqua-ring-1b">Aqua Ring B1</li>
                                 <li class="list-group-item map-nav floor-toggle" data-floor="aqua-ring-2b">Aqua Ring B2</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-nav" data-location="altar">Altar
+                        <li class="list-group-item map-nav" data-location="altar">Altar <i class="fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item map-nav floor-toggle" data-floor="altar-1b">Altar B1</li>
                                 <li class="list-group-item map-nav floor-toggle" data-floor="altar-2b">Altar B2</li>
                             </ul>
                         </li>
-                        <li class="list-group-item map-nav" data-location="underground-laboratory">Underground Laboratory
+                        <li class="list-group-item map-nav" data-location="underground-laboratory">Underground Laboratory <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item map-nav floor-toggle" data-floor="underground-laboratory-1b">Laboratory B1</li>
                                 <li class="list-group-item map-nav floor-toggle" data-floor="underground-laboratory-2b">Laboratory B2</li>
@@ -14604,14 +14604,14 @@
                 </li>
                 <li data-nav-item="nav-settings" class="list-group-item">Settings
                     <ul class="end-user-navigation-submenu">
-                        <li class="list-group-item">Toggle Theme
+                        <li class="list-group-item">Toggle Theme <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item">Diurnal Theme</li>
                                 <li class="list-group-item">Nocturnal Theme</li>
                             </ul>
                         </li>
                         <li class="list-group-item">Toggle Audio</li>
-                        <li class="list-group-item">Map Display
+                        <li class="list-group-item">Map Display <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
                                 <li class="list-group-item">Per Floor</li>
                                 <li class="list-group-item">All Floors</li>
@@ -17868,6 +17868,7 @@
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
+                jQuery(this).find('.toggle-indicator').toggleClass('fa-caret-down fa-caret-up');
             } else if(jQuery(this).not('.toggle-state')) {
                 if(!jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
@@ -17876,6 +17877,7 @@
                 jQuery(this).addClass('toggle-state');
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
+                jQuery(this).find('.toggle-indicator').toggleClass('fa-caret-down fa-caret-up');
             }
             jQuery('.room-info-wrapper').removeClass('end-user-navigation-inactive').addClass('end-user-navigation-active');
         });
