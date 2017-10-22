@@ -17868,12 +17868,13 @@
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
-                jQuery(this).find('.toggle-indicator').removeClass('fa-caret-up').addClass('fa-caret-down');
+                jQuery(this).children('.toggle-indicator').removeClass('fa-caret-up').addClass('fa-caret-down');
             } else if(jQuery(this).not('.toggle-state')) {
                 if(!jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
-                } else if(jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
+                }
+                if(jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
                     jQuery(this).find('.toggle-indicator').removeClass('fa-caret-up').addClass('fa-caret-down');
                 }
                 jQuery(this).addClass('toggle-state');
