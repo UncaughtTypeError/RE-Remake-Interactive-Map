@@ -14542,9 +14542,24 @@
                 </li>
                 <li data-nav-item="nav-biohazards" class="list-group-item">Biohazards
                     <ul class="end-user-navigation-submenu">
-                        <li class="list-group-item" id="biohazard-array">Biohazard Array</li>
-                        <li class="list-group-item" id="biohazard-info">Biohazard Case Studies</li>
-                        <li class="list-group-item" id="ranking-info">S.T.A.R.S. Rankings</li>
+                        <li class="list-group-item" id="biohazard-array">Biohazard Array
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle-o fa-stack-2x"></i>
+                              <i class="fa fa-th fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </li>
+                        <li class="list-group-item" id="biohazard-info">Biohazard Case Studies
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle-o fa-stack-2x"></i>
+                              <i class="fa fa-info fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </li>
+                        <li class="list-group-item" id="ranking-info">S.T.A.R.S. Rankings
+                            <span class="fa-stack fa-lg">
+                              <i class="fa fa-circle-o fa-stack-2x"></i>
+                              <i class="fa fa-question fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </li>
                     </ul>
                 </li>
                 <li data-nav-item="nav-settings" class="list-group-item">Settings
@@ -17783,9 +17798,6 @@
         });
         /* End-User Navigation */
         jQuery('.options-panel').on('click', function(){
-            /*if(jQuery('.room-detail-wrapper').hasClass('room-detail-active') && jQuery(this).hasClass('toggle-state')) {
-                jQuery('.room-detail-close').trigger('click');
-            }*/
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).toggleClass('toggle-state');
                 jQuery(this).find('.fa-cog').addClass('fa-spin-backwards');
