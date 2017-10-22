@@ -14615,8 +14615,8 @@
                     <ul class="end-user-navigation-submenu">
                         <li class="list-group-item">Toggle Theme <i class="toggle-indicator fa fa-caret-down"></i>
                             <ul class="end-user-navigation-submenu">
-                                <li class="list-group-item">Diurnal Theme <i class="fa toggle-theme fa-toggle-on toggle-diurnal"></i></li>
-                                <li class="list-group-item">Nocturnal Theme <i class="fa toggle-theme fa-toggle-on toggle-nocturnal"></i></li>
+                                <li class="list-group-item user-navigation-toggle-theme">Diurnal Theme <i class="fa fa-toggle-off toggle-diurnal"></i></li>
+                                <li class="list-group-item user-navigation-toggle-theme">Nocturnal Theme <i class="fa fa-toggle-on toggle-nocturnal"></i></li>
                             </ul>
                         </li>
                         <li class="list-group-item">Toggle Audio</li>
@@ -17962,6 +17962,17 @@
                 jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
                 jQuery(this).removeClass('fa-toggle-on').addClass('fa-toggle-off');
                 jQuery(this).removeClass('toggle-nocturnal').addClass('toggle-diurnal');
+            }
+        });
+        jQuery('.user-navigation-toggle-theme').on('click', function(){
+            if(jQuery(this).hasClass('toggle-diurnal')) {
+                jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
+                jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
+                jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
+            } else if(jQuery(this).hasClass('toggle-nocturnal')) {
+                jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
+                jQuery('.user-navigation-toggle-theme').find('.fa').toggleClass('fa-toggle-on fa-toggle-off');
+                jQuery('.toggle-theme').toggleClass('toggle-diurnal toggle-nocturnal fa-toggle-on fa-toggle-off');
             }
         });
         jQuery('.toggle-theme').on('mouseover', function(){
