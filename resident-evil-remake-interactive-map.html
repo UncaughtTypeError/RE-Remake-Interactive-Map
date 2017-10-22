@@ -17868,16 +17868,17 @@
             if(jQuery(this).hasClass('toggle-state')) {
                 jQuery(this).removeClass('toggle-state');
                 jQuery(this).children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
-                jQuery(this).find('.toggle-indicator').toggleClass('fa-caret-down fa-caret-up');
+                jQuery(this).find('.toggle-indicator').removeClass('fa-caret-up').addClass('fa-caret-down');
             } else if(jQuery(this).not('.toggle-state')) {
                 if(!jQuery(this).parent().hasClass('end-user-navigation-submenu')) {
                     jQuery('.end-user-navigation li').removeClass('toggle-state');
                     jQuery('.end-user-navigation li').children('.end-user-navigation-submenu').removeClass('toggle-state').slideUp();
+                    jQuery('.end-user-navigation li').find('.toggle-indicator').removeClass('fa-caret-up').addClass('fa-caret-down');
                 }
                 jQuery(this).addClass('toggle-state');
                 jQuery(this).parents('li').addClass('toggle-state').slideDown();
                 jQuery(this).children('.end-user-navigation-submenu').addClass('toggle-state').slideDown();
-                jQuery(this).find('.toggle-indicator').toggleClass('fa-caret-down fa-caret-up');
+                jQuery(this).find('.toggle-indicator').removeClass('fa-caret-down').addClass('fa-caret-up');
             }
             jQuery('.room-info-wrapper').removeClass('end-user-navigation-inactive').addClass('end-user-navigation-active');
         });
