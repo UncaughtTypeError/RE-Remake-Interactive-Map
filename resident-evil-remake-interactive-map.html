@@ -18104,7 +18104,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 5.2');
+        console.log('ver 5.3');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             jQuery(this).addClass('bullet-preview');
             var offsetTop = jQuery(this).offset().top - 220,
@@ -18117,7 +18117,7 @@
                 'left' : offsetLeft
             });
         });
-        jQuery('.biohazard-info-bullet.bullet-preview').on('mouseleave', function(){
+        jQuery('.biohazard-info-bullet').on('mouseleave', function(){
             jQuery('.fixed-preview').removeClass('fixed-preview').removeAttr('style');
         });
         jQuery('.biohazard-info-paginate').on('click', function(){
