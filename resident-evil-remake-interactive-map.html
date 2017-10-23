@@ -18098,16 +18098,23 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 4.3');
+        console.log('ver 4.4');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             var offsetTop = jQuery(this).offset().top - 220,
                 offsetLeft = jQuery(this).offset().left -52,
                 dataInfoBiohazard = jQuery(this).attr('data-info');
-            jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').fadeOut().css({
+            /*jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').fadeOut().css({
                 'position' : 'fixed',
                 'top' : offsetTop,
                 'left' : offsetLeft
-            }).addClass('fixed-preview').fadeIn();
+            }).addClass('fixed-preview').fadeIn();*/
+            jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').fadeOut(function(){
+                jQuery(this).css({
+                    'position' : 'fixed',
+                    'top' : offsetTop,
+                    'left' : offsetLeft
+                }).addClass('fixed-preview').fadeIn();
+            });
         });
         jQuery('.biohazard-info-bullet').on('mouseleave', function(){
             jQuery('.fixed-preview').removeClass('fixed-preview').removeAttr('style');
