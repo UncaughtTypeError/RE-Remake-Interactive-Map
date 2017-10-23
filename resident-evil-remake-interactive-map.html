@@ -18100,10 +18100,10 @@
         });
         console.log('ver 4.5');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
+            var offsetTop = jQuery(this).offset().top - 220,
+                offsetLeft = jQuery(this).offset().left -52,
+                dataInfoBiohazard = jQuery(this).attr('data-info');
             setTimeout(function() {
-                var offsetTop = jQuery(this).offset().top - 220,
-                    offsetLeft = jQuery(this).offset().left -52,
-                    dataInfoBiohazard = jQuery(this).attr('data-info');
                 jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').fadeOut(function(){
                     jQuery(this).css({
                         'position' : 'fixed',
