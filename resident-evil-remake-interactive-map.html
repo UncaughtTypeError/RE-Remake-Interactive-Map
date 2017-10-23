@@ -1444,7 +1444,7 @@
         }
 
         .diurnal-theme .map-pagination {
-            color: #ddd;
+            color: #aaa;
         }
 
         .diurnal-theme .map-pagination:hover {
@@ -10631,7 +10631,7 @@
             display: block;
             border: 0px;
             width: 30%;
-            z-index: 999;
+            z-index: 99999;
             max-width: none;
             min-width: 725px;
             overflow: hidden;
@@ -18098,10 +18098,10 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 4.1');
+        console.log('ver 4.2');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
-            var offsetTop = jQuery(this).offset().top,
-                offsetLeft = jQuery(this).offset().left,
+            var offsetTop = jQuery(this).offset().top - 220,
+                offsetLeft = jQuery(this).offset().left -52,
                 dataInfoBiohazard = jQuery(this).attr('data-info');
             jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').css({
                 'position' : 'fixed',
