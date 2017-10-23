@@ -10702,6 +10702,7 @@
         .biohazards-array-wrapper .array-index.fixed-preview {
             opacity: 0;
             transition: .7s;
+            position: fixed;
         }
 
         .biohazards-array-wrapper .array-index.eta {
@@ -18103,7 +18104,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 5.8');
+        console.log('ver 5.9');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             jQuery(this).addClass('bullet-preview');
             var offsetTop = jQuery(this).offset().top - 220,
@@ -18111,7 +18112,6 @@
                 dataInfoBiohazard = jQuery(this).attr('data-info');
             jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').addClass('fixed-preview');
             jQuery('.fixed-preview').css({
-                'position' : 'fixed',
                 'opacity' : `1`,
                 'top' : offsetTop,
                 'left' : offsetLeft
