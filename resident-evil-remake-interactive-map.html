@@ -18098,22 +18098,22 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 4.6');
+        console.log('ver 4.8');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
+            jQuery(this).addClass('bullet-preview');
             var offsetTop = jQuery(this).offset().top - 220,
                 offsetLeft = jQuery(this).offset().left -52,
                 dataInfoBiohazard = jQuery(this).attr('data-info');
-            setTimeout(function() {
-                jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').fadeOut(function(){
-                    jQuery(this).css({
-                        'position' : 'fixed',
-                        'top' : offsetTop,
-                        'left' : offsetLeft
-                    }).addClass('fixed-preview').fadeIn();
-                });
-            }, 500);
+            jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').fadeOut(function(){
+                jQuery(this).css({
+                    'position' : 'fixed',
+                    'top' : offsetTop,
+                    'left' : offsetLeft
+                }).addClass('fixed-preview').fadeIn();
+            });
         });
-        jQuery('.biohazard-info-bullet').on('mouseleave', function(){
+        jQuery('.biohazard-info-bullet.bullet-preview').on('mouseleave', function(){
+            jQuery('.bullet-preview').removeClass('.bullet-preview');
             jQuery('.fixed-preview').removeClass('fixed-preview').removeAttr('style');
         });
         jQuery('.biohazard-info-paginate').on('click', function(){
