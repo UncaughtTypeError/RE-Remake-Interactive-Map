@@ -10700,8 +10700,6 @@
         }
 
         .biohazards-array-wrapper .array-index.fixed-preview {
-            top: 1000px;
-            transition: .7s;
             opacity: 0;
         }
 
@@ -18104,7 +18102,7 @@
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
         });
-        console.log('ver 5.3');
+        console.log('ver 5.4');
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             jQuery(this).addClass('bullet-preview');
             var offsetTop = jQuery(this).offset().top - 220,
@@ -18112,10 +18110,10 @@
                 dataInfoBiohazard = jQuery(this).attr('data-info');
             jQuery('.biohazards-array').find('.hexagon[data-info="'+dataInfoBiohazard+'"]').parent('.array-index').addClass('fixed-preview').css({
                 'position' : 'fixed',
-                'opacity' : '1',
+                'transition' : `.7s`,
                 'top' : offsetTop,
                 'left' : offsetLeft
-            });
+            }).removeClass('fixed-preview');
         });
         jQuery('.biohazard-info-bullet').on('mouseleave', function(){
             jQuery('.fixed-preview').removeClass('fixed-preview').removeAttr('style');
