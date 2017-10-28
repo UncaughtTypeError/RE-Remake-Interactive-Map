@@ -17859,6 +17859,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
+    console.log('ver 6.1')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -18105,8 +18106,7 @@
             jQuery('.biohazards-case-study-bullets').removeClass('bullets-active').addClass('bullets-inactive');
             jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
             jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
-        });
-        console.log('ver 5.9');
+        });;
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             jQuery(this).addClass('bullet-preview');
             var offsetTop = jQuery(this).offset().top - 220,
@@ -18209,6 +18209,16 @@
                     jQuery(this).removeClass('map-marker-active').addClass('map-marker-inactive');
                 }
             });
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active')) {
+                console.log('has active map markers');
+                if(!jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper').addClass('icon-pins-active');
+                }
+            } else {
+                if(jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper').removeClass('icon-pins-active');
+                }
+            }
         });
         /* Dropdowns: Map Key & Door Key */
         jQuery('#map-key-info, #door-lock-info').on('click', function(){
@@ -18424,6 +18434,16 @@
                 jQuery('.stars-ranking-type').removeClass('ranking-type-active').addClass('ranking-type-inactive');
                 jQuery('#default-biohazards').removeClass('ranking-type-inactive').addClass('ranking-type-active');
             }
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active')) {
+                console.log('has active map markers');
+                if(!jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper').addClass('icon-pins-active');
+                }
+            } else {
+                if(jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper').removeClass('icon-pins-active');
+                }
+            }
         });
         /* Append Icon Marker Tags to Room Tabs */
         jQuery('.icon-marker-tag').each(function(){
@@ -18474,6 +18494,16 @@
                     jQuery('.'+roomMarkerAttr).find('.'+roomMarkerKey).removeClass('map-marker-inactive').addClass('map-marker-active');
                 } else {
                     jQuery('.'+roomMarkerAttr).find('.'+roomMarkerKey).removeClass('map-marker-active').addClass('map-marker-inactive');
+                }
+            }
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active')) {
+                console.log('has active map markers');
+                if(!jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper').addClass('icon-pins-active');
+                }
+            } else {
+                if(jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper').removeClass('icon-pins-active');
                 }
             }
         });
