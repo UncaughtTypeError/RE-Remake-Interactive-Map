@@ -827,6 +827,20 @@
             border-color: #504f4f;
         }
 
+        .nocturnal-theme .map-reset-tooltip {
+            border-color: #504f4f;
+            background: #3d3d3d;
+            color: #bcb9b9;
+        }
+
+        .nocturnal-theme .map-reset .fa-inverse {
+            color: #bcb9b9;
+        }
+
+        .nocturnal-theme .map-reset {
+            color: #5e5e5e;
+        }
+
         /* Map */
 
         .nocturnal-theme .room:hover, .nocturnal-theme .room:hover .room {
@@ -2128,6 +2142,20 @@
         .diurnal-theme .end-user-navigation {
             background: white;
             border-color: #ddd;
+        }
+
+        .diurnal-theme .map-reset-tooltip {
+            background: white;
+            border-color: #ddd;
+            color: #6a6a6a;
+        }
+
+        .diurnal-theme .map-reset .fa-inverse {
+            color: #6a6a6a;
+        }
+
+        .diurnal-theme .map-reset {
+            color: #c4c4c4;
         }
 
         /* Map */
@@ -5922,6 +5950,7 @@
             cursor: pointer;
             transition: .7s;
             opacity: 0;
+            font-size: 8px;
         }
 
         .icon-pins-active .map-reset:hover {
@@ -5929,12 +5958,48 @@
         }
 
         .map-reset .fa-inverse {
-            left: 10px;
-            top: -15px;
+            left: 8px;
+            top: -10px;
+            font-size: 12px;
         }
 
         .icon-pins-active .map-reset {
-            opacity: .5;
+            opacity: .7;
+        }
+
+        .map-reset:before {
+            content: "\2b21";
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            font-size: 50px;
+            line-height: 22px;
+        }
+
+        .map-reset-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: .3s;
+            display: block;
+            margin: auto;
+            border: 1px solid;
+            padding: 5px;
+            white-space: nowrap;
+            z-index: 9999;
+            pointer-events: none;
+            position: relative;
+            top: -53px;
+            left: -53px;
+            font-size: 10px;
+        }
+
+        .map-reset:hover .map-reset-tooltip {
+            opacity: 1;
+            visibility: visible;
+            top: -48px;
+            left: -48px;
         }
 
         .floor-wrapper {
@@ -11574,6 +11639,7 @@
                           <i class="fa fa-map-marker fa-stack-2x"></i>
                           <i class="fa fa-close fa-stack-1x fa-inverse"></i>
                         </span>
+                        <div class="map-reset-tooltip">Reset Map</div>
                     </div>
                     <h3 class="location-title">Mansion: 1F</h3>
                     <div class="main-hall room">
@@ -17887,7 +17953,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 6.3')
+    console.log('ver 6.4')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
