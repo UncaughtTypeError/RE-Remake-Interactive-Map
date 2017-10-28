@@ -5915,6 +5915,28 @@
             height: 100%;
         }
 
+        .map-reset {
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            transition: .7s;
+            opacity: 0;
+        }
+
+        .icon-pins-active .map-reset:hover {
+            opacity: 1;
+        }
+
+        .map-reset .fa-inverse {
+            left: 10px;
+            top: -15px;
+        }
+
+        .icon-pins-active .map-reset {
+            opacity: .5;
+        }
+
         .floor-wrapper {
             counter-reset: room-counter;
             position: relative;
