@@ -17859,7 +17859,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 6.1')
+    console.log('ver 6.2')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -18035,7 +18035,7 @@
         jQuery('.toggle-theme, .user-navigation-toggle-theme').on('mouseleave', function(){
             jQuery('body').removeClass('kill-transitions');
         });
-        /* Fetch Pop-Ups */
+        /* Fetch & Close Pop-Ups */
         jQuery('#ranking-info, .ranking-info, #biohazard-array, #biohazard-info, .biohazard-info').on('click',function(){
             if(jQuery(this).is('#ranking-info') || jQuery(this).is('.ranking-info')) {
                 if(jQuery(this).parents('.popup-active')) {
@@ -18085,6 +18085,13 @@
         jQuery('.popup-close,.popup-backdrop,.popup-backdrop-close').on('click',function(){
             jQuery('.popup,.popup-backdrop').removeClass('popup-active');
         });
+        jQuery('.biohazards-case-study .popup-close, .popup-backdrop').on('click', function(){
+            jQuery('.biohazard-info-paginate').removeClass('paginate-active').addClass('paginate-inactive');
+            jQuery('.biohazards-case-study-bullets').removeClass('bullets-active').addClass('bullets-inactive');
+            jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
+            jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
+        });
+        /* Toggle tabs on Biohazard S.T.A.R.S. Ranking Pop-Up */
         jQuery('.tab-select').on('click',function(){
             if(jQuery(this).hasClass('group-active')) {
                 jQuery('.tab-select,.list-group-content').removeClass('group-active').removeClass('group-inactive');
@@ -18101,12 +18108,7 @@
                 jQuery('.list-group-backdrop .gears-panel.bottom-left').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 1000);
         });
-        jQuery('.biohazards-case-study .popup-close, .popup-backdrop').on('click', function(){
-            jQuery('.biohazard-info-paginate').removeClass('paginate-active').addClass('paginate-inactive');
-            jQuery('.biohazards-case-study-bullets').removeClass('bullets-active').addClass('bullets-inactive');
-            jQuery('.biohazards-case-study').removeClass('biohazard-info-stack-right').addClass('biohazard-info-stack-left');
-            jQuery('.biohazards-case-study-fetch-actions').removeClass('toggle-state');
-        });;
+        /* Thumbnail Preview */
         jQuery('.biohazard-info-bullet').on('mouseover', function(){
             jQuery(this).addClass('bullet-preview');
             var offsetTop = jQuery(this).offset().top - 220,
@@ -18122,6 +18124,7 @@
         jQuery('.biohazard-info-bullet').on('mouseleave', function(){
             jQuery('.fixed-preview').removeClass('fixed-preview').removeAttr('style');
         });
+        /* Case Study Pagination */
         jQuery('.biohazard-info-paginate').on('click', function(){
             if(jQuery(this).hasClass('biohazard-info-paginate-next')) {
                 if( jQuery('.biohazards-case-study.popup-active').next('.biohazards-case-study').length == 0 ) {
@@ -18150,6 +18153,7 @@
             jQuery('.biohazard-info-bullet').removeClass('bullet-active');
             jQuery('.biohazard-info-bullet[data-info="'+dataInfo+'"]').addClass('bullet-active');
         });
+        /* Keymenu Toggle */
         jQuery('.keymenu-select').on('click',function(){
             var listID = jQuery(this).attr('id');
             if(jQuery(this).hasClass('keymenu-inactive')) {
@@ -18181,6 +18185,7 @@
                 jQuery('.gears-panel.bottom-left').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 1000);
         });
+        /* Keymenu Expand Out & Collapse In */
         jQuery('.icon-trigger.toggle-state').on('click', function(){
             if(jQuery(this).parents('.keymenu').hasClass('list-group-collapse')) {
                 jQuery(this).parents('.keymenu').removeClass('list-group-collapse').addClass('list-group-expand');
@@ -18190,11 +18195,13 @@
                 jQuery(this).find('.keymenu-toggle-trigger').removeClass('fa-caret-right').addClass('fa-caret-left');
             }
         });
+        /* Keymenu Toggle Tab Content */
         jQuery('.list-group-tab').on('click', function(){
             jQuery('.list-group-tab').find('.toggle-group-tab').toggleClass('fa-dot-circle-o fa-circle-o');
             jQuery('.list-group-tab').toggleClass('toggle-state');
             jQuery('.list-group-tab-content').toggleClass('toggle-state');
         });
+        /* Keymenu Filter Keys & Display Map Pins/Icons */
         jQuery('.keymenu .list-group-item').on('click', function(){
             var dataKey = jQuery(this).find('.filter-key').attr('data-key');
             if(jQuery(this).find('.filter-key').hasClass('filter-inactive')) {
@@ -18209,8 +18216,7 @@
                     jQuery(this).removeClass('map-marker-active').addClass('map-marker-inactive');
                 }
             });
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active')) {
-                console.log('has active map markers');
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
                 if(!jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper').addClass('icon-pins-active');
                 }
@@ -18434,8 +18440,7 @@
                 jQuery('.stars-ranking-type').removeClass('ranking-type-active').addClass('ranking-type-inactive');
                 jQuery('#default-biohazards').removeClass('ranking-type-inactive').addClass('ranking-type-active');
             }
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active')) {
-                console.log('has active map markers');
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
                 if(!jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper').addClass('icon-pins-active');
                 }
@@ -18496,8 +18501,7 @@
                     jQuery('.'+roomMarkerAttr).find('.'+roomMarkerKey).removeClass('map-marker-active').addClass('map-marker-inactive');
                 }
             }
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active')) {
-                console.log('has active map markers');
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
                 if(!jQuery('.floor-wrapper').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper').addClass('icon-pins-active');
                 }
