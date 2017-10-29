@@ -18710,7 +18710,7 @@
         jQuery('.room-detail-toggle-container').on('click', '.filter-key, .grid-group-item', function(){
             if(jQuery(this).parent().hasClass('biohazards')) {
                 var dataTargetClass = jQuery(this).attr('data-info');
-                console.log('yes');
+                console.log(dataTargetClass);
             }
             var dataTargetClass = jQuery(this).attr('data-key');
             var detailActiveRoom = jQuery('.room.toggle-state').attr('class').split(' ')[0];
