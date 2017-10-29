@@ -17953,7 +17953,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 6.6')
+    console.log('ver 6.7')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -18707,6 +18707,11 @@
             jQuery('.trigger-tile').toggleClass('toggle-state');
             jQuery('.grid-list-toggle').toggleClass('toggle-state');
         });
+        jQuery('.room-detail-list .filter-key').on('click', function(){
+            var dataTargetClass = jQuery(this).attr('data-key');
+            console.log(detailActiveRoom);
+            jQuery(detailActiveRoom).find(jQuery('.icon-pin').hasClass(dataTargetClass)).removeClass('map-marker-inactive').addClass('map-marker-active');
+        });
         /* Exit Room Detail View */
         jQuery('.room-detail-close').on('click', function(){
             if(!jQuery('.options-panel').hasClass('toggle-state')) {
@@ -19311,7 +19316,6 @@
             jQuery('#tab-rooms').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
             if(jQuery('.trigger-keys').has('.keys-active')) {
                 jQuery('.keys-active').toggleClass('fa-dot-circle-o fa-circle-o keys-active keys-inactive');
-                console.log('has keys-active');
             }
             jQuery(this).parent('.floor-wrapper').removeClass('icon-pins-active');
         });
