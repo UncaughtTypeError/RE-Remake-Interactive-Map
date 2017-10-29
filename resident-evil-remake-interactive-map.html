@@ -17979,7 +17979,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 8.9')
+    console.log('ver 9.0')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -20574,6 +20574,14 @@
 
 .pin-toggle-tile {
     float: right;
+    cursor: pointer;
+    transition: .7s;
+    pointer-events: auto;
+    opacity: .7;
+}
+
+.pin-toggle-tile:hover {
+    opacity: 1;
 }
 
 .pin-toggle-tile:before {
@@ -20615,6 +20623,7 @@
 
 .pin-toggle-tile.tile-all-pins .fa-map-marker:nth-child(2) {
     top: 3px;
+    z-index: 1;
 }
 
 .pin-toggle-tile.tile-all-pins .fa-map-marker:nth-child(3) {
