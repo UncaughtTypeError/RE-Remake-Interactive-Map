@@ -15543,9 +15543,9 @@
                                         <div class="structure-tile lower-tile tile"></div>
                                         <div class="pin-toggle-tile tile-all-pins tile">
                                             <div class="fa-stack fa-fw">
-                                              <i class="fa fa-map-marker fa-stack-1x"></i>
+                                              <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
-                                              <i class="fa fa-map-marker fa-stack-1x"></i>
+                                              <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                             </div>
                                         </div>
                                         <div class="pin-toggle-tile tile-reset-room tile">
@@ -15737,9 +15737,9 @@
                                         <div class="structure-tile lower-tile tile"></div>
                                         <div class="pin-toggle-tile tile-all-pins tile">
                                             <div class="fa-stack fa-fw">
-                                              <i class="fa fa-map-marker fa-stack-1x"></i>
+                                              <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
-                                              <i class="fa fa-map-marker fa-stack-1x"></i>
+                                              <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                             </div>
                                         </div>
                                         <div class="pin-toggle-tile tile-reset-room tile">
@@ -17979,7 +17979,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 8.8')
+    console.log('ver 8.9')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -20593,6 +20593,32 @@
 
 .pin-toggle-tile .fa-stack-2x {
     font-size: 22px;
+}
+
+.pin-toggle-tile .fa-stack {
+    width: 33px;
+    height: 28px;
+}
+
+.pin-toggle-tile.tile-reset-room .fa-stack-2x {
+    top: 3px;
+}
+
+.pin-toggle-tile.tile-reset-room .fa-stack-1x {
+    bottom: 3px;
+    left: 7px;
+}
+
+.pin-toggle-tile.tile-all-pins .fa-map-marker:nth-child(1) {
+    left: -7px;
+}
+
+.pin-toggle-tile.tile-all-pins .fa-map-marker:nth-child(2) {
+    top: 3px;
+}
+
+.pin-toggle-tile.tile-all-pins .fa-map-marker:nth-child(3) {
+    left: 7px;
 }
 
 .nocturnal-theme .display-style {
