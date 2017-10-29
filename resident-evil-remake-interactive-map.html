@@ -17953,7 +17953,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 8.4')
+    console.log('ver 8.5')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -18710,6 +18710,7 @@
         jQuery('.room-detail-toggle-container').on('click', '.filter-key, .grid-group-item', function(){
             if(jQuery(this).parent().hasClass('biohazards')) {
                 var dataTargetClass = jQuery(this).attr('data-info');
+                console.log('yes');
             }
             var dataTargetClass = jQuery(this).attr('data-key');
             var detailActiveRoom = jQuery('.room.toggle-state').attr('class').split(' ')[0];
