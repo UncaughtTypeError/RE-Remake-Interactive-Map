@@ -17953,7 +17953,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 6.5')
+    console.log('ver 6.6')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -19309,6 +19309,10 @@
             jQuery(this).parent('.floor-wrapper').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
             jQuery('#tab-list').find('.filter-active').removeClass('filter-active').addClass('filter-inactive');
             jQuery('#tab-rooms').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
+            if(jQuery('.trigger-keys').has('.keys-active')) {
+                jQuery('.keys-active').toggleClass('fa-dot-circle-o fa-circle-o keys-active keys-inactive');
+                console.log('has keys-active');
+            }
             jQuery(this).parent('.floor-wrapper').removeClass('icon-pins-active');
         });
     });
