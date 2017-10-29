@@ -17953,7 +17953,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 6.4')
+    console.log('ver 6.5')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -19007,6 +19007,7 @@
                 jQuery('.gears-panel.bottom-right').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 1000);
         });
+        /* Map Pagination */
         jQuery('.map-pagination').on('click', function(){
             if(jQuery(this).hasClass('map-nav') && jQuery(this).parents('.map-nav.menu-item-location').length) {
                 event.stopPropagation();
@@ -19297,10 +19298,18 @@
 				}
             }
         });
+        /* Navigation Sticky-State Toggle */
         jQuery('.navigation').on('click', function(){
             jQuery(this).toggleClass('toggle-state');
             jQuery(this).find('.fa').toggleClass('fa-bars fa-close');
             jQuery('.navigation-menu').toggleClass('toggle-state');
+        });
+        /* Map Pins/Icons Reset */
+        jQuery('.map-reset').on('click', function(){
+            jQuery(this).parent('.floor-wrapper').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
+            jQuery('#tab-list').find('.filter-active').removeClass('filter-active').addClass('filter-inactive');
+            jQuery('#tab-rooms').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
+            jQuery(this).parent('.floor-wrapper').removeClass('icon-pins-active');
         });
     });
     </script>
