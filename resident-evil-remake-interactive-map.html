@@ -17953,7 +17953,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 6.8')
+    console.log('ver 6.9')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -18707,8 +18707,10 @@
             jQuery('.trigger-tile').toggleClass('toggle-state');
             jQuery('.grid-list-toggle').toggleClass('toggle-state');
         });
-        jQuery('.room-detail-list').on('.filter-key', 'click', function(){
+        jQuery('.room-detail-list').on('click', '.filter-key', function(){
             var dataTargetClass = jQuery(this).attr('data-key');
+            var detailActiveRoom = jQuery(this).attr('class').split(' ')[0];
+            console.log(dataTargetClass);
             console.log(detailActiveRoom);
             jQuery(detailActiveRoom).find(jQuery('.icon-pin').hasClass(dataTargetClass)).removeClass('map-marker-inactive').addClass('map-marker-active');
         });
