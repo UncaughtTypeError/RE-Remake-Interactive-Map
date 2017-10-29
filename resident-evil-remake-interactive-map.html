@@ -15541,14 +15541,14 @@
                                             </div>
                                         </div>
                                         <div class="structure-tile lower-tile tile"></div>
-                                        <div class="pin-toggle-tile tile">
+                                        <div class="pin-toggle-tile tile-all-pins tile">
                                             <div class="fa-stack fa-fw">
                                               <i class="fa fa-map-marker fa-stack-1x"></i>
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
                                               <i class="fa fa-map-marker fa-stack-1x"></i>
                                             </div>
                                         </div>
-                                        <div class="pin-toggle-tile tile">
+                                        <div class="pin-toggle-tile tile-reset-room tile">
                                             <div class="fa-stack fa-lg">
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
                                               <i class="fa fa-close fa-stack-1x fa-inverse"></i>
@@ -15735,14 +15735,14 @@
                                             </div>
                                         </div>
                                         <div class="structure-tile lower-tile tile"></div>
-                                        <div class="pin-toggle-tile tile">
+                                        <div class="pin-toggle-tile tile-all-pins tile">
                                             <div class="fa-stack fa-fw">
                                               <i class="fa fa-map-marker fa-stack-1x"></i>
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
                                               <i class="fa fa-map-marker fa-stack-1x"></i>
                                             </div>
                                         </div>
-                                        <div class="pin-toggle-tile tile">
+                                        <div class="pin-toggle-tile tile-reset-room tile">
                                             <div class="fa-stack fa-lg">
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
                                               <i class="fa fa-close fa-stack-1x fa-inverse"></i>
@@ -17979,7 +17979,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 8.7')
+    console.log('ver 8.8')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -20560,7 +20560,7 @@
     left: -20.5px;
 }
 
-.lower-tile:last-of-type:before {
+.lower-tile:nth-child(6):before {
     left: -52.5px;
 }
 
@@ -20570,6 +20570,29 @@
 
 .upper-tile:nth-child(4):before {
     left: 13.5px;
+}
+
+.pin-toggle-tile {
+    float: right;
+}
+
+.pin-toggle-tile:before {
+    content: "\2b21";
+    font-size: 50px;
+    position: absolute;
+    top: -1.5px;
+    left: -3.5px;
+    line-height: 33px;
+    opacity: .5;
+    transition: .7s;
+}
+
+.pin-toggle-tile .fa-stack-1x {
+    font-size: 12px;
+}
+
+.pin-toggle-tile .fa-stack-2x {
+    font-size: 22px;
 }
 
 .nocturnal-theme .display-style {
