@@ -17979,7 +17979,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 9.0')
+    console.log('ver 9.1')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -18746,6 +18746,12 @@
                     jQuery('.floor-wrapper').removeClass('icon-pins-active');
                 }
             }
+        });
+        jQuery('.tile-reset-room').on('click', function(){
+            jQuery('.room.toggle-state').find('.icon-pin').removeClass('map-marker-active').addClass('map-marker-inactive');
+        });
+        jQuery('.tile-all-pins').on('click', function(){
+            jQuery('.room.toggle-state').find('.icon-pin').removeClass('map-marker-inactive').addClass('map-marker-active');
         });
         /* Exit Room Detail View */
         jQuery('.room-detail-close').on('click', function(){
