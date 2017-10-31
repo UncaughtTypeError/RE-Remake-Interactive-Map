@@ -15532,6 +15532,7 @@
                                             <div class="fa-stack fa-fw">
                                                 <i class="fa fa-th-list fa-stack-1x"></i>
                                             </div>
+                                            <div class="tile-tooltip">List View</div>
                                         </div>
                                         <div class="structure-tile upper-tile tile"></div>
                                         <div class="structure-tile upper-tile tile"></div>
@@ -15539,6 +15540,7 @@
                                             <div class="fa-stack fa-fw">
                                                 <i class="fa fa-th fa-stack-1x"></i>
                                             </div>
+                                            <div class="tile-tooltip">Grid View</div>
                                         </div>
                                         <div class="structure-tile lower-tile tile"></div>
                                         <div class="pin-toggle-tile tile-all-pins tile">
@@ -15547,12 +15549,14 @@
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
                                               <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
                                             </div>
+                                            <div class="tile-tooltip">Toggle all markers</div>
                                         </div>
                                         <div class="pin-toggle-tile tile-reset-room tile">
                                             <div class="fa-stack fa-lg">
                                               <i class="fa fa-map-marker fa-stack-2x"></i>
                                               <i class="fa fa-close fa-stack-1x fa-inverse"></i>
                                             </div>
+                                            <div class="tile-tooltip">Clear all markers</div>
                                         </div>
                                     </div>
                                     <div class="room-detail-shadow-list room-detail-shadow-items">
@@ -17979,7 +17983,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 9.1')
+    console.log('ver 9.2')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -20634,6 +20638,55 @@
 
 .pin-toggle-tile.tile-all-pins .fa-map-marker:nth-child(3) {
     left: 7px;
+}
+
+.tile-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    position: absolute;
+    display: block;
+    margin: auto;
+    border: 1px solid;
+    padding: 5px;
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    top: 2px;
+    font-size: 10px;
+}
+
+.tile:hover .tile-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tile.trigger-tile .tile-tooltip {
+    left: 40px;
+}
+
+.tile.trigger-tile:hover .tile-tooltip {
+    left: 35px;
+}
+
+.tile.pin-toggle-tile:hover .tile-tooltip {
+    right: 35px;
+}
+
+.tile.pin-toggle-tile .tile-tooltip {
+    right: 40px;
+}
+
+.diurnal-theme .tile-tooltip {
+    border-color: #ddd;
+    background: white;
+    color: #6a6a6a;
+}
+
+.nocturnal-theme .tile-tooltip {
+    border-color: #504f4f;
+    background: #3d3d3d;
+    color: #bcb9b9;
 }
 
 .nocturnal-theme .display-style {
