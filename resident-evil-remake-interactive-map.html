@@ -5951,6 +5951,7 @@
             transition: .7s;
             opacity: 0;
             font-size: 8px;
+            pointer-events: none;
         }
 
         .icon-pins-active .map-reset:hover {
@@ -5965,6 +5966,7 @@
 
         .icon-pins-active .map-reset {
             opacity: .7;
+            pointer-events: auto;
         }
 
         .map-reset:before {
@@ -17983,7 +17985,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 9.3')
+    console.log('ver 9.4')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
