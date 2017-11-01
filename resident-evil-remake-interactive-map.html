@@ -3649,10 +3649,12 @@
         }
 
         .end-user-navigation-submenu li .fetch-actions {
-            position: absolute;
-            right: 0;
-            top: 3px;
+            display: inline-block;
             opacity: .8;
+        }
+
+        .end-user-navigation-submenu li .fetch-actions .icon-trigger {
+            margin: 0px;
         }
 
         .end-user-navigation-submenu li .fetch-actions .icon-trigger:hover .icon-trigger-tooltip {
@@ -17985,7 +17987,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 9.4')
+    console.log('ver 9.5')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
