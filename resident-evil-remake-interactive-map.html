@@ -3648,6 +3648,15 @@
             min-width: inherit;
         }
 
+        li[data-nav-item="nav-items"] .end-user-navigation-submenu li .fa {
+            opacity: .5;
+            transition: .7s;
+        }
+
+        li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
+            opacity: .8;
+        }
+
         .end-user-navigation-submenu li .fetch-actions {
             display: inline-block;
             opacity: .8;
@@ -10801,7 +10810,7 @@
         .biohazards-array-wrapper .array-index.fixed-preview .hexagon-border:after {
             visibility: hidden;
         }
-        
+
         .biohazards-array-wrapper .array-index.eta {
             color: #eaba15;
         }
@@ -14708,9 +14717,9 @@
                         <li class="list-group-item">Object & Tools <i class="fa fa-wrench fa-fw"></i></li>
                         <li class="list-group-item">Keys <i class="fa fa-key fa-fw"></i></li>
                         <li class="list-group-item">Maps <i class="fa fa-map fa-fw"></i></li>
-                        <li class="list-group-item">Recovery Items <i class="fa fa-heart-beat fa-fw"></i></li>
+                        <li class="list-group-item">Recovery Items <i class="fa fa-heartbeat fa-fw"></i></li>
                         <li class="list-group-item">Items of Interest <i class="fa fa-cube fa-fw"></i></li>
-                        <li class="list-group-item">Persons of Interest <i class="fa fa-person fa-fw"></i></li>
+                        <li class="list-group-item">Persons of Interest <i class="fa fa-user fa-fw"></i></li>
                         <li class="list-group-item">Documents <i class="fa fa-file-text fa-fw"></i></li>
                         <li class="list-group-item">Self Defense Items <i class="fa fa-shield fa-fw"></i></li>
                         <li class="list-group-item">Weapons <i class="fa fa-crosshairs fa-fw"></i></li>
@@ -17991,7 +18000,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 9.6')
+    console.log('ver 9.7')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
