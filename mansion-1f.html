@@ -5,3592 +5,3592 @@ data-location-next="courtyard"
 data-floor="mansion-1f" 
 data-floor-prev="mansion-bf" 
 data-floor-next="mansion-2f">
-<style>
-    /* Rooms */
-
-    .main-hall {
-        height: 17%;
-        width: 20.2%;
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
-        top: 40%;
-        z-index: 9;
-        border: 1px solid;
-    }
-
-    .main-hall-entrance {
-        width: 55%;
-        height: 15%;
-        display: block;
-        margin: auto;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -15%;
-        border: 1px solid;
-        border-top: 0px;
-    }
-
-    .main-hall-entrance:before {
-        right: -35px;
-        bottom: 35px;
-    }
-
-    .main-hall-entrance .door {
-        bottom: 0;
-        margin: auto;
-        display: block;
-        left: 0;
-        right: 0;
-        max-width: 25%;
-    }
-
-    .main-hall .door.door-vertical:nth-last-child(4) {
-        left: -3px;
-        top: 35%;
-    }
-
-    .main-hall .door.door-vertical:nth-last-child(5) {
-        right: -3px;
-        top: 13%;
-        height: 10px;
-        min-height: inherit;
-    }
-
-    .main-hall .door.door-vertical:nth-last-child(6) {
-        right: -3px;
-        top: 40%;
-    }
-
-    .main-hall-grandstairway {
-        position: absolute;
-        display: block;
-        margin: auto;
-        left: 0;
-        top: 10%;
-        right: 0;
-        width: 30%;
-        height: 35%;
-        border: 1px solid;
-        border-bottom: 0px;
-        border-top: 0px;
-        z-index: 9;
-    }
-
-    .main-hall-grandstairway-wall {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        margin: auto;
-        display: block;
-        height: 30%;
-        width: 50%;
-        border: 1px solid;
-        z-index: 1;
-    }
-
-    .main-hall-stairways {
-        position: absolute;
-        top: -15%;
-        left: 0;
-        right: 0;
-        margin: auto;
-        display: block;
-        height: 15%;
-        width: 75%;
-    }
-
-    .main-hall-stairways .stairs:nth-child(1) {
-        left: 0;
-        bottom: -100%;
-        border-left: 1px solid;
-        border-right: 0;
-    }
-
-    .main-hall-stairways div[class*="stair"] {
-        width: 17%;
-        height: 100%;
-        position: absolute;
-        border: 1px solid;
-    }
-
-    .main-hall-stairways .stairs:nth-child(7) {
-        right: 0;
-        bottom: -100%;
-        border-left: 0;
-        border-right: 1px solid;
-    }
-
-    .main-hall-stairways .stairs:nth-child(6) {
-        right: 0;
-        top: 0;
-        border-left: 0px;
-        border-bottom: 0px;
-    }
-
-    .main-hall-stairways .stairs:nth-child(2) {
-        left: 0;
-        top: 0;
-        border-right: 0px;
-        border-bottom: 0px;
-    }
-
-    .main-hall-stairways .stairs:nth-child(3) {
-        left: 17%;
-        top: 0;
-        border-bottom: 0;
-        border-top: 0;
-    }
-
-    .main-hall-stairways .stairs:nth-child(5) {
-        right: 17%;
-        top: 0;
-        border-bottom: 0;
-        border-top: 0;
-    }
-
-    .main-hall-stairways .stairs:nth-child(4) {
-        display: block;
-        margin: auto;
-        left: 0;
-        right: 0;
-        top: 0;
-        width: 33%;
-        border: 0px;
-    }
-
-    .main-hall-stairways .stairs-landing .door {
-        margin: auto;
-        display: block;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        max-width: 15%;
-    }
-
-    .west-wing {
-        height: 37%;
-        width: 40%;
-        display: block;
-        position: absolute;
-        left: 0;
-        display: block;
-        margin: auto;
-        top: 20%;
-    }
-
-    .east-wing {
-        height: 37%;
-        width: 40%;
-        display: block;
-        position: absolute;
-        right: 0;
-        display: block;
-        margin: auto;
-        top: 20%;
-    }
-
-    .dining-room {
-        height: 25%;
-        width: 57%;
-        position: absolute;
-        right: 0;
-        display: block;
-        margin: auto;
-        bottom: 13%;
-        border: 1px solid;
-        border-top: 0;
-    }
-
-    .dining-room:before {
-        bottom: 10px;
-        left: 3px;
-    }
-
-    .tea-room {
-        height: 18%;
-        width: 73%;
-        position: absolute;
-        right: 0;
-        display: block;
-        margin: auto;
-        bottom: 38%;
-    }
-
-    .tea-room:before {
-        bottom: 10px;
-        left: 5px;
-        z-index: 99;
-    }
-
-    .tea-room .passage-room {
-        width: 15%;
-        height: 101%;
-        position: absolute;
-        bottom: 0;
-        z-index: 9;
-        border: 1px solid;
-        border-right: 0px;
-        border-top: 0px;
-    }
-
-    .tea-room .passage-to-door {
-        width: 5.5%;
-        height: 25%;
-        position: absolute;
-        top: 0;
-        left: -5%;
-        z-index: 11;
-        border-bottom: 1px solid;
-    }
-
-    .tea-room .passage-to-door .door {
-        max-height: 10px;
-        min-height: inherit;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        left: -3px;
-        z-index: 9;
-    }
-
-    .tea-room  .corridor {
-        width: 85%;
-        height: 35%;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        border: 1px solid;
-        border-left: 0px;
-        z-index: 9;
-    }
-
-    .tea-room  .corridor .door:nth-child(1) {
-        bottom: -3px;
-        left: 20%;
-        width: 10px;
-        min-width: inherit;
-    }
-
-    .tea-room  .corridor .door:nth-child(2) {
-        top: -3px;
-        left: 30%;
-        width: 10px;
-        min-width: inherit;
-    }
-
-    .tea-room  .corridor .door:nth-child(3) {
-        top: -3px;
-        right: 30%;
-        width: 10px;
-        min-width: inherit;
-    }
-
-    .tea-room .passage-to-stairs {
-        width: 8%;
-        height: 87%;
-        position: absolute;
-        top: -20%;
-        right: 0;
-        border: 1px solid;
-        border-bottom: 0px;
-        z-index: 9;
-    }
-
-    .tea-room .stairs-to-passage {
-        width: 10.5%;
-        height: 35%;
-        position: absolute;
-        top: -20%;
-        right: 8%;
-        border: 1px solid;
-        border-right: 0px;
-        z-index: 9;
-    }
-
-    .bar {
-        height: 22%;
-        width: 36%;
-        position: absolute;
-        right: 3%;
-        display: block;
-        margin: auto;
-        bottom: 44%;
-        z-index: 8;
-        border-top: 1px solid;
-        border-left: 1px solid;
-        border-right: 1px solid;
-    }
-
-    .bar:before {
-        top: 10px;
-        left: 5px;
-    }
-
-    .bar .passage-way {
-        height: 83%;
-        width: 26%;
-        position: absolute;
-        left: 27%;
-        display: block;
-        margin: auto;
-        top: -83%;
-        border-bottom: 1px dashed;
-        border-right: 1px solid;
-        border-top: 1px solid;
-        border-left: 1px solid;
-    }
-
-    .bar .bar-wall {
-        height: 43%;
-        width: 22%;
-        position: absolute;
-        right: 7%;
-        display: block;
-        margin: auto;
-        bottom: 0;
-        border-left: 1px solid;
-    }
-
-    .tiger-statue-room {
-        height: 13%;
-        width: 11%;
-        position: absolute;
-        right: 28%;
-        display: block;
-        margin: auto;
-        bottom: 70.8%;
-        border: 1px solid;
-        z-index: 7;
-    }
-
-    .tiger-statue-room:before {
-        top: 8px;
-    }
-
-    .tiger-statue-room .door {
-        bottom: -3px;
-        right: 17%;
-        width: 10px;
-        min-width: inherit;
-        display: block;
-        margin: auto;
-    }
-
-    .tiger-statue-room .tiger-statue-room-wall {
-        height: 100%;
-        width: 40%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        top: 0;
-        border-right: 1px solid;
-    }
-
-    .researchers-room {
-        height: 23%;
-        width: 18%;
-        position: absolute;
-        right: 45%;
-        display: block;
-        margin: auto;
-        bottom: 44%;
-        border: 1px solid;
-        border-bottom: 0px;
-        border-top: 0px;
-        z-index: 8;
-    }
-
-    .researchers-room:before {
-        top: 10px;
-        left: 30px;
-    }
-
-    .researchers-room .researchers-room-wall {
-        left: 2px;
-        top: 0;
-        bottom: 0;
-        height: 100%;
-        width: 25%;
-        border-right: 1px solid;
-        border-left: 1px solid;
-        position: relative;
-    }
-
-    .researchers-room .door {
-        top: 15%;
-        right: -3px;
-        max-height: 10px;
-        min-height: inherit;
-        height: 100%;
-    }
-
-    .small-storeroom {
-        height: 18%;
-        width: 10%;
-        position: absolute;
-        right: 45%;
-        display: block;
-        margin: auto;
-        bottom: 67%;
-        border: 1px solid;
-        z-index: 9;
-    }
-
-    .small-storeroom:before {
-        bottom: 7px;
-        right: 10px;
-    }
-
-    .small-storeroom .door {
-        width: 10px;
-        min-width: inherit;
-        left: 3px;
-        top: -3px;
-    }
-
-    .medical-storage-room {
-        height: 18%;
-        width: 16%;
-        position: absolute;
-        right: 54%;
-        display: block;
-        margin: auto;
-        bottom: 67%;
-        border: 1px solid;
-        z-index: 9;
-    }
-
-    .medical-storage-room:before {
-        top: 8px;
-        right: 13px;
-    }
-
-    .medical-storage-room .door {
-        width: 10px;
-        min-width: inherit;
-        left: 3px;
-        bottom: -3px;
-    }
-
-    .west-wing-inner-stairway {
-        width: 31.8%;
-        height: 36%;
-        left: 23.3%;
-        position: absolute;
-        top: 8%;
-        border: 1px solid;
-        border-right: 0px;
-        border-bottom: 0px;
-    }
-
-    .west-wing-inner-stairway:before {
-        top: 9px;
-        left: 4px;
-        z-index: 9;
-    }
-
-    .west-wing-inner-stairway .passage-to-stairs {
-        height: 32%;
-        width: 64%;
-        position: absolute;
-        left: 0;
-        display: block;
-        margin: auto;
-        bottom: 0;
-        border-right: 1px solid;
-        border-bottom: 1px solid;
-        z-index: 9;
-    }
-
-    .west-wing-inner-stairway .passage-to-stairs .stairs {
-        right: 8%;
-        bottom: -1px;
-        height: 45%;
-        width: 65%;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-        position: absolute;
-    }
-
-    .west-wing-inner-stairway .passage-vertical {
-        height: 100%;
-        width: 29%;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    .west-wing-inner-stairway .passage-horizontal {
-        height: 20%;
-        width: 71%;
-        position: absolute;
-        right: 0.5%;
-        top: 0;
-        border-right: 1px solid;
-        z-index: 9;
-    }
-
-    .west-wing-inner-stairway .passage-horizontal .door {
-        height: 10px;
-        min-height: inherit;
-        display: block;
-        margin: auto;
-        top: 0;
-        bottom: 0;
-        right: -3px;
-    }
-
-    .greenhouse {
-        height: 18%;
-        width: 21%;
-        position: absolute;
-        right: 0;
-        display: block;
-        margin: auto;
-        bottom: 65.8%;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-        border-right: 1px solid;
-    }
-
-    .greenhouse:before {
-        top: 8px;
-        left: 7px;
-    }
-
-    .northern-corridor {
-        height: 8.3%;
-        width: 45%;
-        position: absolute;
-        right: 0;
-        display: block;
-        margin: auto;
-        top: 8%;
-        border-right: 1px solid;
-        border-top: 1px solid;
-        z-index: 7;
-    }
-
-    .northern-corridor:before {
-        right: 17px;
-        top: 18px;
-    }
-
-    .northern-corridor .lower-passageways {
-        position: absolute;
-        bottom: -500%;
-        height: 500%;
-        width: 36%;
-    }
-
-    .northern-corridor .adjoining-passage-room {
-        position: absolute;
-        width: 15%;
-        right: 0;
-        height: 100%;
-        bottom: -100%;
-        border-left: 1px solid;
-        border-bottom: 1px solid;
-    }
-
-    .northern-corridor .adjoining-passage-room .door {
-        height: 10px;
-        min-height: inherit;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        display: block;
-        left: -3px;
-    }
-
-    .northern-corridor .northern-corridor-wall-cutout {
-        right: -1%;
-        top: -5%;
-        height: 30%;
-        width: 72%;
-        position: absolute;
-        border-bottom: 1px solid;
-        border-left: 1px solid;
-    }
-
-    .west-wing-outer-stairway {
-        position: absolute;
-        left: 9.3%;
-        top: 0%;
-        width: 13%;
-        height: 48.5%;
-        border-left: 1px solid;
-        border-bottom: 1px solid;
-        border-right: 1px solid;
-    }
-
-    .west-wing-outer-stairway:before {
-        bottom: 9px;
-        left: 3px;
-    }
-
-    .west-wing-outer-stairway .passage-way {
-        position: absolute;
-        width: 57%;
-        height: 18%;
-        right: -12%;
-        bottom: -1px;
-        border-right: 1px solid;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-        z-index: 10;
-    }
-
-    .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
-        bottom: 0;
-        height: 45%;
-        position: absolute;
-        width: 47%;
-        right: -1%;
-        border-left: 1px solid;
-        border-top: 1px solid;
-        border-right: 1px solid;
-    }
-
-    .west-wing-outer-stairway .stairwell {
-        height: 27%;
-        width: 100%;
-        top: 0;
-        position: absolute;
-    }
-
-    .west-wing-outer-stairway .stairwell .stairs-horizontal {
-        width: 35%;
-        height: 60%;
-        position: absolute;
-        bottom: 0;
-        border-right: 1px solid;
-    }
-
-    .west-wing-outer-stairway .stairwell .stairs-vertical {
-        width: 65%;
-        height: 43%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        border-bottom: 1px solid;
-        z-index: 9;
-    }
-
-    .west-wing-outer-stairway .stairwell  .stairs-landing {
-        width: 35%;
-        height: 42%;
-        position: absolute;
-        top: 0;
-    }
-
-    .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
-        background: whitesmoke;
-        right: -2%;
-        top: 0;
-        width: 20%;
-        height: 55%;
-        position: absolute;
-        border-bottom: 1px solid;
-        border-left: 1px solid;
-    }
-
-    .exhibition-room {
-        height: 20%;
-        width: 42%;
-        position: absolute;
-        left: 0;
-        display: block;
-        margin: auto;
-        bottom: 13%;            
-        border-left: 1px solid;
-        border-bottom: 1px solid;
-    }
-
-    .exhibition-room:before {
-        top: 30px;
-        left: 55px;
-    }
-
-    .exhibition-room .passage-way {
-        height: 30%;
-        width: 60%;
-        position: absolute;
-        top: -30%;
-        right: 0;
-        border: 1px solid;
-        border-right: 0px;
-        z-index: 1;
-    }
-
-    .exhibition-room .passage-to-door {
-        height: 55%;
-        width: 15%;
-        position: absolute;
-        top: -25%;
-        right: 0;
-        z-index: 2;
-    }
-
-    .exhibition-room .passage-to-door .door {
-        right: -3px;
-        bottom: 0%;
-        min-height: initial;
-        height: 10px;
-    }
-
-    .art-room {
-        height: 20%;
-        width: 42%;
-        position: absolute;
-        left: 0;
-        display: block;
-        margin: auto;
-        bottom: 33%;
-        border-bottom: 1px solid;
-        border-left: 1px solid;
-        border-top: 1px solid;
-    }
-
-    .art-room:before {
-        top: 43px;
-        left: 27px;
-        z-index: 9;
-    }
-
-    .secret-passage {
-        height: 7%;
-        width: 25%;
-        position: absolute;
-        left: 17%;
-        display: block;
-        margin: auto;
-        bottom: 39%;
-        border: 1px solid;
-        border-bottom: 0px;
-        border-right: 0px;
-    }
-
-    .secret-passage:before {
-        top: 12px;
-    }
-
-    .art-room .passage-way-wall {
-        height: 65%;
-        width: 27%;
-        position: absolute;
-        border-top: 1px solid;
-        bottom: 0;
-    }
-
-    .art-room .door {
-        right: -3px;
-        min-height: inherit;
-        height: 10px;
-        top: 10%;
-    }
-
-    .south-east-corridor {
-        height: 12%;
-        width: 42%;
-        position: absolute;
-        left: 30%;
-        display: block;
-        margin: auto;
-        bottom: 13%;
-        z-index: 0;
-        border: 1px solid;
-    }
-
-    .south-east-corridor:before {
-        bottom: 10px;
-        right: 20px;
-    }
-
-    .south-east-corridor .upper-corridor {
-        height: 375%;
-        width: 29%;
-        position: absolute;
-        right: -0.5%;
-        display: block;
-        margin: auto;
-        bottom: 100%;
-        z-index: 8;
-        border-top: 1px solid;
-        border-right: 1px solid;
-    }
-
-    .south-east-corridor .upper-corridor .door {
-        right: 25%;
-        top: -3px;
-        width: 10px;
-        min-width: inherit;
-    }
-
-    .south-east-corridor > .door {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        display: block;
-        min-height: inherit;
-        height: 10px;
-        left: -3px;
-    }
-
-    .hidden-wardrobe {
-        height: 10%;
-        width: 18%;
-        position: absolute;
-        left: 42%;
-        display: block;
-        margin: auto;
-        bottom: 25%;
-        border: 1px solid;
-        border-bottom: 0px;
-    }
-
-    .hidden-wardrobe:before {
-        top: 16px;
-        right: 20px;
-    }
-
-    .mirror-room {
-        height: 18%;
-        width: 18%;
-        position: absolute;
-        left: 42%;
-        display: block;
-        margin: auto;
-        bottom: 35%;
-        border: 1px solid;
-        border-bottom: 0px;
-    }
-
-    .mirror-room:before {
-        top: 30px;
-        left: 30px;
-    }
-
-    .living-room {
-        height: 18%;
-        width: 18%;
-        position: absolute;
-        left: 42%;
-        display: block;
-        margin: auto;
-        bottom: 55%;
-        border: 1px solid;
-        z-index: 9;
-    }
-
-    .living-room:before {
-        top: 30px;
-        left: 30px;
-    }
-
-    .living-room .door {
-        min-width: inherit;
-        width: 10px;
-        top: -3px;
-        left: 15%;
-    }
-
-    .large-gallery {
-        height: 18%;
-        width: 52%;
-        position: absolute;
-        left: -10%;
-        display: block;
-        margin: auto;
-        bottom: 55%;
-        border: 1px solid;
-        border-right: 0px;
-        z-index: 2;
-    }
-
-    .large-gallery:before {
-        top: 30px;
-        right: 20px;
-        z-index: 9;
-    }
-
-    .large-gallery .room-to-graveyard {
-        width: 19%;
-        border-right: 1px dashed;
-        height: 100%;
-        position: absolute;
-    }
-
-    .large-gallery .passage-to-door {
-        width: 80%;
-        border-bottom: 1px solid;
-        border-left: 1px solid;
-        height: 53%;
-        position: absolute;
-        right: 3px;
-    }
-
-    .large-gallery .passage-way-bend {
-        width: 15%;
-        height: 100%;
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .large-gallery .passage-to-door .door {
-        min-width: inherit;
-        width: 10px;
-        top: -3px;
-        left: 5%;
-    }
-
-    .large-gallery .room-to-graveyard .door {
-        min-width: inherit;
-        width: 10px;
-        top: -3px;
-        margin: auto;
-        display: block;
-        left: 12px;
-    }
-
-    .suspended-ceiling-room {
-        height: 12%;
-        width: 12%;
-        position: absolute;
-        left: 39%;
-        display: block;
-        margin: auto;
-        bottom: 73%;
-        border: 1px solid;
-        border-bottom: 0px;
-    }
-
-    .suspended-ceiling-room:before {
-        top: 18px;
-        left: 18px;
-    }
-
-    .suspended-ceiling-room .door {
-        position: absolute;
-        left: -3px;
-        min-height: inherit;
-        height: 10px;
-        top: 20%;
-    }
-
-    .dark-corridor {
-        height: 19%;
-        width: 27%;
-        position: absolute;
-        left: 0;
-        display: block;
-        margin: auto;
-        bottom: 73%;
-        border: 1px solid;
-        border-bottom: 0px;
-        border-right: 0px;
-    }
-
-    .dark-corridor:before {
-        bottom: 15px;
-    }
-
-    .dark-corridor .door:first-child {
-        min-height: inherit;
-        height: 10px;
-        top: 10%;
-        left: -3px;
-    }
-
-    .dark-corridor .door:nth-of-type(2) {
-        bottom: 8%;
-        right: -3px;
-    }
-
-    .courtyard-study {
-        height: 10%;
-        width: 10%;
-        position: absolute;
-        left: 5%;
-        display: block;
-        margin: auto;
-        bottom: 82%;
-        border: 1px solid;
-        border-right: 0px;
-    }
-
-    .courtyard-study:before {
-        top: 8px;
-        left: 13px;
-    }
-
-    .courtyard-study .door {
-        min-width: inherit;
-        width: 10px;
-        bottom: -3px;
-        left: 0;
-        right: 0;
-        margin: auto;
-    }
-
-    .courtyard-study .bay-window {
-        height: 15%;
-        width: 80%;
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: block;
-        margin: auto;
-        bottom: 100%;
-        border-left: 5px solid;
-        border-right: 5px solid;
-        border-bottom: 8px solid;
-    }
-
-    .east-wing-stairway {
-        height: 25%;
-        width: 17%;
-        position: absolute;
-        left: 15%;
-        display: block;
-        margin: auto;
-        bottom: 82%;
-        border: 1px solid;
-    }
-
-    .east-wing-stairway:before {
-        top: 8px;
-        left: 3px;
-    }
-
-    .east-wing-stairway .door {
-        min-width: inherit;
-        width: 10px;
-        bottom: -3px;
-        left: 5%;
-    }
-
-    .east-wing-stairway .stairwell {
-        width: 68%;
-        height: 45%;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
-    .east-wing-stairway .stairwell .stairs-vertical {
-        width: 65%;
-        height: 45%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        border-bottom: 1px solid;
-    }
-
-    .east-wing-stairway .stairwell .stairs-horizontal {
-        width: 38%;
-        height: 58%;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        border-left: 1px solid;
-    }
-
-    .east-wing-stairway .stairwell .stairs-landing {
-        width: 36%;
-        height: 42%;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
-    .east-wing-storeroom {
-        height: 12%;
-        width: 12%;
-        position: absolute;
-        left: 20%;
-        display: block;
-        margin: auto;
-        bottom: 82%;
-        border: 1px solid;
-    }
-
-    .east-wing-storeroom:before {
-        bottom: 7px;
-        right: 17px;
-    }
-
-    .east-wing-storeroom .door {
-        min-width: inherit;
-        width: 10px;
-        top: -3px;
-        right: 20%;
-    }
-
-    .winding-corridor {
-        height: 27%;
-        width: 45%;
-        position: absolute;
-        left: 27%;
-        display: block;
-        margin: auto;
-        bottom: 67%;
-        border: 1px solid;
-    }
-
-    .winding-corridor:before {
-        top: 10px;
-        left: 67px;
-    }
-
-    .bathroom {
-        height: 16%;
-        width: 16%;
-        position: absolute;
-        left: 56%;
-        display: block;
-        margin: auto;
-        bottom: 78%;
-        border: 1px solid;
-    }
-
-    .bathroom:before {
-        top: 28px;
-        left: 5px;
-    }
-
-    .bathroom .door {
-        min-width: inherit;
-        width: 10px;
-        bottom: -3px;
-        left: 10%;
-    }
-
-    .bathroom .bathroom-wall {
-        height: 35%;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        top: 0;
-        border-bottom: 1px solid;
-    }
-
-    .bathroom .passage-way-wall {
-        right: 0;
-        bottom: 0;
-        width: 30%;
-        height: 42%;
-        border-left: 1px solid;
-        position: absolute;
-    }
-
-    .outside-boiler {
-        height: 30%;
-        width: 8%;
-        position: absolute;
-        left: 72%;
-        display: block;
-        margin: auto;
-        bottom: 72%;
-        border: 1px dashed;
-        border-left: 0px;
-    }
-
-    .outside-boiler:before {
-        top: 10px;
-        right: 18px;
-    }
-
-    .outside-boiler .door {
-        bottom: 5%;
-        min-height: inherit;
-        height: 10px;
-        left: -3px;
-    }
-
-    .outside-boiler .upper-corridor {
-        height: 28%;
-        width: 240%;
-        position: absolute;
-        left: -240%;
-        display: block;
-        margin: auto;
-        bottom: 73%;
-        border: 1px dashed;
-        border-bottom: 1px solid;
-        border-right: 0px;
-    }
-
-    .outside {
-        height: 28%;
-        width: 20.2%;
-        display: block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: block;
-        margin: auto;
-        top: 10%;
-    }
-
-    .graveyard {
-        position: absolute;
-        bottom: 1.5%;
-        left: 13%;
-        height: 90%;
-        width: 52%;
-    }
-
-    .graveyard:before {
-        top: 130px;
-        z-index: 9;
-        right: 38px;
-    }
-
-    .graveyard.room:hover, .graveyard.room.toggle-state {
-        background: transparent !important;
-    }
-
-    .graveyard .entrance-to-crypt .door {
-        width: 10px;
-        min-width: inherit;
-        left: 0;
-        right: 0;
-        margin: auto;
-    }
-
-    .graveyard .entrance-to-crypt .stairs {
-        width: 70%;
-        height: 20%;
-        position: absolute;
-        top: -20%;
-        left: 0;
-        right: 0;
-        border-bottom: 1px solid;
-        margin: auto;
-    }
-
-    .graveyard .stairs-landing {
-        position: absolute;
-    }
-
-    .graveyard .stairs-vertical {
-        width: 33%;
-        position: absolute;
-        border-bottom: 1px solid;
-    }
-
-    .graveyard .stairs-vertical:nth-of-type(2) {
-        left: 25%;
-        bottom: 0;
-        height: 13%;
-        border-top: 1px solid;
-        border-bottom: 1px solid;
-        z-index: 1;
-    }
-
-    .graveyard .stairs-vertical:nth-of-type(4) {
-        bottom: 18%;
-        left: 29%;
-        height: 17%;
-        border-top: 1px solid;
-        z-index: 1;
-    }
-
-    .graveyard .stairs-landing:nth-of-type(3) {
-        width: 30%;
-        height: 35%;
-        bottom: 0;
-        left: 0;
-        border: 1px solid;
-        border-bottom: 0px
-    }
-
-    .graveyard .stairs-landing:nth-of-type(1) {
-        width: 30%;
-        height: 13%;
-        bottom: 0;
-        left: 57%;
-        border: 1px solid;
-        border-left: 0px;
-    }
-
-    .graveyard .stairs-landing:nth-of-type(1):after {
-        content: "\f0d8";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: relative;
-        top: 10px;
-        z-index: 9;
-        font-size: 15px;
-    }
-
-    .graveyard .entrance-to-gallery {
-        width: 108%;
-        bottom: 20%;
-        left: 58%;
-        height: 20%;
-        position: absolute;
-        border: 1px solid;
-        border-right: 0px;
-    }
-
-    .graveyard .path-to-crypt-entrance.room {
-        width: 25%;
-        bottom: 39%;
-        left: 58%;
-        height: 10%;
-        position: absolute;
-        border: 1px solid;
-        border-bottom: 0px;
-    }
-
-    .graveyard .entrance-to-crypt {
-        width: 20%;
-        bottom: 48.5%;
-        left: 58%;
-        height: 52%;
-        position: absolute;
-        border: 1px solid;
-        border-bottom: 0px;
-    }
-
-    .graveyard .upper-left-graveyard {
-        width: 48%;
-        bottom: 48.5%;
-        left: 10%;
-        height: 40%;
-        position: absolute;
-        border: 1px solid;
-        border-right: 0px;
-    }
-
-    .graveyard .upper-left-graveyard .dividing-fence {
-        width: 2%;
-        height: 30%;
-        right: -1px;
-        position: absolute;
-        bottom: 0;
-    }
-
-    .roofed-passage {
-        width: 20%;
-        bottom: 45%;
-        right: 0%;
-        height: 53%;
-        position: absolute;
-        border: 1px solid;
-        border-top: 0px;
-    }
-
-    .roofed-passage:before {
-        top: 25px;
-        left: 12px;
-    }
-
-    .roofed-passage .passage-to-garden-shed {
-        width: 300%;
-        bottom: 100%;
-        right: -198%;
-        height: 53%;
-        position: absolute;
-        border: 1px solid;
-        border-bottom: 0px;
-        border-top-left-radius: 85%;
-    }
-
-    .roofed-passage .passage-to-garden-shed-cutout {
-        width: 198%;
-        bottom: 100%;
-        right: -198%;
-        height: 25%;
-        position: absolute;
-        border: 1px solid;
-        border-bottom: 0px;
-        border-right: 0px;
-        border-top-left-radius: 85%;
-    }
-
-    .garden-shed {
-        width: 35%;
-        height: 25%;
-        position: absolute;
-        border: 1px solid;
-        bottom: 105%;
-        left: 120%;
-    }
-
-    .garden-shed:before {
-        top: 15px;
-        left: 30px;
-    }
-
-    .garden-shed .entrance-to-main-garden {
-        right: -13%;
-        top: 15%;
-        border: 1px solid;
-        border-left: 0px;
-        height: 55%;
-        width: 13%;
-        position: absolute;
-    }
-
-    .garden-shed .entrance-to-main-garden .door {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        right: 0;
-        max-height: 20px;
-    }
-
-    .garden-shed > .door-vertical {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        height: 10px;
-        min-height: inherit;
-        max-height: 10px;
-        left: -3px;
-    }
-
-    .garden-shed .stairs-vertical {
-        bottom: 0;
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 32%;
-        width: 50%;
-        margin: auto;
-        border-top: 1px solid;
-    }
-
-    .garden-shed > .door-horizontal {
-        bottom: 0;
-        position: absolute;
-        right: 5%;
-        bottom: -3px;
-        width: 10px;
-        min-width: inherit;
-    }
-
-    .garden-shed .stairs-landing {
-        bottom: 0;
-        position: absolute;
-        right: 0;
-        height: 32%;
-        width: 50%;
-        border-top: 1px solid;
-    }
-
-    /* Icon Marker Placements */
-
-    .dark-corridor .icon-markers .hunter .icon-marker {
-        top: 10px;
-        left: 5px;
-    }
-
-    .dark-corridor .icon-markers .zombie .icon-marker {
-        top: 35px;
-        left: 5px;
-    }
-
-    .courtyard-study .icon-markers .ammunition .icon-marker {
-        top: 2px;
-        left: 2px;
-    }
-
-    .courtyard-study .icon-markers .item-of-interest .icon-marker {
-        bottom: 10px;
-        left: 2px;
-    }
-
-    .courtyard-study .icon-markers .self-defense .icon-marker {
-        bottom: 2px;
-        left: 2px;
-    }
-
-    .winding-corridor .icon-markers .person-of-interest .icon-marker {
-        left: 30px;
-        bottom: 41px;
-    }
-
-    .winding-corridor .icon-markers .zombie:nth-child(1) .icon-marker {
-        top: 2px;
-        left: 25px;
-    }
-
-    .winding-corridor .icon-markers .zombie:nth-child(2) .icon-marker {
-        top: 2px;
-        left: 50px;
-    }
-
-    .winding-corridor .icon-markers .zombie:nth-child(3) .icon-marker {
-        top: 2px;
-        left: 75px;
-    }
-
-    .winding-corridor .icon-markers .zombie:nth-child(4) .icon-marker {
-        top: 2px;
-        left: 100px;
-    }
-
-    .winding-corridor .icon-markers .hunter:nth-child(5) .icon-marker {
-        left: 12px;
-        bottom: 28px;
-    }
-
-    .winding-corridor .icon-markers .hunter:nth-child(6) .icon-marker {
-        right: 50px;
-        bottom: 20px;
-    }
-
-    .bathroom .icon-markers .zombie .icon-marker {
-        top: 25px;
-        left: 15px;
-    }
-
-    .bathroom .icon-markers .hunter .icon-marker {
-        bottom: 10px;
-        right: 7px;
-    }
-
-    .bathroom .icon-markers .door-key .icon-marker {
-        top: 20px;
-        left: 28px;
-    }
-
-    .bathroom .icon-markers .self-defense .icon-marker {
-        top: 20px;
-        left: 28px;
-    }
-
-
-    .living-room .icon-markers .weapon .icon-marker {
-        right: 0;
-        top: 25px;
-    }
-
-    .living-room .icon-markers .self-defense .icon-marker {
-        left: 20px;
-        top: 25px;
-    }
-
-    .living-room .icon-markers .ink-ribbon .icon-marker {
-        right: 20px;
-        top: 25px;
-    }
-
-    .exhibition-room .icon-markers .zombie .icon-marker {
-        right: 10px;
-    }
-
-    .exhibition-room .icon-markers .self-defense .icon-marker {
-        left: 72px;
-        top: -13px;
-    }
-
-    .south-east-corridor .icon-markers .self-defense .icon-marker {
-        right: 38px;
-        bottom: 55px;
-    }
-
-    .south-east-corridor .icon-markers .ammunition .icon-marker {
-        right: 38px;
-        bottom: 155px;
-    }
-
-    .south-east-corridor .icon-markers .cerberus:nth-child(1) .icon-marker {
-        right: -2px;
-        bottom: 55px;
-    }
-
-    .south-east-corridor .icon-markers .cerberus:nth-child(2) .icon-marker {
-        right: -2px;
-        bottom: 155px;
-    }
-
-    .outside-boiler .icon-markers .cerberus:nth-child(1) .icon-marker {
-        right: -3px;
-        bottom: 35px;
-    }
-
-    .outside-boiler .icon-markers .cerberus:nth-child(2) .icon-marker {
-        left: -35px;
-        top: -2px;
-    }
-
-    .outside-boiler .icon-markers .green-herb:nth-child(3) .icon-marker {
-        left: -25px;
-        top: 15px;
-    }
-
-    .outside-boiler .icon-markers .green-herb:nth-child(4) .icon-marker {
-        left: -35px;
-        top: 15px;
-    }
-
-    .outside-boiler .icon-markers .red-herb:nth-child(5) .icon-marker {
-        left: -72px;
-        top: 15px;
-    }
-
-    .outside-boiler .icon-markers .red-herb:nth-child(6) .icon-marker {
-        left: -62px;
-        top: 15px;
-    }
-
-    .outside-boiler .icon-markers .red-herb:nth-child(7) .icon-marker {
-        left: -72px;
-        top: 5px;
-    }
-
-    .outside-boiler .icon-markers .item-of-interest .icon-marker {
-        left: -15px;
-        top: 15px;
-    }
-
-    .large-gallery .icon-markers .crow .icon-marker {
-        right: 25px;
-        top: 30px;
-    }
-
-    .large-gallery .icon-markers .item-of-interest .icon-marker {
-        left: 12px;
-        bottom: 12px;
-    }
-
-    .art-room .icon-markers .document .icon-marker {
-        top: 20px;
-        left: 18px;
-    }
-
-    .art-room .icon-markers .ink-ribbon .icon-marker {
-        top: 8px;
-        left: 3px;
-    }
-
-    .mirror-room .icon-markers .zombie .icon-marker {
-        top: 30px;
-        left: 30px;
-    }
-
-    .mirror-room .icon-markers .self-defense .icon-marker {
-        bottom: 5px;
-        left: 32px;
-    }
-
-    .mirror-room .icon-markers .item-of-interest .icon-marker {
-        left: 3px;
-        bottom: 15px;
-    }
-
-    .mirror-room .icon-markers .door-key .icon-marker {
-        bottom: 29px;
-        left: 3px;
-    }
-
-    .mirror-room .icon-markers .item-of-interest:nth-child(5) .icon-marker {
-        bottom: 22px;
-        left: 3px;
-    }
-
-    .mirror-room .icon-markers .green-herb .icon-marker {
-        bottom: 5px;
-        left: 5px;
-    }
-
-    .mirror-room .icon-markers .blue-herb .icon-marker {
-        bottom: 5px;
-        right: 5px;
-    }
-
-    .secret-passage .icon-markers .item-of-interest:nth-child(1) .icon-marker {
-        top: 7px;
-        left: 50px;
-    }
-
-    .secret-passage .icon-markers .item-of-interest:nth-child(2) .icon-marker {
-        top: 7px;
-        left: 57px;
-    }
-
-    .secret-passage .icon-markers .document .icon-marker {
-        top: 7px;
-        right: 5px;
-    }
-
-    .main-hall .icon-markers .person-of-interest .icon-marker {
-        bottom: 50px;
-        left: 100px;
-    }
-
-    .main-hall .icon-markers .weapon .icon-marker {
-        bottom: 70px;
-        left: 100px;
-    }
-
-    .main-hall .icon-markers .ammunition .icon-marker {
-        bottom: 42px;
-        left: 95px;
-    }
-
-    .main-hall .icon-markers .door-key .icon-marker {
-        right: 93px;
-        bottom: 42px;
-    }
-
-    .main-hall .icon-markers .cerberus .icon-marker {
-        bottom: 10px;
-        left: 100px;
-    }
-
-    .main-hall .icon-marker-tag:after {
-        width: 18px;
-        left: -18px;
-        height: 67px;
-        border-left: 1px dashed #6a6a6a;
-        border-bottom: 1px dashed #6a6a6a;
-        border-top: 0px;
-        top: -55px;
-    }
-
-    .main-hall .icon-marker-tag {
-        right: -80px;
-        bottom: -80px;
-    }
-    .graveyard .icon-markers .ammunition .icon-marker {
-        top: 45px;
-        left: 25px;
-    }
-
-    .graveyard .icon-markers .zombie:nth-child(1) .icon-marker {
-        bottom: 58px;
-        left: 100px;
-    }
-
-    .graveyard .icon-markers .zombie:nth-child(2) .icon-marker {
-        top: 95px;
-        left: 30px;
-    }
-
-    .graveyard .icon-marker-tag:after {
-        width: 55px;
-        left: 250px;
-        height: 15px;
-        border-right: 1px dashed #6a6a6a;
-        border-top: 1px dashed #6a6a6a;
-    }
-
-    .graveyard .icon-marker-tag {
-        right: 115px;
-        top: 2px;
-    }
-
-    .roofed-passage .icon-marker-tag:after {
-        width: 155px;
-        left: 250px;
-        height: 40px;
-        border-top: 1px dashed #6a6a6a;
-    }
-
-    .roofed-passage .icon-marker-tag {
-        right: 186px;
-        top: -10px;
-    }
-
-    .garden-shed .icon-marker-tag:after {
-        width: 235px;
-        right: -235px;
-        height: 40px;
-        border-top: 1px dashed #6a6a6a;
-    }
-
-    .garden-shed .icon-marker-tag {
-        right: 300px;
-        top: 42px;
-    }
-
-    .roofed-passage .icon-markers .cerberus .icon-marker {
-        left: 15px;
-        bottom: 80px;
-    }
-
-    .garden-shed .icon-markers .first-aid-spray:nth-child(1) .icon-marker {
-        top: 30px;
-        left: 35px;
-    }
-
-    .garden-shed .icon-markers .first-aid-spray:nth-child(2) .icon-marker {
-        bottom: 2px;
-        left: 20px;
-    }
-
-    .garden-shed .icon-markers .self-defense:nth-child(3) .icon-marker {
-        bottom: 2px;
-        left: 45px;
-    }
-
-    .garden-shed .icon-markers .self-defense:nth-child(4) .icon-marker {
-        top: 10px;
-        left: 35px;
-    }
-
-    .garden-shed .icon-markers .self-defense:nth-child(5) .icon-marker {
-        top: 30px;
-        left: 35px;
-    }
-
-    .garden-shed .icon-markers .ammunition:nth-child(6) .icon-marker {
-        top: 2px;
-        left: 2px;
-    }
-
-    .garden-shed .icon-markers .ammunition:nth-child(7) .icon-marker {
-        top: 20px;
-        left: 35px;
-    }
-
-    .garden-shed .icon-markers .ammunition:nth-child(8) .icon-marker {
-        top: 20px;
-        left: 35px;
-    }
-
-    .garden-shed .icon-markers .ammunition:nth-child(9) .icon-marker {
-        top: 20px;
-        left: 35px;
-    }
-
-    .dining-room .icon-markers .ink-ribbon .icon-marker {
-        right: 30px;
-        bottom: 30px;
-    }
-
-    .dining-room .icon-markers .door-key .icon-marker {
-        right: 65px;
-        top: 5px;
-    }
-
-    .dining-room .icon-markers .item-of-interest:nth-child(3) .icon-marker {
-        bottom: 20px;
-        right: 145px;
-    }
-
-    .dining-room .icon-markers .item-of-interest:nth-child(2) .icon-marker {
-        bottom: 40px;
-        left: 10px;
-    }
-
-    .tea-room .icon-markers .item-of-interest .icon-marker {
-        top: 15px;
-        left: 28px;
-    }
-
-    .tea-room .icon-markers .person-of-interest .icon-marker {
-        top: 15px;
-        left: 20px;
-    }
-
-    .tea-room .icon-markers .hunter .icon-marker {
-        bottom: 2px;
-        left: 120px;
-    }
-
-    .tea-room .icon-markers .zombie:nth-child(1) .icon-marker {
-        bottom: 2px;
-        right: 100px;
-    }
-
-    .tea-room .icon-markers .zombie:nth-child(2) .icon-marker {
-        top: 30px;
-        left: 23px;
-    }
-
-    .west-wing-outer-stairway .icon-markers .ammunition .icon-marker {
-        left: 3px;
-        top: 65px;
-    }
-
-    .west-wing-outer-stairway .green-herb:nth-child(3) .icon-marker {
-        right: 12px;
-        top: 23px;
-    }
-
-    .west-wing-outer-stairway .green-herb:nth-child(4) .icon-marker {
-        right: 23px;
-        top: 23px;
-    }
-
-    .west-wing-outer-stairway .icon-markers .crow .icon-marker {
-        right: 3px;
-        top: 55px;
-    }
-
-    .medical-storage-room .icon-markers .item-of-interest .icon-marker {
-        right: 7px;
-        top: 20px;
-    }
-
-    .small-storeroom .icon-markers .item-of-interest .icon-marker {
-        right: 3px;
-        top: 3px;
-    }
-
-    .small-storeroom .icon-markers .self-defense .icon-marker {
-        right: 15px;
-        top: 3px;
-    }
-
-    .small-storeroom .icon-markers .ink-ribbon .icon-marker {
-        left: 5px;
-        bottom: 5px;
-    }
-
-    .medical-storage-room .icon-markers .person-of-interest:nth-child(2) .icon-marker {
-        right: 15px;
-        top: 5px;
-    }
-
-    .medical-storage-room .icon-markers .person-of-interest:nth-child(1) .icon-marker {
-        right: 25px;
-        top: 5px;
-    }
-
-    .west-wing-inner-stairway .icon-markers .hunter:nth-child(5) .icon-marker {
-        bottom: 3px;
-        left: 50px;
-    }
-
-    .west-wing-inner-stairway .icon-markers .hunter:nth-child(4) .icon-marker {
-        bottom: 5px;
-        left: 45px;
-        opacity: .7;
-    }
-
-    .west-wing-inner-stairway .icon-markers .zombie:nth-child(3) .icon-marker {
-        bottom: 3px;
-        left: 30px;
-    }
-
-    .west-wing-inner-stairway .icon-markers .zombie:nth-child(2) .icon-marker {
-        bottom: 5px;
-        left: 25px;
-        opacity: .7;
-    }
-
-    .west-wing-inner-stairway .icon-markers .zombie:nth-child(1) .icon-marker {
-        bottom: 25px;
-        left: 10px;
-    }
-
-    .researchers-room .icon-markers .zombie:nth-child(1) .icon-marker {
-        right: 20px;
-        top: 15px;
-    }
-
-    .researchers-room .icon-markers .zombie:nth-child(2) .icon-marker {
-        left: 15px;
-        bottom: 13px;
-    }
-
-    .researchers-room .icon-markers .ammunition .icon-marker {
-        bottom: 25px;
-        right: 25px;
-    }
-
-    .researchers-room .icon-markers .document .icon-marker {
-        bottom: 5px;
-        right: 5px;
-    }
-
-    .researchers-room .icon-markers .self-defense .icon-marker {
-        bottom: 5px;
-        left: 22px;
-    }
-
-    .northern-corridor .icon-markers .self-defense:nth-child(1) .icon-marker {
-        left: 5px;
-        top: 5px;
-    }
-
-    .northern-corridor .icon-markers .self-defense:nth-child(2) .icon-marker {
-        left: 57px;
-        top: 73px;
-    }
-
-    .northern-corridor .icon-markers .zombie:nth-child(3) .icon-marker {
-        top: 5px;
-        left: 85px;
-    }
-
-    .northern-corridor .icon-markers .zombie:nth-child(4) .icon-marker {
-        top: 5px;
-        left: 135px;
-    }
-
-    .northern-corridor .icon-markers .hunter:nth-child(5) .icon-marker {
-        top: 130px;
-        left: 7px;
-    }
-
-    .bar .icon-markers .ink-ribbon .icon-marker {
-        left: 10px;
-        bottom: 30px;
-    }
-
-    .bar .icon-markers .person-of-interest .icon-marker {
-        left: 75px;
-        bottom: 35px;
-    }
-
-    .bar .icon-markers .document .icon-marker {
-        left: 65px;
-        top: -50px;
-    }
-
-    .bar .icon-markers .item-of-interest:nth-child(1) .icon-marker {
-        right: 25px;
-        top: 3px;
-    }
-
-    .bar .icon-markers .item-of-interest:nth-child(2) .icon-marker {
-        left: 55px;
-        top: -55px;
-    }
-
-    .tiger-statue-room .icon-markers .item-of-interest .icon-marker {
-        bottom: 10px;
-        left: 13px;
-    }
-
-    .tiger-statue-room .icon-markers .ammunition .icon-marker {
-        bottom: 20px;
-        left: 13px;
-    }
-
-    .tiger-statue-room .icon-markers .adder .icon-marker {
-        bottom: 15px;
-        right: 10px;
-    }
-
-    .greenhouse .icon-markers .item-of-interest .icon-marker {
-        left: 5px;
-        top: 30px;
-    }
-
-    .greenhouse .icon-markers .fountain-plant .icon-marker {
-        left: 25px;
-        top: 30px;
-    }
-
-    .greenhouse .icon-markers .green-herb:nth-child(3) .icon-marker {
-        left: 34px;
-        bottom: 10px;
-    }
-
-    .greenhouse .icon-markers .green-herb:nth-child(4) .icon-marker {
-        left: 25px;
-        bottom: 10px;
-    }
-
-    .greenhouse .icon-markers .green-herb:nth-child(5) .icon-marker {
-        left: 16px;
-        bottom: 10px;
-    }
-
-    .greenhouse .icon-markers .green-herb:nth-child(6) .icon-marker {
-        left: 21px;
-        bottom: 2px;
-    }
-
-    .greenhouse .icon-markers .green-herb:nth-child(7) .icon-marker {
-        left: 30px;
-        bottom: 2px;
-    }
-
-    /* Room Thumbnails */
-
-    /* Outside */
-    #roofed-passage.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/d/d8/R11a_00064.jpg/revision/latest?cb=20150627152027);
-    }
-
-    #garden-shed.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/4/45/R11b_00001.jpg/revision/latest?cb=20150628002613);
-    }
-
-    #graveyard.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/8/87/R10b_00033.jpg/revision/latest?cb=20150610124030);
-    }
-
-    /* Main Hall */
-    #main-hall.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/4/4f/Entrance_Hall.png/revision/latest?cb=20161126120440);
-    }
-
-    /* East Wing */
-    #suspended-ceiling-room.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/6/61/2002_Suspended_ceiling_room_1.jpg/revision/latest?cb=20140813000618);
-    }
-
-    #dark-corridor.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/0/0f/R10a_00002.jpg/revision/latest?cb=20150623025049);
-    }
-
-    #winding-corridor.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/0/09/R109_00011.jpg/revision/latest?cb=20150622053120);
-    }
-
-    #large-gallery.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/6/65/R117_00006.jpg/revision/latest?cb=20150620062737);
-    }
-
-    #east-wing-stairway.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/c/c6/2F_East_Stairway.jpg/revision/latest?cb=20100806075953);
-    }
-
-    #courtyard-study.room-thumbnail {
-        background-image: url(http://img55.laughinggif.com/pic/HTTP3BpcGVtYWtlci5ydS93cC1jb250ZW50L3VwbG9hZHMvdmlkZW8vMjAxMi8wNi93aGl0ZV9ub2lzZS5naWYlog.gif);
-    }
-
-    #courtyard-study.room-thumbnail:after {
-        content: "No Data";
-        position: absolute;
-        color: #ffffff;
-        font-size: 15px;
-        text-align: center;
-        right: 0;
-        left: 0;
-        height: 15px;
-        top: 0;
-        bottom: 0;
-        width: 80px;
-        display: block;
-        margin: auto;
-        padding: 10px 20px;
-        background: rgba(0, 0, 0, 0.22);
-    }
-
-    #east-wing-storeroom.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/c/c2/RE4P08_480f4925_6.png/revision/latest?cb=20120322111438);
-    }
-
-    #outside-boiler.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/1/13/R114_00031.jpg/revision/latest?cb=20150614110037);
-    }
-
-    #bathroom.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/5/5e/R109_00024.jpg/revision/latest?cb=20150613125908);
-    }
-
-    #south-east-corridor.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/1/13/R108_00005.jpg/revision/latest?cb=20150616145147);
-    }
-
-    #exhibition-room.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/b/be/RE4P08_3c5736de_6.png/revision/latest?cb=20120321102250);
-    }
-
-    #art-room.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/e/e7/R111_00001.jpg/revision/latest?cb=20150610004933);
-    }
-
-    #living-room.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/e/e3/R116_00001.jpg/revision/latest?cb=20150620054826);
-    }
-
-    #secret-passage.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/d/d0/Trevor_grave_%282%29.jpg/revision/latest?cb=20141002111334);
-    }
-
-    #mirror-room.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/c/cd/R111_00007.jpg/revision/latest?cb=20150625062710);
-    }
-
-    #hidden-wardrobe.room-thumbnail {
-        background-image: url(http://img55.laughinggif.com/pic/HTTP3BpcGVtYWtlci5ydS93cC1jb250ZW50L3VwbG9hZHMvdmlkZW8vMjAxMi8wNi93aGl0ZV9ub2lzZS5naWYlog.gif);
-    }
-
-    #hidden-wardrobe.room-thumbnail:after {
-        content: "No Data";
-        position: absolute;
-        color: #ffffff;
-        font-size: 15px;
-        text-align: center;
-        right: 0;
-        left: 0;
-        height: 15px;
-        top: 0;
-        bottom: 0;
-        width: 80px;
-        display: block;
-        margin: auto;
-        padding: 10px 20px;
-        background: rgba(0, 0, 0, 0.22);
-    }
-
-    /* West Wing */
-
-    #dining-room.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/7/77/R105_00005.jpg/revision/latest?cb=20150608142836);
-    }
-
-    #tea-room.room-thumbnail {
-        background-image: url(https://vignette4.wikia.nocookie.net/residentevil/images/3/30/R103_00017.jpg/revision/latest?cb=20150609093727);
-    }
-
-    #bar.room-thumbnail {
-        background-image: url(https://vignette4.wikia.nocookie.net/residentevil/images/5/5b/R10f_00002.jpg/revision/latest?cb=20150615120252);
-    }
-
-    #researchers-room.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/1/1c/R10e_00002.jpg/revision/latest?cb=20150624055906);
-    }
-
-    #west-wing-outer-stairway.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/f/fa/R112_00033.jpg/revision/latest?cb=20150609095024);
-    }
-
-    #west-wing-inner-stairway.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/e/e5/R101_00005.jpg/revision/latest?cb=20150619085120);
-    }
-
-    #medical-storage-room.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/f/fa/R100_00001.jpg/revision/latest?cb=20150610114857);
-    }
-
-    #small-storeroom.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/0/0b/R102_00003.jpg/revision/latest?cb=20150622022917);
-    }
-
-    #northern-corridor.room-thumbnail {
-        background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/4/4d/R103_00040.jpg/revision/latest?cb=20150624051255);
-    }
-
-    #tiger-statue-room.room-thumbnail {
-        background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/9/98/Tiger_statue_room_remastered.png/revision/latest?cb=20150128113249);
-    }
-
-    #greenhouse.room-thumbnail {
-        background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/b/b3/2002_Greenhouse_-_background_3.jpg/revision/latest?cb=20140813010246);
-    }
-
-    /* Marker Placements */
-
-    .east-wing-stairway .icon-markers .green-herb .icon-marker {
-        top: 20px;
-        right: 20px;
-    }
-
-    .east-wing-storeroom .icon-markers .first-aid-spray:nth-child(6) .icon-marker {
-        left: 20px;
-        top: 22px;
-    }
-
-    .east-wing-storeroom .icon-markers .first-aid-spray:nth-child(5) .icon-marker {
-        left: 20px;
-        bottom: 2px;
-    }
-
-    .east-wing-storeroom .icon-markers .door-key {
-        top: 5px;
-        left: 0px;
-        position: absolute;
-    }
-
-    .east-wing-storeroom .icon-markers .document .icon-marker {
-        right: 3px;
-        top: 15px;
-        z-index: 99;
-    }
-
-    .east-wing-storeroom .icon-markers .item-of-interest .icon-marker {
-        left: 5px;
-        top: 15px;
-        z-index: 999;
-    }
-
-    .east-wing-storeroom .ammunition:nth-child(1) .icon-marker {
-        right: 3px;
-        top: 7px;
-    }
-
-    .east-wing-storeroom .icon-markers .ammunition:nth-child(2) .icon-marker {
-        left: 10px;
-        top: 22px;
-    }
-
-    .east-wing-storeroom .icon-markers .ammunition:nth-child(3) .icon-marker {
-        left: 10px;
-        bottom: 2px;
-    }
-
-    .east-wing-storeroom .icon-markers .ammunition:nth-child(4) .icon-marker {
-        left: 10px;
-        bottom: 2px;
-    }
-
-    .east-wing-stairway .icon-markers .zombie:nth-child(3) .icon-marker {
-        top: 5px;
-        left: -2px;
-        opacity: .7;
-    }
-
-    .east-wing-stairway .icon-markers .zombie:nth-child(2) .icon-marker {
-        top: 8px;
-        left: 3px;
-    }
-
-    .east-wing-stairway .icon-markers .zombie:nth-child(1) .icon-marker {
-        top: 23px;
-        left: 20px;
-        z-index: 999;
-    }
-
-    .east-wing-stairway .icon-markers .hunter:nth-child(4) .icon-marker {
-        top: 8px;
-        right: 7px;
-    }
-
-    .east-wing-stairway .icon-markers .hunter:nth-child(5) .icon-marker {
-        top: 5px;
-        right: 12px;    
-        opacity: .7;
-    }
-
-    /* Icon Marker Placements */
-
-    .exhibition-room .map {
-        left: 35%;
-        position: absolute;
-        top: 40%;
-        font-size: 12px;
-    }
-
-    .small-storeroom .kerosene {
-        position: absolute;
-        right: 15%;
-        top: 35%;
-    }
-
-    .east-wing-storeroom .kerosene {
-        position: absolute;
-        left: 35%;
-        top: 5%;
-    }
-
-    .outside-boiler .kerosene {
-        position: absolute;
-        top: 10px;
-        left: -53px;
-        z-index: 1;
-    }
-
-    .medical-storage-room .item-box {
-        position: absolute;
-        right: 15%;
-        bottom: 10%;
-    }
-
-    .mirror-room .item-box {
-        right: 8%;
-        top: 5%;
-        position: absolute;
-    }
-
-    .east-wing-storeroom .item-box {
-        position: absolute;
-        bottom: 15%;
-        right: 15%;
-    }
-
-    .main-hall .typewriter {
-        position: absolute;
-        top: 30%;
-        left: 25%;
-        display: none;
-    }
-
-    .medical-storage-room .typewriter {
-        top: 5%;
-        left: 2%;
-        position: absolute;
-    }
-
-    .dining-room .typewriter {
-        position: absolute;
-        right: 0%;
-        bottom: 7%;
-    }
-
-    .east-wing-storeroom .typewriter {
-        top: 5%;
-        left: 0;
-        position: absolute;
-    }
-
-    /* Stairs */
-
-    .main-hall-grandstairway:after {
-        content: "\f0d8";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: relative;
-        top: 5px;
-        z-index: 9;
-        font-size: 20px;
-    }
-
-    .west-wing-inner-stairway .passage-to-stairs .stairs:after {
-        content: "\f0da";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        right: 5px;
-        z-index: 9;
-    }
-
-    .west-wing-outer-stairway .stairwell .stairs-horizontal:after {
-        content: "\f0d8";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: relative;
-        top: 5px;
-        z-index: 9;
-    }
-
-    .main-hall-stairways .stairs:nth-child(3):after {
-        content: "\f0da";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        right: 10px;
-        top: 3px;
-        z-index: 9;
-    }
-
-    .west-wing-outer-stairway .stairwell .stairs-vertical:after {
-        content: "\f0da";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        right: -8px;
-        top: 2px;
-        z-index: 9;
-    }
-
-    .main-hall-stairways .stairs:nth-child(1):after, .main-hall-stairways .stairs:nth-child(7):after {
-        content: "\f0d8";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: relative;
-        top: 0px;
-        z-index: 9;
-    }
-
-    .main-hall-stairways .stairs:nth-child(5):after {
-        content: "\f0d9";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        left: 12px;
-        top: 3px;
-        z-index: 9;
-    }
-
-    .tea-room .stairs-to-passage:after {
-        content: "\f0d9";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: relative;
-        left: 2px;
-        top: 0px;
-        z-index: 9;
-    }
-
-    .east-wing-stairway .stairwell .stairs-vertical:after {
-        content: "\f0da";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        right: 10px;
-        top: 0px;
-        z-index: 9;
-    }
-
-    .east-wing-stairway .stairwell .stairs-horizontal:after {
-        content: "\f0d7";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        right: 0;
-        left: 0;
-        top: 3px;
-        z-index: 9;
-    }
-
-    .graveyard .stairs-vertical:nth-of-type(2):after {
-        content: "\f0d9";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        left: 16px;
-        top: 22%;
-        z-index: 9;
-    }
-
-    .graveyard .stairs-vertical:nth-of-type(4):after {
-        content: "\f0da";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        left: 17px;
-        top: 30%;
-        z-index: 9;
-    }
-
-    .garden-shed .stairs-vertical:after {
-        content: "\f0da";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: absolute;
-        right: 11px;
-        top: 2px;
-        z-index: 9;
-    }
-
-    .graveyard .entrance-to-crypt .stairs:after {
-        content: "\f0d8";
-        font: normal normal normal 14px/1 FontAwesome;
-        color: #8c8c8c;
-        position: relative;
-        top: -15px;
-        z-index: 9;
-    }
-
-    /* Nocturnal Theme - Map */
-
-    .nocturnal-theme .room:hover, .nocturnal-theme .room:hover .room {
-        background: #575757;
-    }
-
-    .nocturnal-theme .room.toggle-state:hover .room {
-        background: #5c5c5c !important;
-    }
-
-    .nocturnal-theme .room.toggle-state, .nocturnal-theme .room.toggle-state .room {
-        background: #5c5c5c !important;
-    }
-
-    .nocturnal-theme .door-locked:after,.nocturnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after {
-        color: #8c8c8c;
-    }
-
-    .nocturnal-theme .door-tooltip {
-        border-color: #504f4f;
-        background: #3d3d3d;
-        color: #bcb9b9;
-    }
-
-    .nocturnal-theme .ladder {
-        border-color: #313030;
-        color: #313030;
-    }
-
-    .nocturnal-theme .ladder-horizontal {
-        background: linear-gradient( to right, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 2px, rgba(78, 78, 78, 0) 2px);
-    }
-
-    .nocturnal-theme .ladder-vertical {
-        background: linear-gradient( to bottom, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 0px, rgba(78, 78, 78, 0) 0px);
-    }
-
-    .nocturnal-theme .main-hall {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-entrance {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-grandstairway {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .stairs-ascending.stairs-horizontal {
-        background: linear-gradient( to bottom, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
-    }
-
-    .nocturnal-theme .stairs-descending.stairs-horizontal {
-        background: linear-gradient( to bottom, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
-    }
-
-    .nocturnal-theme .stairs-ascending.stairs-vertical {
-        background: linear-gradient( to right, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
-    }
-
-    .nocturnal-theme .stairs-descending.stairs-vertical {
-        background: linear-gradient( to right, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
-    }
-
-    .nocturnal-theme .main-hall-grandstairway-wall {
-        background: #494949;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-stairways {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .main-hall-stairways .stairs:nth-child(1) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-stairways div[class*="stair"] {
-        background-color: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-stairways .stairs:nth-child(7) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-stairways .stairs:nth-child(3) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-stairways .stairs:nth-child(5) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .main-hall-stairways .stairs:nth-child(4) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .dining-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .tea-room .passage-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .tea-room .passage-to-door {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .tea-room  .corridor {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .tea-room .passage-to-stairs {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .tea-room .stairs-to-passage {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .bar {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .bar .passage-way {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .bar .bar-wall {
-        background: #494949;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .tiger-statue-room {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .tiger-statue-room .tiger-statue-room-wall {
-        background: #494949;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .researchers-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .researchers-room .researchers-room-wall {
-        background: #494949;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .small-storeroom {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .medical-storage-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-inner-stairway {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-inner-stairway .passage-to-stairs {
-        border-color: #313030;
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .west-wing-inner-stairway .passage-to-stairs .stairs {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-inner-stairway .passage-vertical {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .west-wing-inner-stairway .passage-horizontal {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .greenhouse {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .northern-corridor {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .northern-corridor .lower-passageways {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .northern-corridor .adjoining-passage-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .northern-corridor .northern-corridor-wall-cutout {
-        background: #323131;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway .passage-way {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
-        border-color: #313030;
-        background: #313030;
-        border-right-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway .stairwell .stairs-horizontal {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway .stairwell .stairs-vertical {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway .stairwell .stairs-landing {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
-        background: #313030;
-        border-color: #313030;
-        border-right-color: #3d3d3d;
-    }
-
-    .nocturnal-theme .exhibition-room {
-        background: #4e4e4e;    
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .exhibition-room .passage-way {
-        background: #4e4e4e;    
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .exhibition-room .passage-to-door {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .art-room {
-        background: #4e4e4e;    
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .secret-passage {
-        background: #4e4e4e;    
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .secret-passage .ladder:before {
-        color: #8c8c8c;
-    }
-
-    .nocturnal-theme .art-room .passage-way-wall {
-        background: #4e4e4e;    
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .south-east-corridor {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .south-east-corridor .upper-corridor {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .hidden-wardrobe {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .mirror-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .living-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .large-gallery {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .large-gallery .room-to-graveyard {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .large-gallery .passage-to-door {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .large-gallery .passage-way-bend {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .suspended-ceiling-room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .dark-corridor {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .courtyard-study {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .courtyard-study .bay-window {
-        background: #4e4e4e;
-        border-left-color: #313030;
-        border-right-color: #313030;
-        border-bottom-color: #4e4e4e;
-    }
-
-    .nocturnal-theme .courtyard-study.room:hover .bay-window {
-        border-bottom-color: #575757;
-    }
-
-    .nocturnal-theme .courtyard-study.room.toggle-state:hover .bay-window {
-        background: #5c5c5c;
-    }
-
-    .nocturnal-theme .courtyard-study.room.toggle-state .bay-window {
-        border-bottom-color: #5c5c5c;
-    }
-
-    .nocturnal-theme .east-wing-stairway {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .east-wing-stairway .stairwell .stairs-vertical {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .east-wing-stairway .stairwell .stairs-horizontal {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .east-wing-stairway .stairwell .stairs-landing {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .east-wing-storeroom {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .winding-corridor {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .bathroom {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .bathroom .bathroom-wall {
-        background: #494949;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .bathroom .passage-way-wall {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .outside-boiler {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .outside-boiler .upper-corridor {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .entrance-to-crypt .stairs {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .stairs-landing {
-        background: #4e4e4e
-    }
-
-    .nocturnal-theme .graveyard .stairs-vertical {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .stairs-vertical:nth-of-type(2) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .stairs-vertical:nth-of-type(4) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .stairs-landing:nth-of-type(3) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .stairs-landing:nth-of-type(1) {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .entrance-to-gallery {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .path-to-crypt-entrance.room {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard:hover .path-to-crypt-entrance.room {
-        background: #575757;
-    }
-
-    .nocturnal-theme .graveyard .entrance-to-crypt {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .upper-left-graveyard {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .graveyard .upper-left-graveyard .dividing-fence {
-        background: #4e4e4e;
-    }
-
-    .nocturnal-theme .graveyard:hover .upper-left-graveyard .dividing-fence {
-        background: #575757;
-    }
-
-    .nocturnal-theme .roofed-passage {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .roofed-passage .passage-to-garden-shed {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .roofed-passage .passage-to-garden-shed-cutout {
-        background: #313030;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .garden-shed {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .garden-shed .entrance-to-main-garden {
-        background: #4e4e4e;
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .garden-shed .stairs-vertical {
-        border-color: #313030;
-    }
-
-    .nocturnal-theme .garden-shed .stairs-landing {
-        border-color: #313030;
-    }
-
-    /* Diurnal Theme - Map */
-
-    .diurnal-theme .room:hover, .diurnal-theme .room:hover .room {
-        background: #e5e5e5;
-    }
-
-    .diurnal-theme .room.toggle-state:hover .room {
-        background: #ebebeb !important;
-    }
-
-    .diurnal-theme .room.toggle-state, .diurnal-theme .room.toggle-state .room {
-        background: #ebebeb !important;
-    }
-
-    .diurnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after {
-        color: #9d9d9d;
-    }
-
-    .diurnal-theme .door-tooltip {
-        background: white;
-        border-color: #ddd;
-        color: #6a6a6a;
-    }
-
-    .diurnal-theme .ladder {
-        border-color: #b7b7b7;
-        color: #b7b7b7;
-    }
-
-    .diurnal-theme .ladder-horizontal {
-        background: linear-gradient( to right, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 2px, rgba(196, 196, 196, 0) 2px);
-    }
-
-    .diurnal-theme .ladder-vertical {
-        background: linear-gradient( to bottom, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 0px, rgba(196, 196, 196, 0) 0px);
-    }
-
-    .diurnal-theme .main-hall {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .main-hall-entrance {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .main-hall-grandstairway {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .stairs-ascending.stairs-horizontal {
-        background: linear-gradient( to bottom, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
-    }
-
-    .diurnal-theme .stairs-descending.stairs-horizontal {
-        background: linear-gradient( to bottom, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
-    }
-
-    .diurnal-theme .stairs-ascending.stairs-vertical {
-        background: linear-gradient( to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
-    }
-
-    .diurnal-theme .stairs-descending.stairs-vertical {
-        background: linear-gradient( to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
-    }
-
-    .diurnal-theme .main-hall-grandstairway-wall {
-        background: #c4c4c4;
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .main-hall-stairways {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .main-hall-stairways .stairs:nth-child(1) {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .main-hall-stairways div[class*="stair"] {
-        background-color: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .main-hall-stairways .stairs:nth-child(7) {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .main-hall-stairways .stairs:nth-child(3) {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .main-hall-stairways .stairs:nth-child(5) {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .main-hall-stairways .stairs:nth-child(4) {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .dining-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .tea-room .passage-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .tea-room .passage-to-door {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .tea-room  .corridor {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .tea-room .passage-to-stairs {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .tea-room .stairs-to-passage {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .bar {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .bar .passage-way {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .bar .bar-wall {
-        background: #c4c4c4;
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .tiger-statue-room {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .tiger-statue-room .tiger-statue-room-wall {
-        background: #c4c4c4;
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .researchers-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .researchers-room .researchers-room-wall {
-        background: #c4c4c4;
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .small-storeroom {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .medical-storage-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .west-wing-inner-stairway {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .west-wing-inner-stairway .passage-to-stairs {
-        border-color: #ccc;
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .west-wing-inner-stairway .passage-to-stairs .stairs {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .west-wing-inner-stairway .passage-vertical {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .west-wing-inner-stairway .passage-horizontal {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .greenhouse {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .northern-corridor {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .northern-corridor .lower-passageways {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .northern-corridor .adjoining-passage-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .northern-corridor .northern-corridor-wall-cutout {
-        background: whitesmoke;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway .passage-way {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
-        border-color: #ccc;
-        background: whitesmoke;
-        border-right-color: whitesmoke;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway .stairwell .stairs-horizontal {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway .stairwell .stairs-vertical {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway .stairwell .stairs-landing {
-        background: #cdcdcd;
-    }
-
-    .diurnal-theme .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
-        background: whitesmoke;
-        border-color: #ccc;
-        border-right-color: whitesmoke;
-    }
-
-    .diurnal-theme .exhibition-room {
-        background: #dfdfdf;    
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .exhibition-room .passage-way {
-        background: #dfdfdf;    
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .exhibition-room .passage-to-door {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .art-room {
-        background: #dfdfdf;    
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .secret-passage {
-        background: #dfdfdf;    
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .secret-passage .ladder:before {
-        color: #8c8c8c;
-    }
-
-    .diurnal-theme .art-room .passage-way-wall {
-        background: #dfdfdf;    
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .south-east-corridor {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .south-east-corridor .upper-corridor {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .hidden-wardrobe {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .mirror-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .living-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .large-gallery {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .large-gallery .room-to-graveyard {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .large-gallery .passage-to-door {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .large-gallery .passage-way-bend {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .suspended-ceiling-room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .dark-corridor {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .courtyard-study {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .courtyard-study .bay-window {
-        background: #dfdfdf;
-        border-left-color: whitesmoke;
-        border-right-color: whitesmoke;
-        border-bottom-color: #dfdfdf;
-    }
-
-    .diurnal-theme .courtyard-study.room:hover .bay-window {
-        border-bottom-color: #e5e5e5;
-    }
-
-    .diurnal-theme .courtyard-study.room.toggle-state:hover .room {
-        background: #e5e5e5;
-    }
-
-    .diurnal-theme .courtyard-study.room.toggle-state .bay-window {
-        border-bottom-color: #ebebeb;
-    }
-
-    .diurnal-theme .east-wing-stairway {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .east-wing-stairway .stairwell .stairs-vertical {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .east-wing-stairway .stairwell .stairs-horizontal {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .east-wing-stairway .stairwell .stairs-landing {
-        background: #cdcdcd;
-    }
-
-    .diurnal-theme .east-wing-storeroom {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .winding-corridor {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .bathroom {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .bathroom .bathroom-wall {
-        background: #c4c4c4;
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .bathroom .passage-way-wall {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .outside-boiler {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .outside-boiler .upper-corridor {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .entrance-to-crypt .stairs {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .graveyard .stairs-landing {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .graveyard .stairs-vertical {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .stairs-vertical:nth-of-type(2) {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .stairs-vertical:nth-of-type(4) {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .stairs-landing:nth-of-type(3) {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .stairs-landing:nth-of-type(1) {
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .entrance-to-gallery {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .path-to-crypt-entrance.room {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard:hover .path-to-crypt-entrance.room {
-        background: #e5e5e5;
-    }
-
-    .diurnal-theme .graveyard .entrance-to-crypt {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .upper-left-graveyard {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .graveyard .upper-left-graveyard .dividing-fence {
-        background: #dfdfdf;
-    }
-
-    .diurnal-theme .graveyard:hover .upper-left-graveyard .dividing-fence {
-        background: #e5e5e5;
-    }
-
-    .diurnal-theme .roofed-passage {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .roofed-passage .passage-to-garden-shed {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .roofed-passage .passage-to-garden-shed-cutout {
-        background: rgb(245, 245, 245);
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .garden-shed {
-        background: #dfdfdf;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .garden-shed .entrance-to-main-garden {
-        background: #e5e5e5;
-        border-color: #ccc;
-    }
-
-    .diurnal-theme .garden-shed .stairs-vertical {
-        border-color: #b7b7b7;
-    }
-
-    .diurnal-theme .garden-shed .stairs-landing {
-        border-color: #b7b7b7;
-    }
-</style>
+    <style>
+        /* Rooms */
+
+        .main-hall {
+            height: 17%;
+            width: 20.2%;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 40%;
+            z-index: 9;
+            border: 1px solid;
+        }
+
+        .main-hall-entrance {
+            width: 55%;
+            height: 15%;
+            display: block;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -15%;
+            border: 1px solid;
+            border-top: 0px;
+        }
+
+        .main-hall-entrance:before {
+            right: -35px;
+            bottom: 35px;
+        }
+
+        .main-hall-entrance .door {
+            bottom: 0;
+            margin: auto;
+            display: block;
+            left: 0;
+            right: 0;
+            max-width: 25%;
+        }
+
+        .main-hall .door.door-vertical:nth-last-child(4) {
+            left: -3px;
+            top: 35%;
+        }
+
+        .main-hall .door.door-vertical:nth-last-child(5) {
+            right: -3px;
+            top: 13%;
+            height: 10px;
+            min-height: inherit;
+        }
+
+        .main-hall .door.door-vertical:nth-last-child(6) {
+            right: -3px;
+            top: 40%;
+        }
+
+        .main-hall-grandstairway {
+            position: absolute;
+            display: block;
+            margin: auto;
+            left: 0;
+            top: 10%;
+            right: 0;
+            width: 30%;
+            height: 35%;
+            border: 1px solid;
+            border-bottom: 0px;
+            border-top: 0px;
+            z-index: 9;
+        }
+
+        .main-hall-grandstairway-wall {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            margin: auto;
+            display: block;
+            height: 30%;
+            width: 50%;
+            border: 1px solid;
+            z-index: 1;
+        }
+
+        .main-hall-stairways {
+            position: absolute;
+            top: -15%;
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: block;
+            height: 15%;
+            width: 75%;
+        }
+
+        .main-hall-stairways .stairs:nth-child(1) {
+            left: 0;
+            bottom: -100%;
+            border-left: 1px solid;
+            border-right: 0;
+        }
+
+        .main-hall-stairways div[class*="stair"] {
+            width: 17%;
+            height: 100%;
+            position: absolute;
+            border: 1px solid;
+        }
+
+        .main-hall-stairways .stairs:nth-child(7) {
+            right: 0;
+            bottom: -100%;
+            border-left: 0;
+            border-right: 1px solid;
+        }
+
+        .main-hall-stairways .stairs:nth-child(6) {
+            right: 0;
+            top: 0;
+            border-left: 0px;
+            border-bottom: 0px;
+        }
+
+        .main-hall-stairways .stairs:nth-child(2) {
+            left: 0;
+            top: 0;
+            border-right: 0px;
+            border-bottom: 0px;
+        }
+
+        .main-hall-stairways .stairs:nth-child(3) {
+            left: 17%;
+            top: 0;
+            border-bottom: 0;
+            border-top: 0;
+        }
+
+        .main-hall-stairways .stairs:nth-child(5) {
+            right: 17%;
+            top: 0;
+            border-bottom: 0;
+            border-top: 0;
+        }
+
+        .main-hall-stairways .stairs:nth-child(4) {
+            display: block;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 33%;
+            border: 0px;
+        }
+
+        .main-hall-stairways .stairs-landing .door {
+            margin: auto;
+            display: block;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 15%;
+        }
+
+        .west-wing {
+            height: 37%;
+            width: 40%;
+            display: block;
+            position: absolute;
+            left: 0;
+            display: block;
+            margin: auto;
+            top: 20%;
+        }
+
+        .east-wing {
+            height: 37%;
+            width: 40%;
+            display: block;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            top: 20%;
+        }
+
+        .dining-room {
+            height: 25%;
+            width: 57%;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            bottom: 13%;
+            border: 1px solid;
+            border-top: 0;
+        }
+
+        .dining-room:before {
+            bottom: 10px;
+            left: 3px;
+        }
+
+        .tea-room {
+            height: 18%;
+            width: 73%;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            bottom: 38%;
+        }
+
+        .tea-room:before {
+            bottom: 10px;
+            left: 5px;
+            z-index: 99;
+        }
+
+        .tea-room .passage-room {
+            width: 15%;
+            height: 101%;
+            position: absolute;
+            bottom: 0;
+            z-index: 9;
+            border: 1px solid;
+            border-right: 0px;
+            border-top: 0px;
+        }
+
+        .tea-room .passage-to-door {
+            width: 5.5%;
+            height: 25%;
+            position: absolute;
+            top: 0;
+            left: -5%;
+            z-index: 11;
+            border-bottom: 1px solid;
+        }
+
+        .tea-room .passage-to-door .door {
+            max-height: 10px;
+            min-height: inherit;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: -3px;
+            z-index: 9;
+        }
+
+        .tea-room  .corridor {
+            width: 85%;
+            height: 35%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border: 1px solid;
+            border-left: 0px;
+            z-index: 9;
+        }
+
+        .tea-room  .corridor .door:nth-child(1) {
+            bottom: -3px;
+            left: 20%;
+            width: 10px;
+            min-width: inherit;
+        }
+
+        .tea-room  .corridor .door:nth-child(2) {
+            top: -3px;
+            left: 30%;
+            width: 10px;
+            min-width: inherit;
+        }
+
+        .tea-room  .corridor .door:nth-child(3) {
+            top: -3px;
+            right: 30%;
+            width: 10px;
+            min-width: inherit;
+        }
+
+        .tea-room .passage-to-stairs {
+            width: 8%;
+            height: 87%;
+            position: absolute;
+            top: -20%;
+            right: 0;
+            border: 1px solid;
+            border-bottom: 0px;
+            z-index: 9;
+        }
+
+        .tea-room .stairs-to-passage {
+            width: 10.5%;
+            height: 35%;
+            position: absolute;
+            top: -20%;
+            right: 8%;
+            border: 1px solid;
+            border-right: 0px;
+            z-index: 9;
+        }
+
+        .bar {
+            height: 22%;
+            width: 36%;
+            position: absolute;
+            right: 3%;
+            display: block;
+            margin: auto;
+            bottom: 44%;
+            z-index: 8;
+            border-top: 1px solid;
+            border-left: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .bar:before {
+            top: 10px;
+            left: 5px;
+        }
+
+        .bar .passage-way {
+            height: 83%;
+            width: 26%;
+            position: absolute;
+            left: 27%;
+            display: block;
+            margin: auto;
+            top: -83%;
+            border-bottom: 1px dashed;
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .bar .bar-wall {
+            height: 43%;
+            width: 22%;
+            position: absolute;
+            right: 7%;
+            display: block;
+            margin: auto;
+            bottom: 0;
+            border-left: 1px solid;
+        }
+
+        .tiger-statue-room {
+            height: 13%;
+            width: 11%;
+            position: absolute;
+            right: 28%;
+            display: block;
+            margin: auto;
+            bottom: 70.8%;
+            border: 1px solid;
+            z-index: 7;
+        }
+
+        .tiger-statue-room:before {
+            top: 8px;
+        }
+
+        .tiger-statue-room .door {
+            bottom: -3px;
+            right: 17%;
+            width: 10px;
+            min-width: inherit;
+            display: block;
+            margin: auto;
+        }
+
+        .tiger-statue-room .tiger-statue-room-wall {
+            height: 100%;
+            width: 40%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            border-right: 1px solid;
+        }
+
+        .researchers-room {
+            height: 23%;
+            width: 18%;
+            position: absolute;
+            right: 45%;
+            display: block;
+            margin: auto;
+            bottom: 44%;
+            border: 1px solid;
+            border-bottom: 0px;
+            border-top: 0px;
+            z-index: 8;
+        }
+
+        .researchers-room:before {
+            top: 10px;
+            left: 30px;
+        }
+
+        .researchers-room .researchers-room-wall {
+            left: 2px;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            width: 25%;
+            border-right: 1px solid;
+            border-left: 1px solid;
+            position: relative;
+        }
+
+        .researchers-room .door {
+            top: 15%;
+            right: -3px;
+            max-height: 10px;
+            min-height: inherit;
+            height: 100%;
+        }
+
+        .small-storeroom {
+            height: 18%;
+            width: 10%;
+            position: absolute;
+            right: 45%;
+            display: block;
+            margin: auto;
+            bottom: 67%;
+            border: 1px solid;
+            z-index: 9;
+        }
+
+        .small-storeroom:before {
+            bottom: 7px;
+            right: 10px;
+        }
+
+        .small-storeroom .door {
+            width: 10px;
+            min-width: inherit;
+            left: 3px;
+            top: -3px;
+        }
+
+        .medical-storage-room {
+            height: 18%;
+            width: 16%;
+            position: absolute;
+            right: 54%;
+            display: block;
+            margin: auto;
+            bottom: 67%;
+            border: 1px solid;
+            z-index: 9;
+        }
+
+        .medical-storage-room:before {
+            top: 8px;
+            right: 13px;
+        }
+
+        .medical-storage-room .door {
+            width: 10px;
+            min-width: inherit;
+            left: 3px;
+            bottom: -3px;
+        }
+
+        .west-wing-inner-stairway {
+            width: 31.8%;
+            height: 36%;
+            left: 23.3%;
+            position: absolute;
+            top: 8%;
+            border: 1px solid;
+            border-right: 0px;
+            border-bottom: 0px;
+        }
+
+        .west-wing-inner-stairway:before {
+            top: 9px;
+            left: 4px;
+            z-index: 9;
+        }
+
+        .west-wing-inner-stairway .passage-to-stairs {
+            height: 32%;
+            width: 64%;
+            position: absolute;
+            left: 0;
+            display: block;
+            margin: auto;
+            bottom: 0;
+            border-right: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 9;
+        }
+
+        .west-wing-inner-stairway .passage-to-stairs .stairs {
+            right: 8%;
+            bottom: -1px;
+            height: 45%;
+            width: 65%;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            position: absolute;
+        }
+
+        .west-wing-inner-stairway .passage-vertical {
+            height: 100%;
+            width: 29%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .west-wing-inner-stairway .passage-horizontal {
+            height: 20%;
+            width: 71%;
+            position: absolute;
+            right: 0.5%;
+            top: 0;
+            border-right: 1px solid;
+            z-index: 9;
+        }
+
+        .west-wing-inner-stairway .passage-horizontal .door {
+            height: 10px;
+            min-height: inherit;
+            display: block;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            right: -3px;
+        }
+
+        .greenhouse {
+            height: 18%;
+            width: 21%;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            bottom: 65.8%;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .greenhouse:before {
+            top: 8px;
+            left: 7px;
+        }
+
+        .northern-corridor {
+            height: 8.3%;
+            width: 45%;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            top: 8%;
+            border-right: 1px solid;
+            border-top: 1px solid;
+            z-index: 7;
+        }
+
+        .northern-corridor:before {
+            right: 17px;
+            top: 18px;
+        }
+
+        .northern-corridor .lower-passageways {
+            position: absolute;
+            bottom: -500%;
+            height: 500%;
+            width: 36%;
+        }
+
+        .northern-corridor .adjoining-passage-room {
+            position: absolute;
+            width: 15%;
+            right: 0;
+            height: 100%;
+            bottom: -100%;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+        }
+
+        .northern-corridor .adjoining-passage-room .door {
+            height: 10px;
+            min-height: inherit;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            display: block;
+            left: -3px;
+        }
+
+        .northern-corridor .northern-corridor-wall-cutout {
+            right: -1%;
+            top: -5%;
+            height: 30%;
+            width: 72%;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .west-wing-outer-stairway {
+            position: absolute;
+            left: 9.3%;
+            top: 0%;
+            width: 13%;
+            height: 48.5%;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .west-wing-outer-stairway:before {
+            bottom: 9px;
+            left: 3px;
+        }
+
+        .west-wing-outer-stairway .passage-way {
+            position: absolute;
+            width: 57%;
+            height: 18%;
+            right: -12%;
+            bottom: -1px;
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 10;
+        }
+
+        .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
+            bottom: 0;
+            height: 45%;
+            position: absolute;
+            width: 47%;
+            right: -1%;
+            border-left: 1px solid;
+            border-top: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .west-wing-outer-stairway .stairwell {
+            height: 27%;
+            width: 100%;
+            top: 0;
+            position: absolute;
+        }
+
+        .west-wing-outer-stairway .stairwell .stairs-horizontal {
+            width: 35%;
+            height: 60%;
+            position: absolute;
+            bottom: 0;
+            border-right: 1px solid;
+        }
+
+        .west-wing-outer-stairway .stairwell .stairs-vertical {
+            width: 65%;
+            height: 43%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-bottom: 1px solid;
+            z-index: 9;
+        }
+
+        .west-wing-outer-stairway .stairwell  .stairs-landing {
+            width: 35%;
+            height: 42%;
+            position: absolute;
+            top: 0;
+        }
+
+        .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
+            background: whitesmoke;
+            right: -2%;
+            top: 0;
+            width: 20%;
+            height: 55%;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .exhibition-room {
+            height: 20%;
+            width: 42%;
+            position: absolute;
+            left: 0;
+            display: block;
+            margin: auto;
+            bottom: 13%;            
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+        }
+
+        .exhibition-room:before {
+            top: 30px;
+            left: 55px;
+        }
+
+        .exhibition-room .passage-way {
+            height: 30%;
+            width: 60%;
+            position: absolute;
+            top: -30%;
+            right: 0;
+            border: 1px solid;
+            border-right: 0px;
+            z-index: 1;
+        }
+
+        .exhibition-room .passage-to-door {
+            height: 55%;
+            width: 15%;
+            position: absolute;
+            top: -25%;
+            right: 0;
+            z-index: 2;
+        }
+
+        .exhibition-room .passage-to-door .door {
+            right: -3px;
+            bottom: 0%;
+            min-height: initial;
+            height: 10px;
+        }
+
+        .art-room {
+            height: 20%;
+            width: 42%;
+            position: absolute;
+            left: 0;
+            display: block;
+            margin: auto;
+            bottom: 33%;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            border-top: 1px solid;
+        }
+
+        .art-room:before {
+            top: 43px;
+            left: 27px;
+            z-index: 9;
+        }
+
+        .secret-passage {
+            height: 7%;
+            width: 25%;
+            position: absolute;
+            left: 17%;
+            display: block;
+            margin: auto;
+            bottom: 39%;
+            border: 1px solid;
+            border-bottom: 0px;
+            border-right: 0px;
+        }
+
+        .secret-passage:before {
+            top: 12px;
+        }
+
+        .art-room .passage-way-wall {
+            height: 65%;
+            width: 27%;
+            position: absolute;
+            border-top: 1px solid;
+            bottom: 0;
+        }
+
+        .art-room .door {
+            right: -3px;
+            min-height: inherit;
+            height: 10px;
+            top: 10%;
+        }
+
+        .south-east-corridor {
+            height: 12%;
+            width: 42%;
+            position: absolute;
+            left: 30%;
+            display: block;
+            margin: auto;
+            bottom: 13%;
+            z-index: 0;
+            border: 1px solid;
+        }
+
+        .south-east-corridor:before {
+            bottom: 10px;
+            right: 20px;
+        }
+
+        .south-east-corridor .upper-corridor {
+            height: 375%;
+            width: 29%;
+            position: absolute;
+            right: -0.5%;
+            display: block;
+            margin: auto;
+            bottom: 100%;
+            z-index: 8;
+            border-top: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .south-east-corridor .upper-corridor .door {
+            right: 25%;
+            top: -3px;
+            width: 10px;
+            min-width: inherit;
+        }
+
+        .south-east-corridor > .door {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            display: block;
+            min-height: inherit;
+            height: 10px;
+            left: -3px;
+        }
+
+        .hidden-wardrobe {
+            height: 10%;
+            width: 18%;
+            position: absolute;
+            left: 42%;
+            display: block;
+            margin: auto;
+            bottom: 25%;
+            border: 1px solid;
+            border-bottom: 0px;
+        }
+
+        .hidden-wardrobe:before {
+            top: 16px;
+            right: 20px;
+        }
+
+        .mirror-room {
+            height: 18%;
+            width: 18%;
+            position: absolute;
+            left: 42%;
+            display: block;
+            margin: auto;
+            bottom: 35%;
+            border: 1px solid;
+            border-bottom: 0px;
+        }
+
+        .mirror-room:before {
+            top: 30px;
+            left: 30px;
+        }
+
+        .living-room {
+            height: 18%;
+            width: 18%;
+            position: absolute;
+            left: 42%;
+            display: block;
+            margin: auto;
+            bottom: 55%;
+            border: 1px solid;
+            z-index: 9;
+        }
+
+        .living-room:before {
+            top: 30px;
+            left: 30px;
+        }
+
+        .living-room .door {
+            min-width: inherit;
+            width: 10px;
+            top: -3px;
+            left: 15%;
+        }
+
+        .large-gallery {
+            height: 18%;
+            width: 52%;
+            position: absolute;
+            left: -10%;
+            display: block;
+            margin: auto;
+            bottom: 55%;
+            border: 1px solid;
+            border-right: 0px;
+            z-index: 2;
+        }
+
+        .large-gallery:before {
+            top: 30px;
+            right: 20px;
+            z-index: 9;
+        }
+
+        .large-gallery .room-to-graveyard {
+            width: 19%;
+            border-right: 1px dashed;
+            height: 100%;
+            position: absolute;
+        }
+
+        .large-gallery .passage-to-door {
+            width: 80%;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            height: 53%;
+            position: absolute;
+            right: 3px;
+        }
+
+        .large-gallery .passage-way-bend {
+            width: 15%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .large-gallery .passage-to-door .door {
+            min-width: inherit;
+            width: 10px;
+            top: -3px;
+            left: 5%;
+        }
+
+        .large-gallery .room-to-graveyard .door {
+            min-width: inherit;
+            width: 10px;
+            top: -3px;
+            margin: auto;
+            display: block;
+            left: 12px;
+        }
+
+        .suspended-ceiling-room {
+            height: 12%;
+            width: 12%;
+            position: absolute;
+            left: 39%;
+            display: block;
+            margin: auto;
+            bottom: 73%;
+            border: 1px solid;
+            border-bottom: 0px;
+        }
+
+        .suspended-ceiling-room:before {
+            top: 18px;
+            left: 18px;
+        }
+
+        .suspended-ceiling-room .door {
+            position: absolute;
+            left: -3px;
+            min-height: inherit;
+            height: 10px;
+            top: 20%;
+        }
+
+        .dark-corridor {
+            height: 19%;
+            width: 27%;
+            position: absolute;
+            left: 0;
+            display: block;
+            margin: auto;
+            bottom: 73%;
+            border: 1px solid;
+            border-bottom: 0px;
+            border-right: 0px;
+        }
+
+        .dark-corridor:before {
+            bottom: 15px;
+        }
+
+        .dark-corridor .door:first-child {
+            min-height: inherit;
+            height: 10px;
+            top: 10%;
+            left: -3px;
+        }
+
+        .dark-corridor .door:nth-of-type(2) {
+            bottom: 8%;
+            right: -3px;
+        }
+
+        .courtyard-study {
+            height: 10%;
+            width: 10%;
+            position: absolute;
+            left: 5%;
+            display: block;
+            margin: auto;
+            bottom: 82%;
+            border: 1px solid;
+            border-right: 0px;
+        }
+
+        .courtyard-study:before {
+            top: 8px;
+            left: 13px;
+        }
+
+        .courtyard-study .door {
+            min-width: inherit;
+            width: 10px;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .courtyard-study .bay-window {
+            height: 15%;
+            width: 80%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: block;
+            margin: auto;
+            bottom: 100%;
+            border-left: 5px solid;
+            border-right: 5px solid;
+            border-bottom: 8px solid;
+        }
+
+        .east-wing-stairway {
+            height: 25%;
+            width: 17%;
+            position: absolute;
+            left: 15%;
+            display: block;
+            margin: auto;
+            bottom: 82%;
+            border: 1px solid;
+        }
+
+        .east-wing-stairway:before {
+            top: 8px;
+            left: 3px;
+        }
+
+        .east-wing-stairway .door {
+            min-width: inherit;
+            width: 10px;
+            bottom: -3px;
+            left: 5%;
+        }
+
+        .east-wing-stairway .stairwell {
+            width: 68%;
+            height: 45%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .east-wing-stairway .stairwell .stairs-vertical {
+            width: 65%;
+            height: 45%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid;
+        }
+
+        .east-wing-stairway .stairwell .stairs-horizontal {
+            width: 38%;
+            height: 58%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border-left: 1px solid;
+        }
+
+        .east-wing-stairway .stairwell .stairs-landing {
+            width: 36%;
+            height: 42%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .east-wing-storeroom {
+            height: 12%;
+            width: 12%;
+            position: absolute;
+            left: 20%;
+            display: block;
+            margin: auto;
+            bottom: 82%;
+            border: 1px solid;
+        }
+
+        .east-wing-storeroom:before {
+            bottom: 7px;
+            right: 17px;
+        }
+
+        .east-wing-storeroom .door {
+            min-width: inherit;
+            width: 10px;
+            top: -3px;
+            right: 20%;
+        }
+
+        .winding-corridor {
+            height: 27%;
+            width: 45%;
+            position: absolute;
+            left: 27%;
+            display: block;
+            margin: auto;
+            bottom: 67%;
+            border: 1px solid;
+        }
+
+        .winding-corridor:before {
+            top: 10px;
+            left: 67px;
+        }
+
+        .bathroom {
+            height: 16%;
+            width: 16%;
+            position: absolute;
+            left: 56%;
+            display: block;
+            margin: auto;
+            bottom: 78%;
+            border: 1px solid;
+        }
+
+        .bathroom:before {
+            top: 28px;
+            left: 5px;
+        }
+
+        .bathroom .door {
+            min-width: inherit;
+            width: 10px;
+            bottom: -3px;
+            left: 10%;
+        }
+
+        .bathroom .bathroom-wall {
+            height: 35%;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            border-bottom: 1px solid;
+        }
+
+        .bathroom .passage-way-wall {
+            right: 0;
+            bottom: 0;
+            width: 30%;
+            height: 42%;
+            border-left: 1px solid;
+            position: absolute;
+        }
+
+        .outside-boiler {
+            height: 30%;
+            width: 8%;
+            position: absolute;
+            left: 72%;
+            display: block;
+            margin: auto;
+            bottom: 72%;
+            border: 1px dashed;
+            border-left: 0px;
+        }
+
+        .outside-boiler:before {
+            top: 10px;
+            right: 18px;
+        }
+
+        .outside-boiler .door {
+            bottom: 5%;
+            min-height: inherit;
+            height: 10px;
+            left: -3px;
+        }
+
+        .outside-boiler .upper-corridor {
+            height: 28%;
+            width: 240%;
+            position: absolute;
+            left: -240%;
+            display: block;
+            margin: auto;
+            bottom: 73%;
+            border: 1px dashed;
+            border-bottom: 1px solid;
+            border-right: 0px;
+        }
+
+        .outside {
+            height: 28%;
+            width: 20.2%;
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: block;
+            margin: auto;
+            top: 10%;
+        }
+
+        .graveyard {
+            position: absolute;
+            bottom: 1.5%;
+            left: 13%;
+            height: 90%;
+            width: 52%;
+        }
+
+        .graveyard:before {
+            top: 130px;
+            z-index: 9;
+            right: 38px;
+        }
+
+        .graveyard.room:hover, .graveyard.room.toggle-state {
+            background: transparent !important;
+        }
+
+        .graveyard .entrance-to-crypt .door {
+            width: 10px;
+            min-width: inherit;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .graveyard .entrance-to-crypt .stairs {
+            width: 70%;
+            height: 20%;
+            position: absolute;
+            top: -20%;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid;
+            margin: auto;
+        }
+
+        .graveyard .stairs-landing {
+            position: absolute;
+        }
+
+        .graveyard .stairs-vertical {
+            width: 33%;
+            position: absolute;
+            border-bottom: 1px solid;
+        }
+
+        .graveyard .stairs-vertical:nth-of-type(2) {
+            left: 25%;
+            bottom: 0;
+            height: 13%;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 1;
+        }
+
+        .graveyard .stairs-vertical:nth-of-type(4) {
+            bottom: 18%;
+            left: 29%;
+            height: 17%;
+            border-top: 1px solid;
+            z-index: 1;
+        }
+
+        .graveyard .stairs-landing:nth-of-type(3) {
+            width: 30%;
+            height: 35%;
+            bottom: 0;
+            left: 0;
+            border: 1px solid;
+            border-bottom: 0px
+        }
+
+        .graveyard .stairs-landing:nth-of-type(1) {
+            width: 30%;
+            height: 13%;
+            bottom: 0;
+            left: 57%;
+            border: 1px solid;
+            border-left: 0px;
+        }
+
+        .graveyard .stairs-landing:nth-of-type(1):after {
+            content: "\f0d8";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 10px;
+            z-index: 9;
+            font-size: 15px;
+        }
+
+        .graveyard .entrance-to-gallery {
+            width: 108%;
+            bottom: 20%;
+            left: 58%;
+            height: 20%;
+            position: absolute;
+            border: 1px solid;
+            border-right: 0px;
+        }
+
+        .graveyard .path-to-crypt-entrance.room {
+            width: 25%;
+            bottom: 39%;
+            left: 58%;
+            height: 10%;
+            position: absolute;
+            border: 1px solid;
+            border-bottom: 0px;
+        }
+
+        .graveyard .entrance-to-crypt {
+            width: 20%;
+            bottom: 48.5%;
+            left: 58%;
+            height: 52%;
+            position: absolute;
+            border: 1px solid;
+            border-bottom: 0px;
+        }
+
+        .graveyard .upper-left-graveyard {
+            width: 48%;
+            bottom: 48.5%;
+            left: 10%;
+            height: 40%;
+            position: absolute;
+            border: 1px solid;
+            border-right: 0px;
+        }
+
+        .graveyard .upper-left-graveyard .dividing-fence {
+            width: 2%;
+            height: 30%;
+            right: -1px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .roofed-passage {
+            width: 20%;
+            bottom: 45%;
+            right: 0%;
+            height: 53%;
+            position: absolute;
+            border: 1px solid;
+            border-top: 0px;
+        }
+
+        .roofed-passage:before {
+            top: 25px;
+            left: 12px;
+        }
+
+        .roofed-passage .passage-to-garden-shed {
+            width: 300%;
+            bottom: 100%;
+            right: -198%;
+            height: 53%;
+            position: absolute;
+            border: 1px solid;
+            border-bottom: 0px;
+            border-top-left-radius: 85%;
+        }
+
+        .roofed-passage .passage-to-garden-shed-cutout {
+            width: 198%;
+            bottom: 100%;
+            right: -198%;
+            height: 25%;
+            position: absolute;
+            border: 1px solid;
+            border-bottom: 0px;
+            border-right: 0px;
+            border-top-left-radius: 85%;
+        }
+
+        .garden-shed {
+            width: 35%;
+            height: 25%;
+            position: absolute;
+            border: 1px solid;
+            bottom: 105%;
+            left: 120%;
+        }
+
+        .garden-shed:before {
+            top: 15px;
+            left: 30px;
+        }
+
+        .garden-shed .entrance-to-main-garden {
+            right: -13%;
+            top: 15%;
+            border: 1px solid;
+            border-left: 0px;
+            height: 55%;
+            width: 13%;
+            position: absolute;
+        }
+
+        .garden-shed .entrance-to-main-garden .door {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            right: 0;
+            max-height: 20px;
+        }
+
+        .garden-shed > .door-vertical {
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            height: 10px;
+            min-height: inherit;
+            max-height: 10px;
+            left: -3px;
+        }
+
+        .garden-shed .stairs-vertical {
+            bottom: 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 32%;
+            width: 50%;
+            margin: auto;
+            border-top: 1px solid;
+        }
+
+        .garden-shed > .door-horizontal {
+            bottom: 0;
+            position: absolute;
+            right: 5%;
+            bottom: -3px;
+            width: 10px;
+            min-width: inherit;
+        }
+
+        .garden-shed .stairs-landing {
+            bottom: 0;
+            position: absolute;
+            right: 0;
+            height: 32%;
+            width: 50%;
+            border-top: 1px solid;
+        }
+
+        /* Icon Marker Placements */
+
+        .dark-corridor .icon-markers .hunter .icon-marker {
+            top: 10px;
+            left: 5px;
+        }
+
+        .dark-corridor .icon-markers .zombie .icon-marker {
+            top: 35px;
+            left: 5px;
+        }
+
+        .courtyard-study .icon-markers .ammunition .icon-marker {
+            top: 2px;
+            left: 2px;
+        }
+
+        .courtyard-study .icon-markers .item-of-interest .icon-marker {
+            bottom: 10px;
+            left: 2px;
+        }
+
+        .courtyard-study .icon-markers .self-defense .icon-marker {
+            bottom: 2px;
+            left: 2px;
+        }
+
+        .winding-corridor .icon-markers .person-of-interest .icon-marker {
+            left: 30px;
+            bottom: 41px;
+        }
+
+        .winding-corridor .icon-markers .zombie:nth-child(1) .icon-marker {
+            top: 2px;
+            left: 25px;
+        }
+
+        .winding-corridor .icon-markers .zombie:nth-child(2) .icon-marker {
+            top: 2px;
+            left: 50px;
+        }
+
+        .winding-corridor .icon-markers .zombie:nth-child(3) .icon-marker {
+            top: 2px;
+            left: 75px;
+        }
+
+        .winding-corridor .icon-markers .zombie:nth-child(4) .icon-marker {
+            top: 2px;
+            left: 100px;
+        }
+
+        .winding-corridor .icon-markers .hunter:nth-child(5) .icon-marker {
+            left: 12px;
+            bottom: 28px;
+        }
+
+        .winding-corridor .icon-markers .hunter:nth-child(6) .icon-marker {
+            right: 50px;
+            bottom: 20px;
+        }
+
+        .bathroom .icon-markers .zombie .icon-marker {
+            top: 25px;
+            left: 15px;
+        }
+
+        .bathroom .icon-markers .hunter .icon-marker {
+            bottom: 10px;
+            right: 7px;
+        }
+
+        .bathroom .icon-markers .door-key .icon-marker {
+            top: 20px;
+            left: 28px;
+        }
+
+        .bathroom .icon-markers .self-defense .icon-marker {
+            top: 20px;
+            left: 28px;
+        }
+
+
+        .living-room .icon-markers .weapon .icon-marker {
+            right: 0;
+            top: 25px;
+        }
+
+        .living-room .icon-markers .self-defense .icon-marker {
+            left: 20px;
+            top: 25px;
+        }
+
+        .living-room .icon-markers .ink-ribbon .icon-marker {
+            right: 20px;
+            top: 25px;
+        }
+
+        .exhibition-room .icon-markers .zombie .icon-marker {
+            right: 10px;
+        }
+
+        .exhibition-room .icon-markers .self-defense .icon-marker {
+            left: 72px;
+            top: -13px;
+        }
+
+        .south-east-corridor .icon-markers .self-defense .icon-marker {
+            right: 38px;
+            bottom: 55px;
+        }
+
+        .south-east-corridor .icon-markers .ammunition .icon-marker {
+            right: 38px;
+            bottom: 155px;
+        }
+
+        .south-east-corridor .icon-markers .cerberus:nth-child(1) .icon-marker {
+            right: -2px;
+            bottom: 55px;
+        }
+
+        .south-east-corridor .icon-markers .cerberus:nth-child(2) .icon-marker {
+            right: -2px;
+            bottom: 155px;
+        }
+
+        .outside-boiler .icon-markers .cerberus:nth-child(1) .icon-marker {
+            right: -3px;
+            bottom: 35px;
+        }
+
+        .outside-boiler .icon-markers .cerberus:nth-child(2) .icon-marker {
+            left: -35px;
+            top: -2px;
+        }
+
+        .outside-boiler .icon-markers .green-herb:nth-child(3) .icon-marker {
+            left: -25px;
+            top: 15px;
+        }
+
+        .outside-boiler .icon-markers .green-herb:nth-child(4) .icon-marker {
+            left: -35px;
+            top: 15px;
+        }
+
+        .outside-boiler .icon-markers .red-herb:nth-child(5) .icon-marker {
+            left: -72px;
+            top: 15px;
+        }
+
+        .outside-boiler .icon-markers .red-herb:nth-child(6) .icon-marker {
+            left: -62px;
+            top: 15px;
+        }
+
+        .outside-boiler .icon-markers .red-herb:nth-child(7) .icon-marker {
+            left: -72px;
+            top: 5px;
+        }
+
+        .outside-boiler .icon-markers .item-of-interest .icon-marker {
+            left: -15px;
+            top: 15px;
+        }
+
+        .large-gallery .icon-markers .crow .icon-marker {
+            right: 25px;
+            top: 30px;
+        }
+
+        .large-gallery .icon-markers .item-of-interest .icon-marker {
+            left: 12px;
+            bottom: 12px;
+        }
+
+        .art-room .icon-markers .document .icon-marker {
+            top: 20px;
+            left: 18px;
+        }
+
+        .art-room .icon-markers .ink-ribbon .icon-marker {
+            top: 8px;
+            left: 3px;
+        }
+
+        .mirror-room .icon-markers .zombie .icon-marker {
+            top: 30px;
+            left: 30px;
+        }
+
+        .mirror-room .icon-markers .self-defense .icon-marker {
+            bottom: 5px;
+            left: 32px;
+        }
+
+        .mirror-room .icon-markers .item-of-interest .icon-marker {
+            left: 3px;
+            bottom: 15px;
+        }
+
+        .mirror-room .icon-markers .door-key .icon-marker {
+            bottom: 29px;
+            left: 3px;
+        }
+
+        .mirror-room .icon-markers .item-of-interest:nth-child(5) .icon-marker {
+            bottom: 22px;
+            left: 3px;
+        }
+
+        .mirror-room .icon-markers .green-herb .icon-marker {
+            bottom: 5px;
+            left: 5px;
+        }
+
+        .mirror-room .icon-markers .blue-herb .icon-marker {
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .secret-passage .icon-markers .item-of-interest:nth-child(1) .icon-marker {
+            top: 7px;
+            left: 50px;
+        }
+
+        .secret-passage .icon-markers .item-of-interest:nth-child(2) .icon-marker {
+            top: 7px;
+            left: 57px;
+        }
+
+        .secret-passage .icon-markers .document .icon-marker {
+            top: 7px;
+            right: 5px;
+        }
+
+        .main-hall .icon-markers .person-of-interest .icon-marker {
+            bottom: 50px;
+            left: 100px;
+        }
+
+        .main-hall .icon-markers .weapon .icon-marker {
+            bottom: 70px;
+            left: 100px;
+        }
+
+        .main-hall .icon-markers .ammunition .icon-marker {
+            bottom: 42px;
+            left: 95px;
+        }
+
+        .main-hall .icon-markers .door-key .icon-marker {
+            right: 93px;
+            bottom: 42px;
+        }
+
+        .main-hall .icon-markers .cerberus .icon-marker {
+            bottom: 10px;
+            left: 100px;
+        }
+
+        .main-hall .icon-marker-tag:after {
+            width: 18px;
+            left: -18px;
+            height: 67px;
+            border-left: 1px dashed #6a6a6a;
+            border-bottom: 1px dashed #6a6a6a;
+            border-top: 0px;
+            top: -55px;
+        }
+
+        .main-hall .icon-marker-tag {
+            right: -80px;
+            bottom: -80px;
+        }
+        .graveyard .icon-markers .ammunition .icon-marker {
+            top: 45px;
+            left: 25px;
+        }
+
+        .graveyard .icon-markers .zombie:nth-child(1) .icon-marker {
+            bottom: 58px;
+            left: 100px;
+        }
+
+        .graveyard .icon-markers .zombie:nth-child(2) .icon-marker {
+            top: 95px;
+            left: 30px;
+        }
+
+        .graveyard .icon-marker-tag:after {
+            width: 55px;
+            left: 250px;
+            height: 15px;
+            border-right: 1px dashed #6a6a6a;
+            border-top: 1px dashed #6a6a6a;
+        }
+
+        .graveyard .icon-marker-tag {
+            right: 115px;
+            top: 2px;
+        }
+
+        .roofed-passage .icon-marker-tag:after {
+            width: 155px;
+            left: 250px;
+            height: 40px;
+            border-top: 1px dashed #6a6a6a;
+        }
+
+        .roofed-passage .icon-marker-tag {
+            right: 186px;
+            top: -10px;
+        }
+
+        .garden-shed .icon-marker-tag:after {
+            width: 235px;
+            right: -235px;
+            height: 40px;
+            border-top: 1px dashed #6a6a6a;
+        }
+
+        .garden-shed .icon-marker-tag {
+            right: 300px;
+            top: 42px;
+        }
+
+        .roofed-passage .icon-markers .cerberus .icon-marker {
+            left: 15px;
+            bottom: 80px;
+        }
+
+        .garden-shed .icon-markers .first-aid-spray:nth-child(1) .icon-marker {
+            top: 30px;
+            left: 35px;
+        }
+
+        .garden-shed .icon-markers .first-aid-spray:nth-child(2) .icon-marker {
+            bottom: 2px;
+            left: 20px;
+        }
+
+        .garden-shed .icon-markers .self-defense:nth-child(3) .icon-marker {
+            bottom: 2px;
+            left: 45px;
+        }
+
+        .garden-shed .icon-markers .self-defense:nth-child(4) .icon-marker {
+            top: 10px;
+            left: 35px;
+        }
+
+        .garden-shed .icon-markers .self-defense:nth-child(5) .icon-marker {
+            top: 30px;
+            left: 35px;
+        }
+
+        .garden-shed .icon-markers .ammunition:nth-child(6) .icon-marker {
+            top: 2px;
+            left: 2px;
+        }
+
+        .garden-shed .icon-markers .ammunition:nth-child(7) .icon-marker {
+            top: 20px;
+            left: 35px;
+        }
+
+        .garden-shed .icon-markers .ammunition:nth-child(8) .icon-marker {
+            top: 20px;
+            left: 35px;
+        }
+
+        .garden-shed .icon-markers .ammunition:nth-child(9) .icon-marker {
+            top: 20px;
+            left: 35px;
+        }
+
+        .dining-room .icon-markers .ink-ribbon .icon-marker {
+            right: 30px;
+            bottom: 30px;
+        }
+
+        .dining-room .icon-markers .door-key .icon-marker {
+            right: 65px;
+            top: 5px;
+        }
+
+        .dining-room .icon-markers .item-of-interest:nth-child(3) .icon-marker {
+            bottom: 20px;
+            right: 145px;
+        }
+
+        .dining-room .icon-markers .item-of-interest:nth-child(2) .icon-marker {
+            bottom: 40px;
+            left: 10px;
+        }
+
+        .tea-room .icon-markers .item-of-interest .icon-marker {
+            top: 15px;
+            left: 28px;
+        }
+
+        .tea-room .icon-markers .person-of-interest .icon-marker {
+            top: 15px;
+            left: 20px;
+        }
+
+        .tea-room .icon-markers .hunter .icon-marker {
+            bottom: 2px;
+            left: 120px;
+        }
+
+        .tea-room .icon-markers .zombie:nth-child(1) .icon-marker {
+            bottom: 2px;
+            right: 100px;
+        }
+
+        .tea-room .icon-markers .zombie:nth-child(2) .icon-marker {
+            top: 30px;
+            left: 23px;
+        }
+
+        .west-wing-outer-stairway .icon-markers .ammunition .icon-marker {
+            left: 3px;
+            top: 65px;
+        }
+
+        .west-wing-outer-stairway .green-herb:nth-child(3) .icon-marker {
+            right: 12px;
+            top: 23px;
+        }
+
+        .west-wing-outer-stairway .green-herb:nth-child(4) .icon-marker {
+            right: 23px;
+            top: 23px;
+        }
+
+        .west-wing-outer-stairway .icon-markers .crow .icon-marker {
+            right: 3px;
+            top: 55px;
+        }
+
+        .medical-storage-room .icon-markers .item-of-interest .icon-marker {
+            right: 7px;
+            top: 20px;
+        }
+
+        .small-storeroom .icon-markers .item-of-interest .icon-marker {
+            right: 3px;
+            top: 3px;
+        }
+
+        .small-storeroom .icon-markers .self-defense .icon-marker {
+            right: 15px;
+            top: 3px;
+        }
+
+        .small-storeroom .icon-markers .ink-ribbon .icon-marker {
+            left: 5px;
+            bottom: 5px;
+        }
+
+        .medical-storage-room .icon-markers .person-of-interest:nth-child(2) .icon-marker {
+            right: 15px;
+            top: 5px;
+        }
+
+        .medical-storage-room .icon-markers .person-of-interest:nth-child(1) .icon-marker {
+            right: 25px;
+            top: 5px;
+        }
+
+        .west-wing-inner-stairway .icon-markers .hunter:nth-child(5) .icon-marker {
+            bottom: 3px;
+            left: 50px;
+        }
+
+        .west-wing-inner-stairway .icon-markers .hunter:nth-child(4) .icon-marker {
+            bottom: 5px;
+            left: 45px;
+            opacity: .7;
+        }
+
+        .west-wing-inner-stairway .icon-markers .zombie:nth-child(3) .icon-marker {
+            bottom: 3px;
+            left: 30px;
+        }
+
+        .west-wing-inner-stairway .icon-markers .zombie:nth-child(2) .icon-marker {
+            bottom: 5px;
+            left: 25px;
+            opacity: .7;
+        }
+
+        .west-wing-inner-stairway .icon-markers .zombie:nth-child(1) .icon-marker {
+            bottom: 25px;
+            left: 10px;
+        }
+
+        .researchers-room .icon-markers .zombie:nth-child(1) .icon-marker {
+            right: 20px;
+            top: 15px;
+        }
+
+        .researchers-room .icon-markers .zombie:nth-child(2) .icon-marker {
+            left: 15px;
+            bottom: 13px;
+        }
+
+        .researchers-room .icon-markers .ammunition .icon-marker {
+            bottom: 25px;
+            right: 25px;
+        }
+
+        .researchers-room .icon-markers .document .icon-marker {
+            bottom: 5px;
+            right: 5px;
+        }
+
+        .researchers-room .icon-markers .self-defense .icon-marker {
+            bottom: 5px;
+            left: 22px;
+        }
+
+        .northern-corridor .icon-markers .self-defense:nth-child(1) .icon-marker {
+            left: 5px;
+            top: 5px;
+        }
+
+        .northern-corridor .icon-markers .self-defense:nth-child(2) .icon-marker {
+            left: 57px;
+            top: 73px;
+        }
+
+        .northern-corridor .icon-markers .zombie:nth-child(3) .icon-marker {
+            top: 5px;
+            left: 85px;
+        }
+
+        .northern-corridor .icon-markers .zombie:nth-child(4) .icon-marker {
+            top: 5px;
+            left: 135px;
+        }
+
+        .northern-corridor .icon-markers .hunter:nth-child(5) .icon-marker {
+            top: 130px;
+            left: 7px;
+        }
+
+        .bar .icon-markers .ink-ribbon .icon-marker {
+            left: 10px;
+            bottom: 30px;
+        }
+
+        .bar .icon-markers .person-of-interest .icon-marker {
+            left: 75px;
+            bottom: 35px;
+        }
+
+        .bar .icon-markers .document .icon-marker {
+            left: 65px;
+            top: -50px;
+        }
+
+        .bar .icon-markers .item-of-interest:nth-child(1) .icon-marker {
+            right: 25px;
+            top: 3px;
+        }
+
+        .bar .icon-markers .item-of-interest:nth-child(2) .icon-marker {
+            left: 55px;
+            top: -55px;
+        }
+
+        .tiger-statue-room .icon-markers .item-of-interest .icon-marker {
+            bottom: 10px;
+            left: 13px;
+        }
+
+        .tiger-statue-room .icon-markers .ammunition .icon-marker {
+            bottom: 20px;
+            left: 13px;
+        }
+
+        .tiger-statue-room .icon-markers .adder .icon-marker {
+            bottom: 15px;
+            right: 10px;
+        }
+
+        .greenhouse .icon-markers .item-of-interest .icon-marker {
+            left: 5px;
+            top: 30px;
+        }
+
+        .greenhouse .icon-markers .fountain-plant .icon-marker {
+            left: 25px;
+            top: 30px;
+        }
+
+        .greenhouse .icon-markers .green-herb:nth-child(3) .icon-marker {
+            left: 34px;
+            bottom: 10px;
+        }
+
+        .greenhouse .icon-markers .green-herb:nth-child(4) .icon-marker {
+            left: 25px;
+            bottom: 10px;
+        }
+
+        .greenhouse .icon-markers .green-herb:nth-child(5) .icon-marker {
+            left: 16px;
+            bottom: 10px;
+        }
+
+        .greenhouse .icon-markers .green-herb:nth-child(6) .icon-marker {
+            left: 21px;
+            bottom: 2px;
+        }
+
+        .greenhouse .icon-markers .green-herb:nth-child(7) .icon-marker {
+            left: 30px;
+            bottom: 2px;
+        }
+
+        /* Room Thumbnails */
+
+        /* Outside */
+        #roofed-passage.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/d/d8/R11a_00064.jpg/revision/latest?cb=20150627152027);
+        }
+
+        #garden-shed.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/4/45/R11b_00001.jpg/revision/latest?cb=20150628002613);
+        }
+
+        #graveyard.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/8/87/R10b_00033.jpg/revision/latest?cb=20150610124030);
+        }
+
+        /* Main Hall */
+        #main-hall.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/4/4f/Entrance_Hall.png/revision/latest?cb=20161126120440);
+        }
+
+        /* East Wing */
+        #suspended-ceiling-room.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/6/61/2002_Suspended_ceiling_room_1.jpg/revision/latest?cb=20140813000618);
+        }
+
+        #dark-corridor.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/0/0f/R10a_00002.jpg/revision/latest?cb=20150623025049);
+        }
+
+        #winding-corridor.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/0/09/R109_00011.jpg/revision/latest?cb=20150622053120);
+        }
+
+        #large-gallery.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/6/65/R117_00006.jpg/revision/latest?cb=20150620062737);
+        }
+
+        #east-wing-stairway.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/c/c6/2F_East_Stairway.jpg/revision/latest?cb=20100806075953);
+        }
+
+        #courtyard-study.room-thumbnail {
+            background-image: url(http://img55.laughinggif.com/pic/HTTP3BpcGVtYWtlci5ydS93cC1jb250ZW50L3VwbG9hZHMvdmlkZW8vMjAxMi8wNi93aGl0ZV9ub2lzZS5naWYlog.gif);
+        }
+
+        #courtyard-study.room-thumbnail:after {
+            content: "No Data";
+            position: absolute;
+            color: #ffffff;
+            font-size: 15px;
+            text-align: center;
+            right: 0;
+            left: 0;
+            height: 15px;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            display: block;
+            margin: auto;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        #east-wing-storeroom.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/c/c2/RE4P08_480f4925_6.png/revision/latest?cb=20120322111438);
+        }
+
+        #outside-boiler.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/1/13/R114_00031.jpg/revision/latest?cb=20150614110037);
+        }
+
+        #bathroom.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/5/5e/R109_00024.jpg/revision/latest?cb=20150613125908);
+        }
+
+        #south-east-corridor.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/1/13/R108_00005.jpg/revision/latest?cb=20150616145147);
+        }
+
+        #exhibition-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/b/be/RE4P08_3c5736de_6.png/revision/latest?cb=20120321102250);
+        }
+
+        #art-room.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/e/e7/R111_00001.jpg/revision/latest?cb=20150610004933);
+        }
+
+        #living-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/e/e3/R116_00001.jpg/revision/latest?cb=20150620054826);
+        }
+
+        #secret-passage.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/d/d0/Trevor_grave_%282%29.jpg/revision/latest?cb=20141002111334);
+        }
+
+        #mirror-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/c/cd/R111_00007.jpg/revision/latest?cb=20150625062710);
+        }
+
+        #hidden-wardrobe.room-thumbnail {
+            background-image: url(http://img55.laughinggif.com/pic/HTTP3BpcGVtYWtlci5ydS93cC1jb250ZW50L3VwbG9hZHMvdmlkZW8vMjAxMi8wNi93aGl0ZV9ub2lzZS5naWYlog.gif);
+        }
+
+        #hidden-wardrobe.room-thumbnail:after {
+            content: "No Data";
+            position: absolute;
+            color: #ffffff;
+            font-size: 15px;
+            text-align: center;
+            right: 0;
+            left: 0;
+            height: 15px;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            display: block;
+            margin: auto;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        /* West Wing */
+
+        #dining-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/7/77/R105_00005.jpg/revision/latest?cb=20150608142836);
+        }
+
+        #tea-room.room-thumbnail {
+            background-image: url(https://vignette4.wikia.nocookie.net/residentevil/images/3/30/R103_00017.jpg/revision/latest?cb=20150609093727);
+        }
+
+        #bar.room-thumbnail {
+            background-image: url(https://vignette4.wikia.nocookie.net/residentevil/images/5/5b/R10f_00002.jpg/revision/latest?cb=20150615120252);
+        }
+
+        #researchers-room.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/1/1c/R10e_00002.jpg/revision/latest?cb=20150624055906);
+        }
+
+        #west-wing-outer-stairway.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/f/fa/R112_00033.jpg/revision/latest?cb=20150609095024);
+        }
+
+        #west-wing-inner-stairway.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/e/e5/R101_00005.jpg/revision/latest?cb=20150619085120);
+        }
+
+        #medical-storage-room.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/f/fa/R100_00001.jpg/revision/latest?cb=20150610114857);
+        }
+
+        #small-storeroom.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/0/0b/R102_00003.jpg/revision/latest?cb=20150622022917);
+        }
+
+        #northern-corridor.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/4/4d/R103_00040.jpg/revision/latest?cb=20150624051255);
+        }
+
+        #tiger-statue-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/9/98/Tiger_statue_room_remastered.png/revision/latest?cb=20150128113249);
+        }
+
+        #greenhouse.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/b/b3/2002_Greenhouse_-_background_3.jpg/revision/latest?cb=20140813010246);
+        }
+
+        /* Marker Placements */
+
+        .east-wing-stairway .icon-markers .green-herb .icon-marker {
+            top: 20px;
+            right: 20px;
+        }
+
+        .east-wing-storeroom .icon-markers .first-aid-spray:nth-child(6) .icon-marker {
+            left: 20px;
+            top: 22px;
+        }
+
+        .east-wing-storeroom .icon-markers .first-aid-spray:nth-child(5) .icon-marker {
+            left: 20px;
+            bottom: 2px;
+        }
+
+        .east-wing-storeroom .icon-markers .door-key {
+            top: 5px;
+            left: 0px;
+            position: absolute;
+        }
+
+        .east-wing-storeroom .icon-markers .document .icon-marker {
+            right: 3px;
+            top: 15px;
+            z-index: 99;
+        }
+
+        .east-wing-storeroom .icon-markers .item-of-interest .icon-marker {
+            left: 5px;
+            top: 15px;
+            z-index: 999;
+        }
+
+        .east-wing-storeroom .ammunition:nth-child(1) .icon-marker {
+            right: 3px;
+            top: 7px;
+        }
+
+        .east-wing-storeroom .icon-markers .ammunition:nth-child(2) .icon-marker {
+            left: 10px;
+            top: 22px;
+        }
+
+        .east-wing-storeroom .icon-markers .ammunition:nth-child(3) .icon-marker {
+            left: 10px;
+            bottom: 2px;
+        }
+
+        .east-wing-storeroom .icon-markers .ammunition:nth-child(4) .icon-marker {
+            left: 10px;
+            bottom: 2px;
+        }
+
+        .east-wing-stairway .icon-markers .zombie:nth-child(3) .icon-marker {
+            top: 5px;
+            left: -2px;
+            opacity: .7;
+        }
+
+        .east-wing-stairway .icon-markers .zombie:nth-child(2) .icon-marker {
+            top: 8px;
+            left: 3px;
+        }
+
+        .east-wing-stairway .icon-markers .zombie:nth-child(1) .icon-marker {
+            top: 23px;
+            left: 20px;
+            z-index: 999;
+        }
+
+        .east-wing-stairway .icon-markers .hunter:nth-child(4) .icon-marker {
+            top: 8px;
+            right: 7px;
+        }
+
+        .east-wing-stairway .icon-markers .hunter:nth-child(5) .icon-marker {
+            top: 5px;
+            right: 12px;    
+            opacity: .7;
+        }
+
+        /* Icon Marker Placements */
+
+        .exhibition-room .map {
+            left: 35%;
+            position: absolute;
+            top: 40%;
+            font-size: 12px;
+        }
+
+        .small-storeroom .kerosene {
+            position: absolute;
+            right: 15%;
+            top: 35%;
+        }
+
+        .east-wing-storeroom .kerosene {
+            position: absolute;
+            left: 35%;
+            top: 5%;
+        }
+
+        .outside-boiler .kerosene {
+            position: absolute;
+            top: 10px;
+            left: -53px;
+            z-index: 1;
+        }
+
+        .medical-storage-room .item-box {
+            position: absolute;
+            right: 15%;
+            bottom: 10%;
+        }
+
+        .mirror-room .item-box {
+            right: 8%;
+            top: 5%;
+            position: absolute;
+        }
+
+        .east-wing-storeroom .item-box {
+            position: absolute;
+            bottom: 15%;
+            right: 15%;
+        }
+
+        .main-hall .typewriter {
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            display: none;
+        }
+
+        .medical-storage-room .typewriter {
+            top: 5%;
+            left: 2%;
+            position: absolute;
+        }
+
+        .dining-room .typewriter {
+            position: absolute;
+            right: 0%;
+            bottom: 7%;
+        }
+
+        .east-wing-storeroom .typewriter {
+            top: 5%;
+            left: 0;
+            position: absolute;
+        }
+
+        /* Stairs */
+
+        .main-hall-grandstairway:after {
+            content: "\f0d8";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 5px;
+            z-index: 9;
+            font-size: 20px;
+        }
+
+        .west-wing-inner-stairway .passage-to-stairs .stairs:after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            right: 5px;
+            z-index: 9;
+        }
+
+        .west-wing-outer-stairway .stairwell .stairs-horizontal:after {
+            content: "\f0d8";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 5px;
+            z-index: 9;
+        }
+
+        .main-hall-stairways .stairs:nth-child(3):after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            right: 10px;
+            top: 3px;
+            z-index: 9;
+        }
+
+        .west-wing-outer-stairway .stairwell .stairs-vertical:after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            right: -8px;
+            top: 2px;
+            z-index: 9;
+        }
+
+        .main-hall-stairways .stairs:nth-child(1):after, .main-hall-stairways .stairs:nth-child(7):after {
+            content: "\f0d8";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 0px;
+            z-index: 9;
+        }
+
+        .main-hall-stairways .stairs:nth-child(5):after {
+            content: "\f0d9";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            left: 12px;
+            top: 3px;
+            z-index: 9;
+        }
+
+        .tea-room .stairs-to-passage:after {
+            content: "\f0d9";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            left: 2px;
+            top: 0px;
+            z-index: 9;
+        }
+
+        .east-wing-stairway .stairwell .stairs-vertical:after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            z-index: 9;
+        }
+
+        .east-wing-stairway .stairwell .stairs-horizontal:after {
+            content: "\f0d7";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 3px;
+            z-index: 9;
+        }
+
+        .graveyard .stairs-vertical:nth-of-type(2):after {
+            content: "\f0d9";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            left: 16px;
+            top: 22%;
+            z-index: 9;
+        }
+
+        .graveyard .stairs-vertical:nth-of-type(4):after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            left: 17px;
+            top: 30%;
+            z-index: 9;
+        }
+
+        .garden-shed .stairs-vertical:after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: absolute;
+            right: 11px;
+            top: 2px;
+            z-index: 9;
+        }
+
+        .graveyard .entrance-to-crypt .stairs:after {
+            content: "\f0d8";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: -15px;
+            z-index: 9;
+        }
+
+        /* Nocturnal Theme - Map */
+
+        .nocturnal-theme .room:hover, .nocturnal-theme .room:hover .room {
+            background: #575757;
+        }
+
+        .nocturnal-theme .room.toggle-state:hover .room {
+            background: #5c5c5c !important;
+        }
+
+        .nocturnal-theme .room.toggle-state, .nocturnal-theme .room.toggle-state .room {
+            background: #5c5c5c !important;
+        }
+
+        .nocturnal-theme .door-locked:after,.nocturnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after {
+            color: #8c8c8c;
+        }
+
+        .nocturnal-theme .door-tooltip {
+            border-color: #504f4f;
+            background: #3d3d3d;
+            color: #bcb9b9;
+        }
+
+        .nocturnal-theme .ladder {
+            border-color: #313030;
+            color: #313030;
+        }
+
+        .nocturnal-theme .ladder-horizontal {
+            background: linear-gradient( to right, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 2px, rgba(78, 78, 78, 0) 2px);
+        }
+
+        .nocturnal-theme .ladder-vertical {
+            background: linear-gradient( to bottom, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 0px, rgba(78, 78, 78, 0) 0px);
+        }
+
+        .nocturnal-theme .main-hall {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-entrance {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-grandstairway {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .stairs-ascending.stairs-horizontal {
+            background: linear-gradient( to bottom, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
+        }
+
+        .nocturnal-theme .stairs-descending.stairs-horizontal {
+            background: linear-gradient( to bottom, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
+        }
+
+        .nocturnal-theme .stairs-ascending.stairs-vertical {
+            background: linear-gradient( to right, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
+        }
+
+        .nocturnal-theme .stairs-descending.stairs-vertical {
+            background: linear-gradient( to right, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
+        }
+
+        .nocturnal-theme .main-hall-grandstairway-wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-stairways {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .main-hall-stairways .stairs:nth-child(1) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-stairways div[class*="stair"] {
+            background-color: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-stairways .stairs:nth-child(7) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-stairways .stairs:nth-child(3) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-stairways .stairs:nth-child(5) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .main-hall-stairways .stairs:nth-child(4) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .dining-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .tea-room .passage-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .tea-room .passage-to-door {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .tea-room  .corridor {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .tea-room .passage-to-stairs {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .tea-room .stairs-to-passage {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .bar {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .bar .passage-way {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .bar .bar-wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .tiger-statue-room {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .tiger-statue-room .tiger-statue-room-wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .researchers-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .researchers-room .researchers-room-wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .small-storeroom {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .medical-storage-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-inner-stairway {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-inner-stairway .passage-to-stairs {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .west-wing-inner-stairway .passage-to-stairs .stairs {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-inner-stairway .passage-vertical {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .west-wing-inner-stairway .passage-horizontal {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .greenhouse {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .northern-corridor {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .northern-corridor .lower-passageways {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .northern-corridor .adjoining-passage-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .northern-corridor .northern-corridor-wall-cutout {
+            background: #323131;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway .passage-way {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
+            border-color: #313030;
+            background: #313030;
+            border-right-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway .stairwell .stairs-horizontal {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway .stairwell .stairs-vertical {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway .stairwell .stairs-landing {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
+            background: #313030;
+            border-color: #313030;
+            border-right-color: #3d3d3d;
+        }
+
+        .nocturnal-theme .exhibition-room {
+            background: #4e4e4e;    
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .exhibition-room .passage-way {
+            background: #4e4e4e;    
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .exhibition-room .passage-to-door {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .art-room {
+            background: #4e4e4e;    
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .secret-passage {
+            background: #4e4e4e;    
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .secret-passage .ladder:before {
+            color: #8c8c8c;
+        }
+
+        .nocturnal-theme .art-room .passage-way-wall {
+            background: #4e4e4e;    
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .south-east-corridor {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .south-east-corridor .upper-corridor {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .hidden-wardrobe {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .mirror-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .living-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .large-gallery {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .large-gallery .room-to-graveyard {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .large-gallery .passage-to-door {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .large-gallery .passage-way-bend {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .suspended-ceiling-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .dark-corridor {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .courtyard-study {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .courtyard-study .bay-window {
+            background: #4e4e4e;
+            border-left-color: #313030;
+            border-right-color: #313030;
+            border-bottom-color: #4e4e4e;
+        }
+
+        .nocturnal-theme .courtyard-study.room:hover .bay-window {
+            border-bottom-color: #575757;
+        }
+
+        .nocturnal-theme .courtyard-study.room.toggle-state:hover .bay-window {
+            background: #5c5c5c;
+        }
+
+        .nocturnal-theme .courtyard-study.room.toggle-state .bay-window {
+            border-bottom-color: #5c5c5c;
+        }
+
+        .nocturnal-theme .east-wing-stairway {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .east-wing-stairway .stairwell .stairs-vertical {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .east-wing-stairway .stairwell .stairs-horizontal {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .east-wing-stairway .stairwell .stairs-landing {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .east-wing-storeroom {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .winding-corridor {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .bathroom {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .bathroom .bathroom-wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .bathroom .passage-way-wall {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .outside-boiler {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .outside-boiler .upper-corridor {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .entrance-to-crypt .stairs {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .stairs-landing {
+            background: #4e4e4e
+        }
+
+        .nocturnal-theme .graveyard .stairs-vertical {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .stairs-vertical:nth-of-type(2) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .stairs-vertical:nth-of-type(4) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .stairs-landing:nth-of-type(3) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .stairs-landing:nth-of-type(1) {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .entrance-to-gallery {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .path-to-crypt-entrance.room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard:hover .path-to-crypt-entrance.room {
+            background: #575757;
+        }
+
+        .nocturnal-theme .graveyard .entrance-to-crypt {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .upper-left-graveyard {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .graveyard .upper-left-graveyard .dividing-fence {
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .graveyard:hover .upper-left-graveyard .dividing-fence {
+            background: #575757;
+        }
+
+        .nocturnal-theme .roofed-passage {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .roofed-passage .passage-to-garden-shed {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .roofed-passage .passage-to-garden-shed-cutout {
+            background: #313030;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .garden-shed {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .garden-shed .entrance-to-main-garden {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .garden-shed .stairs-vertical {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .garden-shed .stairs-landing {
+            border-color: #313030;
+        }
+
+        /* Diurnal Theme - Map */
+
+        .diurnal-theme .room:hover, .diurnal-theme .room:hover .room {
+            background: #e5e5e5;
+        }
+
+        .diurnal-theme .room.toggle-state:hover .room {
+            background: #ebebeb !important;
+        }
+
+        .diurnal-theme .room.toggle-state, .diurnal-theme .room.toggle-state .room {
+            background: #ebebeb !important;
+        }
+
+        .diurnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after {
+            color: #9d9d9d;
+        }
+
+        .diurnal-theme .door-tooltip {
+            background: white;
+            border-color: #ddd;
+            color: #6a6a6a;
+        }
+
+        .diurnal-theme .ladder {
+            border-color: #b7b7b7;
+            color: #b7b7b7;
+        }
+
+        .diurnal-theme .ladder-horizontal {
+            background: linear-gradient( to right, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 2px, rgba(196, 196, 196, 0) 2px);
+        }
+
+        .diurnal-theme .ladder-vertical {
+            background: linear-gradient( to bottom, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 0px, rgba(196, 196, 196, 0) 0px);
+        }
+
+        .diurnal-theme .main-hall {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .main-hall-entrance {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .main-hall-grandstairway {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .stairs-ascending.stairs-horizontal {
+            background: linear-gradient( to bottom, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
+        }
+
+        .diurnal-theme .stairs-descending.stairs-horizontal {
+            background: linear-gradient( to bottom, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
+        }
+
+        .diurnal-theme .stairs-ascending.stairs-vertical {
+            background: linear-gradient( to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
+        }
+
+        .diurnal-theme .stairs-descending.stairs-vertical {
+            background: linear-gradient( to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
+        }
+
+        .diurnal-theme .main-hall-grandstairway-wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .main-hall-stairways {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .main-hall-stairways .stairs:nth-child(1) {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .main-hall-stairways div[class*="stair"] {
+            background-color: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .main-hall-stairways .stairs:nth-child(7) {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .main-hall-stairways .stairs:nth-child(3) {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .main-hall-stairways .stairs:nth-child(5) {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .main-hall-stairways .stairs:nth-child(4) {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .dining-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .tea-room .passage-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .tea-room .passage-to-door {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .tea-room  .corridor {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .tea-room .passage-to-stairs {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .tea-room .stairs-to-passage {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .bar {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .bar .passage-way {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .bar .bar-wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .tiger-statue-room {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .tiger-statue-room .tiger-statue-room-wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .researchers-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .researchers-room .researchers-room-wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .small-storeroom {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .medical-storage-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .west-wing-inner-stairway {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .west-wing-inner-stairway .passage-to-stairs {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .west-wing-inner-stairway .passage-to-stairs .stairs {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .west-wing-inner-stairway .passage-vertical {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .west-wing-inner-stairway .passage-horizontal {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .greenhouse {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .northern-corridor {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .northern-corridor .lower-passageways {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .northern-corridor .adjoining-passage-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .northern-corridor .northern-corridor-wall-cutout {
+            background: whitesmoke;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway .passage-way {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
+            border-color: #ccc;
+            background: whitesmoke;
+            border-right-color: whitesmoke;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway .stairwell .stairs-horizontal {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway .stairwell .stairs-vertical {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway .stairwell .stairs-landing {
+            background: #cdcdcd;
+        }
+
+        .diurnal-theme .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
+            background: whitesmoke;
+            border-color: #ccc;
+            border-right-color: whitesmoke;
+        }
+
+        .diurnal-theme .exhibition-room {
+            background: #dfdfdf;    
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .exhibition-room .passage-way {
+            background: #dfdfdf;    
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .exhibition-room .passage-to-door {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .art-room {
+            background: #dfdfdf;    
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .secret-passage {
+            background: #dfdfdf;    
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .secret-passage .ladder:before {
+            color: #8c8c8c;
+        }
+
+        .diurnal-theme .art-room .passage-way-wall {
+            background: #dfdfdf;    
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .south-east-corridor {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .south-east-corridor .upper-corridor {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .hidden-wardrobe {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .mirror-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .living-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .large-gallery {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .large-gallery .room-to-graveyard {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .large-gallery .passage-to-door {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .large-gallery .passage-way-bend {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .suspended-ceiling-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .dark-corridor {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .courtyard-study {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .courtyard-study .bay-window {
+            background: #dfdfdf;
+            border-left-color: whitesmoke;
+            border-right-color: whitesmoke;
+            border-bottom-color: #dfdfdf;
+        }
+
+        .diurnal-theme .courtyard-study.room:hover .bay-window {
+            border-bottom-color: #e5e5e5;
+        }
+
+        .diurnal-theme .courtyard-study.room.toggle-state:hover .room {
+            background: #e5e5e5;
+        }
+
+        .diurnal-theme .courtyard-study.room.toggle-state .bay-window {
+            border-bottom-color: #ebebeb;
+        }
+
+        .diurnal-theme .east-wing-stairway {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .east-wing-stairway .stairwell .stairs-vertical {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .east-wing-stairway .stairwell .stairs-horizontal {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .east-wing-stairway .stairwell .stairs-landing {
+            background: #cdcdcd;
+        }
+
+        .diurnal-theme .east-wing-storeroom {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .winding-corridor {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .bathroom {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .bathroom .bathroom-wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .bathroom .passage-way-wall {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .outside-boiler {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .outside-boiler .upper-corridor {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .entrance-to-crypt .stairs {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .graveyard .stairs-landing {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .graveyard .stairs-vertical {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .stairs-vertical:nth-of-type(2) {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .stairs-vertical:nth-of-type(4) {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .stairs-landing:nth-of-type(3) {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .stairs-landing:nth-of-type(1) {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .entrance-to-gallery {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .path-to-crypt-entrance.room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard:hover .path-to-crypt-entrance.room {
+            background: #e5e5e5;
+        }
+
+        .diurnal-theme .graveyard .entrance-to-crypt {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .upper-left-graveyard {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .graveyard .upper-left-graveyard .dividing-fence {
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .graveyard:hover .upper-left-graveyard .dividing-fence {
+            background: #e5e5e5;
+        }
+
+        .diurnal-theme .roofed-passage {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .roofed-passage .passage-to-garden-shed {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .roofed-passage .passage-to-garden-shed-cutout {
+            background: rgb(245, 245, 245);
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .garden-shed {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .garden-shed .entrance-to-main-garden {
+            background: #e5e5e5;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .garden-shed .stairs-vertical {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .garden-shed .stairs-landing {
+            border-color: #b7b7b7;
+        }
+    </style>
     <div class="map-reset">
         <span class="fa-stack fa-lg">
           <i class="fa fa-map-marker fa-stack-2x"></i>
