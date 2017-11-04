@@ -2951,7 +2951,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     font-size: 165px;
     line-height: 33px;
     position: absolute;
-    top: 42px;
+    top: 43px;
     left: -17px;
     color: inherit;
 }
@@ -3060,6 +3060,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-position: center;
     background-size: 80%;
     background-color: black;
+    border: 0px;
 }
 
 /* Miscellaneous Objects */
