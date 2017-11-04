@@ -4888,14 +4888,14 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     min-height: 20px;
 }
 
+.door-one-way:after {
+    position: absolute;
+}
+
 .door-vertical.door-one-way-out:after {
     content: "\f178";
     font: normal normal normal 14px/1 FontAwesome;
     left: 2px;
-}
-
-.door-one-way:after {
-    position: absolute;
 }
 
 .door-vertical.door-one-way-in:after {
@@ -4933,7 +4933,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 }
 
 .door-vertical.door-one-way:after {
-    top: 0;
+    top: -2px;
     bottom: 0;
     left: -2px;
     line-height: 15px !important;
