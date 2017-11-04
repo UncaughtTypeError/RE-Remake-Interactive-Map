@@ -5,7 +5,163 @@ data-location-next="courtyard"
 data-floor="mansion-2f" 
 data-floor-prev="mansion-1f" 
 data-floor-next="mansion-3f">
-    <style></style>
+    <style>
+        /* Room Thumbnails */
+
+        /* Main Hall */
+        #main-hall-2f.room-thumbnail {
+            background-image: url(https://vignette.wikia.nocookie.net/residentevil/images/0/04/REmake_background_-_Entrance_hall_-_r106_00092.jpg/revision/latest?cb=20140920074209);
+        }
+
+        /* East Wing */
+        #suspended-ceiling-room.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/6/61/2002_Suspended_ceiling_room_1.jpg/revision/latest?cb=20140813000618);
+        }
+
+        #dark-corridor.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/0/0f/R10a_00002.jpg/revision/latest?cb=20150623025049);
+        }
+
+        #winding-corridor.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/0/09/R109_00011.jpg/revision/latest?cb=20150622053120);
+        }
+
+        #large-gallery.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/6/65/R117_00006.jpg/revision/latest?cb=20150620062737);
+        }
+
+        #east-wing-stairway.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/c/c6/2F_East_Stairway.jpg/revision/latest?cb=20100806075953);
+        }
+
+        #courtyard-study.room-thumbnail {
+            background-image: url(http://img55.laughinggif.com/pic/HTTP3BpcGVtYWtlci5ydS93cC1jb250ZW50L3VwbG9hZHMvdmlkZW8vMjAxMi8wNi93aGl0ZV9ub2lzZS5naWYlog.gif);
+        }
+
+        #courtyard-study.room-thumbnail:after {
+            content: "No Data";
+            position: absolute;
+            color: #ffffff;
+            font-size: 15px;
+            text-align: center;
+            right: 0;
+            left: 0;
+            height: 15px;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            display: block;
+            margin: auto;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        #east-wing-storeroom.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/c/c2/RE4P08_480f4925_6.png/revision/latest?cb=20120322111438);
+        }
+
+        #outside-boiler.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/1/13/R114_00031.jpg/revision/latest?cb=20150614110037);
+        }
+
+        #bathroom.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/5/5e/R109_00024.jpg/revision/latest?cb=20150613125908);
+        }
+
+        #south-east-corridor.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/1/13/R108_00005.jpg/revision/latest?cb=20150616145147);
+        }
+
+        #exhibition-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/b/be/RE4P08_3c5736de_6.png/revision/latest?cb=20120321102250);
+        }
+
+        #art-room.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/e/e7/R111_00001.jpg/revision/latest?cb=20150610004933);
+        }
+
+        #living-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/e/e3/R116_00001.jpg/revision/latest?cb=20150620054826);
+        }
+
+        #secret-passage.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/d/d0/Trevor_grave_%282%29.jpg/revision/latest?cb=20141002111334);
+        }
+
+        #mirror-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/c/cd/R111_00007.jpg/revision/latest?cb=20150625062710);
+        }
+
+        #hidden-wardrobe.room-thumbnail {
+            background-image: url(http://img55.laughinggif.com/pic/HTTP3BpcGVtYWtlci5ydS93cC1jb250ZW50L3VwbG9hZHMvdmlkZW8vMjAxMi8wNi93aGl0ZV9ub2lzZS5naWYlog.gif);
+        }
+
+        #hidden-wardrobe.room-thumbnail:after {
+            content: "No Data";
+            position: absolute;
+            color: #ffffff;
+            font-size: 15px;
+            text-align: center;
+            right: 0;
+            left: 0;
+            height: 15px;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            display: block;
+            margin: auto;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.22);
+        }
+
+        /* West Wing */
+
+        #dining-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/7/77/R105_00005.jpg/revision/latest?cb=20150608142836);
+        }
+
+        #tea-room.room-thumbnail {
+            background-image: url(https://vignette4.wikia.nocookie.net/residentevil/images/3/30/R103_00017.jpg/revision/latest?cb=20150609093727);
+        }
+
+        #bar.room-thumbnail {
+            background-image: url(https://vignette4.wikia.nocookie.net/residentevil/images/5/5b/R10f_00002.jpg/revision/latest?cb=20150615120252);
+        }
+
+        #researchers-room.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/1/1c/R10e_00002.jpg/revision/latest?cb=20150624055906);
+        }
+
+        #west-wing-outer-stairway.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/f/fa/R112_00033.jpg/revision/latest?cb=20150609095024);
+        }
+
+        #west-wing-inner-stairway.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/e/e5/R101_00005.jpg/revision/latest?cb=20150619085120);
+        }
+
+        #medical-storage-room.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/f/fa/R100_00001.jpg/revision/latest?cb=20150610114857);
+        }
+
+        #small-storeroom.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/0/0b/R102_00003.jpg/revision/latest?cb=20150622022917);
+        }
+
+        #northern-corridor.room-thumbnail {
+            background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/4/4d/R103_00040.jpg/revision/latest?cb=20150624051255);
+        }
+
+        #tiger-statue-room.room-thumbnail {
+            background-image: url(https://vignette2.wikia.nocookie.net/residentevil/images/9/98/Tiger_statue_room_remastered.png/revision/latest?cb=20150128113249);
+        }
+
+        #greenhouse.room-thumbnail {
+            background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/b/b3/2002_Greenhouse_-_background_3.jpg/revision/latest?cb=20140813010246);
+        }
+
+        /* Marker Placements */
+    </style>
     <div class="map-reset">
         <span class="fa-stack fa-lg">
           <i class="fa fa-map-marker fa-stack-2x"></i>
@@ -142,7 +298,7 @@ data-floor-next="mansion-3f">
                     </div>
                 </i>
             </div>
-            <span class="icon-marker-room-title">Main Hall</span>
+            <span class="icon-marker-room-title">Main Hall 2F</span>
         </div>
         <div class="room-attributes">
             <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="moderate-high"></div>
