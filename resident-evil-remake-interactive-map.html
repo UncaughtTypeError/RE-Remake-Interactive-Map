@@ -11025,10 +11025,12 @@
             if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
                 if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
+                    console.log('has icons');
                 }
             } else {
                 if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
+                    console.log('has no icons');
                 }
             }
         });
@@ -11679,7 +11681,6 @@
         });
         /* Map Pins/Icons Reset */
         jQuery('.floor-panel').on('click', '.map-reset', function(){
-            console.log('reset');
             jQuery(this).parent('.floor-wrapper').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
             jQuery('#tab-list').find('.filter-active').removeClass('filter-active').addClass('filter-inactive');
             jQuery('#tab-rooms').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
