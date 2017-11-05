@@ -1393,6 +1393,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 .room-featured-items .primary-icon-marker {
     display: inline-block;
     margin-left: 5px;
+    opacity: 1;
 }
 
 .room-detail-inner-body {
