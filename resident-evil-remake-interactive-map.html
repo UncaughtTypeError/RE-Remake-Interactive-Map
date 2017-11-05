@@ -10221,7 +10221,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 9.9')
+    console.log('ver 10.1')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -10812,8 +10812,9 @@
                 }
             }
         });
-        /* Map Pagination */
+        /* Room Tabs */
         function unpdateRoomTabs() {
+            jQuery('#tab-rooms').empty();
             /* Append Icon Marker Tags to Room Tabs */
             jQuery('.icon-marker-tag').each(function(){
                 jQuery(this).clone().appendTo('.items #tab-rooms');
@@ -11328,6 +11329,7 @@
 	                    	if(jQuery('.floor-wrapper[data-floor="courtyard-1f"]').length > 0) {
 	                			jQuery('.floor-wrapper[data-floor="courtyard-1f"]').addClass('toggle-state').fadeIn();
                                 unpdateMapPagination();
+                                unpdateRoomTabs();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11347,6 +11349,7 @@
                                     jQuery('.grid-backdrop').fadeOut();
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').fadeIn());
 					                unpdateMapPagination();
+                                    unpdateRoomTabs();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11370,6 +11373,7 @@
 	                    	if(jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').length > 0) {
 	                			jQuery('.floor-wrapper[data-floor="guardhouse-residence-1f"]').addClass('toggle-state').fadeIn();
                                 unpdateMapPagination();
+                                unpdateRoomTabs();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11389,6 +11393,7 @@
                                     jQuery('.grid-backdrop').fadeOut();
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').fadeIn());
 					                unpdateMapPagination();
+                                    unpdateRoomTabs();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11412,6 +11417,7 @@
 	                    	if(jQuery('.floor-wrapper[data-floor="altar-1b"]').length > 0) {
 	                			jQuery('.floor-wrapper[data-floor="altar-1b"]').addClass('toggle-state').fadeIn();
                                 unpdateMapPagination();
+                                unpdateRoomTabs();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11431,6 +11437,7 @@
                                     jQuery('.grid-backdrop').fadeOut();
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').fadeIn());
 					                unpdateMapPagination();
+                                    unpdateRoomTabs();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11454,6 +11461,7 @@
 	                    	if(jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').length > 0) {
 	                			jQuery('.floor-wrapper[data-floor="underground-laboratory-1b"]').addClass('toggle-state').fadeIn();
                                 unpdateMapPagination();
+                                unpdateRoomTabs();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11473,6 +11481,7 @@
                                     jQuery('.grid-backdrop').fadeOut();
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').fadeIn());
 					                unpdateMapPagination();
+                                    unpdateRoomTabs();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11496,6 +11505,7 @@
 	                    	if(jQuery('.floor-wrapper[data-floor="mansion-1f"]').length > 0) {
 	                			jQuery('.floor-wrapper[data-floor="mansion-1f"]').addClass('toggle-state').fadeIn();
                                 unpdateMapPagination();
+                                unpdateRoomTabs();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11515,6 +11525,7 @@
                                     jQuery('.grid-backdrop').fadeOut();
 							        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').fadeIn());
 					                unpdateMapPagination();
+                                    unpdateRoomTabs();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11569,6 +11580,7 @@
                     if(jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').length > 0) {
                         jQuery('.floor-wrapper[data-floor="'+dataGetFloor+'"]').addClass('toggle-state').fadeIn();
                         unpdateMapPagination();
+                        unpdateRoomTabs();
 	            	} else {
                         var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
                         jQuery('.grid-backdrop').fadeIn();
@@ -11584,6 +11596,7 @@
                             jQuery('.grid-backdrop').fadeOut();
     				        jQuery('.floor-panel').append(jQuery(data).addClass('toggle-state').fadeIn());
     		                unpdateMapPagination();
+                            unpdateRoomTabs();
                             jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
     					});
                     }
