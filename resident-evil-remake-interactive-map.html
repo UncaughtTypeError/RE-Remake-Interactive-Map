@@ -10221,7 +10221,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 10.6')
+    console.log('ver 10.7')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -11660,7 +11660,7 @@
             jQuery('.navigation-menu').toggleClass('toggle-state');
         });
         /* Map Pins/Icons Reset */
-        jQuery('.floor-wrapper').on('click', '.map-reset', function(){
+        jQuery('.floor-panel').on('click', '.map-reset', function(){
             console.log('reset');
             jQuery(this).parent('.floor-wrapper').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
             jQuery('#tab-list').find('.filter-active').removeClass('filter-active').addClass('filter-inactive');
