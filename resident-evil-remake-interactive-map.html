@@ -11025,12 +11025,10 @@
             if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
                 if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                    console.log('has icons');
                 }
             } else {
                 if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
                     jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                    console.log('has no icons');
                 }
             }
         });
@@ -11203,7 +11201,7 @@
             setTimeout(function() {
                 jQuery('.room-thumbnail').attr('id', detailActiveRoom);
             }, 500);
-            jQuery(this).find('.featured-icon-markers').clone().css('display','none').prependTo('.room-featured-items').fadeIn(500).find('.icon-pin').removeClass('map-marker-inactive').addClass('map-marker-active');
+            jQuery(this).find('.featured-icon-markers').clone().css('display','none').prependTo('.room-featured-items').fadeIn(500).find('.icon-pin').removeClass('map-marker-inactive map-marker-active');
             if(jQuery(this).has('[data-function]').length > 0) {
                 jQuery('.room-function').removeClass('function-active').addClass('function-inactive');
                 jQuery(jQuery(this).find('.room-attributes')).each(function() {
