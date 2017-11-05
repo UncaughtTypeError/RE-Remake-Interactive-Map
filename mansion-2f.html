@@ -6,12 +6,7 @@ data-floor="mansion-2f"
 data-floor-prev="mansion-1f" 
 data-floor-next="mansion-3f">
     <style>
-        /* Room Thumbnails */
-
-        /* Main Hall */
-        #main-hall-2f.room-thumbnail {
-            background-image: url(https://vignette.wikia.nocookie.net/residentevil/images/0/04/REmake_background_-_Entrance_hall_-_r106_00092.jpg/revision/latest?cb=20140920074209);
-        }
+        /* Rooms */
 
         .main-hall-2f {
             height: 17%;
@@ -126,13 +121,56 @@ data-floor-next="mansion-3f">
             z-index: 9;
         }
 
-        /* East Wing */
+        .west-wing-2f {
+            height: 37%;
+            width: 40%;
+            display: block;
+            position: absolute;
+            left: 0;
+            display: block;
+            margin: auto;
+            top: 20%;
+        }
 
-        /* West Wing */
-
-        /* Marker Placements */
+        .east-wing-2f {
+            height: 37%;
+            width: 40%;
+            display: block;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            top: 20%;
+        }
 
         /* Icon Marker Placements */
+
+        .main-hall-2f .icon-markers .person-of-interest .icon-marker {
+            bottom: 50px;
+            left: 100px;
+        }
+
+        .main-hall-2f .icon-markers .weapon .icon-marker {
+            bottom: 70px;
+            left: 100px;
+        }
+
+        .main-hall-2f .icon-markers .ammunition .icon-marker {
+            bottom: 42px;
+            left: 95px;
+        }
+
+        .main-hall-2f .icon-markers .door-key .icon-marker {
+            right: 93px;
+            bottom: 42px;
+        }
+
+        .main-hall-2f .icon-markers .cerberus .icon-marker {
+            bottom: 10px;
+            left: 100px;
+        }
+
+        /* Primary Icon Marker Placements */
 
         /* Stairs */
 
@@ -147,24 +185,31 @@ data-floor-next="mansion-3f">
         .main-hall-2f .main-hall-stairways .stairs:nth-child(5):after {
             content: "\f0da";
         }
+        
+        /* Room Thumbnails */
+
+        /* Main Hall */
+        #main-hall-2f.room-thumbnail {
+            background-image: url(https://vignette.wikia.nocookie.net/residentevil/images/0/04/REmake_background_-_Entrance_hall_-_r106_00092.jpg/revision/latest?cb=20140920074209);
+        }
 
         /* Nocturnal Theme - Map */
 
-        .nocturnal-theme .main-hall-2f {
+        .nocturnal-theme .main-hall-2f, .nocturnal-theme .main-hall-2f .main-hall-mezzanine {
             border-color: #313030;
         }
 
-        .nocturnal-theme .main-hall-2f > div {
+        .nocturnal-theme .main-hall-2f .main-hall-mezzanine > div:not(.stairs) {
             background: #4e4e4e;
         }
 
         /* Diurnal Theme - Map */
 
-        .diurnal-theme .main-hall-2f {
+        .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
             border-color: #ccc;
         }
 
-        .diurnal-theme .main-hall-2f > div {
+        .diurnal-theme .main-hall-2f .main-hall-mezzanine > div:not(.stairs) {
             background: #dfdfdf;
         }
     </style>
