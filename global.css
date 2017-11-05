@@ -2046,6 +2046,10 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background: transparent;
 }
 
+.room-detail-wrapper .list-group-wrapper .list-group-item:hover {
+    background: transparent;
+}
+
 .room-detail-wrapper .list-group-wrapper .list-group-item > small {
     vertical-align: top;
     position: absolute;
