@@ -27,28 +27,37 @@ data-floor-next="mansion-3f">
 
         .west-mezzanine {
             top: -22px;
-            bottom: 0;
+            bottom: 43px;
             position: absolute;
             width: 25px;
             left: 0;
-            z-index: 10;
+            border-right: 1px solid;
+            border-color: inherit;
+            z-index: 8;
         }
 
         .east-mezzanine {
             top: -22px;
-            bottom: 0;
+            bottom: 43px;
             position: absolute;
             width: 25px;
             right: 0;
-            z-index: 10;
+            border-left: 1px solid;
+            border-color: inherit;
+            z-index: 8;
         }
 
         .north-horizontal-mezzanine {
             bottom: 0;
             left: 0;
             right: 0;
+            width: 58%;
+            margin: auto;
             height: 25px;
             position: absolute;
+            border-top: 1px solid;
+            border-color: inherit;
+            z-index: 8;
         }
 
         .south-horizontal-mezzanine {
@@ -56,9 +65,12 @@ data-floor-next="mansion-3f">
             left: 0;
             right: 0;
             height: 25px;
+            width: 77%;
+            margin: auto;
             position: absolute;
             z-index: 9;
-            border: 1px solid;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
             border-color: inherit;
         }
 
@@ -69,6 +81,10 @@ data-floor-next="mansion-3f">
             bottom: 0;
             left: 0;
             border-top-right-radius: 50%;
+            border-right: 1px solid;
+            border-top: 1px solid;
+            border-color: inherit;
+            z-index: 7;
         }
 
         .east-corner-mezzanine {
@@ -78,11 +94,31 @@ data-floor-next="mansion-3f">
             bottom: 0;
             right: 0;
             border-top-left-radius: 50%;
+            border-left: 1px solid;
+            border-top: 1px solid;
+            border-color: inherit;
+            z-index: 7;
         }
 
         .main-hall-2f .main-hall-grandstairway {
             height: 68px;
             top: 0px;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(2) {
+            border-left: 0px;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(1) {
+            border-left: 0px;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(6) {
+            border-right: 0px;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(7) {
+            border-right: 0px;
         }
 
         .west-mezzanine .door {
