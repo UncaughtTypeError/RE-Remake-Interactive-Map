@@ -10221,7 +10221,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 10.5')
+    console.log('ver 10.6')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -10547,6 +10547,26 @@
                 jQuery('.gears-panel.bottom-left').find('.fa').removeClass('fa-spin fa-spin-backwards');
             }, 1000);
         });
+        /* Active Triggered Keys */
+        function activeTriggeredKeys() {
+            jQuery('.filter-key.filter-active').each(function(){
+                var dataKey = jQuery(this).attr('data-key');
+                jQuery('.icon-pin').each(function(){
+                    if(jQuery(this).hasClass(dataKey) && jQuery(this).hasClass('map-marker-inactive')) {
+                        jQuery(this).removeClass('map-marker-inactive').addClass('map-marker-active');
+                    }
+                });
+                if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
+                    if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
+                        jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
+                    }
+                } else {
+                    if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
+                        jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
+                    }
+                }
+            });
+        }
         /* Keymenu Expand Out & Collapse In */
         jQuery('.icon-trigger.toggle-state').on('click', function(){
             if(jQuery(this).parents('.keymenu').hasClass('list-group-collapse')) {
@@ -11337,6 +11357,7 @@
                                 unpdateMapPagination();
                                 unpdateRoomTabs();
                                 resetDifficultySelect();
+                                activeTriggeredKeys();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11358,6 +11379,7 @@
 					                unpdateMapPagination();
                                     unpdateRoomTabs();
                                     resetDifficultySelect();
+                                    activeTriggeredKeys();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11383,6 +11405,7 @@
                                 unpdateMapPagination();
                                 unpdateRoomTabs();
                                 resetDifficultySelect();
+                                activeTriggeredKeys();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11404,6 +11427,7 @@
 					                unpdateMapPagination();
                                     unpdateRoomTabs();
                                     resetDifficultySelect();
+                                    activeTriggeredKeys();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11429,6 +11453,7 @@
                                 unpdateMapPagination();
                                 unpdateRoomTabs();
                                 resetDifficultySelect();
+                                activeTriggeredKeys();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11450,6 +11475,7 @@
 					                unpdateMapPagination();
                                     unpdateRoomTabs();
                                     resetDifficultySelect();
+                                    activeTriggeredKeys();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11475,6 +11501,7 @@
                                 unpdateMapPagination();
                                 unpdateRoomTabs();
                                 resetDifficultySelect();
+                                activeTriggeredKeys();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11496,6 +11523,7 @@
 					                unpdateMapPagination();
                                     unpdateRoomTabs();
                                     resetDifficultySelect();
+                                    activeTriggeredKeys();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11521,6 +11549,7 @@
                                 unpdateMapPagination();
                                 unpdateRoomTabs();
                                 resetDifficultySelect();
+                                activeTriggeredKeys();
                                 var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                 jQuery('#title').fadeOut(function(){
                                     jQuery('#title').text(locationTitle).fadeIn();
@@ -11542,6 +11571,7 @@
 					                unpdateMapPagination();
                                     unpdateRoomTabs();
                                     resetDifficultySelect();
+                                    activeTriggeredKeys();
                                     var locationTitle = jQuery('.floor-wrapper.toggle-state').attr('data-location').split('-').join(' ');
                                     jQuery('#title').fadeOut(function(){
                                         jQuery('#title').text(locationTitle).fadeIn();
@@ -11598,6 +11628,7 @@
                         unpdateMapPagination();
                         unpdateRoomTabs();
                         resetDifficultySelect();
+                        activeTriggeredKeys();
 	            	} else {
                         var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
                         jQuery('.grid-backdrop').fadeIn();
@@ -11615,6 +11646,7 @@
     		                unpdateMapPagination();
                             unpdateRoomTabs();
                             resetDifficultySelect();
+                            activeTriggeredKeys();
                             jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
     					});
                     }
@@ -11629,6 +11661,7 @@
         });
         /* Map Pins/Icons Reset */
         jQuery('.floor-wrapper').on('click', '.map-reset', function(){
+            console.log('reset');
             jQuery(this).parent('.floor-wrapper').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
             jQuery('#tab-list').find('.filter-active').removeClass('filter-active').addClass('filter-inactive');
             jQuery('#tab-rooms').find('.map-marker-active').removeClass('map-marker-active').addClass('map-marker-inactive');
