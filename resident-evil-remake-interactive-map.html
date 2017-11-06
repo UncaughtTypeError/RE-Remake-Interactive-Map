@@ -10221,7 +10221,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 11.6')
+    console.log('ver 11.7')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -11002,6 +11002,7 @@
                     unpdateRoomTabs();
                     resetDifficultySelect();
                     activeTriggeredKeys();
+                    jQuery('.'+dataRoomAttr).trigger('click');
                 } else {
                     var dataCurrentDiff = jQuery('.difficulty-select.toggle-state').attr('data-difficulty-level');
                     jQuery('.grid-backdrop').fadeIn();
@@ -11021,9 +11022,9 @@
                         resetDifficultySelect();
                         activeTriggeredKeys();
                         jQuery('.difficulty-select[data-difficulty-level="'+dataCurrentDiff+']"').removeClass('toggle-state').trigger('click');
+                        jQuery('.'+dataRoomAttr).trigger('click');
                     });
                 }
-                jQuery('.'+dataRoomAttr).trigger('click');
             }
         });
         /* Exit Room Detail View */
