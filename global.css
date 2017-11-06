@@ -4323,6 +4323,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     margin: 0;
     padding: 0;
     margin-right: -34px;
+    background: transparent;
 }
 
 #item-key-icons .shadow-icon:nth-child(odd) {
