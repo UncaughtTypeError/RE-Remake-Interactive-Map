@@ -4511,8 +4511,8 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 }
 
 #item-key-icons .list-group-item .qty {
-    bottom: -20px;
-    right: -25px;
+    bottom: -12px;
+    right: -18px;
     z-index: 9;
 }
 
