@@ -10221,7 +10221,7 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 11.3')
+    console.log('ver 11.4')
     jQuery(document).ready(function(){
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
@@ -10556,15 +10556,7 @@
                         jQuery(this).removeClass('map-marker-inactive').addClass('map-marker-active');
                     }
                 });
-                if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                    if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                        jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                    }
-                } else {
-                    if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                        jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                    }
-                }
+                checkForActivePins();
             });
         }
         /* Keymenu Expand Out & Collapse In */
@@ -10598,15 +10590,7 @@
                     jQuery(this).removeClass('map-marker-active').addClass('map-marker-inactive');
                 }
             });
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                }
-            } else {
-                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                }
-            }
+            checkForActivePins();
         });
         /* Dropdowns: Map Key & Door Key */
         jQuery('#map-key-info, #door-lock-info').on('click', function(){
@@ -10822,15 +10806,7 @@
                 jQuery('.stars-ranking-type').removeClass('ranking-type-active').addClass('ranking-type-inactive');
                 jQuery('#default-biohazards').removeClass('ranking-type-inactive').addClass('ranking-type-active');
             }
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                }
-            } else {
-                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                }
-            }
+            checkForActivePins();
         });
         /* Room Tabs */
         function unpdateRoomTabs() {
@@ -10888,15 +10864,7 @@
                     jQuery('.'+roomMarkerAttr).find('.'+roomMarkerKey).removeClass('map-marker-active').addClass('map-marker-inactive');
                 }
             }
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                }
-            } else {
-                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                }
-            }
+            checkForActivePins();
         });
         /* Difficulty Select */
         jQuery('.character').on('click', function(){
@@ -11010,39 +10978,15 @@
             var dataTargetClass = jQuery(this).attr('data-key');
             var detailActiveRoom = jQuery('.room.toggle-state').attr('class').split(' ')[0];
             jQuery('.'+detailActiveRoom).find('.icon-pin.'+dataTargetClass).toggleClass('map-marker-inactive map-marker-active');
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                }
-            } else {
-                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                }
-            }
+            checkForActivePins();
         });
         jQuery('.tile-reset-room').on('click', function(){
             jQuery('.room.toggle-state').find('.icon-pin').removeClass('map-marker-active').addClass('map-marker-inactive');
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                }
-            } else {
-                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                }
-            }
+            checkForActivePins();
         });
         jQuery('.tile-all-pins').on('click', function(){
             jQuery('.room.toggle-state').find('.icon-pin').removeClass('map-marker-inactive').addClass('map-marker-active');
-            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
-                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
-                }
-            } else {
-                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
-                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
-                }
-            }
+            checkForActivePins();
         });
         jQuery('body').on('click', '[data-room]', function(){
             var dataRoomAttr = jQuery(this).attr('data-room').replace(/[']/g, '');
@@ -11691,6 +11635,17 @@
             }
             jQuery(this).parent('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
         });
+        function checkForActivePins() {
+            if(jQuery('.icon-markers .icon-pin').hasClass('map-marker-active') || jQuery('.featured-icon-markers .icon-pin').hasClass('map-marker-active')) {
+                if(!jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper.toggle-state').addClass('icon-pins-active');
+                }
+            } else {
+                if(jQuery('.floor-wrapper.toggle-state').hasClass('icon-pins-active')) {
+                    jQuery('.floor-wrapper.toggle-state').removeClass('icon-pins-active');
+                }
+            }
+        }
     });
     </script>
 </html>
