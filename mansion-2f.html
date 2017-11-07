@@ -26,22 +26,24 @@ data-floor-next="mansion-3f">
         }
 
         .west-mezzanine {
-            top: -22px;
-            bottom: 43px;
+            top: -23px;
+            bottom: 42px;
             position: absolute;
-            width: 25px;
-            left: 0;
+            width: 27px;
+            left: -1px;
+            border-left: 1px solid;
             border-right: 1px solid;
             border-color: inherit;
             z-index: 8;
         }
 
         .east-mezzanine {
-            top: -22px;
-            bottom: 43px;
+            top: -23px;
+            bottom: 42px;
             position: absolute;
-            width: 25px;
-            right: 0;
+            width: 27px;
+            right: -2px;
+            border-right: 1px solid;
             border-left: 1px solid;
             border-color: inherit;
             z-index: 8;
@@ -105,20 +107,32 @@ data-floor-next="mansion-3f">
             top: 0px;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(2) {
-            border-left: 0px;
-        }
-
         .main-hall-2f .main-hall-stairways .stairs:nth-child(1) {
             border-left: 0px;
+            border-right: 1px solid;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(2) {
+            border-left: 0px;
+            border-top: 0px;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(3) {
+            border-bottom: 1px solid;
+        }
+
+        .main-hall-2f .main-hall-stairways .stairs:nth-child(5) {
+            border-bottom: 1px solid;
         }
 
         .main-hall-2f .main-hall-stairways .stairs:nth-child(6) {
             border-right: 0px;
+            border-top: 0px;
         }
 
         .main-hall-2f .main-hall-stairways .stairs:nth-child(7) {
             border-right: 0px;
+            border-left: 1px solid;
         }
 
         .west-mezzanine .door {
@@ -404,6 +418,10 @@ data-floor-next="mansion-3f">
             background-image: url(https://vignette.wikia.nocookie.net/residentevil/images/f/fc/R202_00003.jpg/revision/latest?cb=20150608144947);
         }
 
+        #outside-balcony.room-thumbnail {
+            background-image: url(https://vignette.wikia.nocookie.net/residentevil/images/c/c4/R203_00127.jpg/revision/latest?cb=20150617121551);
+        }
+
         /* Nocturnal Theme - Map */
 
         .nocturnal-theme .main-hall-2f, .nocturnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -423,6 +441,9 @@ data-floor-next="mansion-3f">
             border-color: #313030;
         }
 
+        .nocturnal-theme .main-hall-2f .main-hall-stairways .stairs {
+            border-color: #313030;
+        }
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -431,6 +452,7 @@ data-floor-next="mansion-3f">
 
         .diurnal-theme .main-hall-2f .main-hall-mezzanine > div:not(.stairs) {
             background: #dfdfdf;
+            border-top: 1px solid #ccc;
         }
 
         .diurnal-theme .dining-room-2f > div {
@@ -440,6 +462,10 @@ data-floor-next="mansion-3f">
 
         .diurnal-theme .dining-room-2f {
             border-color: #ccc;
+        }
+
+        .diurnal-theme .main-hall-2f .main-hall-stairways .stairs {
+            border-color: #b7b7b7;
         }
     </style>
     <div class="map-reset">
@@ -715,6 +741,153 @@ data-floor-next="mansion-3f">
                 </ul>
                 <div class="room-addendum">
                     <div class="examine-text">A stained-glass window. The pattern in the center resembles a woman.</div>
+                </div>
+            </div>
+        </div>
+        <div class="outside-balcony room">
+            <div class="entrance-to-main-hall-2f"></div>
+            <div class="south-balcony"></div>
+            <div class="south-balcony-overhang">
+                <div class="stairs stairs-vertical stairs-descending"></div>
+                <div class="stairs stairs-vertical stairs-descending"></div>
+            </div>
+            <div class="west-balcony"></div>
+            <div class="entrance-to-west-wing-inner-stairway-2f"></div>
+            <div class="icon-markers">
+                <div class="green-herb icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <div class="icon-marker-tooltip">
+                            <span>Green Herb
+                                <sup>x3</sup>
+                            </span>
+                        </div>
+                    </i>
+                </div>
+                <div class="item-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <div class="icon-marker-tooltip">
+                            <span>Collar</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="item-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <div class="icon-marker-tooltip">
+                            <span>Coin</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="item-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <div class="icon-marker-tooltip">
+                            <span>Imitation of a key</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="cerberus star-1 biohazard icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Cerberus</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="cerberus star-1 biohazard icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Cerberus</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="hunter star-1-half biohazard icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Hunter <small>MA-121</small></span>
+                        </div>
+                    </i>
+                </div>
+                <div class="hunter star-1-half biohazard icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-normal JV-lvl-hard CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Hunter <small>MA-121</small></span>
+                        </div>
+                    </i>
+                </div>
+            </div>
+            <div class="icon-marker-tag">
+                <span class="icon-marker-room-title">Outside Balcony</span>
+                <div class="green-herb icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-leaf"></i>
+                        <span class="marker-qty difficulty-qty difficulty-qty-summary difficulty-valid" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">3</span>
+                    </i>
+                </div>
+                <div class="item-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-cube"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Collar</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="item-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-cube"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Coin</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="item-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-cube"></i>
+                        <div class="icon-marker-tooltip">
+                            <span>Imitation of a key</span>
+                        </div>
+                    </i>
+                </div>
+                <div class="cerberus star-1 icon-pin biohazard-info map-marker-inactive" data-info="cerberus" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-exclamation-triangle star-1"></i>
+                        <span class="marker-qty difficulty-qty difficulty-qty-summary" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">2</span>
+                        <div class="icon-marker-tooltip">
+                            <span>Cerberus
+                                <sup>x2</sup>
+                            </span>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                    </i>
+                </div>
+                <div class="hunter star-1-half icon-pin biohazard-info map-marker-inactive" data-info="hunter" data-difficulty-level="JV-lvl-normal JV-lvl-hard CR-lvl-normal CR-lvl-hard">
+                    <i class="icon-marker">
+                        <i class="fa fa-exclamation-triangle star-1-half"></i>
+                        <span class="marker-qty difficulty-qty difficulty-qty-summary" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy CR-lvl-very-easy CR-lvl-easy">1</span>
+                        <span class="marker-qty difficulty-qty difficulty-qty-summary" data-difficulty-level="JV-lvl-normal JV-lvl-hard CR-lvl-normal CR-lvl-hard">2</span>
+                        <div class="icon-marker-tooltip">
+                            <span>Hunter <small>MA-121</small>
+                                <sup class="difficulty-qty" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy CR-lvl-very-easy CR-lvl-easy">x1</sup>
+                                <sup class="difficulty-qty" data-difficulty-level="JV-lvl-normal JV-lvl-hard CR-lvl-normal CR-lvl-hard">x2</sup>
+                            </span>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                    </i>
+                </div>
+            </div>
+            <div class="room-attributes">
+                <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="moderate-high"></div>
+                <ul class="room-adjoining">
+                    <li><span data-room="main-hall-2f" data-floor="mansion-2f">Main Hall 2F</span></li>
+                    <li><span data-room="west-wing-inner-stairway-2f" data-floor="mansion-2f">West Wing Inner Stairway 2F</span></li>
+                </ul>
+                <div class="room-addendum">
+                    <div class="examine-text">A stained-glass window. The pattern in the center resembles a witch.</div>
                 </div>
             </div>
         </div>
