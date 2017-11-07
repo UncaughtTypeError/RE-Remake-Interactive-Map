@@ -339,6 +339,108 @@ data-floor-next="mansion-3f">
             border-top: 0;
         }
 
+        .outside-balcony:before {
+            bottom: -15px;
+        }
+
+        .room-detail-wrapper .icon-info-wrapper .icon-info {
+            background: transparent;
+        }
+
+        .outside-balcony {
+            height: 43px;
+            width: 235px;
+            position: absolute;
+            right: 0;
+            display: block;
+            margin: auto;
+            bottom: 0;
+            border-top: 0;
+        }
+
+        .west-wing .outside-balcony:hover {
+            background: transparent;
+        }
+
+        .west-wing .outside-balcony.toggle-state {
+            background: transparent !important;
+        }
+
+        .entrance-to-west-wing-inner-stairway-2f {
+            width: 70px;
+            position: absolute;
+            height: 30px;
+            bottom: 125px;
+            left: -70px;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .entrance-to-main-hall-2f {
+            width: 15px;
+            position: absolute;
+            top: 0;
+            bottom: 5px;
+            right: 0;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+        }
+
+        .south-balcony {
+            left: 0;
+            right: 13px;
+            position: absolute;
+            top: 0;
+            height: 20px;
+            border-bottom: 1px solid;
+            z-index: 1;
+        }
+
+        .south-balcony-overhang {
+            left: 0;
+            right: 0;
+            top: 17px;
+            position: absolute;
+            margin: auto;
+            width: 50%;
+            height: 55px;
+            border-bottom-left-radius: 40%;
+            border-bottom-right-radius: 40%;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
+            border-right: 1px solid;
+            border-top: 1px solid;
+            z-index: 2;
+        }
+
+        .south-balcony-overhang .stairs {
+            width: 25px;
+            height: 15px;
+            position: absolute;
+            top: -1px;
+        }
+
+        .south-balcony-overhang .stairs:nth-child(1) {
+            left: 0;
+            border-right: 1px solid;
+        }
+
+        .south-balcony-overhang .stairs:nth-child(2) {
+            right: 0;
+            border-left: 1px solid;
+        }
+
+        .west-balcony {
+            width: 20px;
+            height: 105px;
+            position: absolute;
+            left: -20px;
+            bottom: 23px;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 2;
+        }
+
         .east-wing-2f {
             height: 37%;
             width: 40%;
@@ -402,6 +504,47 @@ data-floor-next="mansion-3f">
             bottom: 15px;
         }
 
+        .outside-balcony .icon-markers .item-of-interest:nth-child(2) .icon-marker {
+            left: 121px;
+            bottom: 2px;
+        }
+
+        .outside-balcony .icon-markers .item-of-interest:nth-child(3) .icon-marker {
+            left: 112px;
+            bottom: 2px;
+        }
+
+        .outside-balcony .icon-markers .item-of-interest:nth-child(4) .icon-marker {
+            left: 117px;
+            bottom: 10px;
+        }
+
+        .outside-balcony .icon-markers .green-herb .icon-marker {
+            left: -65px;
+            bottom: 130px;
+        }
+
+        .outside-balcony .icon-markers .cerberus:nth-child(5) .icon-marker {
+            top: 45px;
+            left: 75px;
+        }
+
+        .outside-balcony .icon-markers .cerberus:nth-child(6) .icon-marker {
+            top: 45px;
+            right: 75px;
+        }
+
+        .outside-balcony .icon-markers .hunter:nth-child(7) .icon-marker {
+            top: 8px;
+            right: 112px;
+        }
+
+        .outside-balcony .icon-markers .hunter:nth-child(8) .icon-marker {
+            top: 5px;
+            left: 112px;
+            opacity: .7;
+        }
+
         /* Primary Icon Marker Placements */
 
         /* Stairs */
@@ -416,6 +559,15 @@ data-floor-next="mansion-3f">
 
         .main-hall-2f .main-hall-stairways .stairs:nth-child(5):after {
             content: "\f0da";
+        }
+
+        .south-balcony-overhang .stairs:after {
+            content: "\f0d7";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: -2px;
+            z-index: 9;
         }
         
         /* Room Thumbnails */
@@ -455,6 +607,16 @@ data-floor-next="mansion-3f">
         .nocturnal-theme .main-hall-2f .main-hall-stairways .stairs {
             border-color: #313030;
         }
+
+        .nocturnal-theme .outside-balcony > div {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .south-balcony-overhang .stairs {
+            border-color: #313030;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -476,6 +638,15 @@ data-floor-next="mansion-3f">
         }
 
         .diurnal-theme .main-hall-2f .main-hall-stairways .stairs {
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .outside-balcony > div {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .south-balcony-overhang .stairs {
             border-color: #b7b7b7;
         }
     </style>
@@ -759,8 +930,8 @@ data-floor-next="mansion-3f">
             <div class="entrance-to-main-hall-2f room"></div>
             <div class="south-balcony room"></div>
             <div class="south-balcony-overhang room">
-                <div class="stairs stairs-vertical stairs-descending"></div>
-                <div class="stairs stairs-vertical stairs-descending"></div>
+                <div class="stairs stairs-horizontal stairs-descending"></div>
+                <div class="stairs stairs-horizontal stairs-descending"></div>
             </div>
             <div class="west-balcony room"></div>
             <div class="entrance-to-west-wing-inner-stairway-2f room"></div>
