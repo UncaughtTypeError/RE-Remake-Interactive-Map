@@ -3052,6 +3052,10 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     border: 0;
 }
 
+.room-detail-grid .grid-group-item div[class*="lvl2"] {
+    border: 0;
+}
+
 .room-detail-wrapper .grid-group-wrapper {
     margin-top: 0px;
     height: 350px;
@@ -3065,7 +3069,6 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-position: center;
     background-size: 80%;
     background-color: black;
-    border: 0px;
 }
 
 /* Miscellaneous Objects */
@@ -4772,14 +4775,14 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 .hexagon-vertical .hexagon-lvl2:after {
     left: 0;
     right: 0;
-    top: -6px;
+    top: -8px;
     bottom: 0;
 }
 
 .hexagon-vertical .hexagon-lvl2:before {
     left: 0;
     right: 0;
-    top: -9px;
+    top: -10px;
     bottom: 0;
 }
 
@@ -8217,7 +8220,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     display: inline-block;
     width: auto;
     position: relative;
-    color: inherit;
+    color: inherit !important;
 }
 
 .biohazards-array-wrapper .array-index .biohazard-venomous {
