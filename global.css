@@ -2946,6 +2946,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     text-transform: capitalize;
     padding: 0px 5px;
     box-sizing: border-box;
+    transition: .7s;
 }
 
 .hexagon-border {
@@ -3063,7 +3064,11 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 .room-detail-grid-items .hexagon-border:before {
     font-size: 10px;
     bottom: 20px;
-    padding: 2px;
+    padding: 2px 7px;
+}
+
+.room-detail-grid-items .hexagon-border:hover:before {
+    bottom: -30px;
 }
 
 .room-detail-wrapper .grid-group-wrapper {
