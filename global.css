@@ -3060,6 +3060,12 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     border: 0;
 }
 
+.room-detail-grid-items .hexagon-border:before {
+    font-size: 10px;
+    bottom: 20px;
+    padding: 2px;
+}
+
 .room-detail-wrapper .grid-group-wrapper {
     margin-top: 0px;
     height: 350px;
