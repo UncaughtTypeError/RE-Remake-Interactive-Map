@@ -2491,6 +2491,10 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     margin-left: 35px;
 }
 
+.room-detail-wrapper .icon-info-wrapper .icon-info {
+    background: transparent;
+}
+
 .room-detail-wrapper .key-alt-wrapper:after {
     content: "\2b21";
     font-size: 80px;
@@ -3943,17 +3947,17 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 
 .icon-info:nth-child(1) {
     left: 8px;
-    top: 20px;
+    top: 13px;
 }
 
 .icon-info:nth-child(2) {
-    top: 5px;
+    top: 0px;
     left: 8px;
 }
 
 .icon-info:nth-child(3) {
     bottom: 5px;
-    left: 3px;
+    left: 8px;
 }
 
 .icon-info:before {
