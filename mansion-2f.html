@@ -534,6 +534,29 @@ data-floor-next="mansion-3f">
             border-top: 1px solid;
         }
 
+        .taxidermy-room {
+            width: 71px;
+            height: 79px;
+            left: 105px;
+            top: 38px;
+            position: absolute;
+            border-left: 1px solid;
+            border-top: 1px solid;
+            border-color: inherit;
+        }
+
+        .taxidermy-room:before {
+            bottom: 10px;
+            left: 3px;
+        }
+
+        .taxidermy-room .door {
+            bottom: 12px;
+            right: -3px;
+            height: 10px;
+            min-height: inherit;
+        }
+
         .east-wing-2f {
             height: 37%;
             width: 40%;
@@ -768,6 +791,11 @@ data-floor-next="mansion-3f">
             border-color: #313030;
         }
 
+        .nocturnal-theme .taxidermy-room {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -812,6 +840,11 @@ data-floor-next="mansion-3f">
 
         .diurnal-theme .west-wing-inner-stairway-2f .passage-to-stairs .stairwell .stairs {
             border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .taxidermy-room {
+            border-color: #ccc;
+            background: #dfdfdf;
         }
     </style>
     <div class="map-reset">
