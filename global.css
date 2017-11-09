@@ -1361,6 +1361,10 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     font-size: 15px;
 }
 
+.room-examine:empty {
+    display: none;
+}
+
 .room-examine:after {
     content: close-quote;
     font-size: 20px;
@@ -2404,6 +2408,10 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     margin-top: 10px;
     margin-bottom: 20px;
     transition: .7s;
+}
+
+.room-examine-overview:empty {
+    display: none;
 }
 
 .room-examine-overview:before {
