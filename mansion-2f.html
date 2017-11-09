@@ -556,6 +556,102 @@ data-floor-next="mansion-3f">
             min-height: inherit;
         }
 
+        .mirror-corridor {
+            width: 40px;
+            height: 45px;
+            left: 234px;
+            bottom: 126px;
+            position: absolute;
+        }
+
+        .mirror-corridor:before {
+            bottom: 7px;
+            right: 10px;
+        }
+
+        .mirror-corridor .passage-to-dining-room-2f {
+            width: 40px;
+            height: 45px;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .mirror-corridor .passage-to-elevator-corridor {
+            width: 78px;
+            height: 24px;
+            right: 0;
+            top: 0;
+            position: absolute;
+            border-top: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .mirror-corridor .vertical-passage {
+            width: 32px;
+            height: 124px;
+            left: -38px;
+            bottom: 44px;
+            position: absolute;
+            border-right: 1px solid;
+            z-index: 2;
+        }
+
+        .mirror-corridor .horizontal-passage {
+            width: 111px;
+            height: 23px;
+            left: -117px;
+            bottom: 168px;
+            position: absolute;
+            border-right: 1px solid;
+            border-left: 1px solid;
+            border-top: 1px solid;
+            z-index: 1;
+        }
+
+        .mirror-corridor .adjoining-passage {
+            z-index: 2;
+            width: 15px;
+            height: 10px;
+            left: -73px;
+            bottom: 190px;
+            position: absolute;
+            border-right: 1px solid;
+            border-left: 1px solid;
+        }
+
+        .mirror-corridor .passage-to-stairs {
+            border-right: 1px solid;
+            border-left: 1px solid;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            width: 75px;
+            height: 20px;
+            left: -85px;
+            bottom: 198px;
+            position: absolute;
+        }
+
+        .mirror-corridor .passage-to-stairs .door:nth-child(1) {
+            left: -3px;
+            min-height: inherit;
+            height: 10px;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+        }
+
+        .mirror-corridor .passage-to-stairs .door:nth-child(2) {
+            right: -3px;
+            min-height: inherit;
+            height: 10px;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+        }
+
         .east-wing-2f {
             height: 37%;
             width: 40%;
@@ -721,6 +817,46 @@ data-floor-next="mansion-3f">
             margin: auto;
         }
 
+        .mirror-corridor .icon-markers .ammunition .icon-marker {
+            left: -35px;
+            top: 12px;
+        }
+
+        .mirror-corridor .icon-markers .green-herb:nth-child(3) .icon-marker {
+            top: -170px;
+            left: -55px;
+        }
+
+        .mirror-corridor .icon-markers .green-herb:nth-child(4) .icon-marker {
+            top: -170px;
+            left: -45px;
+        }
+
+        .mirror-corridor .icon-markers .item-of-interest:nth-child(1) .icon-marker {
+            left: -17px;
+            top: -10px;
+        }
+
+        .mirror-corridor .icon-markers .item-of-interest:nth-child(2) .icon-marker {
+            left: -17px;
+            top: -18px;
+        }
+
+        .mirror-corridor .icon-markers .zombie:nth-child(6) .icon-marker {
+            top: -132px;
+            left: -23px;
+        }
+
+        .mirror-corridor .icon-markers .zombie:nth-child(7) .icon-marker {
+            left: -5px;
+            top: 12px;
+        }
+
+        .mirror-corridor .icon-markers .crimson-head .icon-marker {
+            top: -134px;
+            left: -92px;
+        }
+
         /* Primary Icon Marker Placements */
 
         /* Stairs */
@@ -833,6 +969,11 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .mirror-corridor > div {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -880,6 +1021,11 @@ data-floor-next="mansion-3f">
         }
 
         .diurnal-theme .taxidermy-room {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .mirror-corridor > div {
             border-color: #ccc;
             background: #dfdfdf;
         }
@@ -1538,7 +1684,7 @@ data-floor-next="mansion-3f">
             <div class="vertical-passage room"></div>
             <div class="horizontal-passage room"></div>
             <div class="adjoining-passage room"></div>
-            <div class="passage-to-stairs">
+            <div class="passage-to-stairs room">
                 <div class="door door-vertical"></div>
                 <div class="door door-vertical"></div>
             </div>
@@ -1683,7 +1829,7 @@ data-floor-next="mansion-3f">
                     <li><span data-room="statue-corridor" data-floor="mansion-2f">Statue Corridor</span></li>
                 </ul>
                 <div class="room-addendum">
-                    <div class="examine-text"></div>
+                    <div class="examine-text">...</div>
                 </div>
             </div>
         </div>
