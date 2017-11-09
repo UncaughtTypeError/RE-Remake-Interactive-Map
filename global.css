@@ -3204,7 +3204,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-image: url(http://www.evilresource.com/images/resources/remake/goldenarrow.jpg);
 }
 
-.grid-group-item.arrow-head[data-key="item-of-interest"] div[class*="lvl2"] {
+.grid-group-item.arrowhead[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/arrowhead.jpg);
 }
 
