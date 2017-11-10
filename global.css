@@ -5399,6 +5399,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 
 .room .map-marker-inactive.icon-pin {
     opacity: 0;
+    pointer-events: none;
 }
 
 .room .map-marker-active.icon-pin {
