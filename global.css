@@ -1883,6 +1883,11 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     font: normal normal normal 14px/1 FontAwesome;
 }
 
+.room-function.battle-room:before {
+    content: "\f071";
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
 .room-function {
     display: inline-block;
     width: 25px;
