@@ -4967,7 +4967,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 .door-vertical.door-one-way:after {
     top: -2px;
     bottom: 0;
-    left: -2px;
+    left: -5px;
     line-height: 15px !important;
 }
 
