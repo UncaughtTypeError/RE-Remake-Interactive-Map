@@ -3586,6 +3586,10 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-image: url(http://www.evilresource.com/images/resources/remake/helmetkey.jpg);
 }
 
+.grid-group-item.armor-key[data-key="door-key"] div[class*="lvl2"] {
+    background-image: url(http://www.evilresource.com/images/resources/remake/armorkey.jpg);
+}
+
 .grid-group-item.emblem-key[data-key="door-key"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/emblemkey.jpg);
 }
