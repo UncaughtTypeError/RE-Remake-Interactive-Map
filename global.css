@@ -4850,7 +4850,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background: #2f2f2f;
 }
 
-.door-locked, .door-puzzle, .door-one-way {
+.door-locked, .door-puzzle, .door-one-way, .door-no-access {
     background: #c60000;
 }
 
