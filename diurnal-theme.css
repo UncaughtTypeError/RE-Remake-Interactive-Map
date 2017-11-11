@@ -22,6 +22,45 @@ body.diurnal-theme {
     background: white;
 }
 
+.diurnal-theme .room:hover, .diurnal-theme .room:hover .room {
+    background: #e5e5e5;
+}
+
+.diurnal-theme .room.toggle-state:hover .room {
+    background: #ebebeb !important;
+}
+
+.diurnal-theme .room.toggle-state, .diurnal-theme .room.toggle-state .room {
+    background: #ebebeb !important;
+}
+
+.diurnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after {
+    color: #9d9d9d;
+}
+
+.diurnal-theme .door-tooltip {
+    background: white;
+    border-color: #ddd;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .ladder {
+    border-color: #b7b7b7;
+    color: #b7b7b7;
+}
+
+.diurnal-theme .ladder:before {
+    color: #8c8c8c;
+}
+
+.diurnal-theme .ladder-horizontal {
+    background: linear-gradient( to right, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 2px, rgba(196, 196, 196, 0) 2px);
+}
+
+.diurnal-theme .ladder-vertical {
+    background: linear-gradient( to bottom, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 0px, rgba(196, 196, 196, 0) 0px);
+}
+
 .diurnal-theme .keymenu-toggle li {
     border-color: #ddd;
 }
