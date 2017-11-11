@@ -653,7 +653,7 @@ data-floor-next="mansion-3f">
         }
 
         .materials-room {
-            width: 40px;
+            width: 55px;
             height: 23px;
             left: 274px;
             bottom: 126px;
@@ -675,6 +675,88 @@ data-floor-next="mansion-3f">
         .materials-room:before {
             bottom: 7px;
             right: 10px;
+        }
+
+        .elevator-corridor {
+            width: 81px;
+            height: 45px;
+            right: 0;
+            bottom: 126px;
+            position: absolute;
+        }
+
+        .elevator-corridor:before {
+            bottom: 7px;
+            right: 10px;
+        }
+
+        .elevator-corridor .passage-to-mirror-corridor {
+            width: 55px;
+            height: 23px;
+            left: -55px;
+            top: 0;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+        }
+
+        .elevator-corridor .passage-to-mirror-corridor .door {
+            height: 10px;
+            min-height: inherit;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            left: -3px;
+        }
+
+        .elevator-corridor .statue-corridor {
+            width: 25px;
+            height: 45px;
+            left: 0;
+            top: 0;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+        }
+
+        .elevator-corridor .elevator-shaft {
+            width: 32px;
+            height: 32px;
+            right: 24px;
+            top: 0;
+            position: absolute;
+            border: 1px solid;
+        }
+
+        .elevator-corridor .passage-to-materials-room {
+            width: 56px;
+            height: 15px;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+        }
+
+        .elevator-corridor .elevator-passage {
+            width: 25px;
+            height: 155px;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            border-right: 1px solid;
+        }
+
+        .elevator-corridor .elevator-alcove {
+            width: 32px;
+            height: 32px;
+            right: 24px;
+            bottom: 43px;
+            position: absolute;
+            border-left: 1px solid;
+            border-top: 1px solid;
         }
 
         .east-wing-2f {
@@ -917,6 +999,31 @@ data-floor-next="mansion-3f">
             right: 13px;
         }
 
+        .elevator-corridor .icon-markers .zombie:nth-child(4) .icon-marker {
+            top: -15px;
+            left: 38px;
+        }
+
+        .elevator-corridor .icon-markers .zombie:nth-child(5) .icon-marker {
+            bottom: 2px;
+            left: 10px;
+        }
+
+        .elevator-corridor .icon-markers .red-herb .icon-marker {
+            top: -25px;
+            left: 48px;
+        }
+
+        .elevator-corridor .icon-markers .green-herb:nth-child(1) .icon-marker {
+            top: -13px;
+            left: 30px;
+        }
+
+        .elevator-corridor .icon-markers .green-herb:nth-child(2) .icon-marker {
+            top: -25px;
+            left: 30px;
+        }
+
         /* Primary Icon Marker Placements */
 
         /* Stairs */
@@ -1047,6 +1154,16 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .elevator-corridor .elevator-shaft {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .elevator-corridor > div {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -1104,6 +1221,16 @@ data-floor-next="mansion-3f">
         }
 
         .diurnal-theme .materials-room {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .elevator-corridor .elevator-shaft {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .elevator-corridor > div {
             border-color: #ccc;
             background: #dfdfdf;
         }
@@ -2032,11 +2159,13 @@ data-floor-next="mansion-3f">
             <div class="statue-corridor room"></div>
             <div class="passage-to-materials-room room"></div>
             <div class="elevator-passage room"></div>
-            <div class="elevator-nook room"></div>
-            <div class="elevator">
-                <div class="fa-stack fa-fw">
-                    <i class="fa fa-level-down fa-stack-1x fa-flip-horizontal"></i>
-                    <i class="fa fa-level-up fa-stack-1x fa-inverse"></i>
+            <div class="elevator-alcove room"></div>
+            <div class="elevator-shaft">
+                <div class="elevator">
+                    <div class="fa-stack fa-fw">
+                        <i class="fa fa-level-down fa-stack-1x fa-flip-horizontal"></i>
+                        <i class="fa fa-level-up fa-stack-1x fa-inverse"></i>
+                    </div>
                 </div>
             </div>
             <div class="icon-markers">
