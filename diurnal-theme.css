@@ -34,7 +34,7 @@ body.diurnal-theme {
     background: #ebebeb !important;
 }
 
-.diurnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after {
+.diurnal-theme .door-locked:after, .diurnal-theme .door-puzzle:after, .diurnal-theme .door-no-access:after {
     color: #9d9d9d;
 }
 
