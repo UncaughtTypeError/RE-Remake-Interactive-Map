@@ -4977,11 +4977,6 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 
 .ladder {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    display: block;
-    left: 5%;
 }
 
 .ladder-vertical {
