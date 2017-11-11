@@ -4886,6 +4886,22 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     left: 5px;
 }
 
+.door-no-access:after {
+    content: "\f05e";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+}
+
+.door-no-access.door-vertical:after {
+    top: -10px;
+    left: 3px;
+}
+
+.door-no-access.door-horizontal:after {
+    top: -10px;
+    left: 5px;
+}
+
 .door-tooltip {
     visibility: hidden;
     opacity: 0;
