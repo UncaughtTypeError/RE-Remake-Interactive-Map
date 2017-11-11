@@ -22,6 +22,45 @@ body.nocturnal-theme  {
     background: #3d3d3d;
 }
 
+.nocturnal-theme .room:hover, .nocturnal-theme .room:hover .room {
+    background: #575757;
+}
+
+.nocturnal-theme .room.toggle-state:hover .room {
+    background: #5c5c5c !important;
+}
+
+.nocturnal-theme .room.toggle-state, .nocturnal-theme .room.toggle-state .room {
+    background: #5c5c5c !important;
+}
+
+.nocturnal-theme .door-locked:after, .nocturnal-theme .door-puzzle:after {
+    color: #8c8c8c;
+}
+
+.nocturnal-theme .door-tooltip {
+    border-color: #504f4f;
+    background: #3d3d3d;
+    color: #bcb9b9;
+}
+
+.nocturnal-theme .ladder {
+    border-color: #313030;
+    color: #313030;
+}
+
+.nocturnal-theme .ladder:before {
+    color: #8c8c8c;
+}
+
+.nocturnal-theme .ladder-horizontal {
+    background: linear-gradient( to right, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 2px, rgba(78, 78, 78, 0) 2px);
+}
+
+.nocturnal-theme .ladder-vertical {
+    background: linear-gradient( to bottom, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 0px, rgba(78, 78, 78, 0) 0px);
+}
+
 .nocturnal-theme .keymenu-toggle li {
     border-color: #504f4f;
 }
