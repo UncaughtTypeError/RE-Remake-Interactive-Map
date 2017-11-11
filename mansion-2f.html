@@ -750,9 +750,7 @@ data-floor-next="mansion-3f">
             right: 0;
             bottom: 0;
             position: absolute;
-            border-bottom: 1px solid;
-            border-top: 1px solid;
-            border-right: 1px solid;
+            border: 1px solid;
         }
 
         .elevator-corridor .elevator-alcove {
@@ -874,10 +872,116 @@ data-floor-next="mansion-3f">
             position: absolute;
             width: 23px;
             left: 4px;
-            bottom: -28px;
-            height: 9px;
+            bottom: -29px;
+            height: 10px;
             border: 1px solid;
             border-top: 0px;
+        }
+
+        .library {
+            width: 127px;
+            height: 125px;
+            top: 36px;
+            right: 55px;
+            position: absolute;
+            border-right: 1px solid;
+            border-top: 1px solid;
+        }
+
+        .library:before {
+            bottom: 12px;
+            left: 7px;
+        }
+
+        .library .library-entrance {
+            right: -31px;
+            bottom: 34px;
+            height: 68px;
+            width: 31px;
+            position: absolute;
+            border-top: 1px solid;
+        }
+
+        .library .library-entrance-wall {
+            right: -32px;
+            bottom: 29px;
+            position: absolute;
+            height: 5px;
+            width: 36px;
+            border: 1px solid;
+        }
+
+        .library .library-east-wall {
+            right: -1px;
+            bottom: -1px;
+            position: absolute;
+            height: 31px;
+            width: 5px;
+            border: 1px solid;
+            border-top: 0px;
+            z-index: 1;
+        }
+
+        .library .library-south-wall {
+            right: -1px;
+            left: 0;
+            bottom: -1px;
+            position: absolute;
+            height: 5px;
+            width: 95%;
+            margin: auto;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 1;
+        }
+
+        .library .library-west-wall {
+            left: -1px;
+            bottom: -1px;
+            position: absolute;
+            height: 86%;
+            width: 5px;
+            border: 1px solid;
+            border-top: 0px;
+            z-index: 1;
+        }
+
+        .library .library-upper-support-wall {
+            position: absolute;
+            top: -9px;
+            left: 0;
+            height: 9px;
+            width: 22px;
+            border-top: 1px solid;
+            border-right: 1px solid;
+            z-index: 2;
+        }
+
+        .library .library-lower-support-wall {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            height: 20px;
+            width: 35px;
+            border-top: 1px solid;
+            border-right: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 1;
+        }
+
+        .library .bookshelf {
+            bottom: 25px;
+            left: 30px;
+            height: 20px;
+            width: 70px;
+            border: 1px solid;
+            position: absolute;
+        }
+
+        .library .ladder {
+            top: 5px;
+            bottom: auto;
+            left: 38px;
         }
 
         .east-wing-2f {
@@ -1170,6 +1274,37 @@ data-floor-next="mansion-3f">
             top: 6px;
         }
 
+        .library .icon-markers .green-herb:nth-child(1) .icon-marker {
+            left: 22px;
+            top: 5px;
+        }
+
+        .library .icon-markers .green-herb:nth-child(2) .icon-marker {
+            left: 12px;
+            top: 5px;
+        }
+
+        .library .icon-markers .item-of-interest:nth-child(3) .icon-marker {
+            bottom: 20px;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        .library .icon-markers .item-of-interest:nth-child(4) .icon-marker {
+            bottom: 12px;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        .library .icon-markers .yawn .icon-marker {
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 65px;
+        }
+
         /* Primary Icon Marker Placements */
 
         /* Stairs */
@@ -1370,6 +1505,17 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .library, .nocturnal-theme .library > .room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .library div[class*="wall"],
+         .nocturnal-theme .library .bookshelf {
+            background: #494949;
+            border-color: #313030;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -1458,6 +1604,17 @@ data-floor-next="mansion-3f">
         .diurnal-theme .statue-corridor-2f > div {
             border-color: #ccc;
             background: #dfdfdf;
+        }
+
+        .diurnal-theme .library, .diurnal-theme .library > .room {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .library div[class*="wall"],
+         .diurnal-theme .library .bookshelf {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
         }
     </style>
     <div class="map-reset">
@@ -2613,7 +2770,13 @@ data-floor-next="mansion-3f">
         <div class="library room">
             <div class="ladder ladder-horizontal ladder-ascending"></div>
             <div class="bookshelf"></div>
-            <div class="library-entrance room"></div>
+            <div class="library-entrance room">
+                <div class="door door-vertical door-no-access" data-locked="door-no-access">
+                    <div class="door-tooltip">
+                        <span><i class="fa fa-ban"></i>No Access</span>
+                    </div>
+                </div>
+            </div>
             <div class="library-upper-support-wall"></div>
             <div class="library-lower-support-wall"></div>
             <div class="library-west-wall"></div>
