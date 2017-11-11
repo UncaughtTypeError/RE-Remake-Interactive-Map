@@ -4893,13 +4893,13 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 }
 
 .door-no-access.door-vertical:after {
-    top: -10px;
+    top: -5px;
     left: 3px;
 }
 
 .door-no-access.door-horizontal:after {
     top: -10px;
-    left: 5px;
+    right: -5px;
 }
 
 .door-tooltip {
