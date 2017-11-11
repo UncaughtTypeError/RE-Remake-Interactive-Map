@@ -34,7 +34,7 @@ body.nocturnal-theme  {
     background: #5c5c5c !important;
 }
 
-.nocturnal-theme .door-locked:after, .nocturnal-theme .door-puzzle:after {
+.nocturnal-theme .door-locked:after, .nocturnal-theme .door-puzzle:after, .nocturnal-theme .door-no-access:after {
     color: #8c8c8c;
 }
 
