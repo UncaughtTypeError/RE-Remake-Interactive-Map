@@ -8,7 +8,7 @@ data-floor-next="mansion-3f">
     <style>
         /* Rooms */
 
-        .main-hall-2f {
+        .entrance-hall-2f {
             height: 17%;
             width: 20.2%;
             display: block;
@@ -21,11 +21,11 @@ data-floor-next="mansion-3f">
             border: 1px solid;
         }
 
-        .main-hall-2f .main-hall-mezzanine:before {
+        .entrance-hall-2f .entrance-hall-mezzanine:before {
             bottom: 12px;
         }
 
-        .main-hall-2f .west-mezzanine {
+        .entrance-hall-2f .west-mezzanine {
             top: -23px;
             bottom: 42px;
             position: absolute;
@@ -37,7 +37,7 @@ data-floor-next="mansion-3f">
             z-index: 8;
         }
 
-        .main-hall-2f .east-mezzanine {
+        .entrance-hall-2f .east-mezzanine {
             top: -23px;
             bottom: 42px;
             position: absolute;
@@ -49,7 +49,7 @@ data-floor-next="mansion-3f">
             z-index: 8;
         }
 
-        .main-hall-2f .north-horizontal-mezzanine {
+        .entrance-hall-2f .north-horizontal-mezzanine {
             bottom: 0;
             left: 0;
             right: 0;
@@ -62,7 +62,7 @@ data-floor-next="mansion-3f">
             z-index: 8;
         }
 
-        .main-hall-2f .south-horizontal-mezzanine {
+        .entrance-hall-2f .south-horizontal-mezzanine {
             top: 20px;
             left: 0;
             right: 0;
@@ -76,7 +76,23 @@ data-floor-next="mansion-3f">
             border-color: inherit;
         }
 
-        .main-hall-2f .west-corner-mezzanine {
+        .entrance-hall-2f .south-horizontal-mezzanine .mezzanine-balcony {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 80px;
+            height: 10px;
+            bottom: -10px;
+            background: inherit;
+            border: 1px solid;
+            border-top: 0px;
+            border-color: inherit;
+            border-bottom-left-radius: 100%;
+            border-bottom-right-radius: 100%;
+        }
+
+        .entrance-hall-2f .west-corner-mezzanine {
             height: 45px;
             width: 45px;
             position: absolute;
@@ -89,7 +105,7 @@ data-floor-next="mansion-3f">
             z-index: 7;
         }
 
-        .main-hall-2f .east-corner-mezzanine {
+        .entrance-hall-2f .east-corner-mezzanine {
             height: 45px;
             width: 45px;
             position: absolute;
@@ -102,71 +118,85 @@ data-floor-next="mansion-3f">
             z-index: 7;
         }
 
-        .main-hall-2f .main-hall-grandstairway {
+        .entrance-hall-2f .entrance-hall-grandstairway {
             height: 68px;
             top: 0px;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(1) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(1) {
             border-left: 0px;
             border-right: 1px solid;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(2) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(2) {
             border-left: 0px;
             border-top: 0px;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(3) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(3) {
             border-bottom: 1px solid;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(5) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(5) {
             border-bottom: 1px solid;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(6) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(6) {
             border-right: 0px;
             border-top: 0px;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(7) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(7) {
             border-right: 0px;
             border-left: 1px solid;
         }
 
-        .main-hall-2f .west-mezzanine .door {
+        .entrance-hall-2f .west-mezzanine .door {
             left: -3px;
             top: 77px;
         }
+        
+        .entrance-hall-2f .west-mezzanine .stairs {
+            width: 25px;
+            height: 15px;
+            position: absolute;
+            bottom: 0;
+        }
 
-        .main-hall-2f .east-mezzanine .door {
+        .entrance-hall-2f .east-mezzanine .door {
             right: -3px;
             height: 10px;
             min-height: inherit;
             top: 32px;
         }
 
-        .main-hall-2f .east-corner-mezzanine .door {
+        .entrance-hall-2f .east-mezzanine .stairs {
+            width: 25px;
+            height: 15px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .entrance-hall-2f .east-corner-mezzanine .door {
             right: -3px;
             height: 10px;
             min-height: inherit;
             top: 5px;
         }
 
-        .main-hall-2f .west-corner-mezzanine .door {
+        .entrance-hall-2f .west-corner-mezzanine .door {
             left: -3px;
             height: 10px;
             min-height: inherit;
             top: 5px;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs-landing .door {
+        .entrance-hall-2f .entrance-hall-stairways .stairs-landing .door {
             bottom: auto;
             top: -2px;
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(4) {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(4) {
             width: 60px;
             z-index: 9;
         }
@@ -372,7 +402,7 @@ data-floor-next="mansion-3f">
             border-left: 1px solid;
         }
 
-        .outside-balcony .entrance-to-main-hall-2f {
+        .outside-balcony .entrance-to-entrance-hall-2f {
             width: 15px;
             position: absolute;
             top: 0;
@@ -1116,27 +1146,27 @@ data-floor-next="mansion-3f">
 
         /* Icon Marker Placements */
 
-        .main-hall-2f .icon-markers .person-of-interest .icon-marker {
+        .entrance-hall-2f .icon-markers .person-of-interest .icon-marker {
             bottom: 50px;
             left: 100px;
         }
 
-        .main-hall-2f .icon-markers .weapon .icon-marker {
+        .entrance-hall-2f .icon-markers .weapon .icon-marker {
             bottom: 70px;
             left: 100px;
         }
 
-        .main-hall-2f .icon-markers .ammunition .icon-marker {
+        .entrance-hall-2f .icon-markers .ammunition .icon-marker {
             bottom: 42px;
             left: 95px;
         }
 
-        .main-hall-2f .icon-markers .door-key .icon-marker {
+        .entrance-hall-2f .icon-markers .door-key .icon-marker {
             right: 93px;
             bottom: 42px;
         }
 
-        .main-hall-2f .icon-markers .cerberus .icon-marker {
+        .entrance-hall-2f .icon-markers .cerberus .icon-marker {
             bottom: 28px;
             left: 100px;
         }
@@ -1469,16 +1499,34 @@ data-floor-next="mansion-3f">
 
         /* Stairs */
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(1):after, .main-hall-2f .main-hall-stairways .stairs:nth-child(7):after {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(1):after, .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(7):after {
             content: "\f0d7";
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(3):after {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(3):after {
             content: "\f0d9";
         }
 
-        .main-hall-2f .main-hall-stairways .stairs:nth-child(5):after {
+        .entrance-hall-2f .entrance-hall-stairways .stairs:nth-child(5):after {
             content: "\f0da";
+        }
+
+        .entrance-hall-2f .west-mezzanine .stairs:after {
+            content: "\f0d7";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: -1px;
+            z-index: 9;
+        }
+
+        .entrance-hall-2f .east-mezzanine .stairs:after {
+            content: "\f0d7";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: -1px;
+            z-index: 9;
         }
 
         .south-balcony-overhang .stairs:after {
@@ -1549,8 +1597,8 @@ data-floor-next="mansion-3f">
         
         /* Room Thumbnails */
 
-        /* Main Hall */
-        #main-hall-2f.room-thumbnail {
+        /* Entrance Hall */
+        #entrance-hall-2f.room-thumbnail {
             background-image: url(https://vignette.wikia.nocookie.net/residentevil/images/0/04/REmake_background_-_Entrance_hall_-_r106_00092.jpg/revision/latest?cb=20140920074209);
         }
 
@@ -1604,11 +1652,11 @@ data-floor-next="mansion-3f">
 
         /* Nocturnal Theme - Map */
 
-        .nocturnal-theme .main-hall-2f, .nocturnal-theme .main-hall-2f .main-hall-mezzanine {
+        .nocturnal-theme .entrance-hall-2f, .nocturnal-theme .entrance-hall-2f .entrance-hall-mezzanine {
             border-color: #313030;
         }
 
-        .nocturnal-theme .main-hall-2f .main-hall-mezzanine > div:not(.stairs) {
+        .nocturnal-theme .entrance-hall-2f .entrance-hall-mezzanine > div:not(.stairs) {
             background: #4e4e4e;
         }
 
@@ -1621,7 +1669,7 @@ data-floor-next="mansion-3f">
             border-color: #313030;
         }
 
-        .nocturnal-theme .main-hall-2f .main-hall-stairways .stairs {
+        .nocturnal-theme .entrance-hall-2f .entrance-hall-stairways .stairs {
             border-color: #313030;
         }
 
@@ -1707,18 +1755,13 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
-        .nocturnal-theme .east-terrace .patio-alcove .pillar {
-            background: #494949;
-            border-color: #313030;
-        }
-
         /* Diurnal Theme - Map */
 
-        .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
+        .diurnal-theme .entrance-hall-2f, .diurnal-theme .entrance-hall-2f .entrance-hall-mezzanine {
             border-color: #ccc;
         }
 
-        .diurnal-theme .main-hall-2f .main-hall-mezzanine > div:not(.stairs) {
+        .diurnal-theme .entrance-hall-2f .entrance-hall-mezzanine > div:not(.stairs) {
             background: #dfdfdf;
             border-top: 1px solid #ccc;
         }
@@ -1732,7 +1775,7 @@ data-floor-next="mansion-3f">
             border-color: #ccc;
         }
 
-        .diurnal-theme .main-hall-2f .main-hall-stairways .stairs {
+        .diurnal-theme .entrance-hall-2f .entrance-hall-stairways .stairs {
             border-color: #b7b7b7;
         }
 
@@ -1817,11 +1860,6 @@ data-floor-next="mansion-3f">
             border-color: #ccc;
             background: #dfdfdf;
         }
-
-        .diurnal-theme .east-terrace .patio-alcove .pillar {
-            background: #c4c4c4;
-            border: #b7b7b7;
-        }
     </style>
     <div class="map-reset">
         <span class="fa-stack fa-lg">
@@ -1831,10 +1869,10 @@ data-floor-next="mansion-3f">
         <div class="map-reset-tooltip">Reset Map</div>
     </div>
     <h3 class="location-title">Mansion: 2F</h3>
-    <div class="main-hall-2f room">
-        <div class="main-hall-mezzanine room">
-            <div class="main-hall-grandstairway stairs stairs-ascending stairs-horizontal"></div>
-            <div class="main-hall-stairways">
+    <div class="entrance-hall-2f room">
+        <div class="entrance-hall-mezzanine room">
+            <div class="entrance-hall-grandstairway stairs stairs-ascending stairs-horizontal"></div>
+            <div class="entrance-hall-stairways">
                 <div class="stairs-horizontal stairs stairs-ascending"></div>
                 <div class="stairs-landing stairs"></div>
                 <div class="stairs-vertical stairs stairs-ascending"></div>
@@ -1846,11 +1884,15 @@ data-floor-next="mansion-3f">
                 <div class="stairs-horizontal stairs stairs-ascending"></div>
             </div>
             <div class="west-mezzanine">
+                <div class="stairs stairs-horizontal stairs-ascending"></div>
                 <div class="door door-vertical"></div>
             </div>
-            <div class="south-horizontal-mezzanine"></div>
+            <div class="south-horizontal-mezzanine">
+                <div class="mezzanine-balcony"></div>
+            </div>
             <div class="north-horizontal-mezzanine"></div>
             <div class="east-mezzanine">
+                <div class="stairs stairs-horizontal stairs-ascending"></div>
                 <div class="door door-vertical door-locked" data-locked="door-sword-key">
                     <div class="door-tooltip">
                         <span><i class="fa fa-key"></i>Sword Key Required</span>
@@ -1959,7 +2001,7 @@ data-floor-next="mansion-3f">
                     </div>
                 </i>
             </div>
-            <span class="icon-marker-room-title">Main Hall 2F</span>
+            <span class="icon-marker-room-title">Entrance Hall 2F</span>
         </div>
         <div class="room-attributes">
             <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="moderate-high"></div>
@@ -2090,7 +2132,7 @@ data-floor-next="mansion-3f">
                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy CR-lvl-very-easy CR-lvl-easy" data-threat-level="low-moderate"></div>
                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-normal JV-lvl-hard CR-lvl-normal CR-lvl-hard" data-threat-level="moderate-high"></div>
                 <ul class="room-adjoining">
-                    <li><span data-room="main-hall-2f" data-floor="mansion-2f">Main Hall 2F</span></li>
+                    <li><span data-room="entrance-hall-2f" data-floor="mansion-2f">Entrance Hall 2F</span></li>
                     <li><span data-room="west-wing-inner-stairway-2f" data-floor="mansion-2f">West Wing Inner Stairway 2F <sup>Sword Key<i class="fa fa-key"></i></sup></span></li>
                     <li><span data-room="mirror-corridor" data-floor="mansion-2f">Mirror Corridor <sup>No Access<i class="fa fa-ban"></i></sup></span></li>
                 </ul>
@@ -2100,7 +2142,7 @@ data-floor-next="mansion-3f">
             </div>
         </div>
         <div class="outside-balcony room">
-            <div class="entrance-to-main-hall-2f room"></div>
+            <div class="entrance-to-entrance-hall-2f room"></div>
             <div class="south-balcony room"></div>
             <div class="south-balcony-overhang room">
                 <div class="stairs stairs-horizontal stairs-descending"></div>
@@ -2238,7 +2280,7 @@ data-floor-next="mansion-3f">
             <div class="room-attributes">
                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="moderate-high"></div>
                 <ul class="room-adjoining">
-                    <li><span data-room="main-hall-2f" data-floor="mansion-2f">Main Hall 2F</span></li>
+                    <li><span data-room="entrance-hall-2f" data-floor="mansion-2f">Entrance Hall 2F</span></li>
                     <li><span data-room="west-wing-inner-stairway-2f" data-floor="mansion-2f">West Wing Inner Stairway 2F <sup><span class="difficulty-obj" data-difficulty-level="CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">Old Key</span><span class="difficulty-obj" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard">Lockpick</span><i class="fa fa-key"></i></sup></span></li>
                 </ul>
                 <div class="room-addendum">
