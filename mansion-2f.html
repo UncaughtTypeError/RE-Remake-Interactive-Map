@@ -742,6 +742,7 @@ data-floor-next="mansion-3f">
             position: absolute;
             border-bottom: 1px solid;
             border-top: 1px solid;
+            z-index: 1;
         }
 
         .elevator-corridor .elevator-passage {
@@ -1001,6 +1002,19 @@ data-floor-next="mansion-3f">
             display: block;
             margin: auto;
             top: 20%;
+        }
+
+        .east-terrace {
+            width: 60px;
+            height: 115px;
+            bottom: 10px;
+            left: 0;
+            position: absolute;
+        }
+
+        .east-terrace:before {
+            bottom: 10px;
+            left: 3px;
         }
 
         /* Icon Marker Placements */
@@ -1528,6 +1542,11 @@ data-floor-next="mansion-3f">
             border-color: #313030;
         }
 
+        .nocturnal-theme .east-terrace > div {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -1627,6 +1646,11 @@ data-floor-next="mansion-3f">
          .diurnal-theme .library .bookshelf {
             background: #c4c4c4;
             border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .east-terrace > div {
+            border-color: #ccc;
+            background: #dfdfdf;
         }
     </style>
     <div class="map-reset">
@@ -2890,13 +2914,17 @@ data-floor-next="mansion-3f">
     </div>
     <div class="east-wing">
         <div class="east-terrace room" data-access-control="armor-key">
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
-            <div class="room"></div>
+            <div class="glassed-passage room">
+                <div class="entry-to-patio"></div>
+            </div>
+            <div class="patio-alcove room"></div>
+            <div class="adjoining-balcony room"></div>
+            <div class="balcony-to-terrace room"></div>
+            <div class="terrace room">
+                <div class="stairs-vertical stairs stairs-descending"></div>
+                <div class="stairs-vertical stairs stairs-ascending"></div>
+            </div>
+            <div class="east-balcony room"></div>
             <div class="icon-markers">
                 <div class="person-of-interest icon-pin map-marker-inactive" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard">
                     <i class="icon-marker">
