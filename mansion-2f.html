@@ -1017,6 +1017,95 @@ data-floor-next="mansion-3f">
             left: 3px;
         }
 
+        .east-terrace .glassed-passage {
+            height: 115px;
+            width: 20px;
+            border: 1px solid;
+            position: absolute;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .east-terrace .glassed-passage .entry-to-patio {
+            position: absolute;
+            background: inherit;
+            height: 20px;
+            width: 20px;
+            top: 8px;
+            right: -10px;
+        }
+
+        .east-terrace .patio-alcove {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            height: 85px;
+            width: 40px;
+            border: 1px solid;
+            border-left: 0px;
+        }
+
+        .east-terrace .adjoining-balcony {
+            position: absolute;
+            left: 40px;
+            bottom: -4px;
+            width: 20px;
+            height: 35px;
+            z-index: 1;
+            border: 1px solid;
+            border-top: 0px;
+        }
+
+        .east-terrace .balcony-to-terrace {
+            position: absolute;
+            left: 40px;
+            bottom: -4px;
+            width: 100px;
+            height: 20px;
+            z-index: 1;
+            border: 1px solid;
+            border-top: 0;
+        }
+
+        .east-terrace .terrace {
+            position: absolute;
+            left: 139px;
+            bottom: -14px;
+            width: 65px;
+            height: 30px;
+            z-index: 1;
+            border: 1px solid;
+            border-top: 0;
+        }
+
+        .east-terrace .terrace .stairs {
+            height: 20px;
+            width: 20px;
+            position: absolute;
+            border: 1px solid;
+            border-top: 0px;
+            border-color: inherit;
+        }
+
+        .east-terrace .terrace .stairs:nth-child(1) {
+            left: -20px;
+        }
+
+        .east-terrace .terrace .stairs:nth-child(2) {
+            right: -20px;
+        }
+
+        .east-terrace .east-balcony {
+            position: absolute;
+            position: absolute;
+            left: 222px;
+            bottom: -4px;
+            width: 20px;
+            height: 132px;
+            z-index: 1;
+            border: 1px solid;
+        }
+
         /* Icon Marker Placements */
 
         .main-hall-2f .icon-markers .person-of-interest .icon-marker {
@@ -1327,6 +1416,47 @@ data-floor-next="mansion-3f">
             bottom: 65px;
         }
 
+        .east-terrace .icon-markers .person-of-interest .icon-marker {
+            position: absolute;
+            left: 180px;
+        }
+
+        .east-terrace .icon-markers .green-herb:nth-child(2) .icon-marker {
+            left: 223px;
+        }
+
+        .east-terrace .icon-markers .green-herb:nth-child(3) .icon-marker {
+            left: 232px;
+        }
+
+        .east-terrace .icon-markers .green-herb .icon-marker {
+            position: absolute;
+            bottom: 118px;
+        }
+
+        .east-terrace .icon-markers .ammunition .icon-marker {
+            bottom: 35px;
+            left: 22px;
+        }
+
+        .east-terrace .icon-markers .self-defense .icon-marker {
+            position: absolute;
+            left: 168px;
+            bottom: 5px;
+        }
+
+        .east-terrace .icon-markers .weapon .icon-marker {
+            position: absolute;
+            left: 193px;
+            bottom: 0;
+        }
+
+        .east-terrace .icon-markers .forest-speyer .icon-marker {
+            position: absolute;
+            left: 190px;
+            bottom: -13px;
+        }
+
         /* Primary Icon Marker Placements */
 
         /* Stairs */
@@ -1388,6 +1518,24 @@ data-floor-next="mansion-3f">
             position: relative;
             top: 0px;
             right:-20px;
+            z-index: 9;
+        }
+
+        .east-terrace .terrace .stairs:nth-child(1):after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 0px;
+            z-index: 9;
+        }
+
+        .east-terrace .terrace .stairs:nth-child(2):after {
+            content: "\f0d9";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 0px;
             z-index: 9;
         }
         
