@@ -1710,7 +1710,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     margin-bottom: 0px;
 }
 
-.adjoining_rooms li sup .fa:not([class*="key-alt"]):first-child {
+.adjoining_rooms li sup .fa:not([class*="key-alt"]):last-child {
     margin-right: 2px;
     float: left;
     font-size: 12px;
