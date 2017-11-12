@@ -342,7 +342,7 @@
                     <style>
                         /* Rooms */
 
-                        .main-hall {
+                        .entrance-hall {
                             height: 17%;
                             width: 20.2%;
                             display: block;
@@ -355,7 +355,70 @@
                             border: 1px solid;
                         }
 
-                        .main-hall-entrance {
+                        .entrance-hall .pillar {
+                            width: 7px;
+                            height: 7px;
+                            position: absolute;
+                            z-index: 9;
+                            border: 1px solid;
+                            border-radius: 100%;
+                        }
+
+                        .entrance-hall .pillar:nth-child(1) {
+                            bottom: 23px;
+                            left: 23px;
+                            width: 10px;
+                            height: 10px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(2) {
+                            bottom: 23px;
+                            right: 23px;
+                            width: 10px;
+                            height: 10px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(3) {
+                            bottom: 50px;
+                            left: 15px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(4) {
+                            bottom: 75px;
+                            left: 15px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(5) {
+                            bottom: 100px;
+                            left: 15px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(6) {
+                            bottom: 50px;
+                            right: 15px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(7) {
+                            bottom: 75px;
+                            right: 15px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(8) {
+                            bottom: 100px;
+                            right: 15px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(9) {
+                            bottom: 100px;
+                            left: 63px;
+                        }
+
+                        .entrance-hall .pillar:nth-child(10) {
+                            bottom: 100px;
+                            right: 63px;
+                        }
+
+                        .entrance-hall-entrance {
                             width: 55%;
                             height: 15%;
                             display: block;
@@ -368,12 +431,12 @@
                             border-top: 0px;
                         }
 
-                        .main-hall-entrance:before {
+                        .entrance-hall-entrance:before {
                             right: -35px;
                             bottom: 35px;
                         }
 
-                        .main-hall-entrance .door {
+                        .entrance-hall-entrance .door {
                             bottom: -3px;
                             margin: auto;
                             display: block;
@@ -382,24 +445,24 @@
                             max-width: 25%;
                         }
 
-                        .main-hall .door.door-vertical:nth-last-child(4) {
+                        .entrance-hall .door.door-vertical:nth-last-child(4) {
                             left: -3px;
                             top: 55px;
                         }
 
-                        .main-hall .door.door-vertical:nth-last-child(5) {
+                        .entrance-hall .door.door-vertical:nth-last-child(5) {
                             right: -3px;
                             top: 13%;
                             height: 10px;
                             min-height: inherit;
                         }
 
-                        .main-hall .door.door-vertical:nth-last-child(6) {
+                        .entrance-hall .door.door-vertical:nth-last-child(6) {
                             right: -3px;
                             top: 40%;
                         }
 
-                        .main-hall-grandstairway {
+                        .entrance-hall-grandstairway {
                             position: absolute;
                             display: block;
                             margin: auto;
@@ -414,7 +477,7 @@
                             z-index: 9;
                         }
 
-                        .main-hall-grandstairway-wall {
+                        .entrance-hall-grandstairway-wall {
                             position: absolute;
                             left: 0;
                             right: 0;
@@ -427,7 +490,7 @@
                             z-index: 1;
                         }
 
-                        .main-hall-stairways {
+                        .entrance-hall-stairways {
                             position: absolute;
                             top: -15%;
                             left: 0;
@@ -438,56 +501,56 @@
                             width: 75%;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(1) {
+                        .entrance-hall-stairways .stairs:nth-child(1) {
                             left: 0;
                             bottom: -100%;
                             border-left: 1px solid;
                             border-right: 0;
                         }
 
-                        .main-hall-stairways div[class*="stair"] {
+                        .entrance-hall-stairways div[class*="stair"] {
                             width: 17%;
                             height: 100%;
                             position: absolute;
                             border: 1px solid;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(7) {
+                        .entrance-hall-stairways .stairs:nth-child(7) {
                             right: 0;
                             bottom: -100%;
                             border-left: 0;
                             border-right: 1px solid;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(6) {
+                        .entrance-hall-stairways .stairs:nth-child(6) {
                             right: 0;
                             top: 0;
                             border-left: 0px;
                             border-bottom: 0px;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(2) {
+                        .entrance-hall-stairways .stairs:nth-child(2) {
                             left: 0;
                             top: 0;
                             border-right: 0px;
                             border-bottom: 0px;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(3) {
+                        .entrance-hall-stairways .stairs:nth-child(3) {
                             left: 17%;
                             top: 0;
                             border-bottom: 0;
                             border-top: 0;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(5) {
+                        .entrance-hall-stairways .stairs:nth-child(5) {
                             right: 17%;
                             top: 0;
                             border-bottom: 0;
                             border-top: 0;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(4) {
+                        .entrance-hall-stairways .stairs:nth-child(4) {
                             display: block;
                             margin: auto;
                             left: 0;
@@ -497,7 +560,7 @@
                             border: 0px;
                         }
 
-                        .main-hall-stairways .stairs-landing .door {
+                        .entrance-hall-stairways .stairs-landing .door {
                             margin: auto;
                             display: block;
                             left: 0;
@@ -543,6 +606,35 @@
                         .dining-room:before {
                             bottom: 10px;
                             left: 3px;
+                        }
+
+                        .dining-room .pillar:nth-child(1) {
+                            bottom: 17px;
+                            left: 15px;
+                        }
+
+                        .dining-room .pillar:nth-child(2) {
+                            top: 17px;
+                            left: 15px;
+                        }
+
+                        .dining-room .pillar:nth-child(3) {
+                            bottom: 17px;
+                            right: 15px;
+                        }
+
+                        .dining-room .pillar:nth-child(4) {
+                            top: 17px;
+                            right: 15px;
+                        }
+
+                        .dining-room .pillar {
+                            width: 7px;
+                            height: 7px;
+                            position: absolute;
+                            z-index: 9;
+                            border: 1px solid;
+                            border-radius: 100%;
                         }
 
                         .tea-room {
@@ -2070,27 +2162,27 @@
                             right: 5px;
                         }
 
-                        .main-hall .icon-markers .person-of-interest .icon-marker {
+                        .entrance-hall .icon-markers .person-of-interest .icon-marker {
                             bottom: 50px;
                             left: 100px;
                         }
 
-                        .main-hall .icon-markers .weapon .icon-marker {
+                        .entrance-hall .icon-markers .weapon .icon-marker {
                             bottom: 70px;
                             left: 100px;
                         }
 
-                        .main-hall .icon-markers .ammunition .icon-marker {
+                        .entrance-hall .icon-markers .ammunition .icon-marker {
                             bottom: 42px;
                             left: 95px;
                         }
 
-                        .main-hall .icon-markers .door-key .icon-marker {
+                        .entrance-hall .icon-markers .door-key .icon-marker {
                             right: 93px;
                             bottom: 42px;
                         }
 
-                        .main-hall .icon-markers .cerberus .icon-marker {
+                        .entrance-hall .icon-markers .cerberus .icon-marker {
                             bottom: 10px;
                             left: 100px;
                         }
@@ -2547,7 +2639,7 @@
                             right: 15%;
                         }
 
-                        .main-hall .typewriter {
+                        .entrance-hall .typewriter {
                             position: absolute;
                             top: 30%;
                             left: 25%;
@@ -2574,7 +2666,7 @@
 
                         /* Stairs */
 
-                        .main-hall-grandstairway:after {
+                        .entrance-hall-grandstairway:after {
                             content: "\f0d8";
                             font: normal normal normal 14px/1 FontAwesome;
                             color: #8c8c8c;
@@ -2606,7 +2698,7 @@
                             z-index: 9;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(3):after {
+                        .entrance-hall-stairways .stairs:nth-child(3):after {
                             content: "\f0da";
                             font: normal normal normal 14px/1 FontAwesome;
                             color: #8c8c8c;
@@ -2626,7 +2718,7 @@
                             z-index: 9;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(1):after, .main-hall-stairways .stairs:nth-child(7):after {
+                        .entrance-hall-stairways .stairs:nth-child(1):after, .entrance-hall-stairways .stairs:nth-child(7):after {
                             content: "\f0d8";
                             font: normal normal normal 14px/1 FontAwesome;
                             color: #8c8c8c;
@@ -2635,7 +2727,7 @@
                             z-index: 9;
                         }
 
-                        .main-hall-stairways .stairs:nth-child(5):after {
+                        .entrance-hall-stairways .stairs:nth-child(5):after {
                             content: "\f0d9";
                             font: normal normal normal 14px/1 FontAwesome;
                             color: #8c8c8c;
@@ -2730,8 +2822,8 @@
                             background-image: url(https://vignette1.wikia.nocookie.net/residentevil/images/8/87/R10b_00033.jpg/revision/latest?cb=20150610124030);
                         }
 
-                        /* Main Hall */
-                        #main-hall.room-thumbnail {
+                        /* Entrance Hall */
+                        #entrance-hall.room-thumbnail {
                             background-image: url(https://vignette3.wikia.nocookie.net/residentevil/images/4/4f/Entrance_Hall.png/revision/latest?cb=20161126120440);
                         }
 
@@ -2884,17 +2976,17 @@
 
                         /* Nocturnal Theme - Map */
 
-                        .nocturnal-theme .main-hall {
+                        .nocturnal-theme .entrance-hall {
                             background: #4e4e4e;
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-entrance {
+                        .nocturnal-theme .entrance-hall-entrance {
                             background: #4e4e4e;
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-grandstairway {
+                        .nocturnal-theme .entrance-hall-grandstairway {
                             border-color: #313030;
                         }
 
@@ -2914,37 +3006,37 @@
                             background: linear-gradient( to right, #4e4e4e, #3f3f3f 50%, #323232 50%, #4e4e4e );
                         }
 
-                        .nocturnal-theme .main-hall-grandstairway-wall {
+                        .nocturnal-theme .entrance-hall-grandstairway-wall {
                             background: #494949;
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-stairways {
+                        .nocturnal-theme .entrance-hall-stairways {
                             background: #4e4e4e;
                         }
 
-                        .nocturnal-theme .main-hall-stairways .stairs:nth-child(1) {
+                        .nocturnal-theme .entrance-hall-stairways .stairs:nth-child(1) {
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-stairways div[class*="stair"] {
+                        .nocturnal-theme .entrance-hall-stairways div[class*="stair"] {
                             background-color: #4e4e4e;
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-stairways .stairs:nth-child(7) {
+                        .nocturnal-theme .entrance-hall-stairways .stairs:nth-child(7) {
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-stairways .stairs:nth-child(3) {
+                        .nocturnal-theme .entrance-hall-stairways .stairs:nth-child(3) {
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-stairways .stairs:nth-child(5) {
+                        .nocturnal-theme .entrance-hall-stairways .stairs:nth-child(5) {
                             border-color: #313030;
                         }
 
-                        .nocturnal-theme .main-hall-stairways .stairs:nth-child(4) {
+                        .nocturnal-theme .entrance-hall-stairways .stairs:nth-child(4) {
                             border-color: #313030;
                         }
 
@@ -3353,17 +3445,17 @@
 
                         /* Diurnal Theme - Map */
 
-                        .diurnal-theme .main-hall {
+                        .diurnal-theme .entrance-hall {
                             background: #dfdfdf;
                             border-color: #ccc;
                         }
 
-                        .diurnal-theme .main-hall-entrance {
+                        .diurnal-theme .entrance-hall-entrance {
                             background: #dfdfdf;
                             border-color: #ccc;
                         }
 
-                        .diurnal-theme .main-hall-grandstairway {
+                        .diurnal-theme .entrance-hall-grandstairway {
                             border-color: #b7b7b7;
                         }
 
@@ -3383,37 +3475,37 @@
                             background: linear-gradient( to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf );
                         }
 
-                        .diurnal-theme .main-hall-grandstairway-wall {
+                        .diurnal-theme .entrance-hall-grandstairway-wall {
                             background: #c4c4c4;
                             border-color: #b7b7b7;
                         }
 
-                        .diurnal-theme .main-hall-stairways {
+                        .diurnal-theme .entrance-hall-stairways {
                             background: #dfdfdf;
                         }
 
-                        .diurnal-theme .main-hall-stairways .stairs:nth-child(1) {
+                        .diurnal-theme .entrance-hall-stairways .stairs:nth-child(1) {
                             border-color: #b7b7b7;
                         }
 
-                        .diurnal-theme .main-hall-stairways div[class*="stair"] {
+                        .diurnal-theme .entrance-hall-stairways div[class*="stair"] {
                             background-color: #dfdfdf;
                             border-color: #ccc;
                         }
 
-                        .diurnal-theme .main-hall-stairways .stairs:nth-child(7) {
+                        .diurnal-theme .entrance-hall-stairways .stairs:nth-child(7) {
                             border-color: #b7b7b7;
                         }
 
-                        .diurnal-theme .main-hall-stairways .stairs:nth-child(3) {
+                        .diurnal-theme .entrance-hall-stairways .stairs:nth-child(3) {
                             border-color: #b7b7b7;
                         }
 
-                        .diurnal-theme .main-hall-stairways .stairs:nth-child(5) {
+                        .diurnal-theme .entrance-hall-stairways .stairs:nth-child(5) {
                             border-color: #b7b7b7;
                         }
 
-                        .diurnal-theme .main-hall-stairways .stairs:nth-child(4) {
+                        .diurnal-theme .entrance-hall-stairways .stairs:nth-child(4) {
                             border-color: #b7b7b7;
                         }
 
@@ -3828,17 +3920,27 @@
                         <div class="map-reset-tooltip">Reset Map</div>
                     </div>
                     <h3 class="location-title">Mansion: 1F</h3>
-                    <div class="main-hall room">
-                        <div class="main-hall-entrance room">
+                    <div class="entrance-hall room">
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="pillar"></div>
+                        <div class="entrance-hall-entrance room">
                             <div class="door door-horizontal door-no-access" data-locked="door-no-access">
                                 <div class="door-tooltip">
                                     <span><i class="fa fa-ban"></i>No Access</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="main-hall-grandstairway stairs stairs-ascending stairs-horizontal"></div>
-                        <div class="main-hall-grandstairway-wall"></div>
-                        <div class="main-hall-stairways">
+                        <div class="entrance-hall-grandstairway stairs stairs-ascending stairs-horizontal"></div>
+                        <div class="entrance-hall-grandstairway-wall"></div>
+                        <div class="entrance-hall-stairways">
                             <div class="stairs-horizontal stairs stairs-descending"></div>
                             <div class="stairs-landing stairs"></div>
                             <div class="stairs-vertical stairs stairs-descending"></div>
@@ -3947,7 +4049,7 @@
                                     </div>
                                 </i>
                             </div>
-                            <span class="icon-marker-room-title">Main Hall</span>
+                            <span class="icon-marker-room-title">Entrance Hall</span>
                         </div>
                         <div class="room-attributes">
                             <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="moderate-high"></div>
@@ -3973,6 +4075,10 @@
                     </div>
                     <div class="west-wing">
                         <div class="dining-room room">
+                            <div class="pillar"></div>
+                            <div class="pillar"></div>
+                            <div class="pillar"></div>
+                            <div class="pillar"></div>
                             <div class="featured-icon-markers">
                                 <div class="typewriter icon-pin map-marker-inactive primary-icon-marker" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard">
                                     <i class="fa fa-bookmark"></i>
@@ -4059,7 +4165,7 @@
                             <div class="room-attributes" data-function="puzzle-room">
                                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="clear"></div>
                                 <ul class="room-adjoining">
-                                    <li><span data-room="main-hall" data-floor="mansion-1f">Main Hall</span></li>
+                                    <li><span data-room="entrance-hall" data-floor="mansion-1f">Entrance Hall</span></li>
                                     <li><span data-room="tea-room" data-floor="mansion-1f">Tea Room</span></li>
                                 </ul>
                                 <div class="room-addendum">
@@ -5247,7 +5353,7 @@
                                 <ul class="room-adjoining">
                                     <li><span data-room="south-east-corridor" data-floor="mansion-1f">South East Corridor</span><sup>Sword Key<i class="fa fa-key"></i></sup></li>
                                     <li><span data-room="hidden-wardrobe" data-floor="mansion-1f">Hidden Wardrobe</span><sup>Closet Key<i class="fa fa-key"></i></sup></li>
-                                    <li><span data-room="main-hall" data-floor="mansion-1f">Main Hall</span></li>
+                                    <li><span data-room="entrance-hall" data-floor="mansion-1f">Entrance Hall</span></li>
                                 </ul>
                                 <div class="room-addendum">
                                     <div class="examine-text">Woman Drawing Water</div>
@@ -5295,7 +5401,7 @@
                             <div class="room-attributes" data-required="Helmet Key">
                                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy JV-lvl-normal JV-lvl-hard CR-lvl-very-easy CR-lvl-easy CR-lvl-normal CR-lvl-hard" data-threat-level="clear"></div>
                                 <ul class="room-adjoining">
-                                    <li><span data-room="main-hall" data-floor="mansion-1f">Main Hall</span><sup>Helmet Key<i class="fa fa-key"></i></sup></li>
+                                    <li><span data-room="entrance-hall" data-floor="mansion-1f">Entrance Hall</span><sup>Helmet Key<i class="fa fa-key"></i></sup></li>
                                     <li><span data-room="mirror-room" data-floor="mansion-1f">Mirror Room</span></li>
                                 </ul>
                                 <div class="room-addendum">
@@ -6541,7 +6647,7 @@
                                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-very-easy JV-lvl-easy CR-lvl-very-easy CR-lvl-easy" data-threat-level="clear"></div>
                                 <div class="difficulty-obj room-threat-level-attr" data-difficulty-level="JV-lvl-normal JV-lvl-hard CR-lvl-normal CR-lvl-hard" data-threat-level="low-moderate"></div>
                                 <ul class="room-adjoining">
-                                    <li><span data-room="main-hall" data-floor="mansion-1f">Main Hall</span></li>
+                                    <li><span data-room="entrance-hall" data-floor="mansion-1f">Entrance Hall</span></li>
                                     <li><span data-room="large-gallery" data-floor="mansion-1f">Large Gallery</span> <sup>No Access<i class="fa fa-ban"></i></sup></li>
                                     <li><span data-room="crypt" data-floor="mansion-bf">Crypt</span> <sup>Puzzle Key<i class="fa fa-key"></i></sup></li>
                                 </ul>
