@@ -61,6 +61,11 @@ body.diurnal-theme {
     background: linear-gradient( to bottom, #b7b7b7 2px, #b7b7b7 2px, rgba(196, 196, 196, 0) 0px, rgba(196, 196, 196, 0) 0px);
 }
 
+.diurnal-theme .pillar {
+    background: #c4c4c4;
+    border-color: #b7b7b7;
+}
+
 .diurnal-theme .keymenu-toggle li {
     border-color: #ddd;
 }
