@@ -61,6 +61,11 @@ body.nocturnal-theme  {
     background: linear-gradient( to bottom, #31302F 2px, #31302F 2px, rgba(78, 78, 78, 0) 0px, rgba(78, 78, 78, 0) 0px);
 }
 
+.nocturnal-theme .pillar {
+    background: #494949;
+    border-color: #313030;
+}
+
 .nocturnal-theme .keymenu-toggle li {
     border-color: #504f4f;
 }
