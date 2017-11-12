@@ -1005,8 +1005,6 @@ data-floor-next="mansion-3f">
         }
 
         .east-terrace {
-            width: 60px;
-            height: 115px;
             bottom: 10px;
             left: 0;
             position: absolute;
@@ -1043,6 +1041,16 @@ data-floor-next="mansion-3f">
             width: 40px;
             border: 1px solid;
             border-left: 0px;
+        }
+
+        .east-terrace .patio-alcove .pillar {
+            border-radius: 100%;
+            border: 1px solid;
+            width: 7px;
+            height: 7px;
+            position: absolute;
+            right: 12px;
+            top: 52px;
         }
 
         .east-terrace .adjoining-balcony {
@@ -1699,6 +1707,11 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .east-terrace .patio-alcove .pillar {
+            background: #494949;
+            border-color: #313030;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .main-hall-2f, .diurnal-theme .main-hall-2f .main-hall-mezzanine {
@@ -1803,6 +1816,11 @@ data-floor-next="mansion-3f">
         .diurnal-theme .east-terrace > div {
             border-color: #ccc;
             background: #dfdfdf;
+        }
+
+        .diurnal-theme .east-terrace .patio-alcove .pillar {
+            background: #c4c4c4;
+            border: #b7b7b7;
         }
     </style>
     <div class="map-reset">
@@ -3205,7 +3223,7 @@ data-floor-next="mansion-3f">
                 </div>
             </div>
         </div>
-        <div class="east-terrace room" data-access-control="sword-key">
+        <div class="c-corridor room" data-access-control="sword-key">
             <div class="south-horizontal-passage room"></div>
             <div class="vertical-passage room"></div>
             <div class="north-horizontal-passage room"></div>
