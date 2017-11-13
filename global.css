@@ -3269,15 +3269,15 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-image: url(http://www.evilresource.com/images/resources/remake/yellowgemstone.jpg);
 }
 
-.grid-group-item.jewelry-box-x1[data-key="item-of-interest"] div[class*="lvl2"] {
+.grid-group-item.jewellery-box-1[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/jewelrybox1.jpg);
 }
 
-.grid-group-item.jewelry-box-x2[data-key="item-of-interest"] div[class*="lvl2"] {
+.grid-group-item.jewellery-box-2[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/jewelrybox2.jpg);
 }
 
-.grid-group-item.jewelry-box-x3[data-key="item-of-interest"] div[class*="lvl2"] {
+.grid-group-item.jewellery-box-3[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/jewelrybox3.jpg);
 }
 
