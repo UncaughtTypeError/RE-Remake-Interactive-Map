@@ -2126,7 +2126,13 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     font-size: 15px;
 }
 
-.room-detail-wrapper .list-group-item .biohazard-venomous {
+.room-detail-wrapper .list-group-item:nth-child(odd) .biohazard-venomous {
+    position: absolute;
+    top: -27px;
+    left: 77px;
+}
+
+.room-detail-wrapper .list-group-item:nth-child(even) .biohazard-venomous {
     position: absolute;
     top: -27px;
     left: 52px;
@@ -3112,11 +3118,11 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-image: url(http://www.evilresource.com/images/resources/remake/kerosene.jpg);
 }
 
-.grid-group-item.radio[data-key="miscellaneous-obj"] div[class*="lvl2"] {
+.grid-group-item.radio[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/radio.jpg);
 }
 
-.grid-group-item.pass-code-output-terminal[data-key="miscellaneous-obj"] div[class*="lvl2"] {
+.grid-group-item.pass-code-output-terminal[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/passcodeoutputterminal.jpg);
 }
 
@@ -3301,7 +3307,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
     background-image: url(http://www.evilresource.com/images/resources/remake/goldemblem.jpg);
 }
 
-.grid-group-item.fish-hook[data-key="item-of-interest"] div[class*="lvl2"] {
+.grid-group-item.fishhook[data-key="item-of-interest"] div[class*="lvl2"] {
     background-image: url(http://www.evilresource.com/images/resources/remake/fishhook.jpg);
 }
 
