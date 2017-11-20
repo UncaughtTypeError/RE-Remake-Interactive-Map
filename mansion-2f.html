@@ -1145,6 +1145,96 @@ data-floor-next="mansion-3f">
             border: 1px solid;
         }
 
+        .east-wing-stairway-2f {
+            height: 42px;
+            width: 70px;
+            position: absolute;
+            left: 62px;
+            display: block;
+            margin: auto;
+            top: -17px;
+            border: 1px solid;
+            background: transparent;
+        }
+
+        .east-wing-stairway-2f:before {
+            top: 8px;
+            left: 3px;
+        }
+
+        .east-wing-stairway-2f .stairwell {
+            width: 47px;
+            height: 40px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent !important;
+        }
+
+        .east-wing-stairway-2f .stairwell .stairs-vertical {
+            width: 30px;
+            height: 18px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid;
+        }
+
+        .east-wing-stairway-2f .stairwell .stairs-horizontal {
+            width: 18px;
+            height: 23px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border-left: 1px solid;
+        }
+
+        .east-wing-stairway-2f .stairwell .stairs-landing {
+            width: 17px;
+            height: 17px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .east-wing-stairway-2f .west-vertical-passage {
+            height: 85px;
+            width: 20px;
+            position: absolute;
+            top: 40px;
+            left: -1px;
+            border: 1px solid;
+        }
+
+        .east-wing-stairway-2f .horizontal-passage {
+            width: 118px;
+            height: 20px;
+            position: absolute;
+            top: 40px;
+            left: 18px;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+            z-index: 9;
+        }
+
+        .east-wing-stairway-2f .east-vertical-passage {
+            height: 75px;
+            width: 20px;
+            position: absolute;
+            top: 40px;
+            left: 135px;
+            border: 1px solid;
+        }
+
+        .east-wing-stairway-2f .door {
+            width: 10px;
+            min-width: inherit;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
         /* Icon Marker Placements */
 
         .entrance-hall-2f .icon-markers .person-of-interest .icon-marker {
@@ -1496,6 +1586,40 @@ data-floor-next="mansion-3f">
             bottom: -13px;
         }
 
+        .east-wing-stairway-2f .icon-markers .green-herb .icon-marker {
+            top: 20px;
+            right: 20px;
+        }
+
+        .east-wing-stairway-2f .icon-markers .zombie:nth-child(1) .icon-marker {
+            left: 20px;
+            top: 23px;
+        }
+
+        .east-wing-stairway-2f .icon-markers .zombie:nth-child(2) .icon-marker {
+            top: 100px;
+            left: 3px;
+        }
+
+        .east-wing-stairway-2f .icon-markers .zombie:nth-child(3) .icon-marker {
+            top: 50px;
+            left: 100px;
+        }
+        
+        .east-wing-stairway-2f .icon-markers .hunter:nth-child(4) .icon-marker {
+            top: 8px;
+            right: 7px;
+        }
+
+        .east-wing-stairway-2f .icon-markers .hunter:nth-child(5) .icon-marker {
+            top: 5px;
+            right: 12px;   
+        }
+
+        .east-wing-stairway-2f .icon-markers .hunter:nth-child(5) .icon-marker .fa { 
+            opacity: .7;
+        }
+
         /* Primary Icon Marker Placements */
 
         /* Stairs */
@@ -1593,6 +1717,25 @@ data-floor-next="mansion-3f">
             color: #8c8c8c;
             position: relative;
             top: 0px;
+            z-index: 9;
+        }
+
+        .east-wing-stairway-2f .stairwell .stairs-vertical:after {
+            content: "\f0da";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 0px;
+            right: 0px;
+            z-index: 9;
+        }
+
+        .east-wing-stairway-2f .stairwell .stairs-horizontal:after {
+            content: "\f0d7";
+            font: normal normal normal 14px/1 FontAwesome;
+            color: #8c8c8c;
+            position: relative;
+            top: 5px;
             z-index: 9;
         }
         
@@ -1774,7 +1917,9 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
-        .nocturnal-theme .west-wing-outer-stairway-2f.toggle-state, .nocturnal-theme .west-wing-outer-stairway-2f .stairwell, .nocturnal-theme .west-wing-outer-stairway-2f.toggle-state .stairwell {
+        .nocturnal-theme .west-wing-outer-stairway-2f.toggle-state,
+         .nocturnal-theme .west-wing-outer-stairway-2f .stairwell,
+         .nocturnal-theme .west-wing-outer-stairway-2f.toggle-state .stairwell {
             background: transparent !important;
         }
 
@@ -1802,6 +1947,19 @@ data-floor-next="mansion-3f">
         .nocturnal-theme .east-terrace > div {
             border-color: #313030;
             background: #4e4e4e;
+        }
+
+        .nocturnal-theme .east-wing-stairway-2f > div, .nocturnal-theme .east-wing-stairway-2f .stairs-landing {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
+        .nocturnal-theme .east-wing-stairway-2f {
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .east-wing-stairway-2f .stairwell .stairs {
+            border-color: #313030;
         }
 
         /* Diurnal Theme - Map */
@@ -1880,7 +2038,9 @@ data-floor-next="mansion-3f">
             background: #dfdfdf;
         }
 
-        .diurnal-theme .west-wing-outer-stairway-2f.toggle-state, .diurnal-theme .west-wing-outer-stairway-2f .stairwell, .diurnal-theme .west-wing-outer-stairway-2f.toggle-state .stairwell {
+        .diurnal-theme .west-wing-outer-stairway-2f.toggle-state,
+         .diurnal-theme .west-wing-outer-stairway-2f .stairwell,
+         .diurnal-theme .west-wing-outer-stairway-2f.toggle-state .stairwell {
             background: transparent;
         }
 
@@ -1908,6 +2068,19 @@ data-floor-next="mansion-3f">
         .diurnal-theme .east-terrace > div {
             border-color: #ccc;
             background: #dfdfdf;
+        }
+
+        .diurnal-theme .east-wing-stairway-2f > div, .diurnal-theme .east-wing-stairway-2f .stairs-landing {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .east-wing-stairway-2f {
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .east-wing-stairway-2f .stairwell .stairs {
+            border-color: #ccc;
         }
     </style>
     <div class="map-reset">
