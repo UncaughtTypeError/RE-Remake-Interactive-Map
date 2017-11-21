@@ -21,11 +21,13 @@
         <link rel="stylesheet" href="diurnal-theme.css"> <!-- Diurnal Theme CSS -->
         <!--link rel="canonical" href="https://periodictableofchemicalelements.com"-->
 
-        <meta name="description" content="Spencer Mansion<">
+        <meta name="description" content="Spencer Mansion">
         <meta name="robots" content="index,follow">
         <meta property="og:locale" content="en_GB">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="Spencer Mansion<">
+        <meta property="og:title" content="Spencer Mansion">
+
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 
         <!--script type="text/rocketscript">
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -39,7 +41,7 @@
 
     </head>
 
-    <body class="nocturnal-theme">
+    <body>
 
         <header class="header-wrapper">
             <div class="map-pagination location-toggle prev" data-location-prev="">
@@ -10287,10 +10289,32 @@
         </div>
 
     </body>
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-    console.log('ver 11.9')
+    console.log('ver 12.0')
     jQuery(document).ready(function(){
+        /* Get Settings */
+
+        /* Theme */
+        var setTheme = localStorage.getItem('theme');
+        if(setTheme == 'diurnal-theme') {
+            jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
+        } else if(setTheme == 'nocturnal') {
+            jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
+        } else {
+            jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
+        }
+
+        /* Audio */
+        var setAudio = localStorage.getItem('audio');
+        if(setAudio == 'muted') {
+            audioMuted = true;
+        } else if(setAudio == 'unmuted') {
+            audioMuted = false;
+        }
+
+        localStorage.setItem('location','spencer-mansion');
+        localStorage.setItem('floor','mansion-1f');
+
         /* On-Load Operations */
         var phraseSelect = Math.floor(Math.random()*jQuery('.store-phrase span').length);
         jQuery('.store-phrase span:eq(' + phraseSelect + ')').appendTo('.selected-phrase').fadeIn('slow').parent().fadeIn('slow');
@@ -10301,8 +10325,13 @@
                 });
             }, 1000);
             setTimeout(function() {
-                jQuery('#audio-player').prop('volume', 0.1);
-                jQuery('#audio-play').trigger('click');
+                if(audioMuted != false) {
+                    jQuery('#audio-player').prop('volume', 0.1);
+                    jQuery('#audio-play').trigger('click');
+                    localStorage.setItem('audio','unmuted');
+                } else {
+                    localStorage.setItem('audio','muted');
+                }
             }, 1000);
             setTimeout(function() {
                 jQuery('[data-difficulty-level="JV-lvl-very-easy"]').trigger('click');
@@ -10410,6 +10439,17 @@
         jQuery('.toggle-mute').click(function(){
             jQuery('.toggle-mute').toggleClass('toggle-state');
             jQuery('.audio-toggle').toggleClass('toggle-state');
+            var audioControl = jQuery(this).attr('id');
+            if(audioControl == 'audio-mute') {
+                localStorage.setItem('audio','muted');
+            } else if(audioControl == 'audio-unmute') {
+                localStorage.setItem('audio','unmuted');
+            } else {
+                localStorage.setItem('audio','unmuted');
+            }
+            var audioSet = localStorage.getItem('audio');
+            console.log('audio control',audioControl);
+            console.log('audio set',audioSet);
         });
         jQuery('.audio-toggle').on('mouseover', function(){
             if(jQuery(this).is('.toggle-state')) {
@@ -10430,11 +10470,15 @@
                 jQuery('body').removeClass('diurnal-theme').addClass('nocturnal-theme');
                 jQuery(this).removeClass('fa-toggle-off').addClass('fa-toggle-on');
                 jQuery(this).removeClass('toggle-diurnal').addClass('toggle-nocturnal');
+                localStorage.setItem('theme','nocturnal-theme');
             } else if(jQuery(this).hasClass('toggle-nocturnal')) {
                 jQuery('body').removeClass('nocturnal-theme').addClass('diurnal-theme');
                 jQuery(this).removeClass('fa-toggle-on').addClass('fa-toggle-off');
                 jQuery(this).removeClass('toggle-nocturnal').addClass('toggle-diurnal');
+                localStorage.setItem('theme','diurnal-theme');
             }
+            var themeSet = localStorage.getItem('theme');
+            console.log(themeSet);
         });
         jQuery('.user-navigation-toggle-theme').on('click', function(){
             if(jQuery(this).hasClass('toggle-diurnal')) {
