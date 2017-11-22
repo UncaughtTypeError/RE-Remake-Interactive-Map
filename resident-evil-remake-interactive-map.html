@@ -10314,7 +10314,7 @@
         jQuery('.toggle-mute').click(function(){
             jQuery('.toggle-mute').toggleClass('toggle-state');
             jQuery('.audio-toggle').toggleClass('toggle-state');
-            jQuery('.audio-play-pause-toggle').toggleClass('toggle-state');
+            jQuery('.audio-play-pause-toggle').trigger('click');
             var audioControl = jQuery(this).attr('id');
             if(audioControl == 'audio-mute') {
                 localStorage.setItem('audio','muted');
