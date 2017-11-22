@@ -10159,7 +10159,7 @@
 
     </body>
     <script>
-    console.log('ver 12.2')
+    console.log('ver 12.3')
     jQuery(document).ready(function(){
         /* Get Settings */
 
@@ -10197,12 +10197,13 @@
                 });
             }, 1000);
             setTimeout(function() {
-                if(audioMuted != false) {
+                if(audioMuted == false) {
                     jQuery('#audio-player').prop('volume', 0.1);
                     jQuery('#audio-play').trigger('click');
                     localStorage.setItem('audio','unmuted');
                     jQuery('#audio-unmute').addClass('toggle-state');
-                } else {
+                } else if(audioMuted == true) {
+                    jQuery('#audio-pause').trigger('click');
                     localStorage.setItem('audio','muted');
                     jQuery('#audio-mute').addClass('toggle-state');
                 }
