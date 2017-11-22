@@ -10159,7 +10159,7 @@
 
     </body>
     <script>
-    console.log('ver 12.4')
+    console.log('ver 12.5')
     jQuery(document).ready(function(){
         /* Get Settings */
 
@@ -10330,9 +10330,9 @@
         });
         jQuery('.audio-toggle').on('mouseover', function(){
             if(jQuery(this).is('.toggle-state')) {
-                jQuery('#audio-ui').removeClass('audio-ui-active').addClass('audio-ui-inactive');
-            } else {
                 jQuery('#audio-ui').removeClass('audio-ui-inactive').addClass('audio-ui-active');
+            } else {
+                jQuery('#audio-ui').removeClass('audio-ui-active').addClass('audio-ui-inactive');
             }
         });
         jQuery('.audio-toggle').on('mouseout', function(){
