@@ -68,7 +68,7 @@
                 </audio>
                 <div id="audio-ui" class="audio-ui-wrapper audio-ui-inactive"> 
                     <div class="control-wrapper">
-                      <div class="audio-play-pause-toggle" id="audio-play" onclick="document.getElementById('audio-player').play()"><i class="fa fa-play control-input"></i></div> 
+                      <div class="audio-play-pause-toggle toggle-state" id="audio-play" onclick="document.getElementById('audio-player').play()"><i class="fa fa-play control-input"></i></div> 
                       <div class="audio-play-pause-toggle" id="audio-pause" onclick="document.getElementById('audio-player').pause()"><i class="fa fa-pause control-input"></i></div>
                     </div>
                     <div class="control-wrapper" id="audio-volume-up" onclick="document.getElementById('audio-player').volume += 0.1"><i class="fa fa-volume-up control-input"></i></div> 
@@ -10204,7 +10204,6 @@
                     localStorage.setItem('audio','unmuted');
                     jQuery('#audio-mute').addClass('toggle-state');
                 } else if(audioMuted == true) {
-                    jQuery('#audio-pause').trigger('click');
                     localStorage.setItem('audio','muted');
                     jQuery('#audio-unmute').addClass('toggle-state');
                 }
