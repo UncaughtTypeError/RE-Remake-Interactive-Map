@@ -10202,12 +10202,12 @@
                     jQuery('#audio-play').trigger('click');
                     jQuery('#audio-pause').removeClass('toggle-state');
                     localStorage.setItem('audio','unmuted');
-                    jQuery('#audio-unmute').addClass('toggle-state');
+                    jQuery('#audio-mute').addClass('toggle-state');
                 } else if(audioMuted == true) {
                     jQuery('#audio-pause').trigger('click');
                     jQuery('#audio-play').removeClass('toggle-state');
                     localStorage.setItem('audio','muted');
-                    jQuery('#audio-mute').addClass('toggle-state');
+                    jQuery('#audio-unmute').addClass('toggle-state');
                 }
             }, 1000);
             setTimeout(function() {
