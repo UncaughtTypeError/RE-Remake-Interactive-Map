@@ -10159,7 +10159,7 @@
 
     </body>
     <script>
-    console.log('ver 12.0')
+    console.log('ver 12.1')
     jQuery(document).ready(function(){
         /* Get Settings */
 
@@ -10201,10 +10201,10 @@
                     jQuery('#audio-player').prop('volume', 0.1);
                     jQuery('#audio-play').trigger('click');
                     localStorage.setItem('audio','unmuted');
-                    jQuery('*audio-unmute').addClass('toggle-state');
+                    jQuery('#audio-unmute').addClass('toggle-state');
                 } else {
                     localStorage.setItem('audio','muted');
-                    jQuery('*audio-mute').addClass('toggle-state');
+                    jQuery('#audio-mute').addClass('toggle-state');
                 }
             }, 1000);
             setTimeout(function() {
