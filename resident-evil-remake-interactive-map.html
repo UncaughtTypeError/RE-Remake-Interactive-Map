@@ -10159,7 +10159,7 @@
 
     </body>
     <script>
-    console.log('ver 12.3')
+    console.log('ver 12.4')
     jQuery(document).ready(function(){
         /* Get Settings */
 
@@ -10179,9 +10179,9 @@
         /* Audio */
         var setAudio = localStorage.getItem('audio');
         if(setAudio == 'muted') {
-            var audioMuted = true;
-        } else if(setAudio == 'unmuted') {
             var audioMuted = false;
+        } else if(setAudio == 'unmuted') {
+            var audioMuted = true;
         }
 
         localStorage.setItem('location','spencer-mansion');
@@ -10200,10 +10200,12 @@
                 if(audioMuted == false) {
                     jQuery('#audio-player').prop('volume', 0.1);
                     jQuery('#audio-play').trigger('click');
+                    jQuery('#audio-pause').removeClass('toggle-state');
                     localStorage.setItem('audio','unmuted');
                     jQuery('#audio-unmute').addClass('toggle-state');
                 } else if(audioMuted == true) {
                     jQuery('#audio-pause').trigger('click');
+                    jQuery('#audio-play').removeClass('toggle-state');
                     localStorage.setItem('audio','muted');
                     jQuery('#audio-mute').addClass('toggle-state');
                 }
