@@ -63,7 +63,7 @@ body.diurnal-theme {
 
 .diurnal-theme .pillar {
     background: #c4c4c4;
-    border-color: #b7b7b7;
+    border-color: #b7b7b7 !important;
 }
 
 .diurnal-theme .keymenu-toggle li {
