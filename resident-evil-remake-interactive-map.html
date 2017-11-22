@@ -10316,6 +10316,7 @@
         jQuery('.toggle-mute').click(function(){
             jQuery('.toggle-mute').toggleClass('toggle-state');
             jQuery('.audio-toggle').toggleClass('toggle-state');
+            jQuery('.audio-play-pause-toggle').toggleClass('toggle-state');
             var audioControl = jQuery(this).attr('id');
             if(audioControl == 'audio-mute') {
                 localStorage.setItem('audio','muted');
@@ -10325,8 +10326,6 @@
                 localStorage.setItem('audio','unmuted');
             }
             var audioSet = localStorage.getItem('audio');
-            console.log('audio control',audioControl);
-            console.log('audio set',audioSet);
         });
         jQuery('.audio-toggle').on('mouseover', function(){
             if(jQuery(this).is('.toggle-state')) {
@@ -10355,7 +10354,6 @@
                 localStorage.setItem('theme','diurnal-theme');
             }
             var themeSet = localStorage.getItem('theme');
-            console.log(themeSet);
         });
         jQuery('.user-navigation-toggle-theme').on('click', function(){
             if(jQuery(this).hasClass('toggle-diurnal')) {
