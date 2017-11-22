@@ -10200,12 +10200,9 @@
                 if(audioMuted == false) {
                     jQuery('#audio-player').prop('volume', 0.1);
                     jQuery('#audio-play').trigger('click');
-                    jQuery('#audio-pause').removeClass('toggle-state');
                     localStorage.setItem('audio','unmuted');
                     jQuery('#audio-mute').addClass('toggle-state');
                 } else if(audioMuted == true) {
-                    jQuery('#audio-pause').trigger('click');
-                    jQuery('#audio-play').removeClass('toggle-state');
                     localStorage.setItem('audio','muted');
                     jQuery('#audio-unmute').addClass('toggle-state');
                 }
