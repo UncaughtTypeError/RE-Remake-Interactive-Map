@@ -68,6 +68,135 @@ header h1 {
     display: none;
 }
 
+.audio-toggle {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    left: 420px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.toggle-mute .is-mute:after {
+    content: "\f00d";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 17.5px;
+    right: 0;
+    top: 0;
+}
+
+.toggle-mute .is-mute:before {
+    left: 2.5px;
+    top: 1px;
+    position: absolute;
+}
+
+.audio-ui-wrapper .control-wrapper {
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+
+.audio-ui-wrapper .control-wrapper:first-child {
+    height: 12px;
+    width: 10px;
+}
+
+.audio-play-pause-toggle {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.audio-play-pause-toggle.toggle-state {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.toggle-mute {
+    position: relative;
+    display: none;
+}
+
+.audio-toggle > div {
+    position: absolute;
+    transition: .7s;
+}
+
+.toggle-mute.toggle-state {
+    display: block;
+    left: 0;
+    right: 0px;
+    line-height: 20px;
+    z-index: 9;
+}
+
+.audio-ui-wrapper {
+    width: 100px;
+    margin-left: 15px;
+    padding-left: 20px;
+    z-index: 1;
+}
+
+.audio-ui-wrapper.audio-ui-active {
+    opacity: 1;
+    left: 0;
+}
+
+.audio-ui-wrapper.audio-ui-inactive {
+    opacity: 0;
+    left: -10px;
+}
+
+.toggle-audio-ui {
+    left: 20px;
+    top: -3px;
+    bottom: 0;
+    font-size: 12px;
+    opacity: 0;
+    width: 10px;
+}
+
+.audio-toggle:hover .toggle-audio-ui {
+    opacity: 1;
+}
+
+#audio-volume-up .control-input:after {
+    content: "\f067";
+    position: absolute;
+    font-size: 10px;
+    opacity: .5;
+    top: -3px;
+}
+
+#audio-volume-down .control-input:after {
+    content: "\f068";
+    position: absolute;
+    font-size: 10px;
+    opacity: .5;
+    top: -3px;
+}
+
+#audio-play, #audio-pause {
+    font-size: 13px;
+    line-height: 18px;
+    position: absolute;
+    transition: .7s;
+}
+
+.nocturnal-theme .audio-toggle {
+    color: #6a6a6a;
+}
+
+.diurnal-theme .audio-toggle {
+    color: #aaa;
+}
+
 @keyframes loadingSpin {
   0% {
     transform: rotate(0deg);
