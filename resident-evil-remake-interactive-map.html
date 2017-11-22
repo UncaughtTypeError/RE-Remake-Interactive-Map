@@ -68,7 +68,7 @@
                 </audio>
                 <div id="audio-ui" class="audio-ui-wrapper audio-ui-inactive"> 
                     <div class="control-wrapper">
-                      <div class="audio-play-pause-toggle toggle-state" id="audio-play" onclick="document.getElementById('audio-player').play()"><i class="fa fa-play control-input"></i></div> 
+                      <div class="audio-play-pause-toggle" id="audio-play" onclick="document.getElementById('audio-player').play()"><i class="fa fa-play control-input"></i></div> 
                       <div class="audio-play-pause-toggle" id="audio-pause" onclick="document.getElementById('audio-player').pause()"><i class="fa fa-pause control-input"></i></div>
                     </div>
                     <div class="control-wrapper" id="audio-volume-up" onclick="document.getElementById('audio-player').volume += 0.1"><i class="fa fa-volume-up control-input"></i></div> 
@@ -10159,7 +10159,7 @@
 
     </body>
     <script>
-    console.log('ver 12.1')
+    console.log('ver 12.2')
     jQuery(document).ready(function(){
         /* Get Settings */
 
@@ -10179,9 +10179,9 @@
         /* Audio */
         var setAudio = localStorage.getItem('audio');
         if(setAudio == 'muted') {
-            audioMuted = true;
+            var audioMuted = true;
         } else if(setAudio == 'unmuted') {
-            audioMuted = false;
+            var audioMuted = false;
         }
 
         localStorage.setItem('location','spencer-mansion');
