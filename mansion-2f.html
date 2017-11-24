@@ -766,12 +766,11 @@ data-floor-next="mansion-3f">
 
         .elevator-corridor .passage-to-materials-room {
             width: 32px;
-            height: 15px;
+            height: 13px;
             right: 24px;
             bottom: 0;
             position: absolute;
             border-bottom: 1px solid;
-            border-top: 1px solid;
             z-index: 1;
         }
 
@@ -1300,6 +1299,66 @@ data-floor-next="mansion-3f">
             width: 10px;
             height: 10px;
             border: 1px solid;
+        }
+
+        .small-dining-room {
+            bottom: 45px;
+            left: 109px;
+            position: absolute;
+        }
+
+        .small-dining-room:before {
+            bottom: 10px;
+            left: 5px;
+        }
+        
+        .small-dining-room .dining-area {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 80px;
+            width: 80px;
+            border-bottom: 1px solid;
+            border-right: 1px solid;
+            border-top: 1px solid;
+        }
+
+        .small-dining-room .dining-area .door {
+            right: -3px;
+            height: 10px;
+            min-height: inherit;
+            top: 0;
+        }
+
+        .small-dining-room .hidden-alcove {
+            position: absolute;
+            width: 25px;
+            left: -24px;
+            bottom: 25px;
+            height: 55px;
+            border-top: 1px solid;
+        }
+
+        .small-dining-room .hidden-alcove:after {
+            content: "";
+            position: absolute;
+            right: 0px;
+            width: 1px;
+            height: 38px;
+            border-right: 1px solid;
+            border-color: inherit;
+            z-index: 1;
+        }
+
+        .small-dining-room  .recess {
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            left: 30px;
+            bottom: 79px;
+            border: 1px solid;
+            border-bottom: 0px;
+            z-index: 1;
         }
 
         /* Icon Marker Placements */
@@ -2075,6 +2134,11 @@ data-floor-next="mansion-3f">
             border-color: #313030;
         }
 
+        .nocturnal-theme .small-dining-room > div {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .entrance-hall-2f, .diurnal-theme .entrance-hall-2f .entrance-hall-mezzanine {
@@ -2204,6 +2268,11 @@ data-floor-next="mansion-3f">
         .diurnal-theme .pillar-corridor .vertical-passage .vertical-wall {
             background: #c4c4c4;
             border-color: #b7b7b7;
+        }
+
+        .diurnal-theme .small-dining-room > div {
+            border-color: #ccc;
+            background: #dfdfdf;
         }
     </style>
     <div class="map-reset">
