@@ -1418,6 +1418,90 @@ data-floor-next="mansion-3f">
             border-color: inherit;
         }
 
+        .attic {
+            bottom: 45px;
+            left: 207px;
+            position: absolute;
+        }
+
+        .attic:before {
+            bottom: 10px;
+            left: 2px;
+        }
+
+        .attic .lower-entrance {
+            height: 21px;
+            width: 56px;
+            position: absolute;
+            left: 21px;
+            bottom: -19px;
+            border: 1px solid;
+            border-color: inherit;
+            border-top: 0;
+            z-index: 1;
+        }
+
+        .attic .middle-primary {
+            height: 100px;
+            width: 77px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border: 1px solid;
+            border-top: 0;
+        }
+
+        .attic .upper-secondary {
+            height: 45px;
+            width: 77px;
+            position: absolute;
+            left: 0;
+            bottom: 98px;
+            border: 1px solid;
+            border-bottom: 0px;
+        }
+
+        .diurnal-theme .attic .upper-secondary .wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
+        }
+
+        .nocturnal-theme .attic .upper-secondary .wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
+        .attic .upper-secondary .wall {
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            height: 8px;
+            border: 1px solid;
+        }
+
+        .attic .upper-secondary .pillar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border: 1px solid;
+            margin: auto;
+        }
+
+        .attic .middle-primary .pillar {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            border: 1px solid;
+            margin: auto;
+        }
+
         /* Icon Marker Placements */
 
         .entrance-hall-2f .icon-markers .person-of-interest .icon-marker {
@@ -2210,6 +2294,11 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .attic > div {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .entrance-hall-2f, .diurnal-theme .entrance-hall-2f .entrance-hall-mezzanine {
@@ -2347,6 +2436,11 @@ data-floor-next="mansion-3f">
         }
 
         .diurnal-theme .attic-landing > div {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .attic > div {
             border-color: #ccc;
             background: #dfdfdf;
         }
