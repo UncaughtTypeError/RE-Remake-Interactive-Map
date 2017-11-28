@@ -1217,7 +1217,7 @@ data-floor-next="mansion-3f">
         }
 
         .east-wing-stairway-2f .east-vertical-passage {
-            height: 75px;
+            height: 66px;
             width: 20px;
             position: absolute;
             top: 40px;
@@ -1545,10 +1545,11 @@ data-floor-next="mansion-3f">
 
         .bedroom {
             position: absolute;
-            top: -33px;
-            left: -5px;
-            height: 64px;
+            top: 43px;
+            left: 81px;
+            height: 66px;
             width: 59px;
+            border: 1px solid;
         }
 
         .bedroom:before {
@@ -1567,24 +1568,58 @@ data-floor-next="mansion-3f">
 
         .researchers-room-2f {
             position: absolute;
-            top: -33px;
-            left: -5px;
-            height: 64px;
+            top: 40px;
+            right: 154px;
+            height: 50px;
             width: 59px;
+            border: 1px solid;
         }
 
         .researchers-room-2f:before {
             position: absolute;
-            top: 10px;
-            left: 5px;
+            top: 12px;
+            right: 20px;
         }
 
         .researchers-room-2f .door {
-            top: 10px;
-            right: -3px;
+            top: 0;
+            bottom: 0;
+            left: -3px;
             max-height: 10px;
             min-height: inherit;
             height: 100%;
+            margin: auto;
+        }
+
+        .deer-room {
+            position: absolute;
+            top: 40px;
+            left: 140px;
+            height: 50px;
+            width: 57px;
+        }
+
+        .deer-room:before {
+            bottom: 18px;
+            right: 35px;
+        }
+
+        .deer-room .wall {
+            position: absolute;
+            bottom: 0px;
+            left: -1px;
+            right: -1px;
+            height: 8px;
+            border: 1px solid;
+        }
+
+        .deer-room .door {
+            width: 10px;
+            min-width: inherit;
+            top: 1px;
+            left: 0;
+            right: 0;
+            margin: auto;
         }
 
         /* Icon Marker Placements */
@@ -2389,6 +2424,26 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .researchers-room-2f {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .bedroom {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .deer-room {
+            background: #4e4e4e;
+            border-color: #313030;
+        }
+
+        .nocturnal-theme .deer-room .wall {
+            background: #494949;
+            border-color: #313030;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .entrance-hall-2f, .diurnal-theme .entrance-hall-2f .entrance-hall-mezzanine {
@@ -2538,6 +2593,26 @@ data-floor-next="mansion-3f">
         .diurnal-theme .c-corridor > div {
             border-color: #ccc;
             background: #dfdfdf;
+        }
+
+        .diurnal-theme .researchers-room-2f {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .bedroom {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .deer-room {
+            background: #dfdfdf;
+            border-color: #ccc;
+        }
+
+        .diurnal-theme .deer-room .wall {
+            background: #c4c4c4;
+            border-color: #b7b7b7;
         }
     </style>
     <div class="map-reset">
