@@ -1502,6 +1502,47 @@ data-floor-next="mansion-3f">
             margin: auto;
         }
 
+        .c-corridor {
+            bottom: 125px;
+            left: 0;
+            position: absolute;
+        }
+
+        .c-corridor:before {
+            bottom: 8px;
+            left: 122px;
+        }
+
+        .c-corridor .south-horizontal-passage {
+            position: absolute;
+            height: 21px;
+            width: 140px;
+            left: 0;
+            bottom: -1px;
+            border: 1px solid;
+        }
+
+        .c-corridor .vertical-passage {
+            width: 20px;
+            height: 60px;
+            position: absolute;
+            bottom: 19px;
+            left: 120px;
+            border: 1px solid;
+            border-bottom: 0;
+            border-top: 0;
+            z-index: 1;
+        }
+
+        .c-corridor .north-horizontal-passage {
+            position: absolute;
+            height: 21px;
+            width: 140px;
+            left: 0;
+            bottom: 78px;
+            border: 1px solid;
+        }
+
         /* Icon Marker Placements */
 
         .entrance-hall-2f .icon-markers .person-of-interest .icon-marker {
@@ -2299,6 +2340,11 @@ data-floor-next="mansion-3f">
             background: #4e4e4e;
         }
 
+        .nocturnal-theme .c-corridor > div {
+            border-color: #313030;
+            background: #4e4e4e;
+        }
+
         /* Diurnal Theme - Map */
 
         .diurnal-theme .entrance-hall-2f, .diurnal-theme .entrance-hall-2f .entrance-hall-mezzanine {
@@ -2441,6 +2487,11 @@ data-floor-next="mansion-3f">
         }
 
         .diurnal-theme .attic > div {
+            border-color: #ccc;
+            background: #dfdfdf;
+        }
+
+        .diurnal-theme .c-corridor > div {
             border-color: #ccc;
             background: #dfdfdf;
         }
