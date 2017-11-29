@@ -4110,7 +4110,7 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 
 .icon-info:nth-child(1) {
     left: 8px;
-    top: 13px;
+    top: 11px;
 }
 
 .icon-info:nth-child(2) {
@@ -4119,7 +4119,12 @@ li[data-nav-item="nav-items"] .end-user-navigation-submenu li:hover .fa {
 }
 
 .icon-info:nth-child(3) {
-    bottom: 5px;
+    bottom: 10px;
+    left: 8px;
+}
+
+.icon-info:nth-child(4) {
+    bottom: 0px;
     left: 8px;
 }
 
