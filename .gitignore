@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Generated files
+src/templates/templateManifest.js
+
 # Logs
 npm-debug.log*
 *.log
