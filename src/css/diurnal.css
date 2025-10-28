@@ -1,0 +1,1317 @@
+/*
+ * Diurnal Theme
+ */
+body.diurnal-theme {
+    background: whitesmoke;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .theme-toggle {
+    color: #aaa;
+    background: #e9e9e9;
+}
+
+.diurnal-theme .grid:before {
+    background-image:
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0) 24%,
+            rgba(49, 49, 49, 0.05) 25%,
+            rgba(49, 49, 49, 0.05) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(49, 49, 49, 0.05) 75%,
+            rgba(49, 49, 49, 0.05) 76%,
+            transparent 77%,
+            transparent
+        ),
+        linear-gradient(
+            90deg,
+            transparent 24%,
+            rgba(49, 49, 49, 0.05) 25%,
+            rgba(49, 49, 49, 0.05) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(49, 49, 49, 0.05) 75%,
+            rgba(49, 49, 49, 0.05) 76%,
+            transparent 77%,
+            transparent
+        );
+}
+
+.diurnal-theme header h1 {
+    color: #b4b4b4;
+}
+
+.diurnal-theme header {
+    border-color: #ddd;
+    background: white;
+}
+
+.diurnal-theme .keymenu-toggle li,
+.diurnal-theme .keymenu-toggle li:after {
+    border-color: #ddd;
+    background: #f5f5f5;
+}
+
+.diurnal-theme .keymenu-toggle li .keymenu-select.keymenu-inactive {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .keymenu-toggle li .keymenu-select.keymenu-active {
+    color: #727272;
+}
+
+.diurnal-theme .mode-toggle li,
+.diurnal-theme .mode-toggle li:after {
+    border-color: #ddd;
+    background: #f5f5f5;
+}
+
+.diurnal-theme .mode-toggle .difficulty {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .mode-toggle .difficulty-select .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .navigation {
+    color: #ddd;
+}
+
+.diurnal-theme .navigation:hover {
+    color: #6a6a6a;
+}
+
+.diurnal-theme .map-pagination {
+    color: #ddd;
+}
+
+.diurnal-theme .map-pagination:hover {
+    color: #b4b4bb;
+}
+
+.diurnal-theme ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(156, 156, 156, 0.35);
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+}
+
+.diurnal-theme ::-webkit-scrollbar-thumb {
+    outline: 1px solid #ddd;
+    background-color: #dfdfdf;
+}
+
+.diurnal-theme .list-group:before {
+    color: #e9e9e9;
+}
+
+.diurnal-theme .gears-panel .fa-cog.fa-3x {
+    color: #a6a6a6;
+}
+
+.diurnal-theme .gears-panel .fa-cog.fa-2x {
+    color: #b0b0b0;
+}
+
+.diurnal-theme .list-group-tab-wrapper .list-group-tab:hover {
+    background: whitesmoke;
+}
+
+.diurnal-theme .list-group-tab-wrapper .list-group-tab {
+    border-color: #ddd;
+}
+
+.diurnal-theme .list-group-tab-wrapper .list-group-tab.toggle-state:after {
+    background: white;
+}
+
+.diurnal-theme .icon-info {
+    color: #6a6a6a;
+}
+
+.diurnal-theme .list-group-item,
+.diurnal-theme .list-group-actions {
+    background-color: #fff;
+    border-color: #ddd;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .list-group-item:hover {
+    background-color: whitesmoke;
+}
+
+.diurnal-theme .list-group-actions .input-group input {
+    border-color: #ddd;
+    background: #ffffff;
+}
+
+.diurnal-theme .list-group-actions .input-group input:active,
+.diurnal-theme .list-group-actions .input-group input:focus {
+    background: #f3f3f3;
+}
+
+.diurnal-theme .list-group-actions .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .list-group-actions:hover .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .list-group-item .fa:not([class*='key-alt']) {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .list-group-item.key-default .fa:not([class*='key-alt']) {
+    color: #d9d9d9;
+}
+
+.diurnal-theme .biohazards .list-group-item .icon-group .fa[class*='star'] {
+    color: #6e6e6e;
+}
+
+.diurnal-theme .list-group-actions .fa-sort:hover,
+.diurnal-theme .list-group-actions .icon-trigger .fa:hover {
+    color: #6e6e6e;
+}
+
+.diurnal-theme .icon-group .fa:last-of-type {
+    color: #6e6e6e;
+}
+
+.diurnal-theme .icon-group .fa-stop-circle-o:last-of-type:before {
+    background: #c4c4c4;
+}
+
+.diurnal-theme .biohazards .list-group-item .icon-group:before {
+    color: #b7b7b7;
+}
+
+.diurnal-theme .list-group-actions .item-shortlist-toggle:hover {
+    background: whitesmoke;
+    color: #8f8f8f;
+    cursor: pointer;
+}
+
+.diurnal-theme .list-group-actions .item-shortlist-toggle {
+    border-color: #ddd;
+}
+
+.diurnal-theme .keymenu .list-group-item .biohazard-info:hover {
+    color: #b5adad;
+}
+
+.diurnal-theme .keymenu .list-group-item .biohazard-info {
+    color: #767575;
+}
+
+.diurnal-theme .list-group-actions .stars-ranking-group {
+    border-color: #ddd;
+}
+
+.diurnal-theme .list-group-actions .stars-ranking-group .ranking-select-wrapper {
+    border-color: #ddd;
+}
+
+.diurnal-theme .list-group-actions .stars-ranking-group .ranking-select-wrapper .ranking-select {
+    background: #ffffff;
+}
+
+.diurnal-theme
+    .list-group-actions
+    .stars-ranking-group
+    .ranking-select-wrapper
+    .ranking-select:hover {
+    background: whitesmoke;
+    color: #8f8f8f;
+}
+
+.diurnal-theme
+    .list-group-actions
+    .stars-ranking-group
+    .ranking-select-wrapper
+    .ranking-select:first-child {
+    border-color: #ddd;
+}
+
+.diurnal-theme .fetch-actions .icon-trigger.trigger-info {
+    border-color: #c4c4c4;
+}
+
+.diurnal-theme .fetch-actions .icon-trigger.trigger-info .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .fetch-actions .icon-trigger.trigger-info:hover {
+    border-color: #727272;
+}
+
+.diurnal-theme .fetch-actions .icon-trigger.trigger-info:hover:before {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .fetch-actions .icon-trigger.trigger-info:hover .fa {
+    color: #727272;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.trigger-info {
+    border-color: #c4c4c4;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.trigger-info .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.trigger-info:hover {
+    border-color: #727272;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.trigger-info:hover:before {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.trigger-info:hover .fa {
+    color: #727272;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.toggle-state {
+    border-color: #727272;
+}
+
+.diurnal-theme .list-group-actions .icon-trigger.toggle-state .fa {
+    color: #727272;
+}
+
+.diurnal-theme
+    .list-group-actions
+    .stars-ranking-group
+    .stars-ranking-dropdown
+    .stars-ranking-type {
+    border-color: #ddd;
+    background: #ffffff;
+}
+
+.diurnal-theme .list-group-actions .stars-ranking-dropdown .stars-ranking-type:hover {
+    background: whitesmoke;
+}
+
+.diurnal-theme .list-group-actions .trigger-keys .keys-active {
+    color: #727272;
+}
+
+.diurnal-theme .stars-ranking-dropdown {
+    background: white;
+    border: 1px solid #ddd;
+}
+
+.diurnal-theme #tab-rooms .icon-marker-tag {
+    border-color: #ddd;
+}
+
+.diurnal-theme #tab-rooms .icon-marker-tag:hover {
+    background-color: whitesmoke;
+}
+
+.diurnal-theme .icon-marker-tag .icon-marker .fa {
+    background: white;
+}
+
+.diurnal-theme .room-item-panel .room-title {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-item-panel .biohazards {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-item-panel .biohazards:after {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .room-item-panel .biohazards:before {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .icon-marker-tooltip {
+    background: white;
+    border-color: #ddd;
+    color: #6a6a6a;
+    fill: white;
+    stroke: #ddd;
+}
+
+.diurnal-theme .icon-marker-tooltip text {
+    fill: #6a6a6a;
+}
+
+.diurnal-theme .featured-items span:last-child {
+    color: #6a6a6a;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system {
+    background: #ffffff;
+    border-color: #ddd;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .list-group {
+    border-color: #ddd;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .popup-close {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .popup-close:hover {
+    color: #727272;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system:before {
+    color: #e9e9e9;
+}
+
+.diurnal-theme .stars-rating-panel .icon-group .fa {
+    color: #6a6a6a;
+}
+
+.diurnal-theme .list-group-wrapper .list-group-content .list-group-item:after {
+    background: white;
+}
+
+.diurnal-theme .list-group-wrapper .list-group-content {
+    background: white;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .list-group .list-group-item {
+    background: white;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .list-group-backdrop.group-active {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .group-active {
+    background: white;
+}
+
+.diurnal-theme
+    .standard-threat-analysis-rating-system
+    .list-group-item:not([class*='group-active']):hover {
+    background: whitesmoke;
+}
+
+.diurnal-theme .standard-threat-analysis-rating-system .stars-rating-footer {
+    background: whitesmoke;
+    border-color: #ddd;
+}
+
+.diurnal-theme .icon-trigger-tooltip {
+    background: white;
+    border: 1px solid #ddd;
+}
+
+.diurnal-theme .list-group-wrapper .list-group-content .list-group-item:hover {
+    background: white;
+}
+
+.diurnal-theme .list-group-wrapper .list-group-content .biohazards .stars-biohazard-overview li {
+    border-color: #ddd;
+}
+
+.diurnal-theme .list-group-wrapper .list-group-content .biohazards .stars-biohazard-list {
+    border-color: #ddd;
+}
+
+.diurnal-theme .featured-items .icon-group {
+    border-color: #ddd;
+    background: whitesmoke;
+}
+
+.diurnal-theme .featured-items .icon-group .fa-2x:first-child {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .icon-group .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .room-detail-wrapper .room-detail-header {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-wrapper {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-wrapper .list-group-wrapper {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-wrapper .room-detail-header .room-detail-close {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .room-detail-wrapper .room-detail-header .room-detail-close:hover {
+    color: #727272;
+}
+
+.diurnal-theme .room-detail-tab:not(.toggle-state):hover {
+    background: whitesmoke;
+}
+
+.diurnal-theme .room-detail-tab {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-tab-select {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-tab.toggle-state:after {
+    background: white;
+}
+
+.diurnal-theme .room-detail-tab-content {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .room-detail-tab-content .access-control {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-tab-content .room-threat-level {
+    border-color: #ddd;
+    background: white;
+}
+
+.diurnal-theme .room-detail-tab-content .room-function:after {
+    background: #ddd;
+}
+
+.diurnal-theme .room-function-list li:not(:last-child) {
+    border-color: #ddd;
+}
+
+.diurnal-theme .biohazards .list-group-item .biohazard-info {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .biohazards .list-group-item .biohazard-info:hover {
+    color: #727272;
+}
+
+.diurnal-theme .room-quote,
+.diurnal-theme .room-info {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-quote cite,
+.diurnal-theme .room-info cite {
+    color: #b7b7b7;
+}
+
+.diurnal-theme .room-examine:before,
+.diurnal-theme .room-quote q:before,
+.diurnal-theme .room-info q:before {
+    color: #b7b7b7;
+}
+
+.diurnal-theme .room-examine:after,
+.diurnal-theme .room-quote q:after,
+.diurnal-theme .room-info q:after {
+    color: #b7b7b7;
+}
+
+.diurnal-theme .room-examine {
+    border-color: #ddd;
+    background: whitesmoke;
+}
+
+.diurnal-theme .room-thumbnail {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-info:before {
+    color: #b7b7b7;
+}
+
+.diurnal-theme .room-detail-title {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-toggle-title {
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-detail-toggle-title:not(.toggle-state):hover {
+    background: whitesmoke;
+}
+
+.diurnal-theme .room-detail-toggle-title.toggle-state:before {
+    background: white;
+}
+
+.diurnal-theme .room-detail-toggle {
+    border-color: #ddd;
+}
+
+.diurnal-theme .biohazard-info-paginate .fa {
+    color: #727272;
+}
+
+.diurnal-theme .biohazard-info-paginate:hover .fa {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .biohazard-info-bullet.bullet-active .biohazard-info-bullet-hex:after {
+    color: white;
+}
+
+.diurnal-theme .bullet-tooltip {
+    background: white;
+    border-color: #ddd;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .biohazard-info-bullet-rating {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .biohazard-info-bullet:after {
+    color: #ddd;
+}
+
+.diurnal-theme .biohazards-case-study {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .biohazards-case-study:after {
+    color: #e9e9e9;
+}
+
+.diurnal-theme .biohazards-case-study .popup-close:hover {
+    color: #727272;
+}
+
+.diurnal-theme .biohazards-case-study .popup-close {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .biohazards-case-study-title {
+    border-color: #ddd;
+}
+
+.diurnal-theme .biohazards-case-study .list-group-wrapper .list-group-content .list-group-item {
+    border-color: #ddd !important;
+}
+
+.diurnal-theme .biohazards-case-study .stars-biohazard-classification {
+    background: whitesmoke;
+}
+
+.diurnal-theme .list-group-wrapper .list-group-content .stars-biohazard-classification p > strong {
+    color: #6e6e6e;
+}
+
+.diurnal-theme .biohazards-case-study .stars-risk {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .biohazards-case-study .stars-risk:after {
+    color: #ddd;
+}
+
+.diurnal-theme .biohazards-case-study .stars-risk:before {
+    color: whitesmoke;
+}
+
+.diurnal-theme .adjoining-rooms {
+    border-color: #ddd;
+}
+
+.diurnal-theme .adjoining-rooms:before {
+    background: whitesmoke;
+    border-color: #ddd;
+}
+
+.diurnal-theme .adjoining-rooms li {
+    border-color: #e9e9e9;
+}
+
+.diurnal-theme .room-function-tooltip {
+    background: white;
+    border-color: #ddd;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .list-group-actions .stars-ranking-group .stars-ranking-dropdown.toggle-state {
+    border-color: #808080;
+}
+
+.diurnal-theme .icon-trigger-dropdown > div {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .icon-trigger-item .stairs {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .icon-trigger-item {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .door-lock-info .icon-trigger-item:hover {
+    background: whitesmoke;
+    cursor: pointer;
+}
+
+.diurnal-theme .door-lock-info .icon-trigger-item.toggle-state {
+    background: #ebebeb;
+    cursor: pointer;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .door-lock-info .icon-trigger-item:hover .icon-trigger-marker {
+    background: #e5e5e5;
+}
+
+.diurnal-theme .icon-trigger-item .icon-trigger-marker {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .icon-trigger-dropdown.toggle-state > div {
+    border-top-color: #ccc;
+    border-right-color: #ccc;
+    border-left-color: #ccc;
+}
+
+.diurnal-theme .icon-trigger-dropdown.toggle-state > div:last-child {
+    border-bottom-color: #ccc;
+}
+
+.diurnal-theme .icon-trigger-dropdown.toggle-state > div:last-child .icon-trigger-marker {
+    border-bottom-color: #ccc;
+    border-bottom: 1px solid;
+}
+
+.diurnal-theme .icon-trigger-title {
+    background: whitesmoke;
+}
+
+.diurnal-theme .icon-trigger-dropdown .dropdown-close:hover {
+    color: #727272;
+}
+
+.diurnal-theme .list-group .icon-trigger-tooltip {
+    background: white;
+    border-color: #ddd;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .icon-trigger:before {
+    color: #727272;
+}
+
+.diurnal-theme .elevator .fa.fa-inverse {
+    color: #6e6e6e;
+}
+
+.diurnal-theme .elevator .fa:not([class*='fa-inverse']) {
+    color: #969696;
+}
+
+.diurnal-theme .door-one-way {
+    color: #9d9d9d;
+}
+
+.diurnal-theme .biohazards-array-wrapper .popup-close:hover {
+    color: #727272;
+}
+
+.diurnal-theme .biohazards-array-wrapper .popup-close {
+    color: #c4c4c4;
+}
+
+.diurnal-theme .biohazards-array-wrapper .biohazards-array-title {
+    border-color: #ddd;
+    background: white;
+}
+
+.diurnal-theme .biohazards-array-wrapper:before {
+    color: #e9e9e9;
+}
+
+.diurnal-theme .biohazards-array-wrapper .array-index span[class*='key']:after {
+    color: white;
+}
+
+.diurnal-theme .biohazard-venomous-tooltip {
+    border-color: #ddd;
+    background: whitesmoke;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .access-control .fa-lock:after {
+    border-left: 35px solid #dddddd;
+}
+
+.diurnal-theme #tab-rooms,
+.diurnal-theme #tab-biohazards {
+    background: white;
+    border-color: #ddd;
+}
+
+.diurnal-theme .room-info-wrapper .room-function:after {
+    background: #e2e2e2;
+}
+
+.diurnal-theme #item-key-icons .active-key-icon-wrapper .list-group-item:after {
+    color: rgb(255, 255, 255);
+}
+
+.diurnal-theme .list-group-wrapper .icon-marker-tooltip {
+    background: whitesmoke;
+}
+
+/* Map */
+
+.diurnal-theme .room .structure {
+    fill: #ccc !important;
+}
+
+.diurnal-theme .room:hover .structure,
+.diurnal-theme .room.toggle-state .structure {
+    fill: #ebebeb !important;
+}
+
+.diurnal-theme .room:hover,
+.diurnal-theme .room:hover .room {
+    background: #ebebeb;
+}
+
+.diurnal-theme .room.toggle-state:hover .room {
+    background: #ebebeb !important;
+}
+
+.diurnal-theme .room.toggle-state,
+.diurnal-theme .room.toggle-state .room {
+    background: #ebebeb !important;
+}
+
+.diurnal-theme .door-locked:after,
+.diurnal-theme .door-puzzle:after {
+    color: #9d9d9d;
+}
+
+.diurnal-theme .door-tooltip {
+    background: white;
+    border-color: #ddd;
+    color: #6a6a6a;
+}
+
+.diurnal-theme .ladder {
+    border-color: #b7b7b7;
+    color: #b7b7b7;
+}
+
+.diurnal-theme .ladder-horizontal {
+    background: linear-gradient(
+        to right,
+        #b7b7b7 2px,
+        #b7b7b7 2px,
+        rgba(196, 196, 196, 0) 2px,
+        rgba(196, 196, 196, 0) 2px
+    );
+}
+
+.diurnal-theme .ladder-vertical {
+    background: linear-gradient(
+        to bottom,
+        #b7b7b7 2px,
+        #b7b7b7 2px,
+        rgba(196, 196, 196, 0) 0px,
+        rgba(196, 196, 196, 0) 0px
+    );
+}
+
+.diurnal-theme .main-hall {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .main-hall-entrance {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .main-hall-grandstairway {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .stairs-ascending.stairs-horizontal {
+    background: linear-gradient(to bottom, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf);
+}
+
+.diurnal-theme .stairs-descending.stairs-horizontal {
+    background: linear-gradient(to bottom, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf);
+}
+
+.diurnal-theme .stairs-ascending.stairs-vertical {
+    background: linear-gradient(to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf);
+}
+
+.diurnal-theme .stairs-descending.stairs-vertical {
+    background: linear-gradient(to right, #dedede, #c4c4c4 50%, #c4c4c4 50%, #dfdfdf);
+}
+
+.diurnal-theme .main-hall-grandstairway-wall {
+    background: #c4c4c4;
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .main-hall-stairways {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .main-hall-stairways .stairs:nth-child(1) {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .main-hall-stairways div[class*='stair'] {
+    background-color: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .main-hall-stairways .stairs:nth-child(7) {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .main-hall-stairways .stairs:nth-child(3) {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .main-hall-stairways .stairs:nth-child(5) {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .main-hall-stairways .stairs:nth-child(4) {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .dining-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .tea-room .passage-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .tea-room .passage-to-door {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .tea-room .corridor {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .tea-room .passage-to-stairs {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .tea-room .stairs-to-passage {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .bar {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .bar .passage-way {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .bar .bar-wall {
+    background: #c4c4c4;
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .tiger-statue-room {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .tiger-statue-room .tiger-statue-room-wall {
+    background: #c4c4c4;
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .researchers-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .researchers-room .researchers-room-wall {
+    background: #c4c4c4;
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .small-storeroom {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .medical-storage-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .west-wing-inner-stairway {
+    border-color: #ccc;
+}
+
+.diurnal-theme .west-wing-inner-stairway .passage-to-stairs {
+    border-color: #ccc;
+    background: #dfdfdf;
+}
+
+.diurnal-theme .west-wing-inner-stairway .passage-to-stairs .stairs {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .west-wing-inner-stairway .passage-vertical {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .west-wing-inner-stairway .passage-horizontal {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .greenhouse {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .northern-corridor {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .northern-corridor .lower-passageways {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .northern-corridor .adjoining-passage-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .northern-corridor .northern-corridor-wall-cutout {
+    background: whitesmoke;
+    border-color: #ccc;
+}
+
+.diurnal-theme .west-wing-outer-stairway {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .west-wing-outer-stairway .passage-way {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .west-wing-outer-stairway .west-wing-outer-stairway-wall-cutout {
+    border-color: #ccc;
+    background: whitesmoke;
+    border-right-color: whitesmoke;
+}
+
+.diurnal-theme .west-wing-outer-stairway .stairwell .stairs-horizontal {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .west-wing-outer-stairway .stairwell .stairs-vertical {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .west-wing-outer-stairway .stairwell .stairs-landing {
+    background: #cdcdcd;
+}
+
+.diurnal-theme .west-wing-outer-stairway .stairwell .stairwell-wall-cutout {
+    background: whitesmoke;
+    border-color: #ccc;
+    border-right-color: whitesmoke;
+}
+
+.diurnal-theme .exhibition-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .exhibition-room .passage-way {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .exhibition-room .passage-to-door {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .art-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .secret-passage {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .secret-passage .ladder:before {
+    color: #8c8c8c;
+}
+
+.diurnal-theme .art-room .passage-way-wall {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .south-east-corridor {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .south-east-corridor .upper-corridor {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .hidden-wardrobe {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .mirror-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .living-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .large-gallery {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .large-gallery .room-to-graveyard {
+    border-color: #ccc;
+}
+
+.diurnal-theme .large-gallery .passage-to-door {
+    border-color: #ccc;
+}
+
+.diurnal-theme .large-gallery .passage-way-bend {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .suspended-ceiling-room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .dark-corridor {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .courtyard-study {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .courtyard-study .bay-window {
+    background: #dfdfdf;
+    border-left-color: whitesmoke;
+    border-right-color: whitesmoke;
+    border-bottom-color: #dfdfdf;
+}
+
+.diurnal-theme .courtyard-study.room:hover .bay-window {
+    border-bottom-color: #e5e5e5;
+}
+
+.diurnal-theme .courtyard-study.room.toggle-state:hover .room {
+    background: #e5e5e5;
+}
+
+.diurnal-theme .courtyard-study.room.toggle-state .bay-window {
+    border-bottom-color: #ebebeb;
+}
+
+.diurnal-theme .east-wing-stairway {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .east-wing-stairway .stairwell .stairs-vertical {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .east-wing-stairway .stairwell .stairs-horizontal {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .east-wing-stairway .stairwell .stairs-landing {
+    background: #cdcdcd;
+}
+
+.diurnal-theme .east-wing-storeroom {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .winding-corridor {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .bathroom {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .bathroom .bathroom-wall {
+    background: #c4c4c4;
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .bathroom .passage-way-wall {
+    border-color: #ccc;
+}
+
+.diurnal-theme .outside-boiler {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .outside-boiler .upper-corridor {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .entrance-to-crypt .stairs {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .graveyard .stairs-landing {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .graveyard .stairs-vertical {
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .stairs-vertical:nth-of-type(2) {
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .stairs-vertical:nth-of-type(4) {
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .stairs-landing:nth-of-type(3) {
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .stairs-landing:nth-of-type(1) {
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .entrance-to-gallery {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .path-to-crypt-entrance.room {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard:hover .path-to-crypt-entrance.room {
+    background: #e5e5e5;
+}
+
+.diurnal-theme .graveyard .entrance-to-crypt {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .upper-left-graveyard {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .graveyard .upper-left-graveyard .dividing-fence {
+    background: #dfdfdf;
+}
+
+.diurnal-theme .graveyard:hover .upper-left-graveyard .dividing-fence {
+    background: #e5e5e5;
+}
+
+.diurnal-theme .roofed-passage {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .roofed-passage .passage-to-garden-shed {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .roofed-passage .passage-to-garden-shed-cutout {
+    background: rgb(245, 245, 245);
+    border-color: #ccc;
+}
+
+.diurnal-theme .garden-shed {
+    background: #dfdfdf;
+    border-color: #ccc;
+}
+
+.diurnal-theme .garden-shed .entrance-to-main-garden {
+    background: #e5e5e5;
+    border-color: #ccc;
+}
+
+.diurnal-theme .garden-shed .stairs-vertical {
+    border-color: #b7b7b7;
+}
+
+.diurnal-theme .garden-shed .stairs-landing {
+    border-color: #b7b7b7;
+}

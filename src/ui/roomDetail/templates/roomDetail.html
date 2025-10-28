@@ -1,0 +1,984 @@
+<div class="room-detail-wrapper room-detail-inactive">
+    <div class="room-detail-header"><i class="fa fa-times room-detail-close"></i></div>
+    <div class="room-detail-body">
+        <div class="room-detail-title"></div>
+        <div class="carry-padlock"><i class="fa fa-lock"></i></div>
+        <div class="room-thumbnail">
+            <div class="access-control access-control-inactive">
+                <span class="access-key-type"></span
+                ><span class="required-to-access"></span> Required
+            </div>
+            <div class="room-threat-level" data-threat-level="unknown">
+                <div class="room-threat-icon-wrapper">
+                    <i class="fa fa-question room-threat-icon"></i>
+                </div>
+                <div class="room-threat-measure">
+                    <i class="fa fa-minus fa-rotate-90"></i>
+                    <i class="fa fa-minus fa-rotate-90"></i>
+                    <i class="fa fa-minus fa-rotate-90"></i>
+                    <i class="fa fa-minus fa-rotate-90"></i>
+                </div>
+            </div>
+            <div class="room-function-markers">
+                <div class="room-function function-inactive" data-function-id="puzzleRoom">
+                    <div class="puzzle-room room-function-icon">
+                        <div class="room-function-tooltip">
+                            <span>Puzzle Room</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-function function-inactive" data-function-id="trapRoom">
+                    <div class="trap-room room-function-icon">
+                        <div class="room-function-tooltip">
+                            <span>Trap Room</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-function function-inactive" data-function-id="safeRoom">
+                    <div class="safe-room room-function-icon">
+                        <div class="room-function-tooltip">
+                            <span>Safe Room</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-function function-inactive" data-function-id="hiddenRoom">
+                    <div class="hidden-room room-function-icon">
+                        <div class="room-function-tooltip">
+                            <span>Hidden Room</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-function function-inactive" data-function-id="combatRoom">
+                    <div class="combat-room room-function-icon">
+                        <div class="room-function-tooltip">
+                            <span>Combat Room</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="room-featured-markers">
+                <div class="featured-icon-markers">
+                    <div class="featured-biohazard primary-icon-marker hide">
+                        <i class="fa fa-exclamation-triangle"></i
+                        ><i class="fa fa-exclamation-circle"></i>
+                        <div class="icon-marker-tooltip"></div>
+                    </div>
+                    <div
+                        class="featured-item map primary-icon-marker hide"
+                        data-feature-item-id="Map"
+                    >
+                        <i class="fa fa-square"></i>
+                        <div class="icon-marker-tooltip"></div>
+                    </div>
+                    <div
+                        class="featured-item typewriter primary-icon-marker hide"
+                        data-feature-item-id="Typewriter"
+                    >
+                        <i class="fa fa-bookmark"></i>
+                        <div class="icon-marker-tooltip"></div>
+                    </div>
+                    <div
+                        class="featured-item item-box primary-icon-marker hide"
+                        data-feature-item-id="ItemBox"
+                    >
+                        <i class="fa fa-square"></i>
+                        <div class="icon-marker-tooltip"></div>
+                    </div>
+                    <div
+                        class="featured-item kerosene primary-icon-marker hide"
+                        data-feature-item-id="Kerosene"
+                    >
+                        <i class="fa fa-window-close"></i>
+                        <div class="icon-marker-tooltip"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="room-detail-inner-body">
+            <div class="room-examine"></div>
+            <div class="room-detail-tab-select">
+                <span class="room-detail-tab toggle-state" data-detail-type="contains"
+                    ><i class="fa fa-dot-circle-o toggle-detail-tab"></i> Contents
+                    <i class="fa fa-search"></i
+                ></span>
+                <span class="room-detail-tab" data-detail-type="adjoining"
+                    ><i class="fa fa-circle-o toggle-detail-tab"></i> Adjoining
+                    <i class="fa fa-link"></i
+                ></span>
+                <span class="room-detail-tab" data-detail-type="intel"
+                    ><i class="fa fa-circle-o toggle-detail-tab"></i> Intel
+                    <i class="fa fa-info"></i
+                ></span>
+            </div>
+            <div class="room-detail-tab-wrapper">
+                <div
+                    class="room-detail-contains room-detail-tab-content toggle-state"
+                    data-detail-type="contains"
+                >
+                    <div class="room-detail-toggle">
+                        <div
+                            class="room-detail-toggle-title room-detail-contents-tab items-toggle-trigger toggle-state"
+                            data-contents-type="items"
+                        >
+                            <i
+                                class="fa fa-dot-circle-o toggle-room-list toggle-room-list-items toggle-state"
+                            ></i
+                            >Items
+                        </div>
+                        <div
+                            class="room-detail-toggle-title room-detail-contents-tab biohazards-toggle-trigger"
+                            data-contents-type="biohazards"
+                        >
+                            <i
+                                class="fa fa-circle-o toggle-room-list toggle-room-list-biohazards"
+                            ></i
+                            >Biohazards
+                        </div>
+                    </div>
+                    <div class="room-detail-contents-container">
+                        <div
+                            class="room-detail-contents-wrapper toggle-state"
+                            id="items-toggle"
+                            data-contents-type="items"
+                        >
+                            <div class="display-style">
+                                <div class="structure-tile lower-tile tile"></div>
+                                <div
+                                    class="trigger-tile tile toggle-state"
+                                    data-display-style="list"
+                                >
+                                    <div class="fa-stack fa-fw">
+                                        <i class="fa fa-th-list fa-stack-1x"></i>
+                                    </div>
+                                </div>
+                                <div class="structure-tile upper-tile tile"></div>
+                                <div class="structure-tile upper-tile tile"></div>
+                                <div class="trigger-tile tile" data-display-style="grid">
+                                    <div class="fa-stack fa-fw">
+                                        <i class="fa fa-th fa-stack-1x"></i>
+                                    </div>
+                                </div>
+                                <div class="structure-tile lower-tile tile"></div>
+                            </div>
+                            <div class="room-detail-shadow-list room-detail-shadow-items">
+                                <div
+                                    class="list-group-item list-group-inactive key-typewriter"
+                                    data-type="Typewriter"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-circle fa-stack-1x"></i>
+                                        <i class="fa fa-print fa-stack-2x"></i>
+                                        <i class="fa fa-stop-circle-o fa-stack-1x"></i>
+                                    </div>
+                                    <small>(Save Point)</small>
+                                    <span>Typewriter</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-bookmark fa-fw key-alt filter-key"
+                                            data-key="Typewriter"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-item-box"
+                                    data-type="ItemBox"
+                                >
+                                    <i class="fa fa-archive fa-fw fa-2x"></i>
+                                    <small>(Storage Point)</small>
+                                    <span>Item-box</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-square fa-fw key-alt filter-key"
+                                            data-key="ItemBox"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-kerosene"
+                                    data-type="Kerosene"
+                                >
+                                    <i class="fa fa-fire fa-fw fa-2x"></i>
+                                    <!-- set refill amount by difficulty -->
+                                    <small>(Refill Point)</small>
+                                    <span>Kerosene</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-window-close fa-fw key-alt filter-key"
+                                            data-key="Kerosene"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-map"
+                                    data-type="Map"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-map fa-stack-2x"></i>
+                                        <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <span>Map</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-square fa-fw key-alt filter-key"
+                                            data-key="Map"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-green-herb"
+                                    data-type="GreenHerb"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i
+                                            class="fa fa-leaf fa-stack-2x fa-flip-horizontal fa-rotate-90"
+                                        ></i>
+                                        <i class="fa fa-leaf fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Green Herb</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-leaf fa-fw key-alt filter-key"
+                                            data-key="GreenHerb"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-red-herb"
+                                    data-type="RedHerb"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i
+                                            class="fa fa-leaf fa-stack-2x fa-flip-horizontal fa-rotate-90"
+                                        ></i>
+                                        <i class="fa fa-leaf fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Red Herb</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-leaf fa-fw key-alt filter-key"
+                                            data-key="RedHerb"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-blue-herb"
+                                    data-type="BlueHerb"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i
+                                            class="fa fa-leaf fa-stack-2x fa-flip-horizontal fa-rotate-90"
+                                        ></i>
+                                        <i class="fa fa-leaf fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Blue Herb</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-leaf fa-fw key-alt filter-key"
+                                            data-key="BlueHerb"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-first-aid-spray"
+                                    data-type="FirstAidSpray"
+                                >
+                                    <i class="fa fa-heartbeat fa-2x"></i>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>First Aid Spray</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-plus-circle fa-fw key-alt filter-key"
+                                            data-key="FirstAidSpray"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-first-aid-box"
+                                    data-type="FirstAidBox"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-medkit fa-stack-2x"></i>
+                                        <i class="fa fa-plus-circle fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>First Aid Box</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-medkit fa-fw key-alt filter-key"
+                                            data-key="FirstAidBox"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-self-defense"
+                                    data-type="SelfDefense"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-shield fa-stack-2x"></i>
+                                        <i class="fa fa-bolt fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Self Defense</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-shield fa-fw key-alt filter-key"
+                                            data-key="SelfDefense"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-ink-ribbon"
+                                    data-type="InkRibbon"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-circle fa-stack-1x"></i>
+                                        <i class="fa fa-print fa-stack-2x"></i>
+                                        <i class="fa fa-stop-circle-o fa-stack-3x"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Ink Ribbon</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-stop-circle-o fa-fw key-alt filter-key"
+                                            data-key="InkRibbon"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-door-key"
+                                    data-type="DoorKey"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-unlock-alt fa-stack-2x"></i>
+                                        <i class="fa fa-key fa-stack-1x fa-flip-vertical"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Key</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-key fa-fw key-alt filter-key"
+                                            data-key="DoorKey"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-document"
+                                    data-type="Document"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-file-text fa-stack-2x"></i>
+                                        <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Document</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-file-text fa-fw key-alt filter-key"
+                                            data-key="Document"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-item-of-interest"
+                                    data-type="ItemOfInterest"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-cubes fa-stack-2x"></i>
+                                        <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Item of Interest</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-cube fa-fw key-alt filter-key"
+                                            data-key="ItemOfInterest"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-person-of-interest"
+                                    data-type="PersonOfInterest"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-users fa-stack-2x"></i>
+                                        <i class="fa fa-user fa-stack-2x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Person of Interest</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-user fa-fw key-alt filter-key"
+                                            data-key="PersonOfInterest"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-ammunition"
+                                    data-type="Ammunition"
+                                >
+                                    <i class="fa fa-server fa-rotate-90 fa-2x fa-fw"></i>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Ammunition</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-bullseye key-alt filter-key"
+                                            data-key="Ammunition"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-weapon"
+                                    data-type="Weapon"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-bullseye fa-stack-2x"></i>
+                                        <i class="fa fa-crosshairs fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                    <span>Weapon</span>
+                                    <div class="key-alt-wrapper">
+                                        <i
+                                            class="fa fa-crosshairs fa-fw key-alt filter-key"
+                                            data-key="Weapon"
+                                        ></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="list-group-wrapper room-detail-list items room-detail-list-items room-detail-contents toggle-state"
+                                data-display-style="list"
+                            >
+                                <div class="default list-default-inactive">
+                                    <div class="hex-default"></div>
+                                    No Items Detected
+                                </div>
+                            </div>
+                            <div
+                                class="grid-group-wrapper room-detail-grid items room-detail-grid-items room-detail-contents"
+                                data-display-style="grid"
+                            >
+                                <div class="grid-shadow-layer">
+                                    <div class="grid-tile grid-tile-default tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="room-detail-contents-wrapper"
+                            id="biohazards-toggle"
+                            data-contents-type="biohazards"
+                        >
+                            <div class="display-style">
+                                <div class="structure-tile lower-tile tile"></div>
+                                <div
+                                    class="trigger-tile tile toggle-state"
+                                    data-display-style="list"
+                                >
+                                    <div class="fa-stack fa-fw">
+                                        <i class="fa fa-th-list fa-stack-1x"></i>
+                                    </div>
+                                </div>
+                                <div class="structure-tile upper-tile tile"></div>
+                                <div class="structure-tile upper-tile tile"></div>
+                                <div class="trigger-tile tile" data-display-style="grid">
+                                    <div class="fa-stack fa-fw">
+                                        <i class="fa fa-th fa-stack-1x"></i>
+                                    </div>
+                                </div>
+                                <div class="structure-tile lower-tile tile"></div>
+                            </div>
+                            <div class="room-detail-shadow-list room-detail-shadow-biohazards">
+                                <div
+                                    class="list-group-item list-group-inactive key-zombie"
+                                    data-code="Zb"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Zombie
+                                    <div class="key-alt-wrapper zeta">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-0-half"
+                                            data-ranking="zeta"
+                                            data-key="Zb"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="zombie"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-crimson-head"
+                                    data-code="Ch"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Crimson Head
+                                    <div class="key-alt-wrapper epsilon">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1"
+                                            data-ranking="epsilon"
+                                            data-key="Ch"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="crimson-head"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-crimson-head-prototype-1"
+                                    data-code="Cp"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Crimson Head <small>Prototype 1</small>
+                                    <div class="key-alt-wrapper delta">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1-half"
+                                            data-ranking="delta"
+                                            data-key="Cp"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="crimson-head-prototype-1"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-cerberus"
+                                    data-code="Cb"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Cerberus <small>MA-39</small>
+                                    <div class="key-alt-wrapper epsilon">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1"
+                                            data-ranking="epsilon"
+                                            data-key="Cb"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="cerberus"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-crow"
+                                    data-code="Cr"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Crow
+                                    <div class="key-alt-wrapper eta">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-0"
+                                            data-ranking="eta"
+                                            data-key="Cr"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="crow"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-fountain-plant"
+                                    data-code="Fp"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Fountain Plant
+                                    <div class="key-alt-wrapper eta">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-0"
+                                            data-ranking="eta"
+                                            data-key="Fp"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="fountain-plant"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-forest-speyer"
+                                    data-code="fs"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Forest Speyer
+                                    <div class="key-alt-wrapper epsilon">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1"
+                                            data-ranking="epsilon"
+                                            data-key="Fs"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="forest-speyer"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-yawn"
+                                    data-code="Yn"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Yawn
+                                    <div class="key-alt-wrapper beta">
+                                        <span class="biohazard-venomous"></span
+                                        ><i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-2"
+                                            data-ranking="beta"
+                                            data-key="Yn"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="yawn"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-wasp"
+                                    data-code="Wp"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Wasp
+                                    <div class="key-alt-wrapper zeta">
+                                        <span class="biohazard-venomous"></span
+                                        ><i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-0-half"
+                                            data-ranking="zeta"
+                                            data-key="Wp"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="wasp"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-adder"
+                                    data-code="Ad"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Adder
+                                    <div class="key-alt-wrapper eta">
+                                        <span class="biohazard-venomous"></span
+                                        ><i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-0"
+                                            data-ranking="eta"
+                                            data-key="Ad"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="adder"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-neptune"
+                                    data-code="Nt"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Neptune <small>FI-03</small>
+                                    <div class="key-alt-wrapper gamma">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-2"
+                                            data-ranking="gamma"
+                                            data-key="Nt"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="neptune"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-plant-42"
+                                    data-code="Pl"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Plant 42
+                                    <div class="key-alt-wrapper gamma">
+                                        <span class="biohazard-venomous"></span
+                                        ><i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-2"
+                                            data-ranking="gamma"
+                                            data-key="Pl"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="plant-42"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-hunter"
+                                    data-code="Ht"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Hunter <small>MA-121</small>
+                                    <div class="key-alt-wrapper delta">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1-half"
+                                            data-ranking="delta"
+                                            data-key="Ht"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="hunter"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-web-spinner"
+                                    data-code="Ws"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Web Spinner
+                                    <div class="key-alt-wrapper delta">
+                                        <span class="biohazard-venomous"></span
+                                        ><i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1-half"
+                                            data-ranking="delta"
+                                            data-key="Ws"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="web-spinner"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-black-tiger"
+                                    data-code="Bt"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Black Tiger
+                                    <div class="key-alt-wrapper gamma">
+                                        <span class="biohazard-venomous"></span
+                                        ><i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-2"
+                                            data-ranking="gamma"
+                                            data-key="Bt"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="black-tiger"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-chimera"
+                                    data-code="Cm"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Chimera
+                                    <div class="key-alt-wrapper delta">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-1-half"
+                                            data-ranking="delta"
+                                            data-key="Ch"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="chimera"
+                                        ></i>
+                                    </div>
+                                    <sub class="qty difficulty-qty-summary"></sub>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-tyrant"
+                                    data-code="Ty"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Tyrant <small>T-002</small>
+                                    <div class="key-alt-wrapper alpha">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-3"
+                                            data-ranking="alpha"
+                                            data-key="Ty"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="tyrant"
+                                        ></i>
+                                    </div>
+                                </div>
+                                <div
+                                    class="list-group-item list-group-inactive key-lisa-trevor"
+                                    data-code="Lt"
+                                >
+                                    <div class="icon-group fa-stack fa-fw">
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                                    </div>
+                                    &nbsp; Lisa Trevor
+                                    <div class="key-alt-wrapper alpha">
+                                        <i
+                                            class="fa fa-exclamation-triangle fa-fw key-alt filter-key star-3"
+                                            data-ranking="alpha"
+                                            data-key="Lt"
+                                        ></i>
+                                        <i
+                                            class="fa fa-info-circle biohazard-info"
+                                            data-info="lisa-trevor"
+                                        ></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="list-group-wrapper room-detail-list biohazards room-detail-list-biohazards room-detail-contents toggle-state"
+                                data-display-style="list"
+                            >
+                                <div class="default list-default-inactive">
+                                    <div class="hex-default"></div>
+                                    No Biohazards Detected
+                                </div>
+                            </div>
+                            <div
+                                class="grid-group-wrapper room-detail-grid biohazards room-detail-grid-biohazards room-detail-contents"
+                                data-display-style="grid"
+                            >
+                                <div class="grid-shadow-layer">
+                                    <div class="grid-tile grid-tile-default tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                    <div class="grid-tile tile"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="room-detail-adjoining room-detail-tab-content"
+                    data-detail-type="adjoining"
+                >
+                    <div class="adjoining-rooms">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="room-detail-intel room-detail-tab-content" data-detail-type="intel">
+                    <div class="room-threat-level" data-threat-level="unknown">
+                        <div class="room-threat-icon-wrapper">
+                            <i class="fa fa-question room-threat-icon"></i>
+                        </div>
+                        <div class="room-threat-label"></div>
+                        <div class="room-threat-measure">
+                            <i class="fa fa-minus fa-rotate-90"></i>
+                            <i class="fa fa-minus fa-rotate-90"></i>
+                            <i class="fa fa-minus fa-rotate-90"></i>
+                            <i class="fa fa-minus fa-rotate-90"></i>
+                        </div>
+                    </div>
+                    <blackquote class="room-quote room-intel"><q></q><cite></cite></blackquote>
+                    <blackquote class="room-info room-intel"><q></q><cite></cite></blackquote>
+                    <div class="access-control access-control-inactive">
+                        <i class="fa fa-lock"></i>
+                        <span
+                            >Entry Restriction:
+                            <span class="required-to-access"></span> Required<span
+                                class="access-key-type"
+                            ></span
+                        ></span>
+                    </div>
+                    <ul class="room-function-list">
+                        <li class="room-function function-inactive" data-function-id="puzzleRoom">
+                            <div class="puzzle-room room-function-icon"></div>
+                            <span>Puzzle Room</span>
+                        </li>
+                        <li class="room-function function-inactive" data-function-id="trapRoom">
+                            <div class="trap-room room-function-icon"></div>
+                            <span>Trap Room</span>
+                        </li>
+                        <li class="room-function function-inactive" data-function-id="safeRoom">
+                            <div class="safe-room room-function-icon"></div>
+                            <span>Safe Room</span>
+                        </li>
+                        <li class="room-function function-inactive" data-function-id="hiddenRoom">
+                            <div class="hidden-room room-function-icon"></div>
+                            <span>Hidden Room</span>
+                        </li>
+                        <li class="room-function function-inactive" data-function-id="combatRoom">
+                            <div class="combat-room room-function-icon"></div>
+                            <span>Combat Room</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

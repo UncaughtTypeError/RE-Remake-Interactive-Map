@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+    title: API
+    description: API for querying resources (e.g., items, rooms, biohazards) by IDs.
+    version: 1.0.0
+    contact:
+        name: Your Name
+        email: your.email@example.com
+
+servers:
+    - url: http://localhost:3000
+      description: Local development server
+
+paths:
+    /api/resources:
+        get:
+            summary: Get resources by IDs
+            description: Retrieves resources by their IDs, returning found resources and unrecognized IDs. If no IDs provided, returns all resources.
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      format: csv
+                  description: Comma-separated list of resource IDs (e.g., 'id1,id2'). Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found resources and unrecognized IDs
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundItems:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/Resource'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                                        description: IDs not found
+                '400':
+                    description: Invalid query parameters (e.g., empty or malformed IDs)
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: Invalid query parameters
+                '404':
+                    description: No IDs provided are recognized
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: No IDs provided are recognized.
+                '429':
+                    description: Too many requests
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    message:
+                                        type: string
+                                        example: Too many requests, please try again later.
+
+components:
+    schemas:
+        Resource:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: Unique identifier (e.g., 'item-selfDefenseJV-keepersRoom')
+                map:
+                    type: object
+                    properties:
+                        room:
+                            type: string
+                        map:
+                            type: string
+                difficultyLevel:
+                    type: array
+                    items:
+                        type: string
+                    description: Array of difficulty levels
+                name:
+                    type: string
+                    description: Name of the resource
+                type:
+                    type: string
+                    description: Type of the resource (e.g., 'SelfDefense')
+                qty:
+                    type: integer
+                    description: Quantity
+                qtyItems:
+                    type: integer | null
+                    description: Quantity group identifier
