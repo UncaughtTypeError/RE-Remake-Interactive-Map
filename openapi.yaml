@@ -1,32 +1,77 @@
 openapi: 3.0.0
 info:
-    title: API
-    description: API for querying resources (e.g., items, rooms, biohazards) by IDs.
+    title: RE Remake Interactive Map API
+    description: |
+        RESTful API for querying Resident Evil Remake game data including items, biohazards, maps, areas, and rooms.
+
+        All endpoints support filtering by various parameters and include rate limiting (100 requests per 15 minutes).
+
+        ## Features
+        - Query resources by IDs with batch support
+        - Search and filter by multiple criteria
+        - S.T.A.R.S. biohazard rankings
+        - Comprehensive room and map data
+
+        ## Rate Limiting
+        All endpoints are rate-limited to 100 requests per 15-minute window. Rate limit information is provided in response headers.
     version: 1.0.0
     contact:
-        name: Your Name
-        email: your.email@example.com
+        name: RE Remake Interactive Map
+        url: https://github.com/UncaughtTypeError/RE-Remake-Interactive-Map
 
 servers:
     - url: http://localhost:3000
       description: Local development server
+    - url: https://your-production-url.com
+      description: Production server
+
+tags:
+    - name: Items
+      description: Item-related endpoints for querying weapons, herbs, documents, and other collectibles
+    - name: Biohazards
+      description: Biohazard (enemy) endpoints including S.T.A.R.S. threat rankings
+    - name: Maps
+      description: Map, area, and room data endpoints
 
 paths:
-    /api/resources:
+    # ============================================================================
+    # ITEMS ENDPOINTS
+    # ============================================================================
+    /api/items/all:
         get:
-            summary: Get resources by IDs
-            description: Retrieves resources by their IDs, returning found resources and unrecognized IDs. If no IDs provided, returns all resources.
+            tags: [Items]
+            summary: Get all items
+            description: Retrieves all items without any filters. Returns the complete item database.
+            responses:
+                '200':
+                    description: Successful response with all items
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/ItemRoomData'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/items:
+        get:
+            tags: [Items]
+            summary: Get items by IDs
+            description: |
+                Retrieves items by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found items and any unrecognized IDs.
             parameters:
                 - name: ids
                   in: query
                   required: false
                   schema:
                       type: string
-                      format: csv
-                  description: Comma-separated list of resource IDs (e.g., 'id1,id2'). Max 100 IDs.
+                      example: 'selfDefenseJV-keepersRoom,document-keepersRoom'
+                  description: Comma-separated list of item IDs (e.g., 'selfDefenseJV-keepersRoom,document-keepersRoom'). Max 100 IDs.
             responses:
                 '200':
-                    description: Successful response with found resources and unrecognized IDs
+                    description: Successful response with found items and unrecognized IDs
                     content:
                         application/json:
                             schema:
@@ -35,72 +80,770 @@ paths:
                                     foundItems:
                                         type: array
                                         items:
-                                            $ref: '#/components/schemas/Resource'
+                                            $ref: '#/components/schemas/ItemRoomData'
                                     unrecognizedIds:
                                         type: array
                                         items:
                                             type: string
-                                        description: IDs not found
+                                        description: IDs that were not found in the database
                 '400':
-                    description: Invalid query parameters (e.g., empty or malformed IDs)
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    error:
-                                        type: string
-                                        example: Invalid query parameters
+                    $ref: '#/components/responses/ValidationError'
                 '404':
-                    description: No IDs provided are recognized
-                    content:
-                        application/json:
-                            schema:
-                                type: object
-                                properties:
-                                    error:
-                                        type: string
-                                        example: No IDs provided are recognized.
+                    $ref: '#/components/responses/NotFoundError'
                 '429':
-                    description: Too many requests
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/items/search:
+        get:
+            tags: [Items]
+            summary: Search and filter items
+            description: |
+                Search items by room, difficulty level, type, or name. All parameters are optional and can be combined.
+                Returns items matching ALL specified criteria (AND logic).
+            parameters:
+                - name: room
+                  in: query
+                  schema:
+                      type: string
+                      example: 'keepersRoom'
+                  description: Filter by room ID (e.g., 'keepersRoom', 'diningRoom')
+                - name: difficulty
+                  in: query
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              JV-lvl-very-easy,
+                              JV-lvl-easy,
+                              JV-lvl-normal,
+                              JV-lvl-hard,
+                              CR-lvl-very-easy,
+                              CR-lvl-easy,
+                              CR-lvl-normal,
+                              CR-lvl-hard,
+                          ]
+                      example: 'JV-lvl-normal'
+                  description: Filter by difficulty level (character and difficulty)
+                - name: type
+                  in: query
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              Typewriter,
+                              ItemBox,
+                              Kerosene,
+                              Map,
+                              PersonOfInterest,
+                              DoorKey,
+                              InkRibbon,
+                              ItemOfInterest,
+                              Document,
+                              GreenHerb,
+                              RedHerb,
+                              BlueHerb,
+                              FirstAidSpray,
+                              SelfDefense,
+                              Ammunition,
+                              Weapon,
+                          ]
+                      example: 'Weapon'
+                  description: Filter by item type
+                - name: name
+                  in: query
+                  schema:
+                      type: string
+                      example: 'Shotgun'
+                  description: Filter by item name (partial match, case-insensitive)
+            responses:
+                '200':
+                    description: Successful response with filtered items
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/ItemRoomData'
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    # ============================================================================
+    # BIOHAZARDS ENDPOINTS
+    # ============================================================================
+    /api/biohazards/all:
+        get:
+            tags: [Biohazards]
+            summary: Get all biohazards
+            description: Retrieves all biohazards (enemies) without any filters. Returns the complete biohazard database.
+            responses:
+                '200':
+                    description: Successful response with all biohazards
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/BiohazardRoomData'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/biohazards:
+        get:
+            tags: [Biohazards]
+            summary: Get biohazards by IDs
+            description: |
+                Retrieves biohazards by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found biohazards and any unrecognized IDs.
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'zombie1-keepersRoom,zombie2-keepersRoom'
+                  description: Comma-separated list of biohazard IDs. Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found biohazards and unrecognized IDs
                     content:
                         application/json:
                             schema:
                                 type: object
                                 properties:
-                                    message:
-                                        type: string
-                                        example: Too many requests, please try again later.
+                                    foundBiohazards:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/BiohazardRoomData'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
 
+    /api/biohazards/stars-rankings:
+        get:
+            tags: [Biohazards]
+            summary: Get S.T.A.R.S. threat rankings
+            description: |
+                Retrieves S.T.A.R.S. (Statistical Threat Analysis Rating Standard) threat rankings for biohazards.
+                Returns official threat assessment data including ranking, ranking classification, threat level and engagement directive.
+            parameters:
+                - name: codes
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'Zb,Cr'
+                  description: Comma-separated list of S.T.A.R.S. codes (e.g., 'Zb' for Zombie, 'Cr' for Crow). Max 100 codes.
+            responses:
+                '200':
+                    description: Successful response with S.T.A.R.S. rankings
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundRankings:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/STARSRanking'
+                                    unrecognizedCodes:
+                                        type: array
+                                        items:
+                                            type: string
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/biohazards/search:
+        get:
+            tags: [Biohazards]
+            summary: Search and filter biohazards
+            description: |
+                Search biohazards by room, difficulty level, S.T.A.R.S. code, or name. All parameters are optional.
+                Returns biohazards matching ALL specified criteria (AND logic).
+            parameters:
+                - name: room
+                  in: query
+                  schema:
+                      type: string
+                      example: 'keepersRoom'
+                  description: Filter by room ID
+                - name: difficulty
+                  in: query
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              JV-lvl-very-easy,
+                              JV-lvl-easy,
+                              JV-lvl-normal,
+                              JV-lvl-hard,
+                              CR-lvl-very-easy,
+                              CR-lvl-easy,
+                              CR-lvl-normal,
+                              CR-lvl-hard,
+                          ]
+                  description: Filter by difficulty level
+                - name: code
+                  in: query
+                  schema:
+                      type: string
+                      example: 'Zb'
+                  description: Filter by S.T.A.R.S. code (e.g., 'Zb' for Zombie)
+                - name: name
+                  in: query
+                  schema:
+                      type: string
+                      example: 'Zombie'
+                  description: Filter by biohazard name (partial match, case-insensitive)
+            responses:
+                '200':
+                    description: Successful response with filtered biohazards
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/BiohazardRoomData'
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    # ============================================================================
+    # MAPS ENDPOINTS - AREAS
+    # ============================================================================
+    /api/maps/areas/all:
+        get:
+            tags: [Maps]
+            summary: Get all areas
+            description: Retrieves all game areas (e.g., Mansion, Guardhouse, Laboratory).
+            responses:
+                '200':
+                    description: Successful response with all areas
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Area'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/maps/areas:
+        get:
+            tags: [Maps]
+            summary: Get areas by IDs
+            description: |
+                Retrieves areas by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'mansion,guardhouse,laboratory'
+                  description: Comma-separated list of area IDs. Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found areas
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundAreas:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/Area'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    # ============================================================================
+    # MAPS ENDPOINTS - MAPS
+    # ============================================================================
+    /api/maps/maps/all:
+        get:
+            tags: [Maps]
+            summary: Get all maps
+            description: Retrieves all maps (floors within areas, e.g., Mansion 1F, Mansion 2F).
+            responses:
+                '200':
+                    description: Successful response with all maps
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Map'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/maps/maps:
+        get:
+            tags: [Maps]
+            summary: Get maps by IDs
+            description: |
+                Retrieves maps by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'mansionF1,mansionF2,guardhouseF1'
+                  description: Comma-separated list of map IDs. Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found maps
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundMaps:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/Map'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    # ============================================================================
+    # MAPS ENDPOINTS - ROOMS
+    # ============================================================================
+    /api/maps/rooms/all:
+        get:
+            tags: [Maps]
+            summary: Get all rooms
+            description: Retrieves all rooms with complete details including items, biohazards, and connections.
+            responses:
+                '200':
+                    description: Successful response with all rooms
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Room'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/maps/rooms:
+        get:
+            tags: [Maps]
+            summary: Get rooms by IDs
+            description: |
+                Retrieves rooms by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'keepersRoom,diningRoom,mainHall'
+                  description: Comma-separated list of room IDs. Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found rooms
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundRooms:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/Room'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/maps/rooms/search:
+        get:
+            tags: [Maps]
+            summary: Search and filter rooms
+            description: |
+                Search rooms by map, items, biohazards, persons, interactables, room functions,
+                adjoining rooms, access control, threat level, or room number. All parameters are optional.
+            parameters:
+                - name: map
+                  in: query
+                  schema:
+                      type: string
+                      example: 'mansionF1'
+                  description: Filter by map ID
+                - name: item
+                  in: query
+                  schema:
+                      type: string
+                      example: 'shotgun'
+                  description: Filter rooms containing specific item
+                - name: biohazard
+                  in: query
+                  schema:
+                      type: string
+                      example: 'zombie'
+                  description: Filter rooms containing specific biohazard
+                - name: person
+                  in: query
+                  schema:
+                      type: string
+                      example: 'barryBurton'
+                  description: Filter rooms with specific person
+                - name: interactable
+                  in: query
+                  schema:
+                      type: string
+                      example: 'piano'
+                  description: Filter rooms with specific interactable object
+                - name: roomFunction
+                  in: query
+                  schema:
+                      type: string
+                      example: 'saveRoom'
+                  description: Filter by room function (e.g., saveRoom, itemStorage)
+                - name: adjoiningRoom
+                  in: query
+                  schema:
+                      type: string
+                      example: 'diningRoom'
+                  description: Filter rooms connected to specific room
+                - name: accessControl
+                  in: query
+                  schema:
+                      type: string
+                      example: 'shieldKey'
+                  description: Filter by required access key
+                - name: threatLevel
+                  in: query
+                  schema:
+                      type: integer
+                      minimum: 0
+                      maximum: 5
+                      example: 3
+                  description: Filter by threat level (0-5)
+                - name: roomNumber
+                  in: query
+                  schema:
+                      type: string
+                      example: '101'
+                  description: Filter by room number
+            responses:
+                '200':
+                    description: Successful response with filtered rooms
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Room'
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+# ==============================================================================
+# COMPONENTS
+# ==============================================================================
 components:
     schemas:
-        Resource:
+        ItemRoomData:
             type: object
+            description: Item data with room location information
             properties:
                 id:
                     type: string
-                    description: Unique identifier (e.g., 'item-selfDefenseJV-keepersRoom')
+                    description: Unique item identifier
+                    example: 'selfDefenseJV-keepersRoom'
+                name:
+                    type: string
+                    description: Display name of the item
+                    example: 'Battery Pack'
+                type:
+                    type: string
+                    description: Item type/category
+                    example: 'SelfDefense'
+                qty:
+                    type: integer
+                    description: Quantity available
+                    example: 2
+                qtyItems:
+                    type: integer
+                    nullable: true
+                    description: Quantity group identifier
+                    example: null
                 map:
                     type: object
                     properties:
-                        room:
+                        roomId:
                             type: string
-                        map:
+                            example: 'keepersRoom'
+                        mapId:
                             type: string
+                            example: 'mansionF1'
                 difficultyLevel:
                     type: array
                     items:
                         type: string
-                    description: Array of difficulty levels
+                        enum:
+                            [
+                                JV-lvl-very-easy,
+                                JV-lvl-easy,
+                                JV-lvl-normal,
+                                JV-lvl-hard,
+                                CR-lvl-very-easy,
+                                CR-lvl-easy,
+                                CR-lvl-normal,
+                                CR-lvl-hard,
+                            ]
+                    description: Difficulty levels where this item appears
+                    example: ['JV-lvl-normal', 'JV-lvl-hard']
+
+        BiohazardRoomData:
+            type: object
+            description: Biohazard (enemy) data with room location information
+            properties:
+                id:
+                    type: string
+                    description: Unique biohazard identifier
+                    example: 'zombie1-keepersRoom'
                 name:
                     type: string
-                    description: Name of the resource
-                type:
+                    description: Biohazard name
+                    example: 'Zombie'
+                code:
                     type: string
-                    description: Type of the resource (e.g., 'SelfDefense')
+                    description: S.T.A.R.S. classification code
+                    example: 'Zb'
                 qty:
                     type: integer
-                    description: Quantity
-                qtyItems:
-                    type: integer | null
-                    description: Quantity group identifier
+                    description: Number of enemies
+                    example: 3
+                map:
+                    type: object
+                    properties:
+                        roomId:
+                            type: string
+                            example: 'keepersRoom'
+                        mapId:
+                            type: string
+                            example: 'mansionF1'
+                difficultyLevel:
+                    type: array
+                    items:
+                        type: string
+                    description: Difficulty levels where this biohazard appears
+                    example: ['JV-lvl-normal', 'JV-lvl-hard']
+
+        STARSRanking:
+            type: object
+            description: S.T.A.R.S. official threat ranking data
+            properties:
+                code:
+                    type: string
+                    description: S.T.A.R.S. classification code
+                    example: 'Zb'
+                starsRanking:
+                    type: object
+                    description: Detailed S.T.A.R.S. ranking information
+                    properties:
+                        starsClassification:
+                            type: string
+                            description: S.T.A.R.S. classification name
+                            example: 'Zeta'
+                        ranking:
+                            type: string
+                            description: Numerical ranking
+                            example: '0Half'
+                        threatLevel:
+                            type: string
+                            description: Threat level assessment
+                            example: 'Low-Moderate'
+                        directive:
+                            type: string
+                            description: Recommended tactical directive
+                            example: 'Avoid else Engage'
+
+        Area:
+            type: object
+            description: Game area (major location)
+            properties:
+                id:
+                    type: string
+                    description: Unique area identifier
+                    example: 'mansion'
+                name:
+                    type: string
+                    description: Area display name
+                    example: 'Spencer Mansion'
+                description:
+                    type: string
+                    description: Area description
+                    example: 'The main mansion complex'
+
+        Map:
+            type: object
+            description: Map (floor within an area)
+            properties:
+                id:
+                    type: string
+                    description: Unique map identifier
+                    example: 'mansionF1'
+                name:
+                    type: string
+                    description: Map display name
+                    example: 'Mansion 1F'
+                areaId:
+                    type: string
+                    description: Parent area ID
+                    example: 'mansion'
+                floor:
+                    type: string
+                    description: Floor identifier
+                    example: '1F'
+
+        Room:
+            type: object
+            description: Individual room with complete details
+            properties:
+                id:
+                    type: string
+                    description: Unique room identifier
+                    example: 'keepersRoom'
+                name:
+                    type: string
+                    description: Room display name
+                    example: "Keeper's Room"
+                roomNumber:
+                    type: string
+                    description: In-game room number
+                    example: '101'
+                mapId:
+                    type: string
+                    description: Parent map ID
+                    example: 'mansionF1'
+                items:
+                    type: array
+                    items:
+                        type: string
+                    description: Item IDs present in this room
+                    example: ['selfDefenseJV-keepersRoom', 'document-keepersRoom']
+                biohazards:
+                    type: array
+                    items:
+                        type: string
+                    description: Biohazard IDs present in this room
+                    example: ['zombie1-keepersRoom', 'zombie2-keepersRoom']
+                persons:
+                    type: array
+                    items:
+                        type: string
+                    description: Person IDs that appear in this room
+                    example: []
+                interactables:
+                    type: array
+                    items:
+                        type: string
+                    description: Interactable object IDs
+                    example: ['desk', 'cabinet']
+                roomFunction:
+                    type: array
+                    items:
+                        type: string
+                    description: Room functions (e.g., saveRoom, itemStorage)
+                    example: ['saveRoom']
+                adjoiningRooms:
+                    type: array
+                    items:
+                        type: string
+                    description: Connected room IDs
+                    example: ['corridor', 'diningRoom']
+                accessControl:
+                    type: array
+                    items:
+                        type: string
+                    description: Required keys or items for access
+                    example: ['shieldKey']
+                threatLevel:
+                    type: integer
+                    description: Overall threat assessment (0-5)
+                    example: 2
+
+        Error:
+            type: object
+            properties:
+                error:
+                    type: string
+                    description: Error message
+                    example: 'Invalid query parameters'
+                details:
+                    type: array
+                    items:
+                        type: string
+                    description: Detailed error information
+                    example: ['ids must be comma-separated alphanumeric strings']
+
+    responses:
+        ValidationError:
+            description: Invalid request parameters
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/Error'
+                    example:
+                        error: 'Invalid query parameters'
+                        details: ['ids must be comma-separated alphanumeric strings']
+
+        NotFoundError:
+            description: Resource not found
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/Error'
+                    example:
+                        error: 'No IDs provided are recognized'
+
+        RateLimitError:
+            description: Rate limit exceeded
+            content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+                            message:
+                                type: string
+                                example: 'Too many requests, please try again later.'
