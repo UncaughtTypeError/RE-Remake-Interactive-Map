@@ -27,6 +27,7 @@
 - **Modular TypeScript** components with clear separation of concerns
 - **Vanilla JavaScript** using native browser APIs (no jQuery dependency)
 - **Express 5 API** serving data endpoints
+- **Client-side API layer** (`src/client/`) for centralized data fetching
 - **Component-based UI** with template loading system
 - **Separate CSS files** with theme support (diurnal/nocturnal)
 
@@ -45,6 +46,42 @@ deleted: underground-laboratory-1b.html through 4b.html
 ```
 
 **Current state**: New `src/` directory structure with TypeScript, new build system, API layer established.
+
+### Frontend Architecture Layers
+
+The frontend follows a clear layered pattern:
+
+```
+┌─────────────────────────────────────────────┐
+│ UI Components (src/ui/)                     │
+│ - Event handlers, renderers, orchestrators  │
+│ - DOM manipulation, templates               │
+└─────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────┐
+│ Client API Layer (src/client/)              │
+│ - API communication (fetch)                 │
+│ - Response caching                          │
+│ - Error handling                            │
+└─────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────┐
+│ State Management (src/state/)               │
+│ - Global state (Proxy-based)                │
+│ - Subscriptions (EventTarget)               │
+└─────────────────────────────────────────────┘
+                    ↓
+┌─────────────────────────────────────────────┐
+│ Backend API (Express routes)                │
+│ - /api/maps, /api/items, /api/biohazards   │
+└─────────────────────────────────────────────┘
+```
+
+**Client Layer** (`src/client/`):
+- Centralized API communication
+- Mirrors backend structure pattern
+- Shared across all UI components
+- Provides caching and error handling
 
 ## Critical Development Principles
 

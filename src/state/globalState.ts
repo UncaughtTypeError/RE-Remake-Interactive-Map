@@ -20,7 +20,7 @@
  */
 import { CharacterCode, DifficultyLevel, RoomDetailsData, RoomID } from '../data';
 
-import { blankRoomData } from 'roomDetail/logic/api/fallbackData';
+import { blankRoomData } from 'client/api/fallbackData';
 
 // Define state interface for type safety (extend as needed for more properties)
 export interface GlobalState {

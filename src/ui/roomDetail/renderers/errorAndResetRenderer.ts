@@ -1,5 +1,5 @@
 import { RoomDetailsData } from 'src/data';
-import { RoomResponse } from 'roomDetail/types/types';
+import { RoomResponse } from 'client/types/api';
 
 /**
  * Handles error cases and updates the container if there's an issue.

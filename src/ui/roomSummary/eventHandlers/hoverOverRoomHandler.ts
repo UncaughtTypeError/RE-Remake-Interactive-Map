@@ -1,8 +1,8 @@
 import { getState } from 'src/state/globalState';
 import { renderRoomSummary } from 'roomSummary/orchestrator/orchestrator';
 import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
-import { fetchRoomData } from 'roomDetail/logic/api/roomApi';
-import { RoomResponse } from 'roomDetail/types/types';
+import { fetchRoomData } from 'client/api/roomApi';
+import { RoomResponse } from 'client/types/api';
 
 /**
  * Handles mouseover on room elements.

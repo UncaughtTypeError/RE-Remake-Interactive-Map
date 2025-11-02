@@ -52,6 +52,13 @@ src/
 ├── server.ts                         # API entry point
 ├── index.html                        # Clean HTML
 │
+├── client/                           # NEW: Client-side API layer
+│   ├── api/                          # API communication
+│   │   ├── roomApi.ts               # Room data fetching
+│   │   └── fallbackData.ts          # Fallback data
+│   └── types/                        # Shared frontend types
+│       └── api.ts                    # API response interfaces
+│
 ├── ui/                               # Component-based
 │   ├── roomDetail/
 │   ├── difficultySelect/
@@ -880,6 +887,38 @@ async function fetchItems(ids: string[]): Promise<ItemsResponse> {
     return data;
 }
 ```
+
+### API Layer Migration
+
+**Old Pattern** (Component-specific API):
+
+```typescript
+// src/ui/roomDetail/logic/api/roomApi.ts
+// API logic embedded in component directory
+```
+
+**New Pattern** (Centralized API layer):
+
+```typescript
+// src/client/api/roomApi.ts
+// Centralized, reusable across all components
+import { fetchRoomData } from 'client/api/roomApi';
+```
+
+**Benefits**:
+
+- Shared across `roomDetail` and `roomSummary` components
+- Single location for API changes
+- Easier to test and mock
+- Consistent error handling
+
+**Migration Steps**:
+
+1. Move API files from `src/ui/[component]/logic/api/` to `src/client/api/`
+2. Move types from `src/ui/[component]/types/` to `src/client/types/`
+3. Update imports in all consuming components
+4. Add TypeScript path alias: `"client/*": ["src/client/*"]`
+5. Update tests to import from `client/` namespace
 
 ## Testing Migrated Code
 

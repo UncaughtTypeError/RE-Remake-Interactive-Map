@@ -18,6 +18,7 @@ const config: Config = {
     moduleNameMapper: {
         '^src$': '<rootDir>/src',
         '^src/(.*)$': '<rootDir>/src/$1',
+        '^client/(.*)$': '<rootDir>/src/client/$1',
         '^safeRoomAudioPlayer/(.*)$': '<rootDir>/src/ui/safeRoomAudioPlayer/$1',
         '^themeSelect/(.*)$': '<rootDir>/src/ui/themeSelect/$1',
         '^difficultySelect/(.*)$': '<rootDir>/src/ui/difficultySelect/$1',

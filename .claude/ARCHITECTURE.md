@@ -333,6 +333,57 @@ export function initializeGlobalEventListeners(): void {
 
 > "For larger apps, consider an event bus with EventTarget and CustomEvent for pub/sub decoupling"
 
+### 7. Client-Side API Layer Pattern
+
+**Pattern**: Centralized API communication layer separate from UI components
+
+**Location**: `src/client/`
+
+**Structure**:
+
+```
+src/client/
+├── api/                         # API communication functions
+│   ├── roomApi.ts              # Room data fetching
+│   └── fallbackData.ts         # Default/error state data
+└── types/                       # Shared frontend types
+    └── api.ts                   # API response interfaces
+```
+
+**Philosophy**:
+
+Following the backend's layered architecture (controllers → services → data), the frontend has a dedicated client layer that:
+
+- Centralizes all API calls
+- Provides caching and error handling
+- Maintains shared types
+- Enables reusability across UI components
+
+**Benefits**:
+
+- **Separation of Concerns**: API logic separate from rendering logic
+- **Reusability**: Multiple components can use the same API functions
+- **Testability**: API layer can be mocked/tested independently
+- **Type Safety**: Centralized type definitions for API contracts
+- **Maintainability**: Changes to API structure isolated to one location
+
+**Example Usage**:
+
+```typescript
+// src/ui/roomDetail/eventHandlers/openRoomDetailHandler.ts
+import { fetchRoomData } from 'client/api/roomApi';
+import { RoomResponse } from 'client/types/api';
+
+const data: RoomResponse = await fetchRoomData(roomId);
+```
+
+**Contrasted with UI Components**:
+
+- `src/client/` → API calls, data fetching, caching
+- `src/ui/` → Rendering, event handling, DOM manipulation
+- `src/state/` → Global state management
+- `src/data/` → Static data definitions
+
 ## Component Architecture
 
 ### Component Structure

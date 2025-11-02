@@ -1,5 +1,5 @@
 import { DifficultyLevel, RoomDetailsData } from '../../../data';
-import { BiohazardGroup } from 'roomDetail/types/types';
+import { BiohazardGroup } from 'client/types/api';
 
 /**
  * Processes biohazards into a grouped map.

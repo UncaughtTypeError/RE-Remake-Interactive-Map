@@ -1,4 +1,4 @@
-import { RoomResponse } from 'roomDetail/types/types';
+import { RoomResponse } from 'client/types/api';
 import { ApiConstants } from 'src/constants';
 
 // Cache for room data to avoid redundant API calls

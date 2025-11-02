@@ -1,9 +1,9 @@
 import { setState, getState, GlobalState } from 'src/state/globalState';
 
-import { fetchRoomData } from 'roomDetail/logic/api/roomApi';
-import { RoomResponse } from 'roomDetail/types/types';
+import { fetchRoomData } from 'client/api/roomApi';
+import { RoomResponse } from 'client/types/api';
 import { renderRoomData } from 'roomDetail/orchestrator/orchestrator';
-import { blankRoomData } from 'roomDetail/logic/api/fallbackData';
+import { blankRoomData } from 'client/api/fallbackData';
 import { animateGears, stopGearsAnimation } from 'shared/renderers/gearsAnimatorRenderer';
 
 /**

@@ -1,5 +1,5 @@
 import { DifficultyLevel, RoomDetailsData, ItemRoomData, QtyItems } from 'src/data';
-import { ItemGroup } from 'roomDetail/types/types';
+import { ItemGroup } from 'client/types/api';
 
 /**
  * Resolves qtyItems to a number for incrementing, handling both number and array cases.

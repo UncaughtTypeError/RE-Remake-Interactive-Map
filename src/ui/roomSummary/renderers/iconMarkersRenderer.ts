@@ -4,7 +4,7 @@
  */
 
 import { RoomDetailsData, DifficultyLevel } from 'src/data/types';
-import { ItemGroup, BiohazardGroup } from 'roomDetail/types/types';
+import { ItemGroup, BiohazardGroup } from 'client/types/api';
 import { processItemsAndInteractables } from 'roomDetail/processors/itemProcessor';
 import { processBiohazards } from 'roomDetail/processors/biohazardProcessor';
 

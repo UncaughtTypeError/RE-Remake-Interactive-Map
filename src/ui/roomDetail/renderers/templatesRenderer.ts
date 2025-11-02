@@ -1,4 +1,4 @@
-import { ItemGroup, BiohazardGroup } from 'roomDetail/types/types';
+import { ItemGroup, BiohazardGroup } from 'client/types/api';
 import { createQtyUpdater, slugifyString } from 'src/utils';
 
 /**
