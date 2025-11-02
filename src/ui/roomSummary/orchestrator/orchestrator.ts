@@ -14,6 +14,7 @@ import {
 } from 'roomSummary/renderers/iconMarkersRenderer';
 import { activateRoomFunctions } from 'roomSummary/renderers/roomFunctionsRenderer';
 import { handleAccessControl } from 'roomSummary/renderers/accessControlRenderer';
+import { setThreatLevel } from 'roomSummary/renderers/threatLevelRenderer';
 
 /**
  * Renders room summary when hovering over a room.
@@ -40,6 +41,9 @@ export function renderRoomSummary(room: RoomDetailsData, difficulty: DifficultyL
     // Update quantity displays
     updateItemCounts(itemCount);
     updateBiohazardCounts(biohazardCount);
+
+    // Set threat level display
+    setThreatLevel(room, difficulty);
 
     // Activate room functions (puzzle room, safe room, etc.)
     activateRoomFunctions(room);

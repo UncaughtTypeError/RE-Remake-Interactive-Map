@@ -1186,6 +1186,19 @@ header h1 {
     transition: 0.7s;
 }
 
+.room-summary-wrapper .room-threat-level {
+    position: relative;
+    display: inline-block;
+    left: auto;
+    width: auto;
+    margin-right: 5px;
+    bottom: -5px;
+}
+
+.room-summary-wrapper .room-threat-measure {
+    min-width: 25px;
+}
+
 .room-threat-level .room-threat-measure .fa {
     float: none !important;
     width: 3px;
@@ -1761,6 +1774,7 @@ header h1 {
 .room-summary-wrapper .fa[class*='access-control'] {
     position: absolute;
     right: -18px;
+    top: 10px;
     transition: 0.7s;
 }
 
