@@ -1,6 +1,6 @@
 import { getState } from 'src/state/globalState';
-import { renderRoomSummary } from '../orchestrator/orchestrator';
-import { animateGears } from 'src/ui/shared/renderers/gearsAnimatorRenderer';
+import { renderRoomSummary } from 'roomSummary/orchestrator/orchestrator';
+import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
 import { fetchRoomData } from 'roomDetail/logic/api/roomApi';
 import { RoomResponse } from 'roomDetail/types/types';
 

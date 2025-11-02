@@ -3,8 +3,8 @@
  * @description Hides room summary and resets icon states.
  */
 
-import { hideRoomSummary, resetRoomIcons, clearActiveIcons } from '../renderers/visibilityRenderer';
-import { animateGears } from 'src/ui/shared/renderers/gearsAnimatorRenderer';
+import { hideRoomSummary, resetRoomIcons, clearActiveIcons } from 'roomSummary/renderers/visibilityRenderer';
+import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
 
 /**
  * Handles mouseleave on room elements.

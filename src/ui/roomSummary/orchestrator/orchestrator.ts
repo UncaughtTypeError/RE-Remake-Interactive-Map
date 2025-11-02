@@ -4,17 +4,17 @@
  */
 
 import { RoomDetailsData, DifficultyLevel } from 'src/data/types';
-import { showRoomSummary, clearActiveIcons } from '../renderers/visibilityRenderer';
-import { setRoomTitle } from '../renderers/roomTitleRenderer';
+import { showRoomSummary, clearActiveIcons } from 'roomSummary/renderers/visibilityRenderer';
+import { setRoomTitle } from 'roomSummary/renderers/roomTitleRenderer';
 import {
     processIconMarkers,
     cloneActiveIcons,
     updateItemCounts,
     updateBiohazardCounts,
-} from '../renderers/iconMarkersRenderer';
-import { activateRoomFunctions } from '../renderers/roomFunctionsRenderer';
-import { handleAccessControl } from '../renderers/accessControlRenderer';
-import { handleExamineText } from '../renderers/examineTextRenderer';
+} from 'roomSummary/renderers/iconMarkersRenderer';
+import { activateRoomFunctions } from 'roomSummary/renderers/roomFunctionsRenderer';
+import { handleAccessControl } from 'roomSummary/renderers/accessControlRenderer';
+import { handleExamineText } from 'roomSummary/renderers/examineTextRenderer';
 
 /**
  * Renders room summary when hovering over a room.
