@@ -1,3 +1,8 @@
+/**
+ * @file Room detail orchestrator.
+ * @description Coordinates all room detail renderers when clicking on a room.
+ */
+
 import { RoomDetailsData } from 'src/data';
 
 import { setState, getState, GlobalState } from 'src/state/globalState';
@@ -22,8 +27,9 @@ import { buildGrids } from 'roomDetail/renderers/gridsRenderer';
 import { activateRoomDetails } from 'roomDetail/renderers/roomDetailsRenderer';
 
 /**
- * Renders room data into the specified container using API data, orchestrating all sub-renderers.
- * @param difficulty - The difficulty level to filter items and biohazards. Defaults to the current global difficulty.
+ * Renders room details when clicking on a room.
+ * Orchestrates all sub-renderers to populate the detail panel with API data.
+ * @param difficulty - The current difficulty level to filter items/ biohazards. Defaults to the current global difficulty.
  */
 export function renderRoomData(
     difficulty: GlobalState['difficulty'] = GlobalConstants.DEFAULT_DIFFICULTY_LEVEL,
