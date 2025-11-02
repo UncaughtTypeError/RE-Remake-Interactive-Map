@@ -17,27 +17,31 @@ export function setThreatLevel(room: RoomDetailsData, difficulty: DifficultyLeve
     );
     const threatLevel = riskEntry?.threatLevel ?? RoomThreatLevelEnum.UNKNOWN;
 
-    document.querySelectorAll('.room-summary-wrapper .room-threat-level').forEach((roomThreatLevelEl) => {
-        const threatLevelEl = roomThreatLevelEl as HTMLElement;
-        threatLevelEl.dataset.threatLevel = threatLevel;
+    document
+        .querySelectorAll('.room-summary-wrapper .room-threat-level')
+        .forEach((roomThreatLevelEl) => {
+            const threatLevelEl = roomThreatLevelEl as HTMLElement;
+            threatLevelEl.dataset.threatLevel = threatLevel;
 
-        const roomThreatLabel = threatLevelEl.querySelector(
-            '.room-threat-label',
-        ) as HTMLElement | null;
-        if (roomThreatLabel) {
-            roomThreatLabel.textContent = deSlugifyString(threatLevel);
-        }
-
-        const threatIcon = threatLevelEl.querySelector('.room-threat-icon') as HTMLElement | null;
-        if (threatIcon) {
-            threatIcon.classList.remove('fa-exclamation', 'fa-question', 'fa-check');
-            if (threatLevel === RoomThreatLevelEnum.CLEAR) {
-                threatIcon.classList.add('fa-check');
-            } else if (threatLevel === RoomThreatLevelEnum.UNKNOWN) {
-                threatIcon.classList.add('fa-question');
-            } else {
-                threatIcon.classList.add('fa-exclamation');
+            const roomThreatLabel = threatLevelEl.querySelector(
+                '.room-threat-label',
+            ) as HTMLElement | null;
+            if (roomThreatLabel) {
+                roomThreatLabel.textContent = deSlugifyString(threatLevel);
             }
-        }
-    });
+
+            const threatIcon = threatLevelEl.querySelector(
+                '.room-threat-icon',
+            ) as HTMLElement | null;
+            if (threatIcon) {
+                threatIcon.classList.remove('fa-exclamation', 'fa-question', 'fa-check');
+                if (threatLevel === RoomThreatLevelEnum.CLEAR) {
+                    threatIcon.classList.add('fa-check');
+                } else if (threatLevel === RoomThreatLevelEnum.UNKNOWN) {
+                    threatIcon.classList.add('fa-question');
+                } else {
+                    threatIcon.classList.add('fa-exclamation');
+                }
+            }
+        });
 }

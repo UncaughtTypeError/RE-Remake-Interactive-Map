@@ -17,6 +17,7 @@ This is a condensed reference for AI assistants and developers. For complete gui
 **⚠️ CRITICAL: Use Imperative Mood**
 
 The subject must be in imperative mood (command form):
+
 - ✅ **"add"** not "added" or "adds"
 - ✅ **"fix"** not "fixed" or "fixes"
 - ✅ **"update"** not "updated" or "updates"
@@ -50,25 +51,26 @@ BREAKING CHANGE: Room search now returns paginated results
 
 ## Types
 
-| Type | Use For | Affects Version |
-|------|---------|----------------|
-| `feat` | New feature | Minor (0.X.0) |
-| `fix` | Bug fix | Patch (0.0.X) |
-| `docs` | Documentation only | - |
-| `style` | Formatting, no code change | - |
-| `refactor` | Code refactor | - |
-| `perf` | Performance improvement | Patch |
-| `test` | Adding/updating tests | - |
-| `build` | Build system or deps | - |
-| `ci` | CI/CD changes | - |
-| `chore` | Maintenance | - |
-| `revert` | Revert previous commit | - |
+| Type       | Use For                    | Affects Version |
+| ---------- | -------------------------- | --------------- |
+| `feat`     | New feature                | Minor (0.X.0)   |
+| `fix`      | Bug fix                    | Patch (0.0.X)   |
+| `docs`     | Documentation only         | -               |
+| `style`    | Formatting, no code change | -               |
+| `refactor` | Code refactor              | -               |
+| `perf`     | Performance improvement    | Patch           |
+| `test`     | Adding/updating tests      | -               |
+| `build`    | Build system or deps       | -               |
+| `ci`       | CI/CD changes              | -               |
+| `chore`    | Maintenance                | -               |
+| `revert`   | Revert previous commit     | -               |
 
 **Breaking change**: Add `!` after type/scope OR `BREAKING CHANGE:` in footer → Major version (X.0.0)
 
 ## Common Scopes
 
 ### Backend
+
 - `api` - General API
 - `routes` - Routes
 - `controllers` - Controllers
@@ -77,6 +79,7 @@ BREAKING CHANGE: Room search now returns paginated results
 - `data` - Data layer
 
 ### Frontend
+
 - `ui` - General UI
 - `roomDetail` - Room detail component
 - `difficultySelect` - Difficulty selector
@@ -86,6 +89,7 @@ BREAKING CHANGE: Room search now returns paginated results
 - `roomSummary` - Room summary
 
 ### Core
+
 - `state` - State management
 - `events` - Event handling
 - `utils` - Utilities
@@ -93,6 +97,7 @@ BREAKING CHANGE: Room search now returns paginated results
 - `constants` - Constants
 
 ### Infrastructure
+
 - `build` - Build config
 - `test` - Testing infrastructure
 - `docs` - Documentation
@@ -101,10 +106,10 @@ BREAKING CHANGE: Room search now returns paginated results
 ## Subject Line Rules
 
 1. **Imperative mood (REQUIRED)**: Write as a command
-   - ✅ "add" "fix" "update" "remove" "refactor" "implement"
-   - ❌ "added" "fixed" "updated" "removed" "refactored" "implemented"
-   - ❌ "adds" "fixes" "updates" "removes" "refactors" "implements"
-   - Test: "This commit will **[your subject]**" - must make sense
+    - ✅ "add" "fix" "update" "remove" "refactor" "implement"
+    - ❌ "added" "fixed" "updated" "removed" "refactored" "implemented"
+    - ❌ "adds" "fixes" "updates" "removes" "refactors" "implements"
+    - Test: "This commit will **[your subject]**" - must make sense
 2. **Lowercase**: `feat(api): add endpoint` not `feat(api): Add endpoint`
 3. **No period**: `fix(ui): resolve bug` not `fix(ui): resolve bug.`
 4. **≤72 characters**: Keep it concise
@@ -161,11 +166,13 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 Two ways to indicate:
 
 **Method 1**: Add `!` after type/scope
+
 ```
 feat(api)!: remove deprecated endpoints
 ```
 
 **Method 2**: Add `BREAKING CHANGE:` in footer
+
 ```
 feat(api): remove deprecated endpoints
 
@@ -220,6 +227,7 @@ Before committing, verify:
 ## Common Mistakes
 
 ### ❌ Wrong
+
 ```
 # Not imperative mood (WRONG - past tense)
 feat(api): added new endpoint
@@ -249,6 +257,7 @@ feat(api): add endpoint and fix bug and update docs
 ```
 
 ### ✅ Correct
+
 ```
 # Imperative mood (CORRECT - command form)
 feat(api): add room search endpoint
@@ -282,6 +291,7 @@ git commit -m "docs(readme): update installation steps"
 ## Tools
 
 ### Commitlint (Optional)
+
 ```bash
 # Install
 npm install --save-dev @commitlint/cli @commitlint/config-conventional
@@ -294,6 +304,7 @@ npx commitlint --edit $1
 ```
 
 ### Git Commit Template (Optional)
+
 ```bash
 # Create template file
 cat > ~/.gitmessage << EOF

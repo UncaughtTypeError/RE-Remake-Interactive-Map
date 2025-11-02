@@ -115,17 +115,20 @@ Unit tests focus on isolating and testing individual components in a controlled 
 **Location**: `src/__tests__/unit/service-layer/`
 
 **What They Test**:
+
 - Business logic and data operations
 - Data filtering and validation
 - Error generation (NotFoundError, BadRequestError)
 - Edge cases (duplicates, empty inputs, large inputs)
 
 **Dependencies**:
+
 - Minimal - only internal data arrays
 - No mocking required (services are the base layer)
 - Use real data arrays for accuracy
 
 **Example Pattern**:
+
 ```typescript
 import { getItemsByIds } from '../../../api/services/itemsService';
 import { NotFoundError, BadRequestError } from '../../../errors/customErrors';
@@ -158,6 +161,7 @@ describe('getItemsByIds', () => {
 **Location**: `src/__tests__/unit/controller-layer/`
 
 **What They Test**:
+
 - HTTP request/response logic
 - Query parameter parsing
 - Delegation to services
@@ -165,10 +169,12 @@ describe('getItemsByIds', () => {
 - Error propagation to middleware
 
 **Dependencies**:
+
 - Mock service methods with jest.mock
 - Simulate Express req/res objects
 
 **Mocking Strategy**:
+
 ```typescript
 import * as services from '../../../api/services/itemsService';
 
@@ -180,18 +186,20 @@ describe('itemsController', () => {
 
     beforeEach(() => {
         mockRequest = {
-            query: { ids: 'id1,id2' }
+            query: { ids: 'id1,id2' },
         };
         mockResponse = {
             json: jest.fn(),
-            status: jest.fn().mockReturnThis()
+            status: jest.fn().mockReturnThis(),
         };
     });
 
     it('should call service with parsed IDs', async () => {
         (services.getItemsByIds as jest.Mock).mockResolvedValue({
-            foundResources: [/* mock data */],
-            unrecognizedIds: []
+            foundResources: [
+                /* mock data */
+            ],
+            unrecognizedIds: [],
         });
 
         await getItems(mockRequest as Request, mockResponse as Response);
@@ -202,7 +210,7 @@ describe('itemsController', () => {
 
     it('should handle NotFoundError with 404 status', async () => {
         (services.getItemsByIds as jest.Mock).mockRejectedValue(
-            new NotFoundError('No items found')
+            new NotFoundError('No items found'),
         );
 
         await getItems(mockRequest as Request, mockResponse as Response);
@@ -217,12 +225,14 @@ describe('itemsController', () => {
 **Location**: `src/__tests__/unit/state/`
 
 **What They Test**:
+
 - Global state reactivity (Proxy behavior)
 - Subscription mechanism (EventTarget)
 - State updates and notifications
 - Type safety of state properties
 
 **Example**:
+
 ```typescript
 import { globalState, subscribeState } from '../../../state/globalState';
 
@@ -269,6 +279,7 @@ Integration tests verify the full API stack, ensuring components work together s
 **Location**: `src/__tests__/integration/`
 
 **Focus**:
+
 - Full HTTP endpoints (GET `/api/items?ids=...`)
 - Query parameter parsing
 - Response status codes
@@ -277,6 +288,7 @@ Integration tests verify the full API stack, ensuring components work together s
 - Partial success scenarios
 
 **Example Pattern**:
+
 ```typescript
 import request from 'supertest';
 import express from 'express';
@@ -292,32 +304,24 @@ describe('Items API Integration Tests', () => {
 
     describe('GET /api/items?ids=...', () => {
         it('should return 200 with found items', async () => {
-            const response = await request(app)
-                .get('/api/items?ids=validId1,validId2')
-                .expect(200);
+            const response = await request(app).get('/api/items?ids=validId1,validId2').expect(200);
 
             expect(response.body).toHaveProperty('foundResources');
             expect(response.body.foundResources).toHaveLength(2);
         });
 
         it('should return 404 when no items found', async () => {
-            const response = await request(app)
-                .get('/api/items?ids=nonexistent')
-                .expect(404);
+            const response = await request(app).get('/api/items?ids=nonexistent').expect(404);
 
             expect(response.body).toHaveProperty('error');
         });
 
         it('should return 400 for empty query', async () => {
-            await request(app)
-                .get('/api/items?ids=')
-                .expect(400);
+            await request(app).get('/api/items?ids=').expect(400);
         });
 
         it('should handle partial matches with 200', async () => {
-            const response = await request(app)
-                .get('/api/items?ids=validId,invalidId')
-                .expect(200);
+            const response = await request(app).get('/api/items?ids=validId,invalidId').expect(200);
 
             expect(response.body.foundResources).toHaveLength(1);
             expect(response.body.unrecognizedIds).toEqual(['invalidId']);
@@ -328,14 +332,14 @@ describe('Items API Integration Tests', () => {
 
 ### Integration vs Unit Tests
 
-| Aspect | Unit Tests | Integration Tests |
-|--------|-----------|-------------------|
-| **Scope** | Single function/method | Full request lifecycle |
-| **Mocking** | Heavy (mock dependencies) | None (use real services) |
-| **Speed** | Very fast (milliseconds) | Slower (seconds) |
-| **What's Tested** | Logic isolation | Component interaction |
-| **Tools** | Jest | Jest + Supertest |
-| **When to Use** | Testing algorithms, validation | Testing API contracts |
+| Aspect            | Unit Tests                     | Integration Tests        |
+| ----------------- | ------------------------------ | ------------------------ |
+| **Scope**         | Single function/method         | Full request lifecycle   |
+| **Mocking**       | Heavy (mock dependencies)      | None (use real services) |
+| **Speed**         | Very fast (milliseconds)       | Slower (seconds)         |
+| **What's Tested** | Logic isolation                | Component interaction    |
+| **Tools**         | Jest                           | Jest + Supertest         |
+| **When to Use**   | Testing algorithms, validation | Testing API contracts    |
 
 ## Running Tests
 
@@ -363,27 +367,24 @@ export default {
     roots: ['<rootDir>/src'],
     testMatch: ['**/__tests__/**/*.test.ts'],
     moduleNameMapper: {
-        '^src/(.*)$': '<rootDir>/src/$1'
+        '^src/(.*)$': '<rootDir>/src/$1',
     },
-    collectCoverageFrom: [
-        'src/**/*.ts',
-        '!src/**/*.test.ts',
-        '!src/**/__tests__/**'
-    ],
+    collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/**/__tests__/**'],
     coverageThresholds: {
         global: {
             branches: 80,
             functions: 80,
             lines: 80,
-            statements: 80
-        }
-    }
+            statements: 80,
+        },
+    },
 };
 ```
 
 ### Coverage Reports
 
 Coverage reports show:
+
 - **Statements**: % of executable statements covered
 - **Branches**: % of conditional branches covered
 - **Functions**: % of functions called
@@ -401,6 +402,7 @@ Coverage reports show:
 4. No mocking needed - use real data
 
 **Template**:
+
 ```typescript
 import { serviceFunction } from '../../../api/services/yourService';
 import { NotFoundError, BadRequestError } from '../../../errors/customErrors';
@@ -441,6 +443,7 @@ describe('serviceFunction', () => {
 4. Test HTTP-specific logic
 
 **Template**:
+
 ```typescript
 import { controllerFunction } from '../../../api/controllers/yourController';
 import * as service from '../../../api/services/yourService';
@@ -456,7 +459,7 @@ describe('controllerFunction', () => {
         mockReq = { query: {}, params: {} };
         mockRes = {
             json: jest.fn(),
-            status: jest.fn().mockReturnThis()
+            status: jest.fn().mockReturnThis(),
         };
     });
 
@@ -487,6 +490,7 @@ describe('controllerFunction', () => {
 4. Test full request/response cycle
 
 **Template**:
+
 ```typescript
 import request from 'supertest';
 import express from 'express';
@@ -502,17 +506,13 @@ describe('Your API Integration Tests', () => {
 
     describe('GET /api/your-resource', () => {
         it('should return 200 with data', async () => {
-            const response = await request(app)
-                .get('/api/your-resource?param=value')
-                .expect(200);
+            const response = await request(app).get('/api/your-resource?param=value').expect(200);
 
             expect(response.body).toHaveProperty('expectedProperty');
         });
 
         it('should return 400 for invalid input', async () => {
-            await request(app)
-                .get('/api/your-resource?param=invalid')
-                .expect(400);
+            await request(app).get('/api/your-resource?param=invalid').expect(400);
         });
     });
 });
@@ -525,6 +525,7 @@ describe('Your API Integration Tests', () => {
 From `docs/rate-limiting-test-challenges.md`:
 
 **Issue**: Rate limiting with `express-rate-limit` and `MemoryStore` cannot be reliably tested in Jest/Supertest due to:
+
 - State persistence across tests
 - Jest module hoisting causing scoping errors
 - MemoryStore internal singleton-like behavior
@@ -532,11 +533,14 @@ From `docs/rate-limiting-test-challenges.md`:
 **Solution**: Rate limiting tests have been removed from the suite. Rate limiting works in production and can be verified manually.
 
 **Manual Testing**:
+
 ```javascript
 // Run in browser console against http://localhost:3000
 (async () => {
     for (let i = 0; i < 101; i++) {
-        const response = await fetch('http://localhost:3000/api/items?ids=selfDefenseJV-keepersRoom');
+        const response = await fetch(
+            'http://localhost:3000/api/items?ids=selfDefenseJV-keepersRoom',
+        );
         const status = response.status;
         const body = await response.json().catch(() => ({}));
         console.log(`Request ${i + 1}: Status ${status}`, body);
@@ -559,6 +563,7 @@ From `docs/rate-limiting-test-challenges.md`:
 ### Test Naming
 
 Use descriptive test names following this pattern:
+
 ```typescript
 describe('Component/Function Name', () => {
     describe('Context/Method', () => {
@@ -572,6 +577,7 @@ describe('Component/Function Name', () => {
 ### Assertions
 
 Be specific with assertions:
+
 ```typescript
 // ❌ Too vague
 expect(result).toBeDefined();
@@ -580,13 +586,14 @@ expect(result).toBeDefined();
 expect(result.foundResources).toHaveLength(2);
 expect(result.foundResources[0]).toMatchObject({
     id: 'expectedId',
-    name: 'Expected Name'
+    name: 'Expected Name',
 });
 ```
 
 ### Error Testing
 
 Always test error paths:
+
 ```typescript
 // Test happy path
 it('should return data for valid input', async () => {
@@ -603,6 +610,7 @@ it('should throw error for invalid input', async () => {
 ### Mock Cleanup
 
 Clean up mocks between tests:
+
 ```typescript
 beforeEach(() => {
     jest.clearAllMocks();
@@ -616,6 +624,7 @@ afterAll(() => {
 ### Type Safety
 
 Leverage TypeScript in tests:
+
 ```typescript
 import { ItemRoomData } from '../../../data/types';
 
@@ -643,6 +652,7 @@ When adding new features, ensure:
 ---
 
 **See Also**:
+
 - [AI_CONTEXT.md](./AI_CONTEXT.md) - Main project context
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - Contributing guide with commit format
 - `src/__tests__/README.md` - Additional testing details

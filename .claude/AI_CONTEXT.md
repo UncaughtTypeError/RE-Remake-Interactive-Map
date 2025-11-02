@@ -255,16 +255,19 @@ npm run format  # Runs Prettier on all files
 ```
 
 **Configuration:**
+
 - **Prettier** (`.prettierrc.json`): Code formatting (spacing, line breaks, quotes, etc.)
 - **ESLint** (`eslint.config.js`): Code quality checks (unused vars, type safety, etc.)
 
 **Important Notes:**
+
 - Prettier runs automatically via `npm run format` and formats all project files
 - The format command should be run after every file creation or modification
-- ESLint errors in `dist/` folder are from compiled code and can be ignored
+- ESLint automatically ignores `dist/`, `node_modules/`, `coverage/`, and other generated folders
 - Source files in `src/` should be clean and properly formatted
 
 **When to Run:**
+
 1. **After creating new files** - Ensures consistent formatting from the start
 2. **After editing existing files** - Maintains code consistency
 3. **Before committing** - Keeps the codebase clean

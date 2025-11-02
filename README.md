@@ -18,12 +18,14 @@ RE Remake Interactive Map is a full-stack TypeScript application that provides p
 ## Technology Stack
 
 ### Frontend
+
 - **TypeScript 5.8+**: Strict type safety throughout
 - **Vanilla JavaScript**: No UI frameworks (React, Vue, Angular) - uses native browser APIs
 - **Modern Web APIs**: Proxy for reactivity, EventTarget for pub/sub, Web Animations API for effects
 - **Component Architecture**: Modular event handlers, renderers, and orchestrators
 
 ### Backend
+
 - **Express 5**: RESTful API server
 - **TypeScript with ESM**: Modern ES modules
 - **express-validator**: Input validation and sanitization
@@ -31,6 +33,7 @@ RE Remake Interactive Map is a full-stack TypeScript application that provides p
 - **Swagger/OpenAPI**: Interactive API documentation
 
 ### Development Tools
+
 - **ESBuild**: Fast bundling and compilation
 - **Jest + ts-jest**: Testing framework with TypeScript support
 - **ESLint + Prettier**: Code quality and formatting
@@ -47,20 +50,22 @@ RE Remake Interactive Map is a full-stack TypeScript application that provides p
 ### Installation
 
 1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd RE-Remake-Interactive-Map
-   ```
+
+    ```bash
+    git clone <repository-url>
+    cd RE-Remake-Interactive-Map
+    ```
 
 2. Install dependencies:
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 3. Run tests to verify installation:
-   ```bash
-   npm test
-   ```
+    ```bash
+    npm test
+    ```
 
 ### Development
 
@@ -75,19 +80,21 @@ The application will be available at `http://localhost:3000`
 ### Building for Production
 
 1. Type check the code:
-   ```bash
-   npm run typecheck
-   ```
+
+    ```bash
+    npm run typecheck
+    ```
 
 2. Build the application:
-   ```bash
-   npm run build
-   ```
+
+    ```bash
+    npm run build
+    ```
 
 3. Start the production server:
-   ```bash
-   node dist/server.js
-   ```
+    ```bash
+    node dist/server.js
+    ```
 
 ## Project Structure
 
@@ -129,17 +136,17 @@ RE-Remake-Interactive-Map/
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with hot reload |
-| `npm start` | Start development server with ts-node |
-| `npm run build` | Build for production (typecheck + transpile + bundle) |
-| `npm test` | Run test suite |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run test:coverage` | Generate test coverage report |
-| `npm run typecheck` | Type check without emitting files |
-| `npm run lint` | Lint code with ESLint |
-| `npm run format` | Format code with Prettier |
+| Command                 | Description                                           |
+| ----------------------- | ----------------------------------------------------- |
+| `npm run dev`           | Start development server with hot reload              |
+| `npm start`             | Start development server with ts-node                 |
+| `npm run build`         | Build for production (typecheck + transpile + bundle) |
+| `npm test`              | Run test suite                                        |
+| `npm run test:watch`    | Run tests in watch mode                               |
+| `npm run test:coverage` | Generate test coverage report                         |
+| `npm run typecheck`     | Type check without emitting files                     |
+| `npm run lint`          | Lint code with ESLint                                 |
+| `npm run format`        | Format code with Prettier                             |
 
 ## API Documentation
 
@@ -156,18 +163,21 @@ See `openapi.yaml` for the complete API specification.
 This project follows a component-based architecture with clear separation of concerns:
 
 ### Backend (Express 5 API)
+
 - **Routes** → **Controllers** → **Services** → **Data**
 - RESTful endpoints with validation and rate limiting
 - Centralized error handling
 - OpenAPI/Swagger documentation
 
 ### Frontend (Vanilla TypeScript)
+
 - **Event Handlers** → **Orchestrators** → **Renderers**
 - Proxy-based reactive state management
 - Event delegation for performance
 - Template system for dynamic content
 
 For detailed architecture documentation, see:
+
 - [.claude/AI_CONTEXT.md](.claude/AI_CONTEXT.md) - Project overview
 - [.claude/ARCHITECTURE.md](.claude/ARCHITECTURE.md) - Design patterns
 - [docs/project-standards-and-setup.md](docs/project-standards-and-setup.md) - Standards and tools
@@ -180,6 +190,7 @@ The project maintains 80%+ test coverage across:
 - **Integration Tests**: API endpoints, route handlers
 
 Run tests with:
+
 ```bash
 npm test                  # Run all tests
 npm run test:coverage     # Generate coverage report

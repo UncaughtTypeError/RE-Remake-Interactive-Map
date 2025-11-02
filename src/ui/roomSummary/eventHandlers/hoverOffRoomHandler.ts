@@ -3,7 +3,11 @@
  * @description Hides room summary and resets icon states.
  */
 
-import { hideRoomSummary, resetRoomIcons, clearActiveIcons } from 'roomSummary/renderers/visibilityRenderer';
+import {
+    hideRoomSummary,
+    resetRoomIcons,
+    clearActiveIcons,
+} from 'roomSummary/renderers/visibilityRenderer';
 import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
 
 /**

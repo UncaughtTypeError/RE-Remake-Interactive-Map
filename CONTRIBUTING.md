@@ -34,31 +34,35 @@ This project follows standard open-source community guidelines:
 ### Initial Setup
 
 1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd RE-Remake-Interactive-Map
-   ```
+
+    ```bash
+    git clone <repository-url>
+    cd RE-Remake-Interactive-Map
+    ```
 
 2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 3. **Run tests** (ensure everything works):
-   ```bash
-   npm test
-   ```
+
+    ```bash
+    npm test
+    ```
 
 4. **Start development server**:
-   ```bash
-   npm run dev
-   ```
+
+    ```bash
+    npm run dev
+    ```
 
 5. **Read the documentation**:
-   - [`.claude/AI_CONTEXT.md`](.claude/AI_CONTEXT.md) - Project overview
-   - [`.claude/ARCHITECTURE.md`](.claude/ARCHITECTURE.md) - Design patterns
-   - [`.claude/TESTING.md`](.claude/TESTING.md) - Testing guide
-   - [`.claude/MIGRATION_GUIDE.md`](.claude/MIGRATION_GUIDE.md) - jQuery migration
+    - [`.claude/AI_CONTEXT.md`](.claude/AI_CONTEXT.md) - Project overview
+    - [`.claude/ARCHITECTURE.md`](.claude/ARCHITECTURE.md) - Design patterns
+    - [`.claude/TESTING.md`](.claude/TESTING.md) - Testing guide
+    - [`.claude/MIGRATION_GUIDE.md`](.claude/MIGRATION_GUIDE.md) - jQuery migration
 
 ## Development Workflow
 
@@ -74,28 +78,30 @@ This project follows standard open-source community guidelines:
 ### Creating a New Feature
 
 1. **Create a branch**:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
 
 2. **Make changes** following project standards
 
 3. **Write tests** for your changes
 
 4. **Run quality checks**:
-   ```bash
-   npm run typecheck    # TypeScript
-   npm run lint         # ESLint
-   npm run format       # Prettier
-   npm test             # Jest
-   ```
+
+    ```bash
+    npm run typecheck    # TypeScript
+    npm run lint         # ESLint
+    npm run format       # Prettier
+    npm test             # Jest
+    ```
 
 5. **Commit using Conventional Commits** (see below)
 
 6. **Push and create Pull Request**:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+    ```bash
+    git push origin feature/your-feature-name
+    ```
 
 ## Commit Guidelines
 
@@ -114,6 +120,7 @@ This project uses **[Conventional Commits](https://www.conventionalcommits.org/)
 **⚠️ IMPORTANT: Use Imperative Mood in Subject Line**
 
 Write commit subjects as commands:
+
 - ✅ "add feature" (imperative - correct)
 - ✅ "fix bug" (imperative - correct)
 - ✅ "update documentation" (imperative - correct)
@@ -122,30 +129,32 @@ Write commit subjects as commands:
 - ❌ "adding feature" (gerund - wrong)
 
 **Think**: "This commit will **[subject]**"
+
 - "This commit will **add feature**" ← Correct!
 - "This commit will **added feature**" ← Wrong!
 
 ### Types
 
-| Type | Description | Example |
-|------|-------------|---------|
-| **feat** | New feature | `feat(roomDetail): add biohazard threat level indicator` |
-| **fix** | Bug fix | `fix(api): resolve room data caching issue` |
-| **docs** | Documentation only | `docs(readme): update installation instructions` |
-| **style** | Code style (formatting, semicolons, etc.) | `style(global): format with prettier` |
-| **refactor** | Code refactoring (no feature/fix) | `refactor(state): simplify subscription manager` |
-| **perf** | Performance improvement | `perf(renderers): optimize DOM updates` |
-| **test** | Adding/updating tests | `test(services): add unit tests for items service` |
-| **build** | Build system or dependencies | `build(deps): upgrade express to 5.1.0` |
-| **ci** | CI/CD changes | `ci(github): add test workflow` |
-| **chore** | Maintenance tasks | `chore(gitignore): add .env to gitignore` |
-| **revert** | Revert previous commit | `revert: feat(roomDetail): add threat level` |
+| Type         | Description                               | Example                                                  |
+| ------------ | ----------------------------------------- | -------------------------------------------------------- |
+| **feat**     | New feature                               | `feat(roomDetail): add biohazard threat level indicator` |
+| **fix**      | Bug fix                                   | `fix(api): resolve room data caching issue`              |
+| **docs**     | Documentation only                        | `docs(readme): update installation instructions`         |
+| **style**    | Code style (formatting, semicolons, etc.) | `style(global): format with prettier`                    |
+| **refactor** | Code refactoring (no feature/fix)         | `refactor(state): simplify subscription manager`         |
+| **perf**     | Performance improvement                   | `perf(renderers): optimize DOM updates`                  |
+| **test**     | Adding/updating tests                     | `test(services): add unit tests for items service`       |
+| **build**    | Build system or dependencies              | `build(deps): upgrade express to 5.1.0`                  |
+| **ci**       | CI/CD changes                             | `ci(github): add test workflow`                          |
+| **chore**    | Maintenance tasks                         | `chore(gitignore): add .env to gitignore`                |
+| **revert**   | Revert previous commit                    | `revert: feat(roomDetail): add threat level`             |
 
 ### Scopes
 
 Common scopes in this project:
 
 **Backend/API**:
+
 - `api` - General API changes
 - `routes` - Route definitions
 - `controllers` - Controller logic
@@ -154,6 +163,7 @@ Common scopes in this project:
 - `data` - Data layer
 
 **Frontend/UI**:
+
 - `ui` - General UI changes
 - `roomDetail` - Room detail component
 - `difficultySelect` - Difficulty selector
@@ -163,6 +173,7 @@ Common scopes in this project:
 - `roomSummary` - Room summary
 
 **Core**:
+
 - `state` - State management
 - `events` - Event handling
 - `utils` - Utility functions
@@ -170,6 +181,7 @@ Common scopes in this project:
 - `constants` - Constants
 
 **Infrastructure**:
+
 - `build` - Build configuration
 - `test` - Testing infrastructure
 - `docs` - Documentation
@@ -178,6 +190,7 @@ Common scopes in this project:
 ### Examples
 
 #### Feature Addition
+
 ```
 feat(roomDetail): add adjoining rooms navigation
 
@@ -194,6 +207,7 @@ Closes #123
 ```
 
 #### Bug Fix
+
 ```
 fix(api): resolve rate limiting state persistence
 
@@ -208,6 +222,7 @@ Fixes #456
 ```
 
 #### Documentation
+
 ```
 docs(contributing): add conventional commits guide
 
@@ -219,6 +234,7 @@ Add comprehensive contributing documentation including:
 ```
 
 #### Refactoring
+
 ```
 refactor(state): use WeakMap for subscription tracking
 
@@ -229,6 +245,7 @@ Performance improvement: O(1) lookup vs O(n) array search.
 ```
 
 #### Breaking Change
+
 ```
 feat(api)!: change room search response format
 
@@ -248,15 +265,15 @@ Closes #789
 ### Commit Best Practices
 
 1. **Use imperative mood** in subject line (required)
-   - Write as a command: "add", "fix", "update", "remove"
-   - NOT past tense: "added", "fixed", "updated"
-   - NOT present tense: "adds", "fixes", "updates"
-   - Think: "This commit will **[subject]**"
-   - Examples:
-     - ✅ `feat(api): add room search endpoint`
-     - ✅ `fix(ui): resolve rendering issue`
-     - ❌ `feat(api): added room search endpoint`
-     - ❌ `fix(ui): resolves rendering issue`
+    - Write as a command: "add", "fix", "update", "remove"
+    - NOT past tense: "added", "fixed", "updated"
+    - NOT present tense: "adds", "fixes", "updates"
+    - Think: "This commit will **[subject]**"
+    - Examples:
+        - ✅ `feat(api): add room search endpoint`
+        - ✅ `fix(ui): resolve rendering issue`
+        - ❌ `feat(api): added room search endpoint`
+        - ❌ `fix(ui): resolves rendering issue`
 2. **Keep subject line ≤ 72 characters**
 3. **Start subject with lowercase** (after the colon)
 4. **No period at end of subject**
@@ -290,6 +307,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 Example:
+
 ```
 feat(roomDetail): add biohazard threat level display
 
@@ -327,6 +345,7 @@ Use same format as commits:
 ```
 
 Examples:
+
 - `feat(roomDetail): add biohazard threat level indicator`
 - `fix(api): resolve caching issue in room data endpoint`
 - `docs(architecture): update state management documentation`
@@ -335,9 +354,11 @@ Examples:
 
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix (non-breaking change fixing an issue)
 - [ ] New feature (non-breaking change adding functionality)
 - [ ] Breaking change (fix or feature causing existing functionality to change)
@@ -346,24 +367,29 @@ Brief description of changes
 - [ ] Refactoring
 
 ## Related Issues
+
 Closes #(issue)
 Related to #(issue)
 
 ## Changes Made
+
 - Bullet point list of changes
 - Include technical details
 - Reference affected components
 
 ## Testing
+
 - [ ] Unit tests added/updated
 - [ ] Integration tests added/updated
 - [ ] All tests pass
 - [ ] Manual testing completed
 
 ## Screenshots (if applicable)
+
 Add screenshots for UI changes
 
 ## Checklist
+
 - [ ] Code follows project style guidelines
 - [ ] Self-review completed
 - [ ] Comments added for complex logic
@@ -422,12 +448,12 @@ See [.claude/AI_CONTEXT.md](.claude/AI_CONTEXT.md#directory-structure) for compl
 ```typescript
 // ✅ Good: Strict typing, explicit return type
 export function fetchRoomData(roomId: RoomID): Promise<RoomResponse> {
-    return fetch(`/api/rooms?ids=${roomId}`).then(r => r.json());
+    return fetch(`/api/rooms?ids=${roomId}`).then((r) => r.json());
 }
 
 // ❌ Bad: Any types, implicit return
 export function fetchRoomData(roomId: any) {
-    return fetch(`/api/rooms?ids=${roomId}`).then(r => r.json());
+    return fetch(`/api/rooms?ids=${roomId}`).then((r) => r.json());
 }
 ```
 
@@ -441,11 +467,11 @@ export const clickHandler: [string, EventListener] = [
         const target = event.target as HTMLElement;
         const roomId = target.dataset.roomId as RoomID;
         globalState.roomId = roomId;
-    }
+    },
 ];
 
 // ❌ Bad: Direct binding, not delegated
-document.querySelector('.room').addEventListener('click', function() {
+document.querySelector('.room').addEventListener('click', function () {
     // ...
 });
 ```
@@ -457,7 +483,7 @@ document.querySelector('.room').addEventListener('click', function() {
 globalState.difficulty = newDifficulty;
 
 // ❌ Bad: Direct DOM manipulation
-document.querySelectorAll('.item').forEach(item => {
+document.querySelectorAll('.item').forEach((item) => {
     item.style.display = difficulty === 'hard' ? 'block' : 'none';
 });
 ```
@@ -527,16 +553,16 @@ Update documentation when:
 
 ### Documentation Files
 
-| File | When to Update |
-|------|----------------|
-| `README.md` | Project description, setup, overview |
-| `CONTRIBUTING.md` | Contributing guidelines (this file) |
-| `.claude/AI_CONTEXT.md` | Project context, architecture overview |
-| `.claude/ARCHITECTURE.md` | Design patterns, architectural decisions |
-| `.claude/TESTING.md` | Testing strategy, examples |
-| `.claude/MIGRATION_GUIDE.md` | jQuery to TypeScript patterns |
-| `docs/project-standards-and-setup.md` | Coding standards, tools |
-| Component `README.md` files | Component-specific patterns |
+| File                                  | When to Update                           |
+| ------------------------------------- | ---------------------------------------- |
+| `README.md`                           | Project description, setup, overview     |
+| `CONTRIBUTING.md`                     | Contributing guidelines (this file)      |
+| `.claude/AI_CONTEXT.md`               | Project context, architecture overview   |
+| `.claude/ARCHITECTURE.md`             | Design patterns, architectural decisions |
+| `.claude/TESTING.md`                  | Testing strategy, examples               |
+| `.claude/MIGRATION_GUIDE.md`          | jQuery to TypeScript patterns            |
+| `docs/project-standards-and-setup.md` | Coding standards, tools                  |
+| Component `README.md` files           | Component-specific patterns              |
 
 ### JSDoc Comments
 

@@ -29,9 +29,11 @@
 ### Why Vanilla JavaScript?
 
 **From Project Context**:
+
 > "This is intentionally vanilla - no UI frameworks, no jQuery"
 
 **Rationale**:
+
 - **Performance**: No framework overhead, direct DOM manipulation
 - **Learning**: Understanding browser APIs deeply
 - **Control**: Full control over rendering and state
@@ -40,15 +42,15 @@
 
 ### Key Architectural Decisions
 
-| Decision | Rationale | Alternative Considered |
-|----------|-----------|------------------------|
-| No jQuery | Migrate to modern vanilla JS | Keep jQuery (rejected - outdated) |
-| No React/Vue | Learn native APIs, reduce bundle size | Use framework (rejected - overkill) |
-| Proxy for State | Native reactivity without libraries | Custom pub/sub (chosen for simplicity) |
-| EventTarget for Events | Standard browser API | Custom event bus (chosen for standards) |
-| Express 5 | Modern async/await support | Express 4 (rejected - older patterns) |
-| ESBuild | Fast builds, minimal config | Webpack (rejected - too complex) |
-| Jest | Industry standard testing | Vitest (rejected - newer, less proven) |
+| Decision               | Rationale                             | Alternative Considered                  |
+| ---------------------- | ------------------------------------- | --------------------------------------- |
+| No jQuery              | Migrate to modern vanilla JS          | Keep jQuery (rejected - outdated)       |
+| No React/Vue           | Learn native APIs, reduce bundle size | Use framework (rejected - overkill)     |
+| Proxy for State        | Native reactivity without libraries   | Custom pub/sub (chosen for simplicity)  |
+| EventTarget for Events | Standard browser API                  | Custom event bus (chosen for standards) |
+| Express 5              | Modern async/await support            | Express 4 (rejected - older patterns)   |
+| ESBuild                | Fast builds, minimal config           | Webpack (rejected - too complex)        |
+| Jest                   | Industry standard testing             | Vitest (rejected - newer, less proven)  |
 
 ## Architectural Patterns
 
@@ -96,12 +98,14 @@
 ```
 
 **Benefits**:
+
 - Clear separation of concerns
 - Easy to test (mock each layer independently)
 - Scalable (add new layers without affecting others)
 - Database-agnostic (services can swap data sources)
 
 **From** `src/data/README.md`:
+
 > "This structure is designed for scalability, type safety, and ease of migration to a database if needed"
 
 ### 2. Event-Driven UI (Frontend)
@@ -147,6 +151,7 @@
 ```
 
 **Benefits**:
+
 - Reactive without framework
 - Decoupled components
 - Testable (mock state, test renderers)
@@ -157,6 +162,7 @@
 **Pattern**: Separate DOM creation (presenters) from DOM manipulation (containers)
 
 **From** `src/ui/roomDetail/renderers/README.md`:
+
 > "Presenters are pure functions creating DOM from data. Containers handle queries, clearing, and appending. Applied pragmatically to sections with heavy DOM logic."
 
 **Example**:
@@ -165,7 +171,7 @@
 // Presenter (Pure Function)
 function createAdjoiningRoomsList(rooms: Room[]): HTMLElement {
     const list = document.createElement('ul');
-    rooms.forEach(room => {
+    rooms.forEach((room) => {
         const li = document.createElement('li');
         li.textContent = room.name;
         list.appendChild(li);
@@ -188,11 +194,13 @@ function renderAdjoiningRooms(rooms: Room[]): void {
 ```
 
 **When to Use**:
+
 - ✅ Complex DOM structures (adjoining rooms, intel lists)
 - ✅ Reusable presenters (previews, modals)
 - ❌ Simple renders (thumbnails, single elements)
 
 **From README**:
+
 > "Not forced on simple logic to avoid over-abstraction"
 
 ### 4. Singleton Pattern (State Management)
@@ -214,12 +222,12 @@ export const globalState = new Proxy(state, {
         target[prop] = value;
         stateTarget.dispatchEvent(new CustomEvent(prop, { detail: value }));
         return true;
-    }
+    },
 });
 
 export function subscribeState<K extends keyof typeof state>(
     key: K,
-    callback: (value: typeof state[K]) => void
+    callback: (value: (typeof state)[K]) => void,
 ): void {
     stateTarget.addEventListener(key, (event: CustomEvent) => {
         callback(event.detail);
@@ -228,12 +236,14 @@ export function subscribeState<K extends keyof typeof state>(
 ```
 
 **Benefits**:
+
 - Single source of truth
 - Type-safe (TypeScript enforces keys/values)
 - Reactive (Proxy + EventTarget)
 - No external dependencies
 
 **From** `src/state/globalState.ts` (conceptual):
+
 > "Singleton pattern via module scope, Proxy for reactivity, EventTarget for pub/sub"
 
 ### 5. Orchestrator Pattern
@@ -241,6 +251,7 @@ export function subscribeState<K extends keyof typeof state>(
 **Pattern**: Coordinate multiple renderers without business logic
 
 **From** `src/ui/roomDetail/orchestrator/README.md`:
+
 > "The orchestrator acts as a conductor for rendering room details, delegating to specialized renderers and processors without containing business logic."
 
 ```typescript
@@ -266,6 +277,7 @@ export function renderRoomData(roomData: RoomData, difficulty: DifficultyLevel):
 ```
 
 **Benefits**:
+
 - Single entry point for complex rendering
 - Easy to extend (add new renderer call)
 - Testable (mock renderers)
@@ -276,6 +288,7 @@ export function renderRoomData(roomData: RoomData, difficulty: DifficultyLevel):
 **Pattern**: Centralized registry for event handlers
 
 **From** `src/eventHandlers/README.md`:
+
 > "Handlers are registered in an array for central management, populated dynamically from imported tuples."
 
 ```typescript
@@ -287,7 +300,7 @@ export const openRoomHandler: [string, EventListener] = [
         const target = event.target as HTMLElement;
         const roomId = target.dataset.roomId;
         globalState.roomId = roomId;
-    }
+    },
 ];
 
 // Global handler imports and registers
@@ -310,12 +323,14 @@ export function initializeGlobalEventListeners(): void {
 ```
 
 **Benefits**:
+
 - Centralized event management
 - Easy to add/remove handlers
 - Tuple pattern prevents selector mismatches
 - Event delegation for performance
 
 **Alternative Mentioned**:
+
 > "For larger apps, consider an event bus with EventTarget and CustomEvent for pub/sub decoupling"
 
 ## Component Architecture
@@ -389,6 +404,7 @@ import { fetchRoomData } from '../../roomDetail/logic/api/roomApi';
 5. Verify with `npm run typecheck` and `npm test`
 
 **Why This Matters for AI**:
+
 - Consistent import style across codebase
 - No confusion about relative path depth (`../` vs `../../`)
 - Easier for AI to generate correct imports
@@ -463,12 +479,10 @@ const globalState = new Proxy(state, {
         target[prop] = value;
 
         // Notify subscribers via EventTarget
-        stateTarget.dispatchEvent(
-            new CustomEvent(prop, { detail: value })
-        );
+        stateTarget.dispatchEvent(new CustomEvent(prop, { detail: value }));
 
         return true;
-    }
+    },
 });
 ```
 
@@ -484,14 +498,15 @@ subscribeState('roomId', (newRoomId) => {
 
 ### Why This Pattern?
 
-| Approach | Pros | Cons | Chosen? |
-|----------|------|------|---------|
-| Proxy + EventTarget | Native APIs, type-safe, simple | Limited to object properties | ✅ Yes |
-| Custom Event Bus | Decoupled, flexible | More boilerplate | No |
-| Redux-like Store | Predictable, time-travel | Heavy, verbose | No |
-| MobX-like Observables | Automatic tracking | External dependency | No |
+| Approach              | Pros                           | Cons                         | Chosen? |
+| --------------------- | ------------------------------ | ---------------------------- | ------- |
+| Proxy + EventTarget   | Native APIs, type-safe, simple | Limited to object properties | ✅ Yes  |
+| Custom Event Bus      | Decoupled, flexible            | More boilerplate             | No      |
+| Redux-like Store      | Predictable, time-travel       | Heavy, verbose               | No      |
+| MobX-like Observables | Automatic tracking             | External dependency          | No      |
 
 **From Context**:
+
 > "Uses Proxy for reactivity and EventTarget for pub/sub - no external dependencies"
 
 ## Event System
@@ -513,6 +528,7 @@ document.addEventListener('click', (event) => {
 ```
 
 **Benefits**:
+
 - Performance (one listener for many elements)
 - Works with dynamic DOM (future elements matched)
 - Memory efficient
@@ -522,7 +538,7 @@ document.addEventListener('click', (event) => {
 ```typescript
 // mouseenter/mouseleave don't bubble
 const elements = document.querySelectorAll('[data-hover]');
-elements.forEach(el => {
+elements.forEach((el) => {
     el.addEventListener('mouseenter', hoverHandler);
 });
 ```
@@ -534,7 +550,7 @@ elements.forEach(el => {
 ```typescript
 export function debounce<T extends (...args: any[]) => any>(
     fn: T,
-    delay: number
+    delay: number,
 ): (...args: Parameters<T>) => void {
     let timeoutId: NodeJS.Timeout;
     return (...args: Parameters<T>) => {
@@ -545,6 +561,7 @@ export function debounce<T extends (...args: any[]) => any>(
 ```
 
 **Usage**:
+
 ```typescript
 const debouncedSearch = debounce(searchHandler, 300);
 input.addEventListener('input', debouncedSearch);
@@ -568,6 +585,7 @@ export const itemsRoomData = [
 ```
 
 **Benefits**:
+
 - **Readonly**: Can't `push()`, can't mutate properties
 - **Literal Types**: `difficultyLevel` is `readonly ['JV-lvl-very-easy', 'JV-lvl-easy']` not `string[]`
 - **Type Safety**: Only valid difficulty values in filters
@@ -591,6 +609,7 @@ enum DifficultyLevel {
 ```
 
 **Rationale**:
+
 - Better serialization to JSON
 - Type safety without runtime code
 - TypeScript best practice (per 2025 standards)
@@ -602,6 +621,7 @@ enum DifficultyLevel {
 **Future**: Database (MongoDB, PostgreSQL, etc.)
 
 **Migration Strategy**:
+
 1. Services already abstract data access
 2. Replace arrays with DB queries in services
 3. Controllers/routes unchanged
@@ -610,7 +630,7 @@ enum DifficultyLevel {
 ```typescript
 // Current
 export async function getItemsByIds(ids: string[]) {
-    const found = itemsRoomData.filter(item => ids.includes(item.id));
+    const found = itemsRoomData.filter((item) => ids.includes(item.id));
     return { foundResources: found };
 }
 
@@ -622,6 +642,7 @@ export async function getItemsByIds(ids: string[]) {
 ```
 
 **No changes needed**:
+
 - Controllers
 - Routes
 - Validation
@@ -635,6 +656,7 @@ export async function getItemsByIds(ids: string[]) {
 **From** `docs/project-standards-and-setup.md`:
 
 Follows REST principles (RFC 7231):
+
 - Resource-based URLs (`/api/items`, `/api/biohazards`)
 - HTTP methods (GET for retrieval)
 - Query parameters for filtering (`?ids=...`, `?difficulty=...`)
@@ -658,6 +680,7 @@ GET /api/maps/rooms/search?map=mansionF1&items=true
 ### Response Structure
 
 **Batch Operations**:
+
 ```json
 {
     "foundResources": [...],
@@ -666,6 +689,7 @@ GET /api/maps/rooms/search?map=mansionF1&items=true
 ```
 
 **Search Operations**:
+
 ```json
 {
     "results": [...]
@@ -673,6 +697,7 @@ GET /api/maps/rooms/search?map=mansionF1&items=true
 ```
 
 **Errors**:
+
 ```json
 {
     "error": "Error message",
@@ -700,6 +725,7 @@ router.get('/items', idsValidator, getItems);
 ```
 
 **Benefits**:
+
 - Type-safe validation
 - Reusable validators
 - Automatic error responses
@@ -708,13 +734,14 @@ router.get('/items', idsValidator, getItems);
 ### Rate Limiting
 
 **Configuration**:
+
 ```typescript
 import rateLimit from 'express-rate-limit';
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // 100 requests per window
-    message: 'Too many requests, please try again later.'
+    message: 'Too many requests, please try again later.',
 });
 
 app.use('/api/', limiter);
@@ -730,6 +757,7 @@ Rate limiting tested manually (browser console), not in Jest due to state persis
 **Served via Swagger UI**: `http://localhost:3000/api-docs`
 
 **Benefits**:
+
 - Interactive testing
 - Auto-generated from YAML
 - Standard format (OpenAPI 3.0)
@@ -749,44 +777,43 @@ esbuild.build({
     format: 'esm',
     loader: {
         '.css': 'css',
-        '.html': 'text'
+        '.html': 'text',
     },
-    plugins: [
-        templateManifestPlugin,
-        templateCopyPlugin,
-        imageCopyPlugin,
-        excludeTestsPlugin
-    ]
+    plugins: [templateManifestPlugin, templateCopyPlugin, imageCopyPlugin, excludeTestsPlugin],
 });
 ```
 
 ### Custom Plugins
 
 **1. Template Manifest Generation**:
+
 - Auto-discovers `src/ui/**/templates/*.html`
 - Generates manifest for template loader
 - Enables dynamic template loading
 
 **2. Template HTML Copying**:
+
 - Copies templates to `dist/`
 - Maintains directory structure
 
 **3. Image Asset Copying**:
+
 - Copies `src/img/` to `dist/img/`
 
 **4. Test File Exclusion**:
+
 - Excludes `__tests__/` from bundle
 - Reduces bundle size
 
 ### Development vs Production
 
-| Aspect | Development | Production |
-|--------|-------------|------------|
-| **Runtime** | Bun (fast reload) | Node.js |
-| **TypeScript** | ts-node/esm | Compiled to JS |
-| **Bundling** | On-demand | Pre-bundled |
-| **Source Maps** | Yes | Optional |
-| **Minification** | No | Yes (esbuild) |
+| Aspect           | Development       | Production     |
+| ---------------- | ----------------- | -------------- |
+| **Runtime**      | Bun (fast reload) | Node.js        |
+| **TypeScript**   | ts-node/esm       | Compiled to JS |
+| **Bundling**     | On-demand         | Pre-bundled    |
+| **Source Maps**  | Yes               | Optional       |
+| **Minification** | No                | Yes (esbuild)  |
 
 ### Scripts
 
@@ -816,16 +843,19 @@ npm run typecheck    # TypeScript
 This project follows **Conventional Commits** specification for all commits and pull requests.
 
 **Commit Format**:
+
 ```
 <type>(<scope>): <subject>
 ```
 
 **Important**: Subject must use **imperative mood** (command form):
+
 - ✅ "add feature" (correct)
 - ❌ "added feature" (wrong - past tense)
 - ❌ "adds feature" (wrong - present tense)
 
 **Examples**:
+
 ```bash
 feat(roomDetail): add biohazard threat level indicator
 fix(api): resolve caching issue in room data endpoint
@@ -837,6 +867,7 @@ test(services): add unit tests for items service
 All examples above use imperative mood: "add", "resolve", "update", "simplify", "add"
 
 **Branch Naming**:
+
 - `feature/*` - New features (e.g., `feature/add-boss-encounters`)
 - `fix/*` - Bug fixes (e.g., `fix/room-detail-rendering`)
 - `refactor/*` - Code refactoring (e.g., `refactor/state-management`)
@@ -844,6 +875,7 @@ All examples above use imperative mood: "add", "resolve", "update", "simplify", 
 - `test/*` - Test improvements (e.g., `test/add-service-coverage`)
 
 **Common Types**:
+
 - `feat` - New feature
 - `fix` - Bug fix
 - `docs` - Documentation only
@@ -856,6 +888,7 @@ All examples above use imperative mood: "add", "resolve", "update", "simplify", 
 - `chore` - Maintenance tasks
 
 **Common Scopes**:
+
 - Backend: `api`, `routes`, `controllers`, `services`, `middleware`, `data`
 - Frontend: `ui`, `roomDetail`, `difficultySelect`, `themeSelect`, `state`, `events`
 - Infrastructure: `build`, `test`, `docs`, `deps`
@@ -894,6 +927,7 @@ All examples above use imperative mood: "add", "resolve", "update", "simplify", 
 ### If the Project Grows
 
 **Consider**:
+
 1. **Event Bus**: For decoupled cross-component communication
 2. **Web Components**: For true encapsulation
 3. **Database**: PostgreSQL or MongoDB for data layer
@@ -904,6 +938,7 @@ All examples above use imperative mood: "add", "resolve", "update", "simplify", 
 8. **WebSockets**: For real-time features
 
 **Don't Consider** (Against Project Philosophy):
+
 - Full UI framework (React/Vue)
 - jQuery reintroduction
 - Heavy state management library
@@ -912,6 +947,7 @@ All examples above use imperative mood: "add", "resolve", "update", "simplify", 
 ---
 
 **See Also**:
+
 - [AI_CONTEXT.md](./AI_CONTEXT.md) - Main project context
 - [TESTING.md](./TESTING.md) - Testing guide
 - [CONTRIBUTING.md](../CONTRIBUTING.md) - How to contribute
