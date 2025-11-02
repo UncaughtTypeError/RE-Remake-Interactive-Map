@@ -58,6 +58,7 @@ When working on this project, you MUST:
 6. **Use Native APIs**: Leverage Proxy for reactivity, EventTarget for pub/sub, Web Animations API for effects
 7. **Immutability**: Use `as const` for static data to ensure immutability and type safety
 8. **Use Absolute Import Paths**: ALWAYS use TypeScript path mappings for imports (see below)
+9. **Run Linting and Formatting**: ALWAYS run `npm run format` after making changes to ensure code is properly formatted with Prettier
 
 ### Import Path Convention (CRITICAL)
 
@@ -77,6 +78,7 @@ import { fetchRoomData } from '../../roomDetail/logic/api/roomApi';
 ```
 
 **Path mappings are configured in**:
+
 - `tsconfig.json` → paths: `{ "componentName/*": ["src/ui/componentName/*"] }`
 - `jest.config.ts` → moduleNameMapper: `{ '^componentName/(.*)$': '<rootDir>/src/ui/componentName/$1' }`
 
@@ -241,6 +243,31 @@ From `src/eventHandlers/README.md`:
 - **Direct attachment** for non-bubbling events (mouseenter, mouseleave)
 - **Registry pattern** for extensible handlers
 - **Tuple exports** from components: `[selector: string, handler: Function]`
+
+## Code Quality Tools
+
+### Linting and Formatting (CRITICAL)
+
+**ALWAYS run formatting after making code changes:**
+
+```bash
+npm run format  # Runs Prettier on all files
+```
+
+**Configuration:**
+- **Prettier** (`.prettierrc.json`): Code formatting (spacing, line breaks, quotes, etc.)
+- **ESLint** (`eslint.config.js`): Code quality checks (unused vars, type safety, etc.)
+
+**Important Notes:**
+- Prettier runs automatically via `npm run format` and formats all project files
+- The format command should be run after every file creation or modification
+- ESLint errors in `dist/` folder are from compiled code and can be ignored
+- Source files in `src/` should be clean and properly formatted
+
+**When to Run:**
+1. **After creating new files** - Ensures consistent formatting from the start
+2. **After editing existing files** - Maintains code consistency
+3. **Before committing** - Keeps the codebase clean
 
 ## Data Flow Examples
 
