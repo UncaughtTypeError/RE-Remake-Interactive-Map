@@ -346,6 +346,55 @@ src/ui/componentName/
     └── types.ts
 ```
 
+### Import Path Conventions
+
+**Critical for AI-assisted development**: Always use absolute path imports with TypeScript path mappings.
+
+#### Path Mapping Setup
+
+Path mappings are configured in both `tsconfig.json` and `jest.config.ts` to enable clean imports:
+
+```json
+// tsconfig.json
+"paths": {
+    "src/*": ["src/*"],
+    "roomDetail/*": ["src/ui/roomDetail/*"],
+    "roomSummary/*": ["src/ui/roomSummary/*"],
+    "difficultySelect/*": ["src/ui/difficultySelect/*"],
+    "shared/*": ["src/ui/shared/*"]
+}
+```
+
+#### Import Patterns
+
+```typescript
+// ✅ CORRECT - Use absolute paths with path mappings
+import { renderRoomSummary } from 'roomSummary/orchestrator/orchestrator';
+import { fetchRoomData } from 'roomDetail/logic/api/roomApi';
+import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
+import { getState } from 'src/state/globalState';
+import { RoomDetailsData } from 'src/data/types';
+
+// ❌ INCORRECT - Avoid relative paths
+import { renderRoomSummary } from '../orchestrator/orchestrator';
+import { fetchRoomData } from '../../roomDetail/logic/api/roomApi';
+```
+
+#### When Adding New Components
+
+1. Create component directory: `src/ui/newComponent/`
+2. Add to `tsconfig.json` paths: `"newComponent/*": ["src/ui/newComponent/*"]`
+3. Add to `jest.config.ts` moduleNameMapper: `'^newComponent/(.*)$': '<rootDir>/src/ui/newComponent/$1'`
+4. Use absolute imports throughout: `import { foo } from 'newComponent/renderers/foo';`
+5. Verify with `npm run typecheck` and `npm test`
+
+**Why This Matters for AI**:
+- Consistent import style across codebase
+- No confusion about relative path depth (`../` vs `../../`)
+- Easier for AI to generate correct imports
+- Better refactoring support (moving files doesn't break imports)
+- Component boundaries are explicit
+
 ### Example: roomDetail Component
 
 **Most complex component** in the project:

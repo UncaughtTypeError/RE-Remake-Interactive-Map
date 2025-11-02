@@ -22,6 +22,90 @@ This document outlines the standards, tools, libraries, and setup for the Expres
 - **IDs**: Descriptive, camelCase-like strings (e.g., `selfDefenseJV-keepersRoom`), URL-compatible per RFC 3986.
 - **Constants**: camelCase for message keys (e.g., `Messages.validation.invalidIdFormat`), per Google TypeScript Style Guide.
 
+### Import Path Conventions
+
+The project uses TypeScript path mappings to enable clean, absolute imports instead of relative paths. This improves code maintainability and prevents issues with deep relative paths (e.g., `../../../`).
+
+#### Path Mapping Configuration
+
+Path mappings are configured in two places and must be kept in sync:
+
+1. **tsconfig.json** - For TypeScript compilation:
+
+```json
+"paths": {
+    "src/*": ["src/*"],
+    "themeSelect/*": ["src/ui/themeSelect/*"],
+    "difficultySelect/*": ["src/ui/difficultySelect/*"],
+    "roomDetail/*": ["src/ui/roomDetail/*"],
+    "shared/*": ["src/ui/shared/*"]
+}
+```
+
+2. **jest.config.ts** - For test execution:
+
+```typescript
+moduleNameMapper: {
+    '^src$': '<rootDir>/src',
+    '^src/(.*)$': '<rootDir>/src/$1',
+    '^themeSelect/(.*)$': '<rootDir>/src/ui/themeSelect/$1',
+    '^difficultySelect/(.*)$': '<rootDir>/src/ui/difficultySelect/$1',
+    '^roomDetail/(.*)$': '<rootDir>/src/ui/roomDetail/$1',
+    '^shared/(.*)$': '<rootDir>/src/ui/shared/$1',
+}
+```
+
+#### Import Path Usage
+
+**Always use absolute paths for component imports:**
+
+```typescript
+// ✅ Correct - Use absolute paths with path mappings
+import { renderRoomSummary } from 'roomSummary/orchestrator/orchestrator';
+import { fetchRoomData } from 'roomDetail/logic/api/roomApi';
+import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
+import { getState } from 'src/state/globalState';
+
+// ❌ Incorrect - Avoid relative paths
+import { renderRoomSummary } from '../orchestrator/orchestrator';
+import { fetchRoomData } from '../../roomDetail/logic/api/roomApi';
+```
+
+#### Adding New UI Components
+
+When adding new UI components, follow these steps:
+
+1. **Create the component directory** under `src/ui/` (e.g., `src/ui/newComponent/`)
+
+2. **Add path mapping to tsconfig.json**:
+
+```json
+"newComponent/*": ["src/ui/newComponent/*"]
+```
+
+3. **Add corresponding mapping to jest.config.ts**:
+
+```typescript
+'^newComponent/(.*)$': '<rootDir>/src/ui/newComponent/$1'
+```
+
+4. **Update all imports** in the new component to use the absolute path pattern
+
+5. **Verify** the build and tests work with the new mappings:
+
+```bash
+npm run typecheck  # Verify TypeScript compilation
+npm test          # Verify tests pass with new mappings
+```
+
+#### Benefits
+
+- **Cleaner imports**: No deep relative paths (`../../../`)
+- **Refactoring-friendly**: Moving files doesn't break imports
+- **IDE support**: Better autocomplete and navigation
+- **Consistency**: Uniform import style across the codebase
+- **Component isolation**: Clear boundaries between UI components
+
 ### Documentation
 
 - **File-Level JSDoc**: Every source file includes a `@file` JSDoc block describing its purpose, key exports, and usage (e.g., `src/services/itemsService.ts`, `src/data/items.ts`).

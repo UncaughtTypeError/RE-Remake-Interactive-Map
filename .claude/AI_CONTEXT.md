@@ -57,6 +57,30 @@ When working on this project, you MUST:
 5. **Component-Based Thinking**: Follow the established component architecture patterns
 6. **Use Native APIs**: Leverage Proxy for reactivity, EventTarget for pub/sub, Web Animations API for effects
 7. **Immutability**: Use `as const` for static data to ensure immutability and type safety
+8. **Use Absolute Import Paths**: ALWAYS use TypeScript path mappings for imports (see below)
+
+### Import Path Convention (CRITICAL)
+
+**NEVER use relative imports** - always use absolute paths with TypeScript path mappings.
+
+```typescript
+// ✅ CORRECT - Use path mappings
+import { renderRoomSummary } from 'roomSummary/orchestrator/orchestrator';
+import { fetchRoomData } from 'roomDetail/logic/api/roomApi';
+import { animateGears } from 'shared/renderers/gearsAnimatorRenderer';
+import { getState } from 'src/state/globalState';
+import { RoomDetailsData } from 'src/data/types';
+
+// ❌ INCORRECT - Never use relative paths
+import { renderRoomSummary } from '../orchestrator/orchestrator';
+import { fetchRoomData } from '../../roomDetail/logic/api/roomApi';
+```
+
+**Path mappings are configured in**:
+- `tsconfig.json` → paths: `{ "componentName/*": ["src/ui/componentName/*"] }`
+- `jest.config.ts` → moduleNameMapper: `{ '^componentName/(.*)$': '<rootDir>/src/ui/componentName/$1' }`
+
+**When adding new components**: Update both config files with the new component's path mapping.
 
 ## Architecture Overview
 

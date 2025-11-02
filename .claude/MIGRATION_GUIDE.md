@@ -430,6 +430,37 @@ src/ui/componentName/
     └── types.ts
 ```
 
+### 2.1. Configure Import Paths (CRITICAL)
+- [ ] Add path mapping to `tsconfig.json`:
+  ```json
+  "componentName/*": ["src/ui/componentName/*"]
+  ```
+- [ ] Add module mapper to `jest.config.ts`:
+  ```typescript
+  '^componentName/(.*)$': '<rootDir>/src/ui/componentName/$1'
+  ```
+- [ ] **Always use absolute imports** in all component files:
+  ```typescript
+  // ✅ CORRECT
+  import { renderFoo } from 'componentName/renderers/fooRenderer';
+  import { handleClick } from 'componentName/eventHandlers/clickHandler';
+  import { fetchData } from 'roomDetail/logic/api/roomApi';
+  import { getState } from 'src/state/globalState';
+
+  // ❌ INCORRECT - Never use relative paths
+  import { renderFoo } from '../renderers/fooRenderer';
+  import { handleClick } from './clickHandler';
+  import { fetchData } from '../../roomDetail/logic/api/roomApi';
+  ```
+- [ ] Verify with `npm run typecheck` and `npm test`
+
+**Why This Matters**:
+- Consistency across entire codebase
+- AI can generate correct imports without knowing file structure depth
+- Refactoring-friendly (moving files doesn't break imports)
+- IDE autocomplete works better
+- Component boundaries are explicit
+
 ### 3. Extract Data
 - [ ] Identify data structures
 - [ ] Create types in `src/data/types.ts` or component `types/`
