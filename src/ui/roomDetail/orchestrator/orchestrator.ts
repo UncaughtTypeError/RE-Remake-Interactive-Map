@@ -11,6 +11,7 @@ import { GlobalConstants } from 'src/constants';
 
 import { toggleRoomState } from 'roomDetail/renderers/roomStateRenderer';
 import { resetUI } from 'roomDetail/renderers/errorAndResetRenderer';
+import { setRoomTitle } from 'roomDetail/renderers/roomTitleRenderer';
 import { renderAdjoiningRooms } from 'roomDetail/renderers/adjoiningRoomsRenderer';
 import { renderFeaturedMarkers } from 'roomDetail/renderers/featuredMarkersRenderer';
 import { renderRoomIntel } from 'roomDetail/renderers/roomIntelRenderer';
@@ -36,39 +37,59 @@ export function renderRoomData(
 ): void {
     const room: RoomDetailsData = getState('roomData');
 
+    // Set global state for current room
     setState('roomId', room.id as GlobalState['roomId']);
     setState('roomDetailActive', true as GlobalState['roomDetailActive']);
 
+    // Toggle room state on map
     if (room.id !== 'unknown') toggleRoomState(room.id);
 
+    // Reset UI elements and clear previous content
     resetUI(room);
 
+    // Set room title
+    setRoomTitle(room);
+
+    // Render adjoining rooms list
     renderAdjoiningRooms(room);
 
+    // Render featured markers (items/biohazards)
     renderFeaturedMarkers(room, difficulty);
 
+    // Render room intelligence information
     renderRoomIntel(room);
 
+    // Set room thumbnail image
     setRoomThumbnail(room);
 
+    // Activate room functions (puzzle room, safe room, etc.)
     activateRoomFunctions(room);
 
+    // Handle access control display
     handleAccessControl(room);
 
+    // Set threat level display
     setThreatLevel(room, difficulty);
 
+    // Process items and biohazards based on difficulty
     const itemsGroup = processItemsAndInteractables(room, difficulty);
     const biohazardsGroup = processBiohazards(room, difficulty);
 
+    // Activate templates for items and biohazards
     activateTemplates(itemsGroup, biohazardsGroup);
 
+    // Clone items to detail lists
     cloneToDetailLists();
 
+    // Cleanup active classes from templates
     cleanupActiveClasses();
 
+    // Handle "None Detected" messages for empty sections
     handleNoneDetected();
 
+    // Build grid layouts
     buildGrids();
 
+    // Activate room details panel
     activateRoomDetails();
 }

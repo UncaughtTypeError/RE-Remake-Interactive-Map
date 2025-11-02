@@ -34,11 +34,6 @@ export function handleError(
  * @param room - The room data.
  */
 export function resetUI(room: RoomDetailsData) {
-    const roomDetailTitle = document.querySelector('.room-detail-title') as HTMLElement | null;
-    if (roomDetailTitle) {
-        roomDetailTitle.textContent = room.name;
-    }
-
     document.querySelectorAll('.icon-info-wrapper').forEach((el) => el.remove());
 
     document.querySelectorAll('.room-detail-list .list-group-item').forEach((el) => el.remove());
