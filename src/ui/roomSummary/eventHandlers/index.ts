@@ -3,6 +3,7 @@
  * @description Exports all event handlers for convenient import in event handler registry.
  */
 import { handleMouseOverRoom } from './hoverOverRoomHandler';
+import { handleMouseLeaveRoom } from './hoverOffRoomHandler';
 
 /**
  * Type for handler tuples: [eventType, selector, handler function].
@@ -21,4 +22,5 @@ type HandlerTuple = [
  */
 export const roomSummaryHandlerTuples: HandlerTuple[] = [
     ['mouseover', '[data-room]', handleMouseOverRoom],
+    ['mouseleave', '[data-room]', handleMouseLeaveRoom],
 ];

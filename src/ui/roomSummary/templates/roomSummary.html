@@ -1,0 +1,325 @@
+<div class="room-info-wrapper room-info-inactive">
+    <div class="room-item-panel">
+        <i class="fa fa-lock access-control-invalid"></i>
+        <div class="room-title"></div>
+        <div class="room-function-markers">
+            <div class="room-function function-inactive">
+                <div class="puzzle-room room-function-icon">
+                    <div class="room-function-tooltip">
+                        <span>Puzzle Room</span>
+                    </div>
+                </div>
+            </div>
+            <div class="room-function function-inactive">
+                <div class="puztrapzle-room room-function-icon">
+                    <div class="room-function-tooltip">
+                        <span>Trap Room</span>
+                    </div>
+                </div>
+            </div>
+            <div class="room-function function-inactive">
+                <div class="safe-room room-function-icon">
+                    <div class="room-function-tooltip">
+                        <span>Safe Room</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-room room-function function-inactive">
+                <div class="hidden-room room-function-icon">
+                    <div class="room-function-tooltip">
+                        <span>Hidden Room</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="access-control access-control-inactive">
+            <span class="access-key-type"></span><span class="required-to-access"></span> Required
+        </div>
+        <div class="room-examine-overview excerpt-inactive"></div>
+    </div>
+
+    <div class="key-icon-wrapper items" id="item-key-icons">
+        <div class="key-icon-wrapper-title"><span class="qty"></span> Items</div>
+        <div class="key-icon-wrapper default-icon-wrapper icon-shadow-layer">
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item key-default room-info-icon shadow-icon">
+                <i class="fa fa-cubes fa-stack-1x fa-inverse"></i>
+            </div>
+        </div>
+        <div class="active-key-icon-wrapper active-icon-wrapper" id="active-items"></div>
+        <div class="inactive-key-icon-wrapper inactive-icon-wrapper" id="inactive-items">
+            <div class="list-group-item key-default room-info-icon room-icon-inactive">
+                <i class="fa fa-cubes fa-stack-1x fa-inverse"></i>
+            </div>
+            <div class="list-group-item key-typewriter room-info-icon room-icon-inactive">
+                <i class="fa fa-bookmark fa-fw key-alt"></i>
+            </div>
+            <div class="list-group-item key-item-box room-info-icon room-icon-inactive">
+                <i class="fa fa-square fa-fw key-alt"></i>
+            </div>
+            <div class="list-group-item key-kerosene room-info-icon room-icon-inactive">
+                <i class="fa fa-window-close fa-fw key-alt"></i>
+            </div>
+            <div class="list-group-item key-map room-info-icon room-icon-inactive">
+                <i class="fa fa-square fa-fw key-alt"></i>
+            </div>
+            <div class="list-group-item key-green-herb room-info-icon room-icon-inactive">
+                <i class="fa fa-leaf fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-red-herb room-info-icon room-icon-inactive">
+                <i class="fa fa-leaf fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-blue-herb room-info-icon room-icon-inactive">
+                <i class="fa fa-leaf fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-first-aid-spray room-info-icon room-icon-inactive">
+                <i class="fa fa-plus-circle fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-first-aid-box room-info-icon room-icon-inactive">
+                <i class="fa fa-medkit fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-self-defense room-info-icon room-icon-inactive">
+                <i class="fa fa-shield fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-ink-ribbon room-info-icon room-icon-inactive">
+                <i class="fa fa-stop-circle-o fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-door-key room-info-icon room-icon-inactive">
+                <i class="fa fa-key fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-document room-info-icon room-icon-inactive">
+                <i class="fa fa-file-text fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-item-of-interest room-info-icon room-icon-inactive">
+                <i class="fa fa-cube fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-person-of-interest room-info-icon room-icon-inactive">
+                <i class="fa fa-user fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-ammunition room-info-icon room-icon-inactive">
+                <i class="fa fa-bullseye key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-weapon room-info-icon room-icon-inactive">
+                <i class="fa fa-crosshairs fa-fw key-alt"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+        </div>
+    </div>
+
+    <div class="key-icon-wrapper biohazards" id="biohazard-key-icons">
+        <div class="key-icon-wrapper-title"><span class="qty"></span> Biohazards</div>
+        <div class="key-icon-wrapper default-icon-wrapper icon-shadow-layer">
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon"></div>
+            <div class="list-group-item room-info-icon shadow-icon key-default"><span></span></div>
+        </div>
+        <div class="active-key-icon-wrapper active-icon-wrapper" id="active-biohazards"></div>
+        <div class="inactive-key-icon-wrapper inactive-icon-wrapper" id="inactive-biohazards">
+            <div class="list-group-item key-zombie room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-0-half"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-crimson-head room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div
+                class="list-group-item key-crimson-head-prototype-1 room-info-icon room-icon-inactive"
+            >
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1-half"></i>
+            </div>
+            <div class="list-group-item key-cerberus room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-crow room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-0"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-fountain-plant room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-0"></i>
+            </div>
+            <div class="list-group-item key-forest-speyer room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1"></i>
+            </div>
+            <div class="list-group-item key-yawn room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-2-half"></i>
+            </div>
+            <div class="list-group-item key-wasp room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-0-half"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-adder room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-0"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-neptune room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-2"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-plant-42 room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-2"></i>
+            </div>
+            <div class="list-group-item key-hunter room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1-half"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-web-spinner room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1-half"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-black-tiger room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-2"></i>
+            </div>
+            <div class="list-group-item key-chimera room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star-half-o fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-1-half"></i>
+                <sub class="qty difficulty-qty-summary"></sub>
+            </div>
+            <div class="list-group-item key-tyrant room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-3"></i>
+            </div>
+            <div class="list-group-item key-lisa-trevor room-info-icon room-icon-inactive">
+                <div class="hexagon hexagon-vertical">
+                    <div class="hexagon-lvl1"><div class="hexagon-lvl2"></div></div>
+                </div>
+                <div class="icon-group fa-stack fa-fw">
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                    <i class="fa fa-star fa-stack-1x fa-inverse"></i>
+                </div>
+                <i class="fa fa-exclamation-triangle fa-fw key-alt star-3"></i>
+            </div>
+        </div>
+    </div>
+</div>
