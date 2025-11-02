@@ -6,9 +6,60 @@ import prettier from 'eslint-config-prettier';
 import jest from 'eslint-plugin-jest';
 
 export default [
-    js.configs.recommended,
     {
-        files: ['**/*.ts', '**/*.tsx'],
+        ignores: [
+            'dist/**',
+            'node_modules/**',
+            '**/*.min.js',
+            'coverage/**',
+            '.git/**',
+        ],
+    },
+    js.configs.recommended,
+    // Node.js JavaScript config files (esbuild)
+    {
+        files: ['*.js', '*.config.js'],
+        languageOptions: {
+            globals: {
+                console: 'readonly',
+                process: 'readonly',
+                __dirname: 'readonly',
+                __filename: 'readonly',
+                require: 'readonly',
+                module: 'readonly',
+                exports: 'readonly',
+            },
+            sourceType: 'module',
+        },
+        rules: {
+            'no-console': 'off',
+            'no-unused-vars': 'warn',
+        },
+    },
+    // Node.js TypeScript config files (jest.config.ts, scripts)
+    {
+        files: ['*.config.ts', 'scripts/**/*.ts'],
+        languageOptions: {
+            parser: tsparser,
+            globals: {
+                console: 'readonly',
+                process: 'readonly',
+                __dirname: 'readonly',
+                __filename: 'readonly',
+            },
+            parserOptions: {
+                sourceType: 'module',
+                ecmaVersion: 2023,
+            },
+        },
+        rules: {
+            'no-console': 'off',
+        },
+    },
+    // TypeScript source files (production code only)
+    {
+        files: ['src/**/*.ts', 'src/**/*.tsx'],
+        ignores: ['src/**/*.test.ts', 'src/**/*.test.tsx', 'src/**/*.spec.ts', 'src/**/*.spec.tsx'],
         languageOptions: {
             parser: tsparser,
             parserOptions: {
@@ -31,14 +82,18 @@ export default [
             '@typescript-eslint/explicit-module-boundary-types': 'off',
         },
     },
-    // Jest config for test files
+    // TypeScript test files
     {
         files: ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx'],
-        plugins: {
-            jest,
-        },
         languageOptions: {
+            parser: tsparser,
+            parserOptions: {
+                project: './tsconfig.test.json',
+                sourceType: 'module',
+                ecmaVersion: 2023,
+            },
             globals: {
+                console: 'readonly',
                 describe: 'readonly',
                 it: 'readonly',
                 test: 'readonly',
@@ -50,8 +105,21 @@ export default [
                 jest: 'readonly',
             },
         },
+        plugins: {
+            '@typescript-eslint': tseslint,
+            import: importPlugin,
+            jest,
+        },
         rules: {
+            ...tseslint.configs.recommended.rules,
+            ...importPlugin.configs.recommended.rules,
+            ...prettier.rules,
             ...jest.configs.recommended.rules,
+            'no-unused-vars': 'warn',
+            'import/order': ['warn', { 'newlines-between': 'always' }],
+            '@typescript-eslint/no-unused-vars': ['warn'],
+            '@typescript-eslint/explicit-module-boundary-types': 'off',
+            'no-console': 'off',
         },
     },
 ];
