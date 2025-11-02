@@ -316,19 +316,19 @@ body.nocturnal-theme {
     background: #313030;
 }
 
-.nocturnal-theme .room-item-panel .room-title {
+.nocturnal-theme .room-overview-wrapper .room-title {
     border-color: #504f4f;
 }
 
-.nocturnal-theme .room-item-panel .biohazards {
+.nocturnal-theme .room-overview-wrapper .biohazards {
     border-color: #504f4f;
 }
 
-.nocturnal-theme .room-item-panel .biohazards:after {
+.nocturnal-theme .room-overview-wrapper .biohazards:after {
     color: #636363;
 }
 
-.nocturnal-theme .room-item-panel .biohazards:before {
+.nocturnal-theme .room-overview-wrapper .biohazards:before {
     color: #636363;
 }
 
@@ -774,7 +774,7 @@ body.nocturnal-theme {
     border-color: #504f4f;
 }
 
-.nocturnal-theme .room-info-wrapper .room-function:after {
+.nocturnal-theme .room-summary-wrapper .room-function:after {
     background: #504f4f;
 }
 

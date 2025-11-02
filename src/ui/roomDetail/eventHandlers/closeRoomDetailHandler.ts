@@ -23,7 +23,7 @@ export async function handleCloseRoomDetail(element: HTMLElement, event: Event):
         el.classList.add('room-detail-inactive');
     });
 
-    const roomInfoWrapper = document.querySelector('.room-info-wrapper') as HTMLElement | null;
+    const roomInfoWrapper = document.querySelector('.room-summary-wrapper') as HTMLElement | null;
     if (roomInfoWrapper) {
         roomInfoWrapper.classList.remove('room-detail-active');
         roomInfoWrapper.classList.add('room-detail-inactive');

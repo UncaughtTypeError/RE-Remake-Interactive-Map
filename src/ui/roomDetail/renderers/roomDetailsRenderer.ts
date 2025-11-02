@@ -13,7 +13,7 @@ export function activateRoomDetails() {
         el.classList.add('room-detail-active');
     });
 
-    const roomInfoWrapper = document.querySelector('.room-info-wrapper') as HTMLElement | null;
+    const roomInfoWrapper = document.querySelector('.room-summary-wrapper') as HTMLElement | null;
     if (roomInfoWrapper) {
         roomInfoWrapper.classList.remove('room-detail-inactive');
         roomInfoWrapper.classList.add('room-detail-active');

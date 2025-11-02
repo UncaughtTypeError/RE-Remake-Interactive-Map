@@ -9,16 +9,8 @@ import { processItemsAndInteractables } from 'roomDetail/processors/itemProcesso
 import { processBiohazards } from 'roomDetail/processors/biohazardProcessor';
 
 /**
- * Converts item type to CSS class name (e.g., "GreenHerb" -> "green-herb").
- * @param type - The item type.
- * @returns The kebab-case class name.
- */
-function typeToClassName(type: string): string {
-    return type.replace(/([A-Z])/g, '-$1').toLowerCase().substring(1);
-}
-
-/**
  * Processes and activates icon markers for items and biohazards in the room.
+ * Uses data-type for items and data-code for biohazards to match templates.
  * @param room - The room data.
  * @param difficulty - The current difficulty level for filtering.
  * @returns Object containing counts of items and biohazards.
@@ -41,12 +33,9 @@ export function processIconMarkers(
 
     // Activate item icons
     itemsGroup.forEach((group, type) => {
-        const className = typeToClassName(type);
-        const keySelector = `key-${className}`;
-
-        // Find matching room-info-icon and activate it
+        // Find matching room-info-icon by data-type attribute
         const icon = document.querySelector<HTMLElement>(
-            `.room-info-wrapper .room-info-icon.${keySelector}`,
+            `.room-summary-wrapper .inactive-icon-wrapper .room-info-icon[data-type="${type}"]`,
         );
 
         if (icon) {
@@ -56,7 +45,7 @@ export function processIconMarkers(
 
             // Set quantity if present
             const qtySpan = icon.querySelector<HTMLElement>('.difficulty-qty-summary');
-            if (qtySpan && group.count > 0) {
+            if (qtySpan && group.count > 1) {
                 qtySpan.textContent = group.count.toString();
                 qtySpan.classList.remove('not-qty');
                 qtySpan.classList.add('has-qty');
@@ -66,17 +55,16 @@ export function processIconMarkers(
                 qtySpan.classList.add('not-qty');
             }
 
-            itemCount++;
+            // Sum up the total count of items (not just types)
+            itemCount += group.count;
         }
     });
 
     // Activate biohazard icons
     biohazardsGroup.forEach((group, code) => {
-        const keySelector = `key-${code}`;
-
-        // Find matching room-info-icon and activate it
+        // Find matching room-info-icon by data-code attribute
         const icon = document.querySelector<HTMLElement>(
-            `.room-info-wrapper .room-info-icon.${keySelector}`,
+            `.room-summary-wrapper .inactive-icon-wrapper .room-info-icon[data-code="${code}"]`,
         );
 
         if (icon) {
@@ -96,7 +84,8 @@ export function processIconMarkers(
                 qtySpan.classList.add('not-qty');
             }
 
-            biohazardCount++;
+            // Sum up the total count of biohazards (not just types)
+            biohazardCount += group.qty;
         }
     });
 
@@ -105,11 +94,12 @@ export function processIconMarkers(
 
 /**
  * Clones active icons to their respective active icon wrappers.
+ * Only clones from inactive-icon-wrapper to avoid duplicating shadow icons.
  */
 export function cloneActiveIcons(): void {
-    // Clone active biohazard icons
+    // Clone active biohazard icons from inactive wrapper only
     const activeBiohazards = document.querySelectorAll<HTMLElement>(
-        '#biohazard-key-icons .room-icon-active',
+        '#biohazard-key-icons .inactive-icon-wrapper .room-icon-active',
     );
     const activeBiohazardsContainer = document.getElementById('active-biohazards');
     if (activeBiohazardsContainer) {
@@ -119,8 +109,10 @@ export function cloneActiveIcons(): void {
         });
     }
 
-    // Clone active item icons
-    const activeItems = document.querySelectorAll<HTMLElement>('#item-key-icons .room-icon-active');
+    // Clone active item icons from inactive wrapper only
+    const activeItems = document.querySelectorAll<HTMLElement>(
+        '#item-key-icons .inactive-icon-wrapper .room-icon-active',
+    );
     const activeItemsContainer = document.getElementById('active-items');
     if (activeItemsContainer) {
         activeItems.forEach((icon) => {
@@ -132,16 +124,19 @@ export function cloneActiveIcons(): void {
 
 /**
  * Updates quantity displays and default icon visibility for items.
+ * Only targets the default icon in inactive-icon-wrapper, not shadow icons.
  * @param itemCount - Number of active items.
  */
 export function updateItemCounts(itemCount: number): void {
     const itemQtyEl = document.querySelector<HTMLElement>(
         '#item-key-icons .key-icon-wrapper-title .qty',
     );
-    const itemDefaultIcon = document.querySelector<HTMLElement>('#item-key-icons .key-default');
+    const itemDefaultIcon = document.querySelector<HTMLElement>(
+        '#item-key-icons .inactive-icon-wrapper .key-default',
+    );
 
     if (itemQtyEl) {
-        itemQtyEl.textContent = `x${itemCount}`;
+        itemQtyEl.textContent = `${itemCount}`;
     }
 
     if (itemDefaultIcon) {
@@ -157,6 +152,7 @@ export function updateItemCounts(itemCount: number): void {
 
 /**
  * Updates quantity displays and default icon visibility for biohazards.
+ * Only targets the default icon in inactive-icon-wrapper, not shadow icons.
  * @param biohazardCount - Number of active biohazards.
  */
 export function updateBiohazardCounts(biohazardCount: number): void {
@@ -164,11 +160,11 @@ export function updateBiohazardCounts(biohazardCount: number): void {
         '#biohazard-key-icons .key-icon-wrapper-title .qty',
     );
     const biohazardDefaultIcon = document.querySelector<HTMLElement>(
-        '#biohazard-key-icons .key-default',
+        '#biohazard-key-icons .inactive-icon-wrapper .key-default',
     );
 
     if (biohazardQtyEl) {
-        biohazardQtyEl.textContent = `x${biohazardCount}`;
+        biohazardQtyEl.textContent = `${biohazardCount}`;
     }
 
     if (biohazardDefaultIcon) {

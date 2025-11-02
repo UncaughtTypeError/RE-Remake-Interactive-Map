@@ -10,37 +10,21 @@ import { RoomDetailsData } from 'src/data/types';
  * @param room - The room data.
  */
 export function activateRoomFunctions(room: RoomDetailsData): void {
-    const roomFunctions = document.querySelectorAll<HTMLElement>(
-        '.room-info-wrapper .room-function',
-    );
-
-    // First, reset all room functions to inactive
-    roomFunctions.forEach((func) => {
-        func.classList.remove('function-active');
-        func.classList.add('function-inactive');
+    // Reset all room functions to inactive
+    document.querySelectorAll('.room-summary-wrapper .room-function').forEach((element) => {
+        element.classList.remove('function-active');
+        element.classList.add('function-inactive');
     });
 
-    // Get functions from API data
-    const functions = room.overview.functions;
-    if (!functions || functions.length === 0) return;
-
-    // Convert function IDs to match CSS class names (e.g., "puzzleRoom" -> "puzzle-room")
-    const functionClassNames = functions.map((func) =>
-        func.replace(/([A-Z])/g, '-$1').toLowerCase(),
-    );
-
-    // Activate matching function markers
-    functionClassNames.forEach((className) => {
-        roomFunctions.forEach((func) => {
-            // Check if function element has matching data-function-id or class
-            const functionId = func.getAttribute('data-function-id');
-            if (
-                func.classList.contains(className) ||
-                (functionId && functionId.toLowerCase() === className)
-            ) {
-                func.classList.remove('function-inactive');
-                func.classList.add('function-active');
-            }
-        });
+    // Activate functions based on room data
+    room.overview.functions.forEach((func) => {
+        if (func) {
+            document
+                .querySelectorAll(`.room-summary-wrapper [data-function-id="${func}"]`)
+                .forEach((element) => {
+                    element.classList.remove('function-inactive');
+                    element.classList.add('function-active');
+                });
+        }
     });
 }

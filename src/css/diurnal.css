@@ -319,19 +319,19 @@ body.diurnal-theme {
     background: white;
 }
 
-.diurnal-theme .room-item-panel .room-title {
+.diurnal-theme .room-overview-wrapper .room-title {
     border-color: #ddd;
 }
 
-.diurnal-theme .room-item-panel .biohazards {
+.diurnal-theme .room-overview-wrapper .biohazards {
     border-color: #ddd;
 }
 
-.diurnal-theme .room-item-panel .biohazards:after {
+.diurnal-theme .room-overview-wrapper .biohazards:after {
     color: #c4c4c4;
 }
 
-.diurnal-theme .room-item-panel .biohazards:before {
+.diurnal-theme .room-overview-wrapper .biohazards:before {
     color: #c4c4c4;
 }
 
@@ -772,7 +772,7 @@ body.diurnal-theme {
     border-color: #ddd;
 }
 
-.diurnal-theme .room-info-wrapper .room-function:after {
+.diurnal-theme .room-summary-wrapper .room-function:after {
     background: #e2e2e2;
 }
 

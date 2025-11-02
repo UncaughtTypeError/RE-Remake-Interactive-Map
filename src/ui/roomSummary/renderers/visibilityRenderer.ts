@@ -7,7 +7,7 @@
  * Shows the room summary panel by adding active class.
  */
 export function showRoomSummary(): void {
-    const wrapper = document.querySelector('.room-info-wrapper');
+    const wrapper = document.querySelector('.room-summary-wrapper');
     if (!wrapper) return;
 
     wrapper.classList.remove('room-info-inactive');
@@ -18,7 +18,7 @@ export function showRoomSummary(): void {
  * Hides the room summary panel by adding inactive class.
  */
 export function hideRoomSummary(): void {
-    const wrapper = document.querySelector('.room-info-wrapper');
+    const wrapper = document.querySelector('.room-summary-wrapper');
     if (!wrapper) return;
 
     wrapper.classList.remove('room-info-active');
@@ -27,16 +27,12 @@ export function hideRoomSummary(): void {
 
 /**
  * Resets all room icons to inactive state.
+ * Excludes shadow icons which should remain static.
  */
 export function resetRoomIcons(): void {
-    document.querySelectorAll('.room-info-icon').forEach((icon) => {
+    document.querySelectorAll('.inactive-icon-wrapper .room-info-icon').forEach((icon) => {
         icon.classList.remove('room-icon-active');
         icon.classList.add('room-icon-inactive');
-    });
-
-    document.querySelectorAll('.biohazard-room-icons').forEach((icon) => {
-        icon.classList.remove('biohazard-icons-active');
-        icon.classList.add('biohazard-icons-inactive');
     });
 }
 

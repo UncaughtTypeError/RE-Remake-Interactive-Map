@@ -562,8 +562,15 @@ header h1 {
 }
 
 .access-control .access-key-type .fa {
-    margin-left: 5px;
     opacity: 0.5;
+}
+
+.room-detail-wrapper .access-control .access-key-type .fa {
+    margin-left: 5px;
+}
+
+.room-summary-wrapper .access-control .access-key-type .fa {
+    margin-right: 5px;
 }
 
 .access-control .fa-lock:after {
@@ -1368,7 +1375,7 @@ header h1 {
     right: 20px;
 }
 
-.room-function-markers {
+.room-detail-wrapper .room-function-markers {
     max-width: 25px;
     position: absolute;
     right: 0;
@@ -1659,7 +1666,7 @@ header h1 {
     margin-left: 5px;
 }
 
-.room-info-wrapper {
+.room-summary-wrapper {
     position: absolute;
     bottom: 15px;
     right: 0;
@@ -1670,7 +1677,7 @@ header h1 {
     pointer-events: none;
 }
 
-.room-info-wrapper:after {
+.room-summary-wrapper:after {
     content: '';
     position: absolute;
     right: 32px;
@@ -1682,7 +1689,7 @@ header h1 {
     opacity: 0.5;
 }
 
-.room-info-wrapper.room-detail-active {
+.room-summary-wrapper.room-detail-active {
     right: -1500px;
 }
 
@@ -1706,45 +1713,42 @@ header h1 {
     right: 0px;
 }
 
-.room-item-panel {
+.room-overview-wrapper {
     position: relative;
-    margin-right: 25px;
-    margin-bottom: 15px;
+    margin-right: 30px;
+    margin-bottom: 20px;
     box-sizing: border-box;
     text-align: right;
-    display: inline-block;
-    max-width: 300px;
     opacity: 0.8;
-    min-width: 300px;
 }
 
-.room-item-panel .room-title {
+.room-overview-wrapper .room-summary-title {
     font-weight: lighter;
     margin-top: 0px;
     text-transform: capitalize;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     padding-bottom: 5px;
     border-bottom: 1px solid;
     font-size: 20px;
     text-align: right;
-    float: right;
+    display: inline-block;
 }
 
-.room-item-panel .featured-items {
+.room-overview-wrapper .featured-items {
     text-align: right;
 }
 
-.room-info-wrapper .access-control.access-control-inactive {
+.room-summary-wrapper .access-control.access-control-inactive {
     right: -1000px;
     position: absolute;
 }
 
-.room-info-wrapper .access-control.access-control-active {
+.room-summary-wrapper .access-control.access-control-active {
     right: 0;
     position: relative;
 }
 
-.room-info-wrapper .access-control {
+.room-summary-wrapper .access-control {
     top: 0;
     left: auto;
     width: auto;
@@ -1754,54 +1758,51 @@ header h1 {
     clear: both;
 }
 
-.room-info-wrapper .fa[class*='access-control'] {
+.room-summary-wrapper .fa[class*='access-control'] {
     position: absolute;
-    right: -15px;
+    right: -18px;
     transition: 0.7s;
 }
 
-.room-info-wrapper .fa[class*='access-control']:after {
+.room-summary-wrapper .fa[class*='access-control']:after {
     content: '';
     border-bottom: 1px dashed;
     border-right: 1px dashed;
-    height: 50px;
+    height: 28px;
     width: 5px;
     display: block;
     position: absolute;
     right: 5px;
-    top: 15px;
+    top: 17px;
 }
 
-.room-info-wrapper .fa.access-control-valid {
+.room-summary-wrapper .fa.access-control-valid {
     opacity: 0.5;
 }
 
-.room-info-wrapper .fa.access-control-invalid {
+.room-summary-wrapper .fa.access-control-invalid {
     opacity: 0;
 }
 
-.room-info-wrapper .access-control .fa-key {
+.room-summary-wrapper .access-control .fa-key {
     margin-left: 0px;
     margin-right: 5px;
 }
 
-.room-info-wrapper .access-control-valid:after {
+.room-summary-wrapper .access-control-valid:after {
     opacity: 1;
 }
 
-.room-info-wrapper .access-control-invalid:after {
+.room-summary-wrapper .access-control-invalid:after {
     opacity: 0;
 }
 
-.room-info-wrapper .room-function-icon {
+.room-summary-wrapper .room-function-icon {
     display: inline-block;
-    position: relative;
     margin-top: 5px;
-    top: 11px;
-    margin-right: 10px;
 }
 
-.room-info-wrapper .room-function-icon:after {
+.room-summary-wrapper .room-function-icon:after {
     content: '';
     width: 10px;
     height: 1px;
@@ -1816,23 +1817,12 @@ header h1 {
     opacity: 1;
 }
 
-.room-info-wrapper .room-function-tooltip {
-    opacity: 1;
-    visibility: visible;
-    background: transparent;
-    border: 0px;
-    opacity: 0.7;
-    bottom: -7px;
-    left: 22px;
-    right: auto;
-}
-
-.room-info-wrapper .room-function.function-inactive {
+.room-summary-wrapper .room-function.function-inactive {
     right: -1000px;
     position: absolute;
 }
 
-.room-info-wrapper .room-function.function-active {
+.room-summary-wrapper .room-function.function-active {
     right: 0;
     position: relative;
 }
@@ -1940,21 +1930,21 @@ header h1 {
     margin-right: 0px;
 }
 
-.room-item-panel .items .key-alt {
+.room-overview-wrapper .items .key-alt {
     display: inline-block;
     float: none;
     margin: 0;
     top: 0;
 }
 
-.room-item-panel .items > div {
+.room-overview-wrapper .items > div {
     display: inline-block;
     text-align: center;
     vertical-align: text-top;
     height: 20px;
 }
 
-.room-item-panel .items .qty {
+.room-overview-wrapper .items .qty {
     position: relative;
     top: -20px;
     right: -15px;
@@ -1969,15 +1959,15 @@ header h1 {
     font-size: 8px;
 }
 
-.room-item-panel .items {
+.room-overview-wrapper .items {
     margin-top: 15px;
 }
 
-.room-item-panel .items .qty small {
+.room-overview-wrapper .items .qty small {
     font-size: 8px;
 }
 
-.room-item-panel .biohazards .list-group-item {
+.room-overview-wrapper .biohazards .list-group-item {
     height: 55px;
     width: 55px;
     text-align: left;
@@ -1991,7 +1981,7 @@ header h1 {
     background: transparent;
 }
 
-.room-item-panel .biohazards .list-group-item .fa-exclamation-triangle.key-alt {
+.room-overview-wrapper .biohazards .list-group-item .fa-exclamation-triangle.key-alt {
     position: absolute;
     top: 10px;
     right: -10px;
@@ -2000,7 +1990,7 @@ header h1 {
     width: 30px;
 }
 
-.room-item-panel .biohazards .list-group-item .qty {
+.room-overview-wrapper .biohazards .list-group-item .qty {
     bottom: 10px;
     right: -2px;
     position: absolute;
@@ -2014,33 +2004,33 @@ header h1 {
     line-height: 12px;
 }
 
-.room-item-panel .biohazards .list-group-item span {
+.room-overview-wrapper .biohazards .list-group-item span {
     font-size: 10px;
     display: block;
     margin-top: 5px;
 }
 
-.room-item-panel .biohazards .list-group-item small {
+.room-overview-wrapper .biohazards .list-group-item small {
     font-size: 8px;
     position: absolute;
     right: -5px;
 }
 
-.room-item-panel .biohazards {
+.room-overview-wrapper .biohazards {
     border-top: 1px solid;
     margin-top: 10px;
     position: relative;
     transition: 0.7s;
 }
 
-.room-item-panel .biohazards:after {
+.room-overview-wrapper .biohazards:after {
     content: 'Biohazards';
     position: absolute;
     top: 7px;
     right: 25px;
 }
 
-.room-item-panel .biohazards:before {
+.room-overview-wrapper .biohazards:before {
     content: '\2623';
     position: absolute;
     top: -5px;
@@ -2118,6 +2108,9 @@ header h1 {
     position: relative;
     margin-right: 5px;
     bottom: 2px;
+    text-align: center;
+    width: 13px;
+    display: inline-block;
 }
 
 .key-icon-wrapper-title .qty:before {
