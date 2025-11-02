@@ -31,5 +31,6 @@ export async function handleCloseRoomDetail(element: HTMLElement, event: Event):
 
     animateGears(500);
 
+    setState('roomId', 'unknown');
     setState('roomDetailActive', false);
 }
