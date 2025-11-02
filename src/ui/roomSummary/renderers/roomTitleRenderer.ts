@@ -10,9 +10,8 @@ import { RoomDetailsData } from 'src/data/types';
  * @param room - The room data.
  */
 export function setRoomTitle(room: RoomDetailsData): void {
-    const roomTitleEl = document.querySelector('.room-info-wrapper .room-title');
-    if (!roomTitleEl) return;
-
-    // Use room name from API data
-    roomTitleEl.textContent = room.name;
+    const roomSummaryTitle = document.querySelector('.room-summary-title') as HTMLElement | null;
+    if (roomSummaryTitle) {
+        roomSummaryTitle.textContent = room.name;
+    }
 }

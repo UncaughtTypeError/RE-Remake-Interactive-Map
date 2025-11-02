@@ -14,7 +14,6 @@ import {
 } from 'roomSummary/renderers/iconMarkersRenderer';
 import { activateRoomFunctions } from 'roomSummary/renderers/roomFunctionsRenderer';
 import { handleAccessControl } from 'roomSummary/renderers/accessControlRenderer';
-import { handleExamineText } from 'roomSummary/renderers/examineTextRenderer';
 
 /**
  * Renders room summary when hovering over a room.
@@ -47,7 +46,4 @@ export function renderRoomSummary(room: RoomDetailsData, difficulty: DifficultyL
 
     // Handle access control display
     handleAccessControl(room);
-
-    // Handle examine text display
-    handleExamineText(room);
 }
