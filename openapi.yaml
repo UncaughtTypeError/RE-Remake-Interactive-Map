@@ -176,7 +176,8 @@ paths:
         get:
             tags: [Biohazards]
             summary: Get all biohazards
-            description: Retrieves all biohazards (enemies) without any filters. Returns the complete biohazard database.
+            description: |
+                Retrieves all biohazards (enemies) without any filters. Returns the complete biohazard database including S.T.A.R.S. (Statistical Threat Analysis Rating Standard) classifications with threat levels (low to severe), Greek rankings (Eta to Alpha), star ratings (1-3), engagement directives (e.g., "Ignore else Engage", "Do Not Engage"), authorized response procedures, effective measures (weapon damage/shot counts), and detailed combat intelligence.
             responses:
                 '200':
                     description: Successful response with all biohazards
@@ -195,7 +196,7 @@ paths:
             summary: Get biohazards by IDs
             description: |
                 Retrieves biohazards by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
-                Returns both found biohazards and any unrecognized IDs.
+                Returns both found biohazards and any unrecognized IDs. Includes complete S.T.A.R.S. (Statistical Threat Analysis Rating Standard) classifications: threat levels, Greek rankings (Eta-Alpha), star ratings (1-3), engagement directives, weapon effectiveness ratings, shot counts, threat assessments, and combat strategies.
             parameters:
                 - name: ids
                   in: query
@@ -271,7 +272,7 @@ paths:
             summary: Search and filter biohazards
             description: |
                 Search biohazards by room, difficulty level, S.T.A.R.S. code, or name. All parameters are optional.
-                Returns biohazards matching ALL specified criteria (AND logic).
+                Returns biohazards matching ALL specified criteria (AND logic). Includes complete S.T.A.R.S. (Statistical Threat Analysis Rating Standard) intelligence: threat classifications (low-severe), Greek rankings (Eta-Alpha), star ratings (1-3), engagement directives, authorized response procedures, effective measures (weapon damage/shot counts), threat profiles, behavioral patterns, and caution advisories for field operatives.
             parameters:
                 - name: room
                   in: query

@@ -158,6 +158,96 @@ The API documentation is available at `/api-docs` when the server is running. Th
 
 See `openapi.yaml` for the complete API specification.
 
+## MCP Server
+
+This project includes a **Model Context Protocol (MCP) server** that exposes the REST API as tools for AI assistants like Claude.
+
+### What is MCP?
+
+MCP allows Claude (and other AI assistants) to directly interact with the RE Remake Interactive Map API through natural language. Instead of manually making HTTP requests, you can ask Claude to fetch items, search rooms, or query biohazards.
+
+### Quick Start
+
+```bash
+# Navigate to MCP server directory
+cd mcp-server
+
+# Install dependencies
+npm install
+
+# Build
+npm run build
+
+# Start server
+npm start
+```
+
+### Available Tools
+
+The MCP server provides **10 tools**:
+
+**Items** (3): `get_all_items`, `get_items_by_ids`, `search_items`
+**Biohazards** (3): `get_all_biohazards`, `get_biohazards_by_codes`, `search_biohazards`
+**Maps** (4): `get_all_areas`, `get_rooms_by_ids`, `search_rooms`, `get_rooms_by_map`
+
+### Example Queries
+
+Ask Claude questions like:
+- "What items are in the Dining Room?"
+- "Where can I find shotgun ammo?"
+- "What's the threat level of the Main Hall on Jill Hard?"
+- "Show me all safe rooms in Mansion 1F"
+- "Which rooms have both items and biohazards?"
+
+### Usage with Claude Code (Terminal)
+
+Claude Code automatically detects the `.mcp.json` configuration file in the project root. Just:
+
+1. Start the API: `npm run dev`
+2. Restart your Claude Code session
+3. Ask natural language questions directly in the terminal
+
+**Example:**
+```
+You: "What items are in the Dining Room?"
+Claude: *Uses MCP tools to query API and provides formatted response*
+```
+
+### Usage with Claude Desktop (GUI)
+
+Configure in `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "re-remake-map": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-server/dist/index.js"],
+      "env": {
+        "API_BASE_URL": "http://localhost:3000"
+      }
+    }
+  }
+}
+```
+
+### Documentation
+
+- **Quick Start**: See `mcp-server/README.md`
+- **Detailed Guide**: See `docs/MCP_SERVER.md` (includes 20 usage examples)
+- **Usage with Claude Desktop**: Setup instructions in docs
+
+### For AI Contributors
+
+**Important**: When adding new API endpoints or modifying existing ones, you MUST update the MCP server:
+
+1. Add/update tool definitions in `mcp-server/src/tools/`
+2. Update types in `mcp-server/src/types.ts`
+3. Update documentation in `docs/MCP_SERVER.md`
+4. Rebuild MCP server: `cd mcp-server && npm run build`
+
+This ensures Claude can utilize new API features immediately.
+
 ## Architecture
 
 This project follows a component-based architecture with clear separation of concerns:

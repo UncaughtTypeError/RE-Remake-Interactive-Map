@@ -83,6 +83,82 @@ The frontend follows a clear layered pattern:
 - Shared across all UI components
 - Provides caching and error handling
 
+### MCP Server Architecture
+
+The project includes an **MCP (Model Context Protocol) server** that exposes the Express API as tools for AI assistants.
+
+**Location**: `mcp-server/`
+
+**Purpose**:
+- Enable Claude to query the API directly through natural language
+- Provide AI-assisted development and testing
+- Facilitate data exploration during development
+
+**Architecture**:
+```
+┌─────────────────────────────────────────┐
+│ Claude / AI Assistant                    │
+└─────────────────────────────────────────┘
+                  ↓
+┌─────────────────────────────────────────┐
+│ MCP Server (stdio transport)            │
+│ - Rate limiting (100 req/15min)         │
+│ - Error handling                        │
+│ - 10 tools (items, biohazards, maps)   │
+└─────────────────────────────────────────┘
+                  ↓
+┌─────────────────────────────────────────┐
+│ Express API (http://localhost:3000)     │
+│ - /api/items, /api/biohazards, /api/maps│
+└─────────────────────────────────────────┘
+```
+
+**⚠️ CRITICAL: When Adding/Modifying API Features**:
+
+MCP tools have a **strict dependency** on the OpenAPI specification. All three must be updated together:
+
+1. ✅ Implement endpoint in Express (`src/routes/`, `src/middleware/`, etc.)
+2. ✅ **Update `openapi.yaml`** with exact parameter names, types, and enum values
+3. ✅ **Update MCP tools** in `mcp-server/src/tools/` to match OpenAPI spec **EXACTLY**
+   - Parameter names must match API query parameters
+   - Enum values must match API enum values (including case)
+   - All optional/required parameters must be included
+   - Examples must use actual valid values from the API
+4. ✅ Update MCP types in `mcp-server/src/types.ts` if response/request schemas change
+5. ✅ Update `docs/MCP_SERVER.md` with new tool documentation
+6. ✅ Rebuild MCP server: `cd mcp-server && npm run build`
+7. ✅ **Test** the MCP tool by making actual API requests to verify schema match
+
+**Why This Matters**:
+- Invalid MCP tool schemas cause runtime errors for Claude users
+- Mismatched parameter names result in 400 Bad Request errors
+- Wrong enum values cause validation failures
+- Missing parameters prevent users from accessing API features
+
+**Example of Critical Matching**:
+```yaml
+# openapi.yaml
+parameters:
+  - name: type
+    schema:
+      enum: ['Weapon', 'Ammunition', 'GreenHerb']  # PascalCase
+```
+
+```typescript
+// mcp-server/src/tools/items.ts - MUST MATCH EXACTLY
+type: {
+  type: 'string',
+  enum: ['Weapon', 'Ammunition', 'GreenHerb']  // ✅ CORRECT: Same case, same values
+  // ❌ WRONG: ['weapon', 'ammo', 'health']
+}
+```
+
+**Key Files**:
+- `mcp-server/src/index.ts` - Main server
+- `mcp-server/src/tools/*.ts` - Tool implementations
+- `mcp-server/src/client.ts` - HTTP client with rate limiting
+- `docs/MCP_SERVER.md` - Complete documentation
+
 ## Critical Development Principles
 
 When working on this project, you MUST:

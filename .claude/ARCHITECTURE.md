@@ -384,6 +384,135 @@ const data: RoomResponse = await fetchRoomData(roomId);
 - `src/state/` → Global state management
 - `src/data/` → Static data definitions
 
+### 8. MCP Server Pattern
+
+**Pattern**: Model Context Protocol server for AI assistant integration
+
+**Location**: `mcp-server/`
+
+**Structure**:
+
+```
+mcp-server/
+├── src/
+│   ├── index.ts          # Main MCP server (stdio transport)
+│   ├── config.ts         # Configuration (env vars)
+│   ├── client.ts         # HTTP client (rate limiting)
+│   ├── types.ts          # Type definitions (matches OpenAPI)
+│   └── tools/
+│       ├── index.ts      # Tool registry
+│       ├── items.ts      # Items API tools
+│       ├── biohazards.ts # Biohazards API tools
+│       └── maps.ts       # Maps API tools
+└── package.json          # Standalone package
+```
+
+**Philosophy**:
+
+The MCP server acts as a bridge between AI assistants (like Claude) and the Express API:
+
+- **Tool-based Interface**: Each API endpoint exposed as a named tool with typed inputs
+- **Rate Limiting**: Client-side enforcement matching Express limits (100 req/15min)
+- **Error Transparency**: Preserves detailed API errors for debugging
+- **Type Safety**: Full TypeScript types matching OpenAPI specification
+- **Standalone**: Independent package, can run in any environment
+
+**Benefits**:
+
+- **AI-Assisted Development**: Query API through Claude during development
+- **Documentation as Code**: Tool schemas serve as API documentation
+- **Testing**: Natural language API testing through Claude
+- **Data Exploration**: Interactive data queries without writing code
+- **Future-Ready**: Authentication, caching, webhooks can be added
+
+**Example Tool Definition**:
+
+```typescript
+{
+  name: 'search_items',
+  description: 'Search items by name and/or type with optional difficulty filtering',
+  inputSchema: {
+    type: 'object',
+    properties: {
+      name: { type: 'string', description: 'Search by name' },
+      type: { type: 'string', enum: ['weapon', 'ammo', 'health', ...] },
+      difficulty: { type: 'string', enum: ['JV-lvl-very-easy', ...] }
+    }
+  },
+  handler: async (args) => {
+    const data = await client.request('/api/items/search', args);
+    return { content: [{ type: 'text', text: JSON.stringify(data) }] };
+  }
+}
+```
+
+**⚠️ CRITICAL: OpenAPI Specification Dependency**:
+
+MCP tools have a **strict 1:1 dependency** on the OpenAPI specification. **All parameters must match exactly**.
+
+**When Adding/Modifying API Endpoints**:
+
+1. ✅ Update Express routes/controllers/middleware
+2. ✅ **Update `openapi.yaml`** with EXACT parameter names, types, enum values
+3. ✅ **Update MCP tool** in `mcp-server/src/tools/` to match OpenAPI **EXACTLY**:
+   - ❗ Parameter names must match query parameter names (e.g., `code` not `classification`)
+   - ❗ Enum values must match exact case (e.g., `Weapon` not `weapon`)
+   - ❗ All optional/required parameters must be included
+   - ❗ Descriptions must reference actual valid values
+4. ✅ Update types in `mcp-server/src/types.ts` if schemas changed
+5. ✅ Document in `docs/MCP_SERVER.md` with examples
+6. ✅ Rebuild: `cd mcp-server && npm run build`
+7. ✅ **Test with actual API calls** to verify schema correctness
+
+**Why Schema Matching is Critical**:
+
+```typescript
+// ❌ WRONG - Generic enum values
+enum: ['weapon', 'ammo', 'health']
+// API returns 400: Invalid enum value
+
+// ✅ CORRECT - Exact API enum values
+enum: ['Weapon', 'Ammunition', 'GreenHerb', 'RedHerb', 'BlueHerb', 'FirstAidSpray']
+// Matches openapi.yaml exactly
+
+// ❌ WRONG - Parameter name doesn't exist
+{ classification: string }
+// API returns 400: Unrecognized query parameter
+
+// ✅ CORRECT - Actual API parameter name
+{ code: string }
+// Matches openapi.yaml parameter name
+```
+
+**Consequences of Mismatch**:
+- 400 Bad Request errors for users
+- Invalid query parameter errors
+- Missing functionality (parameters not exposed)
+- Runtime failures during tool execution
+- Wasted tokens and slow response times
+
+**Rate Limiting**:
+
+MCP server implements client-side rate limiting matching Express:
+- **Window**: 15 minutes
+- **Limit**: 100 requests
+- **Behavior**: Throws error when limit exceeded with wait time
+
+**Error Handling**:
+
+Errors are preserved from API responses:
+- HTTP errors → Detailed error messages
+- Timeout → "Request timed out"
+- Rate limit → "Rate limit exceeded, wait X seconds"
+- Network errors → Connection details
+
+**Future Enhancements**:
+
+- **Authentication**: Bearer token support (ready, awaiting API auth)
+- **Caching**: Response caching for repeated queries
+- **Webhooks**: Real-time updates via MCP notifications
+- **Batch Operations**: Multi-request tools
+
 ## Component Architecture
 
 ### Component Structure

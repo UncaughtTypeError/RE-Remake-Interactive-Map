@@ -140,6 +140,118 @@ npm test          # Verify tests pass with new mappings
     - `tests/integration/`: Tests routes (e.g., `itemsRoutes.test.ts`).
     - Purpose: Isolates unit tests for logic and integration tests for API flows.
 
+### MCP Server
+
+- **Purpose**: Model Context Protocol server for AI assistant integration
+- **Location**: `mcp-server/`
+- **Usage**:
+    ```bash
+    cd mcp-server
+    npm install
+    npm run build
+    npm start
+    ```
+
+#### ⚠️ CRITICAL: OpenAPI Dependency
+
+**MCP tools have a strict 1:1 dependency on the OpenAPI specification.** All tool parameters must **exactly match** the API's query parameters.
+
+#### Mandatory Update Workflow
+
+**When Adding/Modifying ANY API Endpoint**, you MUST update all three in order:
+
+1. **Express API** (`src/routes/`, `src/middleware/`, etc.)
+   - Implement endpoint logic
+   - Add validation rules
+
+2. **OpenAPI Specification** (`openapi.yaml`)
+   - Document EXACT parameter names (e.g., `code` not `classification`)
+   - Document EXACT enum values with correct case (e.g., `Weapon` not `weapon`)
+   - Mark optional vs required parameters
+   - Include example values
+
+3. **MCP Tools** (`mcp-server/src/tools/`)
+   - Update tool schemas to match OpenAPI **EXACTLY**
+   - Copy parameter names verbatim
+   - Copy enum values with exact case
+   - Include ALL parameters (don't omit any)
+   - Update descriptions to reference actual valid values
+
+4. **Rebuild MCP Server**
+   ```bash
+   cd mcp-server
+   npm run build
+   ```
+
+5. **Test with Actual API**
+   - Make real API requests through MCP tools
+   - Verify no 400 Bad Request errors
+   - Verify all parameters work as expected
+
+#### Common Mistakes to Avoid
+
+```typescript
+// ❌ WRONG - Generic enum values
+enum: ['weapon', 'ammo', 'health']
+// Causes: 400 Invalid enum value
+
+// ✅ CORRECT - Exact API enum values
+enum: ['Weapon', 'Ammunition', 'GreenHerb', 'RedHerb']
+// From openapi.yaml line 131-148
+
+// ❌ WRONG - Parameter name doesn't exist in API
+{ classification: string }
+// Causes: 400 Unrecognized query parameter
+
+// ✅ CORRECT - Actual API parameter name
+{ code: string }
+// From openapi.yaml line 298: "- name: code"
+
+// ❌ WRONG - Missing parameters
+properties: { name: string }
+// Users can't access room/difficulty filters
+
+// ✅ CORRECT - All API parameters included
+properties: { room: string, name: string, difficulty: string, code: string }
+// From openapi.yaml lines 279-309
+```
+
+#### Why This Matters
+
+- **Invalid schemas = Runtime errors** for all Claude users
+- **Mismatched names = 400 errors** on every request
+- **Wrong enums = Validation failures** and wasted tokens
+- **Missing params = Lost functionality** that users need
+
+#### Documentation Standards
+
+After updating MCP tools:
+- Add usage examples to `docs/MCP_SERVER.md`
+- Update tool count if adding new tools
+- Document new natural language query patterns
+
+#### Standards
+
+- **Tool names**: Use snake_case (e.g., `get_all_items`)
+- **Tool descriptions**: Clear, concise, actionable
+- **Input schemas**: Fully typed with JSON Schema
+- **Error messages**: Detailed, actionable
+- **Types**: Must match OpenAPI spec exactly
+
+#### Configuration
+
+- `API_BASE_URL`: Default `http://localhost:3000`
+- `API_TIMEOUT`: Default 10000ms
+- `API_AUTH_TOKEN`: Future authentication support
+
+#### Documentation
+
+- **Quick Start**: `mcp-server/README.md`
+- **Comprehensive Guide**: `docs/MCP_SERVER.md` (20 usage examples)
+- **Update**: When adding API features, update tool definitions in `mcp-server/src/tools/`
+
+**See**: `docs/MCP_SERVER.md` for complete documentation
+
 ### Directory Structure
 
 ```
