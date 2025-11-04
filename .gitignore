@@ -21,7 +21,9 @@ npm-debug.log*
 .idea/
 *.sublime-workspace
 *.sublime-project
-.claude\settings.local.json
+
+# AI assistants
+.claude/settings.local.json
 
 # TypeScript
 *.tsbuildinfo
