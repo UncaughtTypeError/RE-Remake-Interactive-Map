@@ -122,7 +122,7 @@ export const biohazardsData: ReadonlyArray<BiohazardData> = [
                 description: 'venomous (effective treatment: blue herb administration)',
             },
         ],
-        characteristics: ['venomous', 'slow-moving', 'sedate', 'unperceptive'],
+        characteristics: ['venomous', 'fast-moving', 'small target'],
     },
     {
         id: 'Cr' as BiohazardCode,
@@ -222,7 +222,7 @@ export const biohazardsData: ReadonlyArray<BiohazardData> = [
                 description: 'swarm hazard',
             },
         ],
-        characteristics: ['venomous', 'slow-moving', 'sedate', 'unperceptive'],
+        characteristics: ['venomous', 'fast-moving', 'aggressive', 'small target'],
     },
     {
         id: 'Cb' as BiohazardCode,

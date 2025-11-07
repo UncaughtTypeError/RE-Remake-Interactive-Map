@@ -21,6 +21,7 @@
             "roomDetail/*": ["./src/ui/roomDetail/*"],
             "roomSummary/*": ["./src/ui/roomSummary/*"],
             "introOverlay/*": ["./src/ui/introOverlay/*"],
+            "keymenu/*": ["./src/ui/keymenu/*"],
             "shared/*": ["./src/ui/shared/*"]
         },
         "types": ["jest", "node", "express"]

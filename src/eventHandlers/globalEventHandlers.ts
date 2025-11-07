@@ -17,6 +17,7 @@ import { themeSelectHandlerTuples } from 'themeSelect/eventHandlers';
 import { difficultySelectHandlerTuples } from 'difficultySelect/eventHandlers';
 import { roomDetailHandlerTuples } from 'roomDetail/eventHandlers';
 import { roomSummaryHandlerTuples } from 'roomSummary/eventHandlers';
+import { keymenuHandlerTuples } from 'keymenu/eventHandlers';
 
 /**
  * Registry of click handlers.
@@ -44,6 +45,11 @@ const eventHandlers: ClickHandler[] = [
         handler,
     })),
     ...roomSummaryHandlerTuples.map(([eventType, selector, handler]) => ({
+        eventType,
+        selector,
+        handler,
+    })),
+    ...keymenuHandlerTuples.map(([eventType, selector, handler]) => ({
         eventType,
         selector,
         handler,

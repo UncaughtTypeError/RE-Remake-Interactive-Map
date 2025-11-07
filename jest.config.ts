@@ -25,6 +25,7 @@ const config: Config = {
         '^roomDetail/(.*)$': '<rootDir>/src/ui/roomDetail/$1',
         '^roomSummary/(.*)$': '<rootDir>/src/ui/roomSummary/$1',
         '^introOverlay/(.*)$': '<rootDir>/src/ui/introOverlay/$1',
+        '^keymenu/(.*)$': '<rootDir>/src/ui/keymenu/$1',
         '^shared/(.*)$': '<rootDir>/src/ui/shared/$1',
     },
 };
