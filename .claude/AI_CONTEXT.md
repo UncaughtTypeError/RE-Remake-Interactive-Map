@@ -692,6 +692,23 @@ app.get('/api/items', idsValidator, getItems);
 
 ## Migration Guidance
 
+### ⚠️ CRITICAL: Follow Established Patterns
+
+**Before migrating ANY jQuery code, you MUST**:
+
+1. **Read MIGRATION_GUIDE.md** - Contains all established patterns and conventions
+2. **Check existing components** - Look at `roomDetail`, `roomSummary`, `difficultySelect` for examples
+3. **Use the renderer pattern** - All DOM manipulation uses `renderers/` with `render*()` functions
+4. **Never introduce new patterns** - Unless existing patterns are insufficient AND you document why
+5. **Always include cleanup** - Migration is NOT complete until jQuery code is removed from index.html
+
+**Common Mistakes to Avoid**:
+- ❌ Creating `initializers/` directories (use `renderers/` instead)
+- ❌ Using `initialize*()` naming (use `render*()` instead)
+- ❌ Assuming related features are "separate" (e.g., room tabs are part of keymenu)
+- ❌ Forgetting to remove jQuery code after migration
+- ❌ Creating component-specific API layers (use `src/client/api/` instead)
+
 ### If You Need to Migrate Old jQuery Code
 
 **Pattern Recognition**:

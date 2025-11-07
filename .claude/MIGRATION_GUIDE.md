@@ -434,7 +434,27 @@ export const toggleMenuHandler: [string, EventListener] = [
 
 ## Component Migration Checklist
 
-When migrating a component from jQuery to TypeScript:
+**⚠️ CRITICAL: Migration MUST Include Cleanup**
+
+Every migration task MUST include removal of the migrated jQuery code. A migration is NOT complete until all related jQuery has been removed from `src/index.html`.
+
+### Pre-Migration: Identify ALL Related Code
+
+Before starting migration:
+
+- [ ] Identify the PRIMARY functionality to migrate (e.g., "keymenu component")
+- [ ] Search for ALL jQuery related to this functionality, including:
+  - Direct selectors (e.g., `jQuery('.keymenu-select')`)
+  - Related features (e.g., room tabs within keymenu)
+  - Event handlers bound to migrated elements
+  - DOM manipulation code for migrated elements
+  - Initialization/setup code for the feature
+- [ ] Document line numbers of ALL jQuery code to be removed
+- [ ] Verify no jQuery code is "part and parcel" of the feature but overlooked
+
+**Common Mistake**: Assuming a feature is "separate" when it's actually integral
+- Example: Room tabs within keymenus are NOT separate - they're part of the keymenu component
+- Rule: If feature B cannot exist without feature A, they must be migrated together
 
 ### 1. Identify Component Boundaries
 
@@ -442,26 +462,92 @@ When migrating a component from jQuery to TypeScript:
 - [ ] What state does it manage?
 - [ ] What events does it handle?
 - [ ] What does it render?
+- [ ] **What related sub-features are part of this component?**
 
 ### 2. Create Component Structure
+
+**CRITICAL: Follow Existing Patterns**
+
+The codebase has **established patterns and conventions** that MUST be followed. Do NOT introduce new patterns without thorough justification.
 
 ```
 src/ui/componentName/
 ├── eventHandlers/
 │   ├── handler1.ts
 │   └── index.ts          # Export tuples
-├── renderers/
+├── renderers/            # ✅ REQUIRED - Use renderer pattern
 │   ├── renderSection1.ts
 │   └── index.ts
-├── processors/           # If needed
+├── orchestrator/         # If complex multi-renderer coordination needed
+│   └── orchestrator.ts
+├── processors/           # If data transformation needed
 │   └── processData.ts
-├── logic/                # If needed
-│   └── api/
-├── templates/            # If needed
+├── logic/                # If business logic exists (discouraged - prefer centralized)
+│   └── api/              # ⚠️ DEPRECATED - Use src/client/api/ instead
+├── templates/            # If partial HTML templates needed
 │   └── template.html
-└── types/                # If needed
+└── types/                # Component-specific types only
     └── types.ts
 ```
+
+**Pattern Requirements**:
+
+1. **Renderers Are Mandatory**: All DOM manipulation MUST use the renderer pattern
+   - ✅ DO: Create `renderers/somethingRenderer.ts` with `renderSomething()` function
+   - ❌ DON'T: Create `initializers/` or `setup/` directories
+   - ❌ DON'T: Use `initialize*()` naming - use `render*()`
+
+2. **Orchestrators for Coordination**: If multiple renderers need coordination
+   - ✅ DO: Create `orchestrator/orchestrator.ts` that calls multiple renderers
+   - Example: `roomDetail/orchestrator/orchestrator.ts` coordinates 10+ renderers
+   - Pattern: Pure function that sequences renderer calls
+
+3. **Centralized API Layer**: API calls belong in `src/client/api/`, NOT component directories
+   - ✅ DO: `import { fetchRoomData } from 'client/api/roomApi'`
+   - ❌ DON'T: Create `componentName/logic/api/` for new components
+   - Note: Some legacy components still have `logic/api/` - these will be migrated
+
+4. **Template Loading**: Templates load via `src/initializers/templateLoader.ts`
+   - Renderers execute AFTER templates load
+   - Add post-load rendering to `templateLoader.ts` if needed
+   - Example: `renderRoomTabs()` called after keymenu templates load
+
+### When to Introduce New Patterns
+
+**Default: Use Existing Patterns**
+
+The established patterns (renderers, orchestrators, event handlers, state subscriptions) handle 99% of use cases. Before introducing a new pattern, you MUST:
+
+1. **Prove Insufficiency**: Document why existing patterns cannot solve the problem
+   - Example: "Renderer pattern insufficient because X requires Y which renderers cannot provide"
+   - NOT acceptable: "I think initializers would be cleaner" (subjective preference)
+
+2. **Research Industry Standards**: New patterns MUST follow industry best practices
+   - Check similar vanilla JS/TypeScript projects (not framework-specific patterns)
+   - Prioritize idiomatic JavaScript/TypeScript approaches
+   - Prefer standard browser APIs over custom abstractions
+
+3. **Document Thoroughly**: New patterns require comprehensive documentation
+   - Create detailed README in the component/pattern directory
+   - Add section to this migration guide with examples
+   - Document in ARCHITECTURE.md if it's a cross-cutting pattern
+   - Include rationale: why existing patterns were insufficient
+
+4. **Get Approval**: Discuss with project maintainers before implementing
+   - Open an issue explaining the need and proposed pattern
+   - Provide code examples showing the pattern
+   - Wait for approval before proceeding
+
+**Examples of Valid New Pattern Needs**:
+- ✅ Performance optimization requiring specialized technique not covered by existing patterns
+- ✅ Browser API integration requiring new abstraction layer
+- ✅ Complex async coordination beyond orchestrator capabilities
+
+**Examples of Invalid Reasons**:
+- ❌ "I prefer X over Y" (subjective preference without measurable benefit)
+- ❌ "This is how React does it" (framework-specific pattern, not vanilla JS)
+- ❌ "It's cleaner" (without concrete improvement metrics)
+- ❌ "I didn't check existing patterns first" (lazy approach)
 
 ### 2.1. Configure Import Paths (CRITICAL)
 
@@ -528,10 +614,33 @@ src/ui/componentName/
 - [ ] Unit tests for event handlers (mock events → state check)
 - [ ] Integration tests if component has API calls
 
-### 8. Update Documentation
+### 8. **CRITICAL: Remove ALL Migrated jQuery Code**
+
+- [ ] Remove jQuery event handlers from `src/index.html`
+- [ ] Remove jQuery DOM manipulation code
+- [ ] Remove jQuery initialization/setup code
+- [ ] Remove jQuery-related comments if code is gone
+- [ ] Search for related selectors to ensure nothing missed:
+  ```bash
+  grep -n "jQuery('\.component-class" src/index.html
+  grep -n "jQuery\('#component-id" src/index.html
+  ```
+- [ ] Verify no active jQuery remains (ignore commented code):
+  ```bash
+  grep "jQuery('\.component" src/index.html | grep -v "^\s*//"
+  ```
+
+**Verification**: After cleanup, the migration is complete when:
+- ✅ All TypeScript handlers are working
+- ✅ All jQuery code for this feature is removed from index.html
+- ✅ Build succeeds
+- ✅ Tests pass
+
+### 9. Update Documentation
 
 - [ ] Create component README if patterns are novel
 - [ ] Document in this migration guide if common pattern
+- [ ] Update migration status in this guide
 
 ## State Management Migration
 
