@@ -16,6 +16,7 @@ import { STARSRankingData, BiohazardData, BiohazardRoomData, BiohazardCode } fro
 export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     {
         starsClassification: 'Eta',
+        greeksClassification: '\u03B7',
         ranking: '0',
         threatLevel: 'Low',
         directive: 'Ignore else Engage',
@@ -23,6 +24,7 @@ export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     },
     {
         starsClassification: 'Zeta',
+        greeksClassification: '\u03B6',
         ranking: '0Half',
         threatLevel: 'Low-Moderate',
         directive: 'Avoid else Engage',
@@ -30,6 +32,7 @@ export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     },
     {
         starsClassification: 'Epsilon',
+        greeksClassification: '\u03B5',
         ranking: '1',
         threatLevel: 'Moderate',
         directive: 'Avoid else Engage',
@@ -37,6 +40,7 @@ export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     },
     {
         starsClassification: 'Delta',
+        greeksClassification: '\u03B4',
         ranking: '1Half',
         threatLevel: 'Moderate-High',
         directive: 'Engage Cautiously',
@@ -44,6 +48,7 @@ export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     },
     {
         starsClassification: 'Gamma',
+        greeksClassification: '\u03B3',
         ranking: '2',
         threatLevel: 'High',
         directive: 'Engage Cautiously',
@@ -51,6 +56,7 @@ export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     },
     {
         starsClassification: 'Beta',
+        greeksClassification: '\u03B2',
         ranking: '2Half',
         threatLevel: 'Acute',
         directive: 'Avoid Engaging',
@@ -58,6 +64,7 @@ export const starsRankingData: ReadonlyArray<STARSRankingData> = [
     },
     {
         starsClassification: 'Alpha',
+        greeksClassification: '\u03B1',
         ranking: '3',
         threatLevel: 'Severe',
         directive: 'Do Not Engage',

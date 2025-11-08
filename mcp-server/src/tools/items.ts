@@ -132,13 +132,14 @@ export function createItemsTools(client: ApiClient) {
                             'GreenHerb',
                             'RedHerb',
                             'BlueHerb',
-                            'FirstAidSpray',
+                            'FirstAid',
+                            'MixedHerbs',
                             'SelfDefense',
                             'Ammunition',
                             'Weapon',
                         ],
                         description:
-                            'Filter by exact item type (PascalCase). Use "Weapon" for guns, "Ammunition" for ammo, "GreenHerb"/"RedHerb"/"BlueHerb"/"FirstAidSpray" for healing, "DoorKey" for keys.',
+                            'Filter by exact item type (PascalCase). Use "Weapon" for guns, "Ammunition" for ammo, "GreenHerb"/"RedHerb"/"BlueHerb"/"FirstAid"/"MixedHerbs" for healing, "DoorKey" for keys.',
                     },
                     difficulty: {
                         type: 'string',

@@ -29,7 +29,8 @@ export type ItemType =
     | 'GreenHerb'
     | 'RedHerb'
     | 'BlueHerb'
-    | 'FirstAidSpray'
+    | 'FirstAid'
+    | 'MixedHerbs'
     | 'SelfDefense'
     | 'Ammunition'
     | 'Weapon';
@@ -170,6 +171,7 @@ export interface STARSRankingData {
     code: BiohazardCode;
     starsRanking: {
         starsClassification: STARSClassification;
+        greeksClassification?: string;
         ranking: STARSRanking;
         threatLevel: string;
         directive: string;

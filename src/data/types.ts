@@ -47,6 +47,7 @@ type ItemType =
     | 'ItemBox'
     | 'Kerosene'
     | 'Map'
+    | 'Interactable'
     // General Items
     | 'PersonOfInterest'
     | 'DoorKey'
@@ -56,17 +57,19 @@ type ItemType =
     | 'GreenHerb'
     | 'RedHerb'
     | 'BlueHerb'
-    | 'FirstAidSpray'
+    | 'FirstAid'
+    | 'MixedHerbs'
     | 'SelfDefense'
     | 'Ammunition'
     | 'Weapon';
 
 export enum ItemTypeEnum {
     // Featured Items
-    TYPE_WRITER = 'Typewriter',
+    TYPEWRITER = 'Typewriter',
     ITEM_BOX = 'ItemBox',
     KEROSENE = 'Kerosene',
     MAP = 'Map',
+    INTERACTABLE = 'Interactable',
     // General Items
     PERSON = 'PersonOfInterest',
     DOOR_KEY = 'DoorKey',
@@ -76,7 +79,8 @@ export enum ItemTypeEnum {
     GREEN_HERB = 'GreenHerb',
     RED_HERB = 'RedHerb',
     BLUE_HERB = 'BlueHerb',
-    FIRST_AID_SPRAY = 'FirstAidSpray',
+    FIRST_AID = 'FirstAid',
+    MIXED_HERBS = 'MixedHerbs',
     SELF_DEFENSE = 'SelfDefense',
     AMMUNITION = 'Ammunition',
     WEAPON = 'Weapon',
@@ -88,40 +92,113 @@ export type ItemID =
     | 'rebeccaChambers'
     | 'kennethJSullivan'
     | 'richardAiken'
-    // Key Items
+    // Interactable Items
     | 'typewriter'
     | 'itemBox'
     | 'kerosene'
     | 'map'
+    | 'radio'
+    | 'passCodeOutputTerminal'
+    // Key Items
+    | 'lighter'
     | 'lockpick'
     | 'oldKey'
+    | 'goldenArrow'
+    | 'arrowhead'
     | 'shieldKey'
     | 'emblemKey'
     | 'emblem'
     | 'blueGemstone'
     | 'redGemstone'
+    | 'yellowGemstone'
     | 'kennethsFilm'
     | 'goldEmblem'
     | 'missingMusic'
-    | 'serum'
     | 'brokenShotgun'
     | 'moDisk'
     | 'maskWithoutEyes'
     | 'maskWithoutMouth'
+    | 'maskWithoutNose'
+    | 'maskWithoutEyesNoseMouth'
     | 'lastBookVol1'
+    | 'lastBookVol2'
     | 'medalOfEagle'
+    | 'medalOfWolf'
     | 'sunMoonJewelryBox'
     | 'broach'
     | 'herbicide'
     | 'metalObject'
     | 'fuelCanteen'
-    | 'radio'
     | 'inkRibbon'
+    | 'bookOfCurses'
+    | 'swordKey'
+    | 'dogWhistle'
+    | 'collar'
+    | 'coin'
+    | 'imitationOfAKey'
+    | 'armorKey'
+    | 'woodenMount'
+    | 'jewelryBoxJewel'
+    | 'musicMidPages'
+    | 'moonlightSonata'
+    | 'fishhook'
+    | 'lureWithoutHook'
+    | 'lureOfABee'
+    | 'beeSpecimen'
+    | 'windCrest'
+    | 'stoneAndMetalObject'
+    | 'moonCrest'
+    | 'starCrest'
+    | 'sunCrest'
+    | 'squareCrank'
+    | 'keyForRoom001'
+    | 'insecticideSpray'
+    | 'galleryKey'
+    | 'unprintedBook'
+    | 'controlRoomKey'
+    | 'keyForRoom003'
+    | 'emptyBottle'
+    | 'water'
+    | 'umbNo3'
+    | 'np004'
+    | 'yellow6'
+    | 'umbNo7'
+    | 'umbNo10'
+    | 'vp017'
+    | 'vJolt'
+    | 'helmetKey'
+    | 'jewelryBoxWithRecession'
+    | 'battery'
+    | 'hexagonCrank'
+    | 'cylinder'
+    | 'shaft'
+    | 'cylinderShaft'
+    | 'brokenFlamethrower'
+    | 'jewelryBoxStoneRing'
+    | 'stoneRing'
+    | 'xRayOfClark'
+    | 'xRayOfGail'
+    | 'slideFilter'
+    | 'keyForPowerArea'
+    | 'fuelSupplyCapsuleEmpty'
+    | 'fuelSupplyCapsuleFull'
+    | 'masterKey'
+    | 'fuseUnit'
+    | 'signalRockets'
+    | 'closetKey'
+    | 'serum'
     // Recovery Items
     | 'greenHerb'
     | 'blueHerb'
     | 'redHerb'
     | 'firstAidSpray'
+    | 'firstAidBox'
+    | 'mixedHerbsGG'
+    | 'mixedHerbsGR'
+    | 'mixedHerbsGB'
+    | 'mixedHerbsGGB'
+    | 'mixedHerbsGGG'
+    | 'mixedHerbsGRB'
     // Documents
     | 'trevorsDiaryVol1'
     | 'trevorsDiaryVol2'
@@ -129,16 +206,29 @@ export type ItemID =
     | 'keepersDiary'
     | 'bodyDisposal'
     // Weaponry
+    | 'survivalKnifeChris'
+    | 'survivalKnifeJill'
+    | 'survivalKnife'
     | 'handgun'
+    | 'samuraiEdge'
+    | 'dagger'
+    | 'stunGun'
     | 'shotgun'
+    | 'assaultShotgun'
+    | 'grenadeLauncher'
+    | 'selfDefenseGun'
+    | 'magnumRevolver'
+    | 'flamethrower'
+    | 'barrys44Magnum'
+    | 'rocketLauncher'
+    | 'rocketLauncherSingleBarrel'
     | 'batteryPack'
     | 'flashGrenade'
-    | 'dagger'
     | 'handgunMagazine'
     | 'shotgunShells'
     | 'grenadeShells'
-    | 'incendiaryShells'
     | 'acidShells'
+    | 'incendiaryShells'
     | 'magnumRounds';
 
 export enum ItemIDEnum {
@@ -147,11 +237,15 @@ export enum ItemIDEnum {
     REBECCA_CHAMBERS = 'rebeccaChambers',
     KENNETH_J_SULLIVAN = 'kennethJSullivan',
     RICHARD_AIKEN = 'richardAiken',
-    // Key Items
-    TYPE_WRITER = 'typewriter',
+    // Interactable Items
+    TYPEWRITER = 'typewriter',
     ITEM_BOX = 'itemBox',
     KEROSENE = 'kerosene',
     MAP = 'map',
+    RADIO = 'radio',
+    PASS_CODE_OUTPUT_TERMINAL = 'passCodeOutputTerminal',
+    // Key Items
+    LIGHTER = 'lighter',
     LOCKPICK = 'lockpick',
     OLD_KEY = 'oldKey',
     SHIELD_KEY = 'shieldKey',
@@ -174,7 +268,6 @@ export enum ItemIDEnum {
     HERBICIDE = 'herbicide',
     METAL_OBJECT = 'metalObject',
     FUEL_CANTEEN = 'fuelCanteen',
-    RADIO = 'radio',
     INK_RIBBON = 'inkRibbon',
     // Recovery Items
     GREEN_HERB = 'greenHerb',
@@ -207,40 +300,120 @@ type ItemDisplayName =
     | 'Rebecca Chambers'
     | 'Kenneth J. Sullivan'
     | 'Richard Aiken'
-    // Key Items
-    | 'Type Writer'
+    // Interactable Items
+    | 'Typewriter'
     | 'Item Box'
     | 'Kerosene'
     | 'Map - Mansion F1'
+    | 'Map - Mansion F2'
+    | 'Map - Mansion B1'
+    | 'Map - Courtyard F1'
+    | 'Map - Courtyard B1'
+    | 'Map - Residence F1'
+    | 'Map - Aqua Ring'
+    | 'Map - Underground Laboratory'
+    | 'Radio'
+    | 'Pass Code Output Terminal'
+    // Key Items
+    | 'Lighter'
     | 'Lockpick'
     | 'Old Key'
+    | 'Golden Arrow'
+    | 'Arrowhead'
     | 'Shield Key'
     | 'Emblem Key'
     | 'Emblem'
     | 'Blue Gemstone'
     | 'Red Gemstone'
+    | 'Yellow Gemstone'
     | "Kenneth's Film"
     | 'Gold Emblem'
     | 'Missing Music'
-    | 'Serum'
     | 'Broken Shotgun'
     | 'MO Disk'
     | 'Mask without Eyes'
     | 'Mask without Mouth'
+    | 'Mask without Nose'
+    | 'Mask without Eyes, Nose, or Mouth'
     | 'Last Book Vol. 1'
+    | 'Last Book Vol. 2'
     | 'Medal of Eagle'
+    | 'Medal of Wolf'
     | 'Sun & Moon Jewelry Box'
     | 'Broach'
     | 'Herbicide'
     | 'Metal Object'
     | 'Fuel Canteen'
-    | 'Radio'
     | 'Ink Ribbon'
+    | 'Book of Curses'
+    | 'Sword Key'
+    | 'Dog Whistle'
+    | 'Collar'
+    | 'Coin'
+    | 'Imitation of a Key'
+    | 'Armor Key'
+    | 'Wooden Mount'
+    | 'Jewelry Box (1)'
+    | 'Music, Mid-Pages'
+    | '"Moonlight Sonata"'
+    | 'Fishhook'
+    | 'Lure without a Hook'
+    | 'Lure of a Bee'
+    | 'Bee Specimen'
+    | 'Wind Crest'
+    | 'Stone & Metal Object'
+    | 'Moon Crest'
+    | 'Star Crest'
+    | 'Sun Crest'
+    | 'Square Crank'
+    | 'Key for Room 001'
+    | 'Insecticide Spray'
+    | 'Gallery Key'
+    | 'Unprinted Book'
+    | 'Control Room Key'
+    | 'Key for Room 003'
+    | 'Empty Bottle'
+    | 'Water'
+    | 'UMB No.3'
+    | 'NP-004'
+    | 'Yellow-6'
+    | 'UMB No.7'
+    | 'UMB No.10'
+    | 'VP-017'
+    | 'V-JOLT'
+    | 'Helmet Key'
+    | 'Jewelry Box (2)'
+    | 'Battery'
+    | 'Hexagon Crank'
+    | 'Cylinder'
+    | 'Shaft'
+    | 'Cylinder Shaft'
+    | 'Broken Flamethrower'
+    | 'Jewelry Box (3)'
+    | 'Stone Ring'
+    | 'X-Ray of CLARK'
+    | 'X-Ray of GAIL'
+    | 'Slide Filter'
+    | 'Key for the Power Area'
+    | 'Fuel Supply Capsule (Empty)'
+    | 'Fuel Supply Capsule (Full)'
+    | 'Master Key'
+    | 'Fuse Unit'
+    | 'Signal Rockets'
+    | 'Closet Key'
+    | 'Serum'
     // Recovery Items
     | 'Green Herb'
     | 'Blue Herb'
     | 'Red Herb'
     | 'First Aid Spray'
+    | 'First Aid Box'
+    | 'Mixed Herbs (G+G)'
+    | 'Mixed Herbs (G+R)'
+    | 'Mixed Herbs (G+B)'
+    | 'Mixed Herbs (G+G+B)'
+    | 'Mixed Herbs (G+G+G)'
+    | 'Mixed Herbs (G+R+B)'
     // Documents
     | "Trevor's Diary Vol. 1"
     | "Trevor's Diary Vol. 2"
@@ -248,20 +421,51 @@ type ItemDisplayName =
     | "Keeper's Diary"
     | 'Body Disposal'
     // Weaponry
-    | 'Handgun'
-    | 'Shotgun'
-    | 'Battery Pack'
+    | 'Stun Gun'
     | 'Flash Grenade'
     | 'Dagger'
+    | 'Survival Knife (Chris)'
+    | 'Survival Knife (Jill)'
+    | 'Survival Knife'
+    | 'Handgun'
+    | 'Samurai Edge'
+    | 'Shotgun'
+    | 'Assault Shotgun'
+    | 'Grenade Launcher'
+    | 'Self Defense Gun'
+    | 'Magnum Revolver'
+    | 'Flamethrower'
+    | "Barry's 44 Magnum"
+    | 'Rocket Launcher'
+    | 'Rocket Launcher (Single Barrel)'
+    | 'Battery Pack'
     | 'Handgun Magazine'
     | 'Shotgun Shells'
     | 'Grenade Shells'
-    | 'Incendiary Shells'
     | 'Acid Shells'
+    | 'Incendiary Shells'
     | 'Magnum Rounds';
 
-type Taxonomy = 'Key Items' | 'Weaponry' | 'Documents' | 'Recovery Items';
+type Taxonomy = 'Interactable Items' | 'Key Items' | 'Weaponry' | 'Documents' | 'Recovery Items';
 
+type ItemFunction =
+    | 'Save Point'
+    | 'Storage Point'
+    | 'Refill Point'
+    | 'Navigation'
+    | 'NPC Interaction'
+    | 'Item Interaction'
+    | 'Biohazard Interaction'
+    | 'Environment Interaction'
+    | 'Puzzle Interaction'
+    | 'Access Tool'
+    | 'Progress Save'
+    | 'Defense'
+    | 'Offense'
+    | 'Ammunition'
+    | 'Recovery'
+    | 'Documentation'
+    | null;
 export interface QtyItems {
     qty: number; // e.g. 3
     difficultyLevel: DifficultyLevel[]; // e.g. ["JV-lvl-easy", "JV-lvl-normal", "JV-lvl-hard"]
@@ -285,6 +489,7 @@ export interface ItemData {
     name: ItemDisplayName; // e.g. "Battery Pack"
     type: ItemType; // e.g. "SelfDefense"
     taxonomy: Taxonomy; // e.g. "Weaponry"
+    function: ItemFunction | null; // e.g. "Save Point"
     imageSrc: string; // e.g. "assets/images/batteryPack.jpg"
     description: string; // e.g. "An ordinary battery sold in stores. Looks like it could be used as spares for the stun gun."
     exclusive: CharacterCode | null; // e.g. JV
@@ -393,6 +598,15 @@ type BiohazardDisplayName =
 
 type STARSClassification = 'Alpha' | 'Beta' | 'Gamma' | 'Delta' | 'Epsilon' | 'Zeta' | 'Eta';
 
+type greeksClassification =
+    | '\u03B1'
+    | '\u03B2'
+    | '\u03B3'
+    | '\u03B4'
+    | '\u03B5'
+    | '\u03B6'
+    | '\u03B7';
+
 export type STARSRanking = '3' | '2Half' | '2' | '1Half' | '1' | '0Half' | '0';
 
 type ThreatLevel =
@@ -448,6 +662,7 @@ export interface BiohazardData {
 
 export interface STARSRankingData {
     starsClassification: STARSClassification; // e.g. "Delta"
+    greeksClassification?: greeksClassification; // e.g. "β"
     ranking: STARSRanking; // e.g. "1Half"
     threatLevel: ThreatLevel; // e.g. "Moderate-High"
     directive: Directive; // e.g. "Engage Cautiously"
