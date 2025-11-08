@@ -200,11 +200,27 @@ export type ItemID =
     | 'mixedHerbsGGG'
     | 'mixedHerbsGRB'
     // Documents
+    | 'starsManual'
+    | 'kennethsFilm'
     | 'trevorsDiaryVol1'
     | 'trevorsDiaryVol2'
     | 'trevorsDiaryVol3'
-    | 'keepersDiary'
+    | 'crumpledMemo'
+    | 'botanyBook'
     | 'bodyDisposal'
+    | 'keepersDiary'
+    | 'researchersWill'
+    | 'mailToChiefOfSecurity'
+    | 'suicideNote'
+    | 'plant42Report'
+    | 'organicChemistryLabExperiment'
+    | 'familyPictureAndNotes'
+    | 'barrysPhotograph'
+    | 'researchersLetter'
+    | 'vAct'
+    | 'fax'
+    | 'securityProtocols'
+    | 'observationNote'
     // Weaponry
     | 'survivalKnifeChris'
     | 'survivalKnifeJill'
@@ -415,11 +431,27 @@ type ItemDisplayName =
     | 'Mixed Herbs (G+G+G)'
     | 'Mixed Herbs (G+R+B)'
     // Documents
+    | 'S.T.A.R.S. Manual'
+    | "Kenneth's Film"
     | "Trevor's Diary Vol. 1"
     | "Trevor's Diary Vol. 2"
     | "Trevor's Diary Vol. 3"
-    | "Keeper's Diary"
+    | 'Crumpled Memo'
+    | 'Botany Book'
     | 'Body Disposal'
+    | "Keeper's Diary"
+    | "Researcher's Will"
+    | 'Mail to the Chief of Security'
+    | 'Suicide Note'
+    | 'Plant 42 Report'
+    | 'Organic Chemistry Lab Experiment'
+    | 'Family Picture & Notes'
+    | "Barry's Photograph"
+    | "Researcher's Letter"
+    | 'V-ACT'
+    | 'FAX'
+    | 'Security Protocols'
+    | 'Observation Note'
     // Weaponry
     | 'Stun Gun'
     | 'Flash Grenade'
@@ -493,6 +525,11 @@ export interface ItemData {
     imageSrc: string; // e.g. "assets/images/batteryPack.jpg"
     description: string; // e.g. "An ordinary battery sold in stores. Looks like it could be used as spares for the stun gun."
     exclusive: CharacterCode | null; // e.g. JV
+}
+
+export interface TranscriptionData {
+    itemId: ItemID; // Foreign key to ItemData.id - e.g. "keepersDiary"
+    transcript: string; // Full text transcript of the document content
 }
 
 export interface ItemRoomData {

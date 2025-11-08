@@ -6,7 +6,7 @@
  * `difficultyLevel` as readonly tuple). Suitable for endpoints like `GET /api/items`.
  * @see {@link ./README.md} for data structure details.
  */
-import { ItemData, ItemRoomData } from '.';
+import { ItemData, ItemRoomData, TranscriptionData } from '.';
 
 // Dictionary of thumbnail IDs and image source paths
 const thumbnailPaths: Record<string, string> = {
@@ -133,8 +133,27 @@ const thumbnailPaths: Record<string, string> = {
     mixedHerbsGGG: 'https://placeholder-image-url.jpg',
     mixedHerbsGRB: 'https://placeholder-image-url.jpg',
     // Documents
-    keepersDiary:
-        'https://s-media-cache-ak0.pinimg.com/originals/f1/26/57/f126578050920fc271fd8b33534a9605.jpg',
+    starsManual: 'https://placeholder-image-url.jpg',
+    kennethsFilm: 'https://placeholder-image-url.jpg',
+    trevorsDiaryVol1: 'https://placeholder-image-url.jpg',
+    trevorsDiaryVol2: 'https://placeholder-image-url.jpg',
+    trevorsDiaryVol3: 'https://placeholder-image-url.jpg',
+    crumpledMemo: 'https://placeholder-image-url.jpg',
+    botanyBook: 'https://placeholder-image-url.jpg',
+    bodyDisposal: 'https://placeholder-image-url.jpg',
+    keepersDiary: 'https://placeholder-image-url.jpg',
+    researchersWill: 'https://placeholder-image-url.jpg',
+    mailToChiefOfSecurity: 'https://placeholder-image-url.jpg',
+    suicideNote: 'https://placeholder-image-url.jpg',
+    plant42Report: 'https://placeholder-image-url.jpg',
+    organicChemistryLabExperiment: 'https://placeholder-image-url.jpg',
+    familyPictureAndNotes: 'https://placeholder-image-url.jpg',
+    barrysPhotograph: 'https://placeholder-image-url.jpg',
+    researchersLetter: 'https://placeholder-image-url.jpg',
+    vAct: 'https://placeholder-image-url.jpg',
+    fax: 'https://placeholder-image-url.jpg',
+    securityProtocols: 'https://placeholder-image-url.jpg',
+    observationNote: 'https://placeholder-image-url.jpg',
     // Weaponry
     survivalKnifeChris: 'https://placeholder-image-url.jpg',
     survivalKnifeJill: 'https://placeholder-image-url.jpg',
@@ -1278,6 +1297,94 @@ export const itemsData: ReadonlyArray<ItemData> = [
     },
     // Documents
     {
+        id: 'starsManual',
+        name: 'S.T.A.R.S. Manual',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.starsManual,
+        description:
+            'Official S.T.A.R.S. tactical operations manual containing controller instructions, status screen navigation, map reading, combat techniques, and emergency defense item protocols.',
+        exclusive: null,
+    },
+    {
+        id: 'kennethsFilm',
+        name: "Kenneth's Film",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.kennethsFilm,
+        description:
+            'A film cartridge belonging to Kenneth J. Sullivan. Requires a video player to view its contents.',
+        exclusive: null,
+    },
+    {
+        id: 'trevorsDiaryVol1',
+        name: "Trevor's Diary Vol. 1",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.trevorsDiaryVol1,
+        description:
+            "George Trevor's journal entries from November 24-27, 1967, documenting his initial imprisonment and realization of betrayal.",
+        exclusive: null,
+    },
+    {
+        id: 'trevorsDiaryVol2',
+        name: "Trevor's Diary Vol. 2",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.trevorsDiaryVol2,
+        description:
+            "An undated handwritten note by George Trevor revealing his secret hiding place behind a painting in the art room.",
+        exclusive: null,
+    },
+    {
+        id: 'trevorsDiaryVol3',
+        name: "Trevor's Diary Vol. 3",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.trevorsDiaryVol3,
+        description:
+            "George Trevor's final journal entries from November 29-31, 1967, chronicling his desperation, discovery of Jessica's fate, and ultimate demise.",
+        exclusive: null,
+    },
+    {
+        id: 'crumpledMemo',
+        name: 'Crumpled Memo',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.crumpledMemo,
+        description:
+            'A crumpled note regarding a plan to hide an object in a dog collar, protected by a vicious canine on the west terrace balcony.',
+        exclusive: null,
+    },
+    {
+        id: 'botanyBook',
+        name: 'Botany Book',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.botanyBook,
+        description:
+            'A botanical reference detailing the medicinal properties of herbs native to the Arklay Mountains and their various mixing combinations.',
+        exclusive: null,
+    },
+    {
+        id: 'bodyDisposal',
+        name: 'Body Disposal',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.bodyDisposal,
+        description:
+            'Special instructions for preventing infected corpses from reanimating through incineration or head destruction.',
+        exclusive: null,
+    },
+    {
         id: 'keepersDiary',
         name: "Keeper's Diary",
         type: 'Document',
@@ -1285,7 +1392,139 @@ export const itemsData: ReadonlyArray<ItemData> = [
         function: 'Documentation',
         imageSrc: thumbnailPaths.keepersDiary,
         description:
-            'A journal of a resident of the Spencer Mansion, and his slow transformation into a zombie.',
+            "A keeper's journal chronicling the descent from mundane duties to T-Virus infection and eventual transformation.",
+        exclusive: null,
+    },
+    {
+        id: 'researchersWill',
+        name: "Researcher's Will",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.researchersWill,
+        description:
+            "Martin Crackhorn's final letter to his wife Alma, documenting the lab accident and his decision to end his life before transformation.",
+        exclusive: null,
+    },
+    {
+        id: 'mailToChiefOfSecurity',
+        name: 'Mail to the Chief of Security',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.mailToChiefOfSecurity,
+        description:
+            'Confidential orders from Umbrella Headquarters detailing X Day procedures: lure S.T.A.R.S., collect specimens, and eliminate all evidence.',
+        exclusive: null,
+    },
+    {
+        id: 'suicideNote',
+        name: 'Suicide Note',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.suicideNote,
+        description:
+            "A researcher's final message explaining the mercy killing of an infected colleague and the decision to die as a person rather than become infected.",
+        exclusive: null,
+    },
+    {
+        id: 'plant42Report',
+        name: 'Plant 42 Report',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.plant42Report,
+        description:
+            'Research report by Henry Sarton detailing Plant 42\'s rapid mutation, dual nutrient sources, and aggressive defensive behavior.',
+        exclusive: null,
+    },
+    {
+        id: 'organicChemistryLabExperiment',
+        name: 'Organic Chemistry Lab Experiment',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.organicChemistryLabExperiment,
+        description:
+            'Laboratory notes on creating V-JOLT from UMB chemicals, a compound lethal to T-Virus infected plant cells.',
+        exclusive: null,
+    },
+    {
+        id: 'familyPictureAndNotes',
+        name: 'Family Picture & Notes',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.familyPictureAndNotes,
+        description:
+            "The Trevor family photograph with virus administration records, Lisa's deteriorating journal entries, and Jessica's final letter.",
+        exclusive: null,
+    },
+    {
+        id: 'barrysPhotograph',
+        name: "Barry's Photograph",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.barrysPhotograph,
+        description:
+            "A family photograph that fell from Barry Burton's shirt, inscribed with loving messages from his daughters Moira and Polly.",
+        exclusive: null,
+    },
+    {
+        id: 'researchersLetter',
+        name: "Researcher's Letter",
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.researchersLetter,
+        description:
+            "John's letter to Ada with system access instructions, X-ray encoded passwords, and a final plea for mercy if encountered as infected.",
+        exclusive: null,
+    },
+    {
+        id: 'vAct',
+        name: 'V-ACT',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.vAct,
+        description:
+            'Research notes on virus-activated hosts (V-ACTs or "Crimson Heads") documenting enhanced speed, aggression, and the decision to freeze the prototype specimen.',
+        exclusive: null,
+    },
+    {
+        id: 'fax',
+        name: 'FAX',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.fax,
+        description:
+            'Confidential fax from Raccoon Disaster Contingency Committee detailing T-Virus outbreak concerns and recommended countermeasures against S.T.A.R.S. intervention.',
+        exclusive: null,
+    },
+    {
+        id: 'securityProtocols',
+        name: 'Security Protocols',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.securityProtocols,
+        description:
+            'Comprehensive facility security protocols covering access restrictions for all basement levels, from heliport to Tyrant research.',
+        exclusive: null,
+    },
+    {
+        id: 'observationNote',
+        name: 'Observation Note',
+        type: 'Document',
+        taxonomy: 'Documents',
+        function: 'Documentation',
+        imageSrc: thumbnailPaths.observationNote,
+        description:
+            "William Birkin's research notes on the G-Virus discovery, 21-year Prototype Parasite incubation, and breakthrough findings surpassing the T-Virus.",
         exclusive: null,
     },
     // Weaponry
@@ -4010,5 +4249,661 @@ export const itemsRoomData: ReadonlyArray<ItemRoomData> = [
         uses: null,
         isFeatured: false,
         requirement: 'none',
+    },
+] as const;
+
+export const transcriptionData: ReadonlyArray<TranscriptionData> = [
+    {
+        itemId: 'starsManual',
+        transcript: `S.T.A.R.S. Manual
+
+If you have changed your controller type to TYPE-B or to TYPE-C, please keep in mind that the contents explained here correlates with controller TYPE-A.
+
+
+-How to view your STATUS SCREEN-
+
+Press the Y Button during the game. (You will not be able to view the STATUS SCREEN during Cut-Scenes or while being attacked.)
+
+In the STATUS SCREEN you'll be able to do the following things.
+Equip weapons
+Use items
+View maps
+Read files
+
+
+-How to VIEW MAP-
+
+In the STATUS SCREEN select MAP from the menu bar or simply push the Z Button during the game. If you have not obtained a map, only the places you have explored will be displayed.
+
+
+-How to READ MAPS-
+
+uncolored room(s): Unexplored room(s).
+orange room(s): Room(s) with still items left.
+green room(s): Explored room(s) without any items left.
+
+red door: Locked door.
+white door: Unlocked door.
+blue door: Door you've been through.
+
+
+-How to PUSH THINGS-
+
+When there is a movable object, face the object in the direction you want to push it and press the Control Stick (+ Control Pad) in the direction you are facing.
+
+
+-CLIMBING ON & CLIMBING DOWN-
+
+Walk up to an object that's waist high of the character, and then press the A Button. (You can climb on movable objects as well.) To CLIMB DOWN from an object, press the A Button while standing on the edge of the object.
+
+
+-How to EQUIP WEAPONS-
+
+In the STATUS SCREEN select the "weapon" you want to arm, then select the "EQUIP" command. (Even if you have a weapon you must EQUIP it in order for you to attack.)
+
+
+-ATTACKING STANCE-
+
+Hold down the R Button. (The player will take an attacking stance towards the closest enemy.)
+
+
+-How to ATTACK-
+
+While holding down the R Button, press the A Button. (You can attack the enemy with the weapon you have equipped.)
+
+
+-180 DEGREE TURN-
+
+While pressing down the Control Stick (or the + Control Pad), press the B Button. (This can also be done using the C Stick alone.)
+
+
+-EXAMINE AN ITEM-
+
+From the STATUS SCREEN select an ITEM and then select the EXAMINE command. (The details of the item will be displayed.)
+
+
+-Emergency Evade-
+
+Using DEFENSE ITEMS such as Daggers, will allow you to escape momentarily when grabbed by an enemy. (However, you will not be able to escape when the enemy grabs you from behind.)
+
+To equip a DEFENSE ITEM, go to the STATUS SCREEN, and then select an ITEM from the DEFENSE ITEM menu. Then select the EQUIP command.
+
+If your DEFENSE ITEM mode is set to MANUAL in the Controller Settings, you must press the L Button to use the DEFENSE ITEM.`,
+    },
+    {
+        itemId: 'kennethsFilm',
+        transcript: `It's the film that belonged to Kenneth. I need a video player to see what's recorded on it.`,
+    },
+    {
+        itemId: 'trevorsDiaryVol1',
+        transcript: `Trevor's Diary Vol. 1
+
+Nov. 24, 1967
+
+Eleven days have past since arriving on this estate. How did I end up like this? A guy in a lab coat came with a plate of skimpy meal and said to me, "Sorry to put you through this, but it's for security reasons." That's when it hit me. It all makes sense now.
+
+There are only two people that know the secret of this mansion, Sir Spencer and myself. If they kill me, Sir Spencer will be the only person that knows the secret.
+
+But for what purpose? It doesn't matter now. It's too dangerous here. My family... I hope they are all right.
+
+I've decided to escape...
+Jessica, Lisa, I pray you are safe.
+
+
+Nov. 26, 1967
+
+How could I be careless? I lost my favorite lighter - the one Jessica gave me for my birthday. Now it's going to be that much harder to get out this dark place.
+
+Nov. 13th, the date when my fate was sealed. My aunt was hospitalized just three days before that. Jessica and Lisa said that they were going to visit her. I wish I could be there with them.
+
+But wait, even as I'm writing my memory is coming back to me more vividly. Just before I passed out, I remember the men in the lab coats said something like, "Most likely your family is already..." I pray for their safety.
+
+
+Nov. 27, 1967
+
+Somehow I managed to get out that room. But getting out of this mansion won't be as easy. I have to get past all the booby-traps. Tiger Eyes, Gold Emblem... I have to try and remember for my own sake....`,
+    },
+    {
+        itemId: 'trevorsDiaryVol2',
+        transcript: `Trevor's Diary Vol. 2
+
+There's something handwritten. It's not dated
+
+Nothing's changed.
+I never thought that this room I designed as an experiment would pay off like this.
+
+I can hide here safely for a while, because nobody knows about the secret behind this painting.
+Not even Sir Spencer.
+
+Painting of a mansion... In the back of the art room.`,
+    },
+    {
+        itemId: 'trevorsDiaryVol3',
+        transcript: `Trevor's Diary Vol. 3
+
+Nov. 29, 1967
+
+I can't get out. I have tried every possible way to escape but only to be faced with the reality that I'm trapped.
+
+I've been everywhere. The laboratory with the large glass tubes filled with formaldehyde and those dark, wet and eerie caves... What can I do?
+
+At first I didn't want to believe my eyes. But that familiar high-heeled shoe in the corridor... It was like reflex. One name came to my mind, Jessica!
+
+I don't want to believe they share the same fate as me.
+No! I can't give up hope. I have to hope they're alive.
+
+
+Nov. 30, 1967
+
+I haven't had anything to eat or drink for the past few days. I feel like I'm going crazy.
+
+Why is this happening to me? Why do I have to die like this?
+I was too obsessed with designing this ghastly mansion. I should have known better.
+
+
+Nov. 31, 1967
+
+It was a dark and damp underground tunnel. And another dead end. But even in the darkness something caught my eye.
+
+Carefully, I lit the last match, I had to see what it was.
+
+A grave! But deeply engraved into the stone was my name!
+
+"George Trevor"
+
+At that instant, it all became clear to me. Those bastards knew from the beginning that I'd die here and I fell right into their trap.
+
+But it's too late now. I'm losing it. Everything is becoming so far away. Jessica... Lisa... Forgive me.
+
+Because of my ego, I got both of you involved in this whole damn conspiracy. Forgive me. May God justify my death in exchange for your safety.
+
+George Trevor`,
+    },
+    {
+        itemId: 'crumpledMemo',
+        transcript: `A crumpled memo
+
+Today, Sir Spencer told me to hide something where no one could find it.
+
+Well, I had this idea. I figured if I could somehow have it protected by a dangerous animal like the vicious canine that lives here, no one would be able to get near it!
+
+As far as I can tell, the mutt is always hanging around the second floor balcony on the west side of the terrace, and he ought to come running at the sound of a dog whistle.
+
+This is where you come in. The thing is, I reckon you're the only person that can get near that damn dog without risking a serious mauling.
+
+Which means only you can put this collar on him. The object that Sir Spencer wants hidden is concealed inside.
+
+You're the only person I can trust with this. Of course, you'll get something out of it as well. Remember that certain item that you've always wanted to get hold of?
+
+Well, in exchange for your services, I just might be able to get it for you. This could work out well for both of us...`,
+    },
+    {
+        itemId: 'botanyBook',
+        transcript: `BOTANY
+-Uses of Medicinal Herbs-
+
+It is a well-known fact that there exist many plants that are credited with medicinal healing powers. Since ancient times, mankind has been healing wounds and diseases using various plants.
+
+In this book, we will sample three herbs that are native of the Arklay Mountains and briefly outline each of their medicinal qualities. Each herb has a distinct color and a distinct medicinal quality.
+
+The green herb recovers physical strength. The blue herb neutralizes natural toxins. However, the red herb has no real effect by itself. We have found that mixing green and red herbs results in a magnified effect.
+
+We will outline the effects of red herbs when mixed with other herbs when we have more data. Meanwhile feel free to experiment on your own, for true knowledge is best acquired through own experience.`,
+    },
+    {
+        itemId: 'bodyDisposal',
+        transcript: `Special instructions when disposing of dead bodies.
+
+We have new information regarding those "beings". They may appear to be dead but in fact they are able to come back to life. However, there are ways to prevent them from becoming active again.
+
+Currently there are two known methods to cease their resurrection.
+
+INCINERATION
+DESTRUCTION OF THE HEAD
+
+If further methods are discovered, they will be notified immediately.
+
+Meanwhile to those of you who still have the will to live, oil has been placed on the first floor of the mansion. Take as much as you need.
+
+You'll need something to light it with, which you'll need to find by yourself.`,
+    },
+    {
+        itemId: 'keepersDiary',
+        transcript: `Keeper's Diary
+
+May 9, 1998
+
+Played poker tonight with Scott and Alias from Security, and Steve from Research. Steve was the big winner, but I think he was cheating. Scumbag.
+
+
+May 10, 1998
+
+One of the higher-ups assigned me to take care of a new creature. It looks like a skinned gorilla. Feeding instructions were to give it live animals.
+
+When I threw in a pig, the creature seemed to play with it... tearing off the pig's legs and pulling out the guts before it actually started eating.
+
+
+May 11, 1998
+
+At around 5 A.M., Scott woke me up. Scared the shit out me, too. He was wearing a protective suit. He handed me another one and told me to put it on. Said there'd been an accident in the basement lab.
+
+I just knew something like this would happen. Those bastards in Research never sleep, even on holiday.
+
+
+May 12, 1998
+
+I've been wearing the damn space suit since yesterday. My skin's getting grimy and feels itchy all over. The goddamn dogs have been looking at me funny, so I decided not to feed them today. Screw 'em.
+
+
+May 13, 1998
+
+Went to the Infirmary because my back is all swollen and feels itchy. They put a big bandage on it and told me I didn't need to wear the suit anymore. All I wanna do is sleep.
+
+
+May 14, 1998
+
+Found another big blister on my foot this morning. I ended up dragging my foot all the way to the dog's pen. They were quiet all day, which is weird.
+
+Then I realized some of them had escaped. Maybe this is their way of getting back at me for not feeding them the last three days. If anybody finds out, I'll have my head handed to me.
+
+
+May 16, 1998
+
+Rumors going around that a researcher who tried to escape the estate last night was shot. My entire body feels hot and itchy and I'm sweating all the time now.
+
+I scratched the swelling on my arm and a piece of rotten flesh just dropped off. What the hell's happening to me?
+
+
+May 19, 1998
+
+Fever gone but itchy. Today hungry and eat doggie food.
+
+
+May 21, 1998
+
+Itchy itchy Scott came ugly face so killed him. Tasty.
+
+
+4 / / Itchy. Tasty.`,
+    },
+    {
+        itemId: 'researchersWill',
+        transcript: `Researcher's Will
+
+A letter is slipped inside.
+
+June 3, 1998
+
+My dearest Alma,
+
+Let me first apologize for not being able to call you. A man wearing sunglasses didn't permit any phone calls. Sorry Alma.
+
+I sit here trying to think of where to begin, of how to explain in a few simple words all that's happened in my life since we last spoke, and already I fail. I hope this letter finds you well, and that you'll forgive the tangents of my pen; this isn't easy for me.
+
+Even as I write, I can feel the simplest of concepts slipping away, lost to feelings of despair and confusion -- but I have to tell you what's in my heart before I can rest. Alma, please believe that what I'm telling you is the truth. The entire story would take hours for me to tell you, and time is short, so accept these things as fact: last month there was an accident in the lab and the virus we were studying leaked.
+
+All my colleagues who were infected are dead or dying, and the nature of the disease is such that those still living have lost their senses. This virus robs its victims of their humanity, forcing them in their sickness to seek out and destroy life. Even as I write these words, I can hear them, pressing against my door like mindless, hungry animals.
+
+Alma, I have tried to survive only to see you again. But my efforts only delayed the inevitable; I am infected, and there is no cure for what will follow - except to end my life before I lose the only thing that separates me from them.
+
+My love for you.
+
+In an hour I'll have entered my eternal sleep where there is peace. Please understand. Please know that I'm sorry.
+
+Martin Crackhorn`,
+    },
+    {
+        itemId: 'mailToChiefOfSecurity',
+        transcript: `Mail to the Chief of Security
+
+CONFIDENTIAL
+Attn: Chief of Security
+Date: July 22, 1998 2:13
+
+X Day is drawing upon us. Execute the following procedures within one week. Prompt actions are demanded.
+
+Lure S.T.A.R.S. to the estate, and obtain B.O.W.'s raw combat data against S.T.A.R.S.
+
+Collect two embryos of each mutated specimens as samples, excluding the Tyrant. Dispose of the Tyrant.
+
+Ensure complete disposal of the Arklay Laboratory including all personnel and test animals. Disguise their deaths as an accident.
+When the above procedures are executed, report to headquarters for further instructions.
+
+If for some reason you are unable to execute the procedure by the deadline, report immediately. In case of emergency situations, report directly to the extension number 5691.
+
+Good luck.
+Umbrella Headquarters,
+Umbrella Inc.`,
+    },
+    {
+        itemId: 'suicideNote',
+        transcript: `Suicide Note
+
+June 22, 1998
+
+I had to do it. We ran from those things - helping each other to survive. But Robert started to show the symptoms. I had to do it. Those damn things are pure evil.
+
+There was no other way. He would have done the same if it were the other way around. After I put him out of his misery I had to just put him in the bathroom. Now I'm probably the last one...
+
+How could this happen? I'll never forgive myself for being part of this project. Eventually I'll get what's coming to me, though. There's no way to escape from this nut house, it's just a matter of time now.
+
+Everything is set. All I need is a little courage to get it done. Knowing that I'll leave many things undone is regret beyond words.
+
+But, this is better than just waiting to turn into one of them. Please understand and at least let me end my life as a person.
+
+There's a message on the back.
+
+Linda, please forgive me...`,
+    },
+    {
+        itemId: 'plant42Report',
+        transcript: `PLANT 42 REPORT
+
+Four days have passed since the accident. The plant at Point 42 is growing at an amazing rate.
+
+Although there are many unknown aspects about this plant, we know that in comparison with the other group of plants, the T-Virus has had a substantially stronger affect on this one.
+
+The T-Virus has drastically morphed its host's anatomy as well as its size. Looking at its current state, it's difficult to imagine its original appearance. Nowhere on Earth will you find anything like it.
+
+We've also found that PLANT 42 has two main sources of acquiring its necessary nutrients. One source is through its root. Somehow it has rooted itself down into the basement.
+
+Immediately after the accident, a scientist went mad and destroyed the Aqua Ring. Ever since, the basement has been like a pool. There is a high possibility that it's one of the chemicals in the water that's promoting the PLANT 42's rapid growth.
+
+However, we have yet to determine the specific chemical.
+
+A bulb-like body of the PLANT 42 has been sighted hanging from the ceiling of the first floor. We are sure that it used the air ducts to reach the first floor. Numerous long tentacle-like vines are protruding from the bulb.
+
+We believe the vines are the second means of acquiring its nutrients. When the PLANT 42 senses prey, it uses the tentacle-like vines to capture its prey. After doing so, suckers on the vine drain the prey of its blood.
+
+We've also noticed that it has some intelligence. When it captures its prey or when it's inactive, the vines twine around the door to stop possible intruders.
+
+Unfortunately, several of our scientists have already fallen victim to this PLANT 42. When we heard the stories from the survivors, they all observed one thing in common:
+
+When the uniform petal-like flaps open and reveal its vital internals, it has a tendency to become more aggressive.
+
+One witness reported that it was as if it was trying to protect itself. Why it behaves the way it does is still unknown.
+
+May 21, 1998
+Henry Sarton`,
+    },
+    {
+        itemId: 'organicChemistryLabExperiment',
+        transcript: `Organic Chemistry Lab Experiment
+
+The similarities in the cellular characteristics of the rapidly growing plant infected by the Tyrant Virus have been reported in previous papers. However, while repeating these experiments, an interesting new fact became clear.
+
+We learned that a chemical in the UMB family, UMB No. 20, contains a compound that is toxic to the cells of the plant.
+
+We have given UMB No. 20 a new name: V-JOLT. If calculations prove correct, when V-JOLT is applied directly to the root of the plant, the entire plant should be dead within 5 seconds.
+
+The V-JOLT can be made by simply mixing the VP and UMB chemicals in a specific ratio. However, extra care must be taken when handling these UMB chemicals. They have been known to generate toxic gases if mishandled.
+
+The characteristics of each UMB chemical are as follows:
+
+UMB	No. 3 red
+Yellow-6	yellow
+UMB No. 7	green
+UMB No. 10	orange
+VP-017	blue
+V-JOLT	dark brown`,
+    },
+    {
+        itemId: 'familyPictureAndNotes',
+        transcript: `A family picture and notes
+
+
+
+There's something written on the back.
+
+Nov. 10, 1967
+-Progenitor virus administered
+
+Jessica
+Administered virus: Type-A
+Plasmolyzing of tissue during cell activation.
+
+Virus fusion: Negative
+
+Action: Disposed
+
+
+Lisa
+
+Administered virus: Type-B
+Plasmolyzing of tissue during cell activation.
+
+Virus fusion: Positive but delayed fusion.
+
+Body modification: Observed constant results.
+
+Status: Continue protective observation.
+
+
+George
+Action: Terminated (Nov. 30, 1967)
+
+
+There's a journal left by someone.
+
+Nov. 14, 1967
+
+I feel dizzy after that shot they gave me. I don't see Mom. Where did they take her?
+She promised that we would escape together. Did she escape alone and leave me behind?
+
+
+Nov. 15, 1967
+
+I found Mom. We ate together. I was very happy.
+
+But she was a fake. Not my real Mom. Same face but different inside.
+
+Have to find Mom. Have to give face back to mother.
+
+I got Mom's face back.
+Nobody can have my Mom except me. I attach her face to me so she doesn't go away.
+Because Mom sad when I meet her without her face.
+
+
+Nov. 17, 19 7
+
+from inside box, scent of mommy. maybe true mother there.
+stone box hard. It hurt. steel rope in the way.
+can't see mother becuz 4 stones.
+
+
+19
+
+dadddy atached first
+momm atached scond
+
+iNside reD and sLimy
+whiTe and haRd
+
+not true moM wheRe
+
+dunno dadd
+found mum again
+
+whne atachd momMy
+she moved no more
+she screaming
+
+why?
+Jst want to b with her
+
+
+4
+
+mom
+where?
+
+I mis yuo
+
+
+It's a letter.
+
+To my Lisa,
+
+Day by day I can feel my consciousness drifting further and further away.
+The shots given to me by men in white clothes made some of mommy's itching go away. Today they gave me another shot saying it was "nutrition".
+
+When they give me the shots mommy can think straight, but mommy's shocked and sad because mommy's unable to think of you all the time.
+
+Mommy's afraid. Afraid of forgetting everything, especially the memories of you and daddy... What your faces look like, how we used to be together... They're all starting to disappear into somewhere dark in my mind.
+
+Oh Lisa, I wish I could touch your face and hold you in my arms right now, so that I can hold on to our wonderful memories of you and daddy.
+
+Lisa we can't stay here any longer. We have to escape!
+
+Listen to me Lisa. Our chance to escape is the next time we go to that lab together. We'll both pretend that we are both unconscious and when that man in white clothes is off guard that will be our chance.
+
+When we're on the outside, let's look for daddy together. Okay sweetie? Be strong, Lisa.
+
+Nov. 13, 1967
+Jessica Trevor`,
+    },
+    {
+        itemId: 'barrysPhotograph',
+        transcript: `Barry's Photograph
+
+
+
+This is the photograph that fell out of Barry's shirt just before he fell into the pit. There's something written on the back.
+
+We love you daddy
+From your sweet daughters,
+
+Moira and Polly`,
+    },
+    {
+        itemId: 'researchersLetter',
+        transcript: `Researcher's letter
+
+June 8th, 1998
+My dearest Ada,
+
+By the time you read this letter, I will no longer be the person you once knew. The results of my test came out today, and as I suspected, it came out positive.
+
+I feel like I am teetering on the edge of reason just thinking about my impending doom. I would give anything not to have to become one of them.
+
+As far as I know, you are not infected. I sincerely hope things do not reach such a desperate pass, but if it has turned out that you are now the last person remaining alive, I want you to get the material from the Visual Data Room.
+
+Then, activate the Self-Destruct System in the Power Room, and escape from here. Please do everything in your power to make this whole accident public.
+
+If everything is still running normally, you should be able to release all the locks using the Security System.
+
+I have set up the terminal in the small security room so that you can log in to the system using my name and your name as the password.
+
+You will need another password to release the lock of the door in Basement Level Two where the Visual Data Room is located.
+
+As a safety measure I have coded that password into an X-ray picture; a roentgenogram. I know you, and I'm sure you will be able to work it out without any trouble.
+
+There is just one more thing... and it is my last request. I hope you never have to lay eyes on me in this state, but if you do happen to run into me in my hideous form, I beg you to put me out of my misery. I hope you understand.
+
+Thank you, Ada.
+Yours truly,
+
+John`,
+    },
+    {
+        itemId: 'vAct',
+        transcript: `V-ACT
+Researcher's note
+
+There is now evidence that when the host loses consciousness, the body goes into a dormant state. During this time the virus becomes active and rapidly transforms and reconstructs the basic composition of the body.
+
+The host eventually mutated into a humanoid creature. (We call them V-ACTs)
+
+Its speed and amazing muscular development are particularly noteworthy. After transformation, it becomes more agile and aggressive.
+
+Already four of our researchers have died from trying to feed it, turning the place into an instant blood bath. (Ever since this tragic and barbaric accident, we have decided to call its kind "Crimson Heads")
+
+That dangerous and precious prototype specimen can't be left there. We have to figure out a way to deal with it. Termination is definitely not an option.
+
+We finally decided to freeze the specimen and confine the body inside the basement of the backyard cemetery.`,
+    },
+    {
+        itemId: 'fax',
+        transcript: `FAX
+
+To: Sanitation Division
+Attn: Manager of Sanitation
+From: Raccoon Disaster Contingency Committee
+
+The contents of this fax are confidential and intended for the named addressee only. Any copying, or disclosure of the contents of this fax to any third party is strictly forbidden by the sender.
+
+After reading the contents of this fax, it must be destroyed immediately.
+
+We expect significant increase in the damage done by the recent T-Virus' outbreak than initially estimated. There are several concerns.
+
+First concern
+More than half of the researchers have been infected by the T-Virus and died. It has also been reported that almost all of the survivors of this accident are starting to show symptoms of the T-Virus infection.
+
+Second concern
+Our Secret Security Patrol Team has also been completely eradicated. Therefore, our most secret research is in danger of public disclosure. Quick actions are demanded to prevent mass media coverage.
+
+Third concern
+There is a high possibility that most of the specimens are running loose inside the compound. We expect many casualties to follow.
+
+However yet unfortunate, these casualties underscore the success of our research results. Actions must be taken to prevent our research results from being made public.
+
+We suspect the first official intervention will come from the State Police and S.T.A.R.S. We strongly recommend taking measures against them first.`,
+    },
+    {
+        itemId: 'securityProtocols',
+        transcript: `SECURITY PROTOCOLS
+
+LEVEL ONE
+
+Heliport/ For executive use only. This restriction does not apply in the event of an emergency.
+
+
+BASEMENT LEVEL ONE
+
+Passage to Heliport/ Entry is prohibited unless accompanied by a Consultant Researcher or the Chief of Security. Unauthorized persons entering the heliport will be shot on site.
+
+Elevator/ The elevator stops during emergencies.
+
+
+BASEMENT LEVEL TWO
+
+Visual Data Room/ For use by the Special Research Division only. All other access to the Visual Data Room must be cleared with Keith Arving, Room Manager.
+
+
+BASEMENT LEVEL THREE
+
+Prison/ Sanitation Division controls the use of the prison. At least one Consultant Researcher (E. Smith, S. Ross, A. Wesker) must be present if viral use is authorized.
+
+Triple Lock Door/ Entry into the room is limited to the sole person who deactivates the lock with all of the Pass Codes. Accessing the exclusive Output Terminals located in each section of the Senior Researchers deactivates the lock.
+
+Power Room/ In this room nitro compound is used as the primary fuel source of power. Access is limited to Headquarters Supervisors. This restriction may not apply to Consultant Researchers with special authorization.
+
+Pass Code Output Terminals/ Use and access of the Output Terminals is limited to authorized Senior Researchers.
+
+
+BASEMENT LEVEL FOUR
+
+Regarding the progress of "Tyrant" after the administration of T- Virus...
+(Illegible hereafter...)`,
+    },
+    {
+        itemId: 'observationNote',
+        transcript: `Observation Note
+
+The discovery of the G-Virus was in fact 21 years after the administration of the progenitor virus.
+
+The "Prototype Parasite" which we had delivered from a laboratory in France was administered to the sample specimen. The sample specimen took in the parasite without showing any signs of adverse reaction.
+
+The lack of any reaction was an unsolved mystery. But now everything is clear to me now.
+
+The "Prototype Parasite" was incubating in the sample specimen's body for 21 years. Then from that incubating state the prototype suddenly mutated. ("Evolved" may be a more appropriate word to describe it.)
+
+This observation gave me more insight in my research. Through further modification and testing, I was able to derive a method to create the "G" that surpasses the performance of the "T".
+
+This was the breakthrough that would change the future of the B.O.W.'s history.
+
+I can't wait to see the look on Alexia's annoying face when I finally announce my research. But unfortunately I'll have to wait a few more years to completely verify my findings.
+
+William Birkin`,
     },
 ] as const;
