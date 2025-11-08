@@ -161,32 +161,33 @@ npm test          # Verify tests pass with new mappings
 **When Adding/Modifying ANY API Endpoint**, you MUST update all three in order:
 
 1. **Express API** (`src/routes/`, `src/middleware/`, etc.)
-   - Implement endpoint logic
-   - Add validation rules
+    - Implement endpoint logic
+    - Add validation rules
 
 2. **OpenAPI Specification** (`openapi.yaml`)
-   - Document EXACT parameter names (e.g., `code` not `classification`)
-   - Document EXACT enum values with correct case (e.g., `Weapon` not `weapon`)
-   - Mark optional vs required parameters
-   - Include example values
+    - Document EXACT parameter names (e.g., `code` not `classification`)
+    - Document EXACT enum values with correct case (e.g., `Weapon` not `weapon`)
+    - Mark optional vs required parameters
+    - Include example values
 
 3. **MCP Tools** (`mcp-server/src/tools/`)
-   - Update tool schemas to match OpenAPI **EXACTLY**
-   - Copy parameter names verbatim
-   - Copy enum values with exact case
-   - Include ALL parameters (don't omit any)
-   - Update descriptions to reference actual valid values
+    - Update tool schemas to match OpenAPI **EXACTLY**
+    - Copy parameter names verbatim
+    - Copy enum values with exact case
+    - Include ALL parameters (don't omit any)
+    - Update descriptions to reference actual valid values
 
 4. **Rebuild MCP Server**
-   ```bash
-   cd mcp-server
-   npm run build
-   ```
+
+    ```bash
+    cd mcp-server
+    npm run build
+    ```
 
 5. **Test with Actual API**
-   - Make real API requests through MCP tools
-   - Verify no 400 Bad Request errors
-   - Verify all parameters work as expected
+    - Make real API requests through MCP tools
+    - Verify no 400 Bad Request errors
+    - Verify all parameters work as expected
 
 #### Common Mistakes to Avoid
 
@@ -226,6 +227,7 @@ properties: { room: string, name: string, difficulty: string, code: string }
 #### Documentation Standards
 
 After updating MCP tools:
+
 - Add usage examples to `docs/MCP_SERVER.md`
 - Update tool count if adding new tools
 - Document new natural language query patterns

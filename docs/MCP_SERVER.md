@@ -28,6 +28,7 @@ The Model Context Protocol (MCP) is Anthropic's protocol for connecting AI assis
 Instead of manually making HTTP requests to the API, you can ask Claude natural language questions and Claude will automatically call the appropriate tools to get the data you need.
 
 **Example:**
+
 - ❌ Before: Make HTTP request to `/api/maps/rooms/search?name=Dining%20Room`
 - ✅ Now: Ask Claude "What items are in the Dining Room?"
 
@@ -98,17 +99,23 @@ Instead of manually making HTTP requests to the API, you can ask Claude natural 
 ### Critical Matching Requirements
 
 #### Parameter Names
+
 ```typescript
 // ❌ WRONG - Parameter doesn't exist in API
-{ classification: string }
+{
+    classification: string;
+}
 // → 400: Unrecognized query parameter
 
 // ✅ CORRECT - Actual API parameter name
-{ code: string }
+{
+    code: string;
+}
 // → From openapi.yaml line 298: "- name: code"
 ```
 
 #### Enum Values (Case Sensitive!)
+
 ```typescript
 // ❌ WRONG - Generic enum values
 enum: ['weapon', 'ammo', 'health']
@@ -120,6 +127,7 @@ enum: ['Weapon', 'Ammunition', 'GreenHerb', 'RedHerb', 'BlueHerb']
 ```
 
 #### Complete Parameter Sets
+
 ```typescript
 // ❌ WRONG - Missing optional parameters
 properties: {
@@ -193,11 +201,11 @@ npm start
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `API_BASE_URL` | `http://localhost:3000` | Base URL of Express API |
-| `API_TIMEOUT` | `10000` | Request timeout (milliseconds) |
-| `API_AUTH_TOKEN` | (none) | Bearer token for future auth |
+| Variable         | Default                 | Description                    |
+| ---------------- | ----------------------- | ------------------------------ |
+| `API_BASE_URL`   | `http://localhost:3000` | Base URL of Express API        |
+| `API_TIMEOUT`    | `10000`                 | Request timeout (milliseconds) |
+| `API_AUTH_TOKEN` | (none)                  | Bearer token for future auth   |
 
 ### Claude Desktop Configuration
 
@@ -213,18 +221,16 @@ Create or edit the file:
 
 ```json
 {
-  "mcpServers": {
-    "re-remake-map": {
-      "command": "node",
-      "args": [
-        "/Users/you/Projects/RE-Remake-Interactive-Map/mcp-server/dist/index.js"
-      ],
-      "env": {
-        "API_BASE_URL": "http://localhost:3000",
-        "API_TIMEOUT": "10000"
-      }
+    "mcpServers": {
+        "re-remake-map": {
+            "command": "node",
+            "args": ["/Users/you/Projects/RE-Remake-Interactive-Map/mcp-server/dist/index.js"],
+            "env": {
+                "API_BASE_URL": "http://localhost:3000",
+                "API_TIMEOUT": "10000"
+            }
+        }
     }
-  }
 }
 ```
 
@@ -255,24 +261,32 @@ The server communicates via stdio, so it can be used with any MCP-compatible cli
 ### Items Tools (3)
 
 #### 1. `get_all_items`
+
 Get all items with optional difficulty filtering.
 
 **Parameters:**
+
 - `difficulty` (optional): Filter by difficulty level
 
 **Example:**
+
 ```typescript
-{ difficulty: "JV-lvl-normal" }
+{
+    difficulty: 'JV-lvl-normal';
+}
 ```
 
 #### 2. `get_items_by_ids`
+
 Fetch specific items by IDs.
 
 **Parameters:**
+
 - `ids` (required): Array of item IDs
 - `difficulty` (optional): Filter by difficulty
 
 **Example:**
+
 ```typescript
 {
   ids: ["weapon-mainHallF1", "inkRibbon-diningRoomF1", "selfDefenseJV-keepersRoom"],
@@ -281,15 +295,18 @@ Fetch specific items by IDs.
 ```
 
 #### 3. `search_items`
+
 Search items by name/type.
 
 **Parameters:**
+
 - `name` (optional): Partial name match
 - `type` (optional): Item type filter (e.g., "Weapon", "Ammunition", "GreenHerb")
 - `room` (optional): Filter by room ID
 - `difficulty` (optional): Difficulty filter
 
 **Example:**
+
 ```typescript
 {
   name: "Handgun",
@@ -301,31 +318,40 @@ Search items by name/type.
 ### Biohazards Tools (3)
 
 #### 4. `get_all_biohazards`
+
 Get all biohazards/enemies.
 
 **Parameters:** None
 
 #### 5. `get_biohazards_by_ids`
+
 Fetch specific biohazards by IDs.
 
 **Parameters:**
+
 - `ids` (required): Array of biohazard IDs (format: biohazardType-roomId)
 
 **Example:**
+
 ```typescript
-{ ids: ["zombie1-keepersRoom", "hunter-teaRoomCorridor"] }
+{
+    ids: ['zombie1-keepersRoom', 'hunter-teaRoomCorridor'];
+}
 ```
 
 #### 6. `search_biohazards`
+
 Search biohazards by name or code.
 
 **Parameters:**
+
 - `name` (optional): Partial name match
 - `code` (optional): Filter by S.T.A.R.S. code (e.g., "Ht", "Zb")
 - `room` (optional): Filter by room ID
 - `difficulty` (optional): Difficulty filter
 
 **Example:**
+
 ```typescript
 {
   name: "Hunter",
@@ -337,18 +363,22 @@ Search biohazards by name or code.
 ### Maps Tools (4)
 
 #### 7. `get_all_areas`
+
 Get all map areas.
 
 **Parameters:** None
 
 #### 8. `get_rooms_by_ids`
+
 Fetch specific rooms by IDs.
 
 **Parameters:**
+
 - `ids` (required): Array of room IDs (camelCase format)
 - `difficulty` (optional): Filter contents by difficulty
 
 **Example:**
+
 ```typescript
 {
   ids: ["diningRoomF1", "mainHallF1", "keepersRoom"],
@@ -357,9 +387,11 @@ Fetch specific rooms by IDs.
 ```
 
 #### 9. `search_rooms`
+
 Search rooms by various criteria.
 
 **Parameters:**
+
 - `map` (optional): Filter by map ID (camelCase, e.g., "mansionF1")
 - `item` (optional): Filter rooms containing specific item
 - `biohazard` (optional): Filter rooms containing specific biohazard
@@ -373,6 +405,7 @@ Search rooms by various criteria.
 - `difficulty` (optional): Filter contents
 
 **Example:**
+
 ```typescript
 {
   map: "mansionF1",
@@ -382,13 +415,16 @@ Search rooms by various criteria.
 ```
 
 #### 10. `get_rooms_by_map`
+
 Get all rooms for a specific map.
 
 **Parameters:**
+
 - `mapId` (required): Map ID in camelCase (e.g., "mansionF1", "mansionF2")
 - `difficulty` (optional): Filter contents
 
 **Example:**
+
 ```typescript
 {
   mapId: "mansionF1",
@@ -401,6 +437,7 @@ Get all rooms for a specific map.
 ### Prerequisites for Examples
 
 Before trying these examples:
+
 1. Express API must be running on port 3000
 2. MCP server must be running
 3. Claude Desktop configured with MCP server
@@ -416,12 +453,14 @@ Before trying these examples:
 **Tools Used**: `get_all_items`
 
 **Claude's Approach**:
+
 ```
 I'll fetch the complete item list for you.
 [calls get_all_items]
 ```
 
 **Expected Response**:
+
 ```
 The game contains 40+ items across categories:
 
@@ -462,6 +501,7 @@ Keys:
 **Tools Used**: `get_items_by_ids`
 
 **Parameters**:
+
 ```typescript
 {
   ids: ["weapon-mainHallF1", "inkRibbon-diningRoomF1", "typewriter-diningRoomF1"],
@@ -470,6 +510,7 @@ Keys:
 ```
 
 **Expected Response**:
+
 ```
 weapon-mainHallF1:
 - Name: Handgun
@@ -505,10 +546,12 @@ typewriter-diningRoomF1:
 **Query**: "What are all the items in the Dining Room?"
 
 **Tools Used**:
+
 1. `search_rooms` (name="Dining Room")
 2. `get_rooms_by_ids` (with found room ID)
 
 **Expected Response**:
+
 ```
 Dining Room (diningRoomF1):
 
@@ -536,10 +579,12 @@ Access: Unlocked from Main Hall
 **Query**: "How many biohazards are in the Armor Room?"
 
 **Tools Used**:
+
 1. `search_rooms` (name="Armor Room")
 2. `get_rooms_by_ids` (with difficulty filtering)
 
 **Expected Response**:
+
 ```
 Armor Room (armorRoom):
 
@@ -569,10 +614,12 @@ Recommendation: Save before entering on Hard difficulty
 **Query**: "What is the threat level of the Main Hall on Jill Hard?"
 
 **Tools Used**:
+
 1. `search_rooms` (name="Main Hall")
 2. `get_rooms_by_ids` (difficulty="JV-lvl-hard")
 
 **Expected Response**:
+
 ```
 Main Hall (mainHallF1) - Jill Hard:
 
@@ -608,10 +655,12 @@ Safe Strategy:
 **Query**: "What is the most dangerous room in Mansion 1F?"
 
 **Tools Used**:
+
 1. `get_all_areas` (find Mansion 1F map ID)
 2. `get_rooms_by_map` (mapId="mansionF1", difficulty="JV-lvl-hard")
 
 **Expected Response**:
+
 ```
 Most Dangerous Rooms in Mansion 1F (Jill Hard):
 
@@ -646,11 +695,13 @@ Recommendation: Save before entering Main Hall or Armor Room. Bring shotgun and 
 **Query**: "Give me a list of rooms with shotgun ammo"
 
 **Tools Used**:
+
 1. `search_items` (name="Shotgun Shells", type="Ammunition")
 2. Extract location data from results
 3. `get_rooms_by_ids` (with extracted room IDs)
 
 **Expected Response**:
+
 ```
 Rooms with Shotgun Shells:
 
@@ -699,11 +750,13 @@ Optimal Collection Route:
 **Query**: "Where can I find the Shotgun?"
 
 **Tools Used**:
+
 1. `get_items_by_ids` (name="Shotgun")
 2. Extract location from item data
 3. `get_rooms_by_ids` (for detailed location)
 
 **Expected Response**:
+
 ```
 Shotgun Location:
 
@@ -739,11 +792,13 @@ Alternative Notes:
 **Query**: "Show me all rooms that the Armor Key opens"
 
 **Tools Used**:
+
 1. `search_items` (name="Armor Key")
 2. Extract "unlocks" data from key
 3. `search_rooms` (with access requirements)
 
 **Expected Response**:
+
 ```
 Rooms Unlocked by Armor Key:
 
@@ -781,11 +836,13 @@ Note: Armor Key is single-use per door. Plan your route carefully.
 **Query**: "Where do I find the Sword Key?"
 
 **Tools Used**:
+
 1. `search_items` (name="Sword Key")
 2. Extract location from item data
 3. `get_rooms_by_ids` (for detailed instructions)
 
 **Expected Response**:
+
 ```
 Sword Key Location:
 
@@ -838,6 +895,7 @@ Progression Note: Sword Key is the first major key. Get this before exploring fu
 **Tools Used**: `search_biohazards` (name="Hunter")
 
 **Expected Response**:
+
 ```
 Hunter (MA-121)
 
@@ -891,6 +949,7 @@ Delta classification biohazard with 1.5-star ranking. Moderate-High threat level
 **Tools Used**: `search_biohazards` (name="Crimson Head")
 
 **Expected Response**:
+
 ```
 Crimson Head
 
@@ -945,11 +1004,13 @@ Epsilon classification biohazard with 1-star ranking. Moderate threat level - av
 **Query**: "Which rooms should I prioritize in Mansion 1F for items?"
 
 **Tools Used**:
+
 1. `get_rooms_by_map` (mapId="mansionF1")
 2. Analyze item value vs threat
 3. Rank by priority
 
 **Expected Response**:
+
 ```
 Mansion 1F - Item Priority Guide (Normal Difficulty)
 
@@ -1028,11 +1089,13 @@ This route ensures progression while managing resources.
 **Query**: "Show me all safe rooms in the Mansion"
 
 **Tools Used**:
+
 1. `search_rooms` (function="safe-room")
 2. Filter by map areas
 3. List with details
 
 **Expected Response**:
+
 ```
 Safe Rooms in Spencer Mansion:
 
@@ -1121,11 +1184,13 @@ Recommended Save Points:
 **Query**: "I'm in the Main Hall, what rooms can I access and what's in them?"
 
 **Tools Used**:
+
 1. `get_rooms_by_ids` (ids=["mansion-1f-main-hall"])
 2. Extract adjoiningRooms list
 3. `get_rooms_by_ids` (for all adjacent rooms)
 
 **Expected Response**:
+
 ```
 From Main Hall (mainHallF1), you can access:
 
@@ -1195,12 +1260,14 @@ Threats: Minimal (2-3 zombies total)
 **Query**: "I need shotgun ammo, where's the closest room?"
 
 **Tools Used**:
+
 1. Get current location context
 2. `search_items` (name="Shotgun Shells", type="Ammunition")
 3. `get_rooms_by_ids` (for rooms with shells)
 4. Calculate route/distance
 
 **Expected Response**:
+
 ```
 Closest Shotgun Shell Locations:
 
@@ -1271,10 +1338,12 @@ Safest: Recreation Room (fewer enemies)
 **Query**: "Compare item availability in the Dining Room on Jill Very Easy vs Chris Hard"
 
 **Tools Used**:
+
 1. `get_rooms_by_ids` (ids=["mansion-1f-dining-room"], difficulty="JV-lvl-very-easy")
 2. `get_rooms_by_ids` (ids=["mansion-1f-dining-room"], difficulty="CR-lvl-hard")
 
 **Expected Response**:
+
 ```
 Dining Room Save Room - Difficulty Comparison
 
@@ -1368,11 +1437,13 @@ The same room has DRASTICALLY different resource availability!
 **Query**: "Which rooms have both items AND biohazards?"
 
 **Tools Used**:
+
 1. `get_all_areas`
 2. `get_rooms_by_map` (for each map)
 3. Filter rooms where items.length > 0 AND biohazards.length > 0
 
 **Expected Response**:
+
 ```
 Rooms with BOTH Items AND Biohazards:
 
@@ -1498,11 +1569,13 @@ Progression Note: You MUST clear these rooms eventually for items. Plan accordin
 **Query**: "What keys do I need for the Courtyard?"
 
 **Tools Used**:
-1. `search_rooms` (mapId="courtyard-*")
+
+1. `search_rooms` (mapId="courtyard-\*")
 2. Check access requirements
 3. `search_items` (for required keys)
 
 **Expected Response**:
+
 ```
 Keys Required for Courtyard Access:
 
@@ -1627,11 +1700,13 @@ Estimated Total Time: 60-90 minutes
 **Query**: "Which rooms have Ink Ribbons, First Aid Sprays, AND Shotgun Shells?"
 
 **Tools Used**:
+
 1. `search_items` (multiple searches)
 2. Cross-reference locations
 3. `get_rooms_by_ids` (for rooms with all three)
 
 **Expected Response**:
+
 ```
 Rooms with Ink Ribbons + First Aid Sprays + Shotgun Shells:
 
@@ -1770,11 +1845,13 @@ Resource Management:
 The MCP server implements client-side rate limiting matching the Express API:
 
 **Limits:**
+
 - **100 requests** per **15 minutes** (900 seconds)
 - Window is rolling (not fixed intervals)
 - Enforced per MCP server instance
 
 **Behavior:**
+
 ```
 Request #1-100: ✅ Allowed
 Request #101: ❌ Error with wait time
@@ -1782,6 +1859,7 @@ After 15 minutes: Window resets
 ```
 
 **Example Error:**
+
 ```
 Rate limit exceeded (100 requests per 900s).
 Please wait 347 seconds before making more requests.
@@ -1797,6 +1875,7 @@ Please wait 347 seconds before making more requests.
 ### Monitoring
 
 The MCP server logs rate limit info on startup:
+
 ```
 ⏱️ Rate Limit: 100 requests per 900s
 ```
@@ -1810,12 +1889,14 @@ Track your usage to avoid hitting limits during important queries.
 #### 1. Connection Errors
 
 **Symptom:**
+
 ```
 Error: Request timed out after 10000ms.
 The API server may be down or unresponsive.
 ```
 
 **Solutions:**
+
 - Verify Express API is running
 - Check `API_BASE_URL` is correct
 - Increase `API_TIMEOUT` if needed
@@ -1823,12 +1904,14 @@ The API server may be down or unresponsive.
 #### 2. Rate Limit Errors
 
 **Symptom:**
+
 ```
 Error: Rate limit exceeded (100 requests per 900s).
 Please wait 234 seconds before making more requests.
 ```
 
 **Solutions:**
+
 - Wait the indicated time
 - Plan queries more efficiently
 - Use caching (Claude remembers recent data)
@@ -1836,11 +1919,13 @@ Please wait 234 seconds before making more requests.
 #### 3. Invalid Input Errors
 
 **Symptom:**
+
 ```
 Error: API Error (400): Invalid request parameters
 ```
 
 **Solutions:**
+
 - Check room ID format (use kebab-case)
 - Verify difficulty enum values
 - Ensure required parameters provided
@@ -1848,11 +1933,13 @@ Error: API Error (400): Invalid request parameters
 #### 4. Not Found Errors
 
 **Symptom:**
+
 ```
 Error: API Error (404): Room not found
 ```
 
 **Solutions:**
+
 - Verify ID spelling
 - Use search tools first to find correct IDs
 - Check OpenAPI docs for valid IDs
@@ -1860,6 +1947,7 @@ Error: API Error (404): Room not found
 ### Error Recovery
 
 Claude automatically handles errors by:
+
 1. Showing error message to you
 2. Suggesting alternative approaches
 3. Retrying with corrected parameters
@@ -1950,6 +2038,7 @@ npm start
 #### MCP Server Won't Start
 
 **Check:**
+
 1. Node.js version: `node --version` (need 18+)
 2. Dependencies installed: `npm install`
 3. Built successfully: `npm run build`
@@ -1958,6 +2047,7 @@ npm start
 #### Claude Can't See Tools
 
 **Check:**
+
 1. Claude Desktop config file path correct
 2. Absolute paths used (not relative)
 3. Claude Desktop restarted after config change
@@ -1966,6 +2056,7 @@ npm start
 #### Tools Return Errors
 
 **Check:**
+
 1. Express API running on correct port
 2. `API_BASE_URL` matches API server
 3. Data exists for query (use simpler queries first)
@@ -1974,11 +2065,13 @@ npm start
 #### Slow Response Times
 
 **Causes:**
+
 - Large data sets
 - Slow API server
 - Network issues
 
 **Solutions:**
+
 - Use more specific queries
 - Filter by difficulty (reduces data size)
 - Check API server performance
@@ -1992,15 +2085,17 @@ npm start
 **Status**: Ready (awaiting API implementation)
 
 **Configuration:**
+
 ```json
 {
-  "env": {
-    "API_AUTH_TOKEN": "your-bearer-token"
-  }
+    "env": {
+        "API_AUTH_TOKEN": "your-bearer-token"
+    }
 }
 ```
 
 **Will Enable:**
+
 - User-specific data
 - Save game integration
 - Personalized recommendations
@@ -2010,6 +2105,7 @@ npm start
 **Status**: Planned
 
 **Will Provide:**
+
 - Faster repeated queries
 - Reduced API load
 - Offline capability (cached data)
@@ -2019,6 +2115,7 @@ npm start
 **Status**: Under consideration
 
 **Example:**
+
 ```typescript
 {
   name: 'get_multiple_rooms_with_items',
@@ -2031,6 +2128,7 @@ npm start
 **Status**: Future consideration
 
 **Would Enable:**
+
 - Live data updates
 - Collaborative features
 - Push notifications
@@ -2038,6 +2136,7 @@ npm start
 ### Contributing
 
 To suggest features:
+
 1. Open issue in GitHub repo
 2. Describe use case
 3. Provide example queries
@@ -2049,50 +2148,50 @@ To suggest features:
 
 ### Essential Tools for Common Tasks
 
-| Task | Tool to Use |
-|------|-------------|
-| "What's in this room?" | `search_rooms` + `get_rooms_by_ids` |
-| "Where can I find X?" | `search_items` or `search_rooms` |
-| "What enemies are here?" | `get_rooms_by_ids` (with room ID) |
-| "Show me all items" | `get_all_items` |
-| "What areas exist?" | `get_all_areas` |
-| "Rooms in area X?" | `get_rooms_by_map` |
+| Task                     | Tool to Use                         |
+| ------------------------ | ----------------------------------- |
+| "What's in this room?"   | `search_rooms` + `get_rooms_by_ids` |
+| "Where can I find X?"    | `search_items` or `search_rooms`    |
+| "What enemies are here?" | `get_rooms_by_ids` (with room ID)   |
+| "Show me all items"      | `get_all_items`                     |
+| "What areas exist?"      | `get_all_areas`                     |
+| "Rooms in area X?"       | `get_rooms_by_map`                  |
 
 ### Difficulty Level Codes
 
-| Code | Meaning |
-|------|---------|
+| Code               | Meaning                    |
+| ------------------ | -------------------------- |
 | `JV-lvl-very-easy` | Jill Valentine - Very Easy |
-| `JV-lvl-easy` | Jill Valentine - Easy |
-| `JV-lvl-normal` | Jill Valentine - Normal |
-| `JV-lvl-hard` | Jill Valentine - Hard |
+| `JV-lvl-easy`      | Jill Valentine - Easy      |
+| `JV-lvl-normal`    | Jill Valentine - Normal    |
+| `JV-lvl-hard`      | Jill Valentine - Hard      |
 | `CR-lvl-very-easy` | Chris Redfield - Very Easy |
-| `CR-lvl-easy` | Chris Redfield - Easy |
-| `CR-lvl-normal` | Chris Redfield - Normal |
-| `CR-lvl-hard` | Chris Redfield - Hard |
+| `CR-lvl-easy`      | Chris Redfield - Easy      |
+| `CR-lvl-normal`    | Chris Redfield - Normal    |
+| `CR-lvl-hard`      | Chris Redfield - Hard      |
 
 ### Item Type Codes
 
 **IMPORTANT**: Item types use PascalCase (exact match required).
 
-| Type | Examples |
-|------|----------|
-| `Weapon` | Handgun, Shotgun |
-| `Ammunition` | Handgun Magazine, Shotgun Shells, Acid Shells |
-| `GreenHerb` | Green Herb |
-| `RedHerb` | Red Herb |
-| `BlueHerb` | Blue Herb |
-| `FirstAidSpray` | First Aid Spray |
-| `SelfDefense` | Battery Pack (Jill), Flash Grenade (Chris) |
-| `DoorKey` | Lockpick, Old Key, Shield Key, Armor Key, Sword Key |
-| `Document` | Keeper's Diary, Body Disposal, Trevor's Diary |
-| `ItemOfInterest` | Emblem, Blue Gemstone, Red Gemstone |
-| `Typewriter` | Typewriter (save points) |
-| `ItemBox` | Item Box (storage) |
-| `Kerosene` | Kerosene (burn zombie corpses) |
-| `Map` | Map items |
-| `InkRibbon` | Ink Ribbon (save game resource) |
-| `PersonOfInterest` | Barry Burton, Rebecca Chambers, Kenneth, Richard |
+| Type               | Examples                                            |
+| ------------------ | --------------------------------------------------- |
+| `Weapon`           | Handgun, Shotgun                                    |
+| `Ammunition`       | Handgun Magazine, Shotgun Shells, Acid Shells       |
+| `GreenHerb`        | Green Herb                                          |
+| `RedHerb`          | Red Herb                                            |
+| `BlueHerb`         | Blue Herb                                           |
+| `FirstAidSpray`    | First Aid Spray                                     |
+| `SelfDefense`      | Battery Pack (Jill), Flash Grenade (Chris)          |
+| `DoorKey`          | Lockpick, Old Key, Shield Key, Armor Key, Sword Key |
+| `Document`         | Keeper's Diary, Body Disposal, Trevor's Diary       |
+| `ItemOfInterest`   | Emblem, Blue Gemstone, Red Gemstone                 |
+| `Typewriter`       | Typewriter (save points)                            |
+| `ItemBox`          | Item Box (storage)                                  |
+| `Kerosene`         | Kerosene (burn zombie corpses)                      |
+| `Map`              | Map items                                           |
+| `InkRibbon`        | Ink Ribbon (save game resource)                     |
+| `PersonOfInterest` | Barry Burton, Rebecca Chambers, Kenneth, Richard    |
 
 ---
 

@@ -55,7 +55,7 @@ export function createMapsTools(client: ApiClient) {
                             'CR-lvl-hard',
                         ],
                         description:
-                            'Optional: Filter items and biohazards by difficulty level to see what\'s available on that difficulty.',
+                            "Optional: Filter items and biohazards by difficulty level to see what's available on that difficulty.",
                     },
                 },
                 required: ['ids'],
@@ -160,7 +160,8 @@ export function createMapsTools(client: ApiClient) {
                 if (args.roomFunction) params.roomFunction = args.roomFunction;
                 if (args.adjoiningRoom) params.adjoiningRoom = args.adjoiningRoom;
                 if (args.accessControl) params.accessControl = args.accessControl;
-                if (args.threatLevel !== undefined) params.threatLevel = args.threatLevel.toString();
+                if (args.threatLevel !== undefined)
+                    params.threatLevel = args.threatLevel.toString();
                 if (args.roomNumber) params.roomNumber = args.roomNumber;
 
                 const data = await client.request<RoomsResponse>('/api/maps/rooms/search', params);

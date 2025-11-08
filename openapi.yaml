@@ -686,6 +686,10 @@ components:
                             type: string
                             description: S.T.A.R.S. classification name
                             example: 'Zeta'
+                        greeksClassification:
+                            type: string
+                            description: Greek letter symbol for the classification
+                            example: 'ζ'
                         ranking:
                             type: string
                             description: Numerical ranking

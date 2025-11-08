@@ -114,7 +114,7 @@ export function createBiohazardsTools(client: ApiClient) {
 
                 const data = await client.request<BiohazardsResponse>(
                     '/api/biohazards/search',
-                    params
+                    params,
                 );
 
                 return {

@@ -100,7 +100,9 @@ export function handleRankingChange(element: HTMLElement): void {
         element.classList.add('ranking-type-active');
 
         document
-            .querySelectorAll(`.stars-ranking-display .stars-ranking-type[data-ranking="${selectedRanking}"]`)
+            .querySelectorAll(
+                `.stars-ranking-display .stars-ranking-type[data-ranking="${selectedRanking}"]`,
+            )
             .forEach((type) => {
                 type.classList.remove('ranking-type-inactive');
                 type.classList.add('ranking-type-active');

@@ -1,14 +1,12 @@
 {
-  "mcpServers": {
-    "re-remake-map": {
-      "command": "node",
-      "args": [
-        "/absolute/path/to/RE-Remake-Interactive-Map/mcp-server/dist/index.js"
-      ],
-      "env": {
-        "API_BASE_URL": "http://localhost:3000",
-        "API_TIMEOUT": "10000"
-      }
+    "mcpServers": {
+        "re-remake-map": {
+            "command": "node",
+            "args": ["/absolute/path/to/RE-Remake-Interactive-Map/mcp-server/dist/index.js"],
+            "env": {
+                "API_BASE_URL": "http://localhost:3000",
+                "API_TIMEOUT": "10000"
+            }
+        }
     }
-  }
 }

@@ -455,10 +455,10 @@ MCP tools have a **strict 1:1 dependency** on the OpenAPI specification. **All p
 1. ✅ Update Express routes/controllers/middleware
 2. ✅ **Update `openapi.yaml`** with EXACT parameter names, types, enum values
 3. ✅ **Update MCP tool** in `mcp-server/src/tools/` to match OpenAPI **EXACTLY**:
-   - ❗ Parameter names must match query parameter names (e.g., `code` not `classification`)
-   - ❗ Enum values must match exact case (e.g., `Weapon` not `weapon`)
-   - ❗ All optional/required parameters must be included
-   - ❗ Descriptions must reference actual valid values
+    - ❗ Parameter names must match query parameter names (e.g., `code` not `classification`)
+    - ❗ Enum values must match exact case (e.g., `Weapon` not `weapon`)
+    - ❗ All optional/required parameters must be included
+    - ❗ Descriptions must reference actual valid values
 4. ✅ Update types in `mcp-server/src/types.ts` if schemas changed
 5. ✅ Document in `docs/MCP_SERVER.md` with examples
 6. ✅ Rebuild: `cd mcp-server && npm run build`
@@ -485,6 +485,7 @@ enum: ['Weapon', 'Ammunition', 'GreenHerb', 'RedHerb', 'BlueHerb', 'FirstAidSpra
 ```
 
 **Consequences of Mismatch**:
+
 - 400 Bad Request errors for users
 - Invalid query parameter errors
 - Missing functionality (parameters not exposed)
@@ -494,6 +495,7 @@ enum: ['Weapon', 'Ammunition', 'GreenHerb', 'RedHerb', 'BlueHerb', 'FirstAidSpra
 **Rate Limiting**:
 
 MCP server implements client-side rate limiting matching Express:
+
 - **Window**: 15 minutes
 - **Limit**: 100 requests
 - **Behavior**: Throws error when limit exceeded with wait time
@@ -501,6 +503,7 @@ MCP server implements client-side rate limiting matching Express:
 **Error Handling**:
 
 Errors are preserved from API responses:
+
 - HTTP errors → Detailed error messages
 - Timeout → "Request timed out"
 - Rate limit → "Rate limit exceeded, wait X seconds"

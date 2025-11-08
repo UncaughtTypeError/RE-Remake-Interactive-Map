@@ -7,6 +7,7 @@ Model Context Protocol (MCP) server for the RE Remake Interactive Map API. Enabl
 This MCP server exposes the RE Remake Interactive Map REST API as **10 tools** that Claude can use to answer questions about items, biohazards (enemies), rooms, and maps.
 
 Instead of manually making HTTP requests, you can ask Claude:
+
 - "What items are in the Dining Room?"
 - "Where can I find Shotgun Shells?"
 - "What's the threat level of the Main Hall on Hard difficulty?"
@@ -40,6 +41,7 @@ npm start
 ```
 
 You should see:
+
 ```
 🎮 RE Remake Map MCP Server running
 📡 API Base URL: http://localhost:3000
@@ -90,6 +92,7 @@ Claude Code will automatically use the MCP tools to query your local API and res
 ### 5. Verify MCP Tools are Available
 
 Ask Claude Code:
+
 ```
 You: "What MCP tools do you have available?"
 ```
@@ -110,17 +113,15 @@ Edit the config file and add:
 
 ```json
 {
-  "mcpServers": {
-    "re-remake-map": {
-      "command": "node",
-      "args": [
-        "/absolute/path/to/RE-Remake-Interactive-Map/mcp-server/dist/index.js"
-      ],
-      "env": {
-        "API_BASE_URL": "http://localhost:3000"
-      }
+    "mcpServers": {
+        "re-remake-map": {
+            "command": "node",
+            "args": ["/absolute/path/to/RE-Remake-Interactive-Map/mcp-server/dist/index.js"],
+            "env": {
+                "API_BASE_URL": "http://localhost:3000"
+            }
+        }
     }
-  }
 }
 ```
 
@@ -133,6 +134,7 @@ Close and reopen Claude Desktop. The MCP server will auto-start when Claude laun
 ### 4. Verify Connection
 
 In Claude Desktop, ask:
+
 > "What MCP tools do you have available?"
 
 Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, etc.
@@ -140,16 +142,19 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ## Available Tools
 
 ### Items (3 tools)
+
 - `get_all_items` - Browse all items, optionally filter by difficulty
 - `get_items_by_ids` - Get specific items by IDs
 - `search_items` - Search items by name or type
 
 ### Biohazards (3 tools)
+
 - `get_all_biohazards` - Browse all enemies/creatures
 - `get_biohazards_by_ids` - Get specific biohazards by IDs
 - `search_biohazards` - Search biohazards by name or code
 
 ### Maps (4 tools)
+
 - `get_all_areas` - List all map areas (Mansion 1F, Courtyard, etc.)
 - `get_rooms_by_ids` - Get detailed room information
 - `search_rooms` - Search rooms by name, map, or access type
@@ -160,9 +165,11 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ### Example 1: Find Items in a Room
 
 **You ask Claude:**
+
 > "What items are in the Dining Room?"
 
 **Claude will:**
+
 1. Call `search_rooms` with name="Dining Room"
 2. Call `get_rooms_by_ids` with the found room ID
 3. Present all items, biohazards, and details
@@ -170,9 +177,11 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ### Example 2: Find Item Locations
 
 **You ask Claude:**
+
 > "Where can I find Shotgun Shells?"
 
 **Claude will:**
+
 1. Call `search_items` with name="Shotgun Shells" and type="ammo"
 2. Extract room locations from results
 3. Present organized list of rooms with shotgun shells
@@ -180,9 +189,11 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ### Example 3: Check Room Danger
 
 **You ask Claude:**
+
 > "How dangerous is the Main Hall on Jill Hard?"
 
 **Claude will:**
+
 1. Call `search_rooms` with name="Main Hall"
 2. Call `get_rooms_by_ids` with difficulty="JV-lvl-hard"
 3. Analyze biohazards and present threat assessment
@@ -190,9 +201,11 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ### Example 4: Plan Route
 
 **You ask Claude:**
+
 > "Show me all rooms in Mansion 1F with items"
 
 **Claude will:**
+
 1. Call `get_all_areas` to find Mansion 1F map ID
 2. Call `get_rooms_by_map` with mapId="mansionF1"
 3. Filter rooms with items
@@ -201,9 +214,11 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ### Example 5: Find Keys
 
 **You ask Claude:**
+
 > "Where do I find the Armor Key?"
 
 **Claude will:**
+
 1. Call `search_items` with name="Armor Key"
 2. Extract location data
 3. Call `get_rooms_by_ids` for detailed location
@@ -220,20 +235,22 @@ Claude should list 10 tools starting with `get_all_items`, `get_items_by_ids`, e
 ### Setting Environment Variables
 
 **In Claude Desktop config:**
+
 ```json
 {
-  "mcpServers": {
-    "re-remake-map": {
-      "env": {
-        "API_BASE_URL": "http://localhost:3000",
-        "API_TIMEOUT": "15000"
-      }
+    "mcpServers": {
+        "re-remake-map": {
+            "env": {
+                "API_BASE_URL": "http://localhost:3000",
+                "API_TIMEOUT": "15000"
+            }
+        }
     }
-  }
 }
 ```
 
 **In terminal:**
+
 ```bash
 # macOS/Linux
 export API_BASE_URL=http://localhost:3000
@@ -259,6 +276,7 @@ The MCP server enforces the same rate limits as the Express API:
 **Problem**: MCP server can't connect to the API.
 
 **Solution**:
+
 1. Start the Express API: `cd .. && npm start`
 2. Verify API is running: Open `http://localhost:3000/api/health` in browser
 3. Check `API_BASE_URL` is correct
@@ -274,6 +292,7 @@ The MCP server enforces the same rate limits as the Express API:
 **Problem**: Claude doesn't recognize the tool.
 
 **Solution**:
+
 1. Restart Claude Desktop
 2. Verify MCP server is running: `npm start`
 3. Check Claude Desktop config file path is correct
@@ -283,6 +302,7 @@ The MCP server enforces the same rate limits as the Express API:
 **Problem**: API didn't respond in 10 seconds.
 
 **Solution**:
+
 1. Check API server is responsive
 2. Increase timeout: Set `API_TIMEOUT=20000` in env vars
 3. Check network connectivity
@@ -301,6 +321,7 @@ npm run inspector
 ```
 
 This opens a web UI at `http://localhost:5173` where you can:
+
 - Browse all 10 available tools
 - Test tools with custom parameters
 - See real-time request/response data
@@ -333,8 +354,8 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 
 const transport = new StdioClientTransport({
-  command: 'node',
-  args: ['./mcp-server/dist/index.js']
+    command: 'node',
+    args: ['./mcp-server/dist/index.js'],
 });
 
 const client = new Client({ name: 'my-client', version: '1.0.0' }, {});
@@ -388,35 +409,36 @@ npm run inspector
 You MUST update all three in sync:
 
 1. **Express API** (`../src/routes/`, `../src/middleware/`)
-   - Implement endpoint logic
+    - Implement endpoint logic
 
 2. **OpenAPI Spec** (`../openapi.yaml`)
-   - Document EXACT parameter names (e.g., `code` not `classification`)
-   - Document EXACT enum values with correct case (e.g., `Weapon` not `weapon`)
-   - Mark optional vs required correctly
+    - Document EXACT parameter names (e.g., `code` not `classification`)
+    - Document EXACT enum values with correct case (e.g., `Weapon` not `weapon`)
+    - Mark optional vs required correctly
 
 3. **MCP Tools** (`src/tools/*.ts`)
-   - Copy parameter names **verbatim** from openapi.yaml
-   - Copy enum values with **exact case** from openapi.yaml
-   - Include **ALL** parameters (don't omit any)
-   - Update descriptions to reference actual valid values
+    - Copy parameter names **verbatim** from openapi.yaml
+    - Copy enum values with **exact case** from openapi.yaml
+    - Include **ALL** parameters (don't omit any)
+    - Update descriptions to reference actual valid values
 
 4. **Types** (`src/types.ts`)
-   - Update if request/response schemas changed
+    - Update if request/response schemas changed
 
 5. **Rebuild**
-   ```bash
-   npm run build
-   ```
+
+    ```bash
+    npm run build
+    ```
 
 6. **Test**
-   - Make actual API requests through MCP tools
-   - Verify no 400 errors
-   - Verify all parameters work
+    - Make actual API requests through MCP tools
+    - Verify no 400 errors
+    - Verify all parameters work
 
 7. **Document** in `../docs/MCP_SERVER.md`
-   - Add usage examples
-   - Update tool count if changed
+    - Add usage examples
+    - Update tool count if changed
 
 ### Common Mistakes to Avoid
 

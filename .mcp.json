@@ -1,13 +1,11 @@
 {
-  "mcpServers": {
-    "re-remake-map": {
-      "command": "node",
-      "args": [
-        "mcp-server/dist/index.js"
-      ],
-      "env": {
-        "API_BASE_URL": "http://localhost:3000"
-      }
+    "mcpServers": {
+        "re-remake-map": {
+            "command": "node",
+            "args": ["mcp-server/dist/index.js"],
+            "env": {
+                "API_BASE_URL": "http://localhost:3000"
+            }
+        }
     }
-  }
 }

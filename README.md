@@ -193,6 +193,7 @@ The MCP server provides **10 tools**:
 ### Example Queries
 
 Ask Claude questions like:
+
 - "What items are in the Dining Room?"
 - "Where can I find shotgun ammo?"
 - "What's the threat level of the Main Hall on Jill Hard?"
@@ -208,6 +209,7 @@ Claude Code automatically detects the `.mcp.json` configuration file in the proj
 3. Ask natural language questions directly in the terminal
 
 **Example:**
+
 ```
 You: "What items are in the Dining Room?"
 Claude: *Uses MCP tools to query API and provides formatted response*
@@ -219,15 +221,15 @@ Configure in `claude_desktop_config.json`:
 
 ```json
 {
-  "mcpServers": {
-    "re-remake-map": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-server/dist/index.js"],
-      "env": {
-        "API_BASE_URL": "http://localhost:3000"
-      }
+    "mcpServers": {
+        "re-remake-map": {
+            "command": "node",
+            "args": ["/absolute/path/to/mcp-server/dist/index.js"],
+            "env": {
+                "API_BASE_URL": "http://localhost:3000"
+            }
+        }
     }
-  }
 }
 ```
 

@@ -24,7 +24,7 @@ export class ApiClient {
 
         // Remove requests outside the window
         this.requestQueue = this.requestQueue.filter(
-            (timestamp) => now - timestamp < this.config.rateLimitWindow
+            (timestamp) => now - timestamp < this.config.rateLimitWindow,
         );
 
         if (this.requestQueue.length >= this.config.rateLimitMax) {
@@ -33,7 +33,7 @@ export class ApiClient {
             const waitSeconds = Math.ceil(waitTime / 1000);
             throw new Error(
                 `Rate limit exceeded (${this.config.rateLimitMax} requests per ${this.config.rateLimitWindow / 1000}s). ` +
-                `Please wait ${waitSeconds} seconds before making more requests.`
+                    `Please wait ${waitSeconds} seconds before making more requests.`,
             );
         }
 
@@ -75,7 +75,7 @@ export class ApiClient {
                 // Try to parse error response from API
                 let errorMessage = `HTTP ${response.status}: ${response.statusText}`;
                 try {
-                    const error: ApiError = await response.json() as ApiError;
+                    const error: ApiError = (await response.json()) as ApiError;
                     errorMessage = `API Error (${error.statusCode || response.status}): ${error.message || error.error}`;
                 } catch {
                     // If parsing fails, use status text
@@ -90,7 +90,7 @@ export class ApiClient {
                 if (error.name === 'AbortError' || error.message.includes('timeout')) {
                     throw new Error(
                         `Request timed out after ${this.config.apiTimeout}ms. ` +
-                        'The API server may be down or unresponsive.'
+                            'The API server may be down or unresponsive.',
                     );
                 }
                 throw error;

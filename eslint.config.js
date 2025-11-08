@@ -7,13 +7,7 @@ import jest from 'eslint-plugin-jest';
 
 export default [
     {
-        ignores: [
-            'dist/**',
-            'node_modules/**',
-            '**/*.min.js',
-            'coverage/**',
-            '.git/**',
-        ],
+        ignores: ['dist/**', 'node_modules/**', '**/*.min.js', 'coverage/**', '.git/**'],
     },
     js.configs.recommended,
     // Node.js JavaScript config files (esbuild)
