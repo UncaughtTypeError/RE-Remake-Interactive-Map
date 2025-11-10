@@ -28,6 +28,8 @@ servers:
 tags:
     - name: Items
       description: Item-related endpoints for querying weapons, herbs, documents, and other collectibles
+    - name: Persons
+      description: Person-related endpoints for querying S.T.A.R.S. team members and characters
     - name: Biohazards
       description: Biohazard (enemy) endpoints including S.T.A.R.S. threat rankings
     - name: Maps
@@ -40,27 +42,158 @@ paths:
     /api/items/all:
         get:
             tags: [Items]
-            summary: Get all items
-            description: Retrieves all items without any filters. Returns the complete item database.
+            summary: Get all items (base data)
+            description: Retrieves all items base data without any filters. Returns the complete item database with master item definitions.
             responses:
                 '200':
-                    description: Successful response with all items
+                    description: Successful response with all base items
                     content:
                         application/json:
                             schema:
                                 type: array
                                 items:
-                                    $ref: '#/components/schemas/ItemRoomData'
+                                    $ref: '#/components/schemas/ItemData'
                 '429':
                     $ref: '#/components/responses/RateLimitError'
 
     /api/items:
         get:
             tags: [Items]
-            summary: Get items by IDs
+            summary: Get items by IDs (base data)
             description: |
-                Retrieves items by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
-                Returns both found items and any unrecognized IDs.
+                Retrieves base item definitions by their unique type IDs. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found items and any unrecognized IDs. This returns master item definitions, not room-specific instances.
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'typewriter,itemBox,kerosene'
+                  description: Comma-separated list of item IDs (e.g., 'typewriter,itemBox,handgun,batteryPack'). Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found base items and unrecognized IDs
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundItems:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/ItemData'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                                        description: IDs that were not found in the database
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/items/search:
+        get:
+            tags: [Items]
+            summary: Search and filter items (base data)
+            description: |
+                Search base items by type or name. Returns master item definitions without room locations or difficulty information.
+                All parameters are optional and can be combined. Returns items matching ALL specified criteria (AND logic).
+            parameters:
+                - name: type
+                  in: query
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              Typewriter,
+                              ItemBox,
+                              Kerosene,
+                              Map,
+                              PersonOfInterest,
+                              DoorKey,
+                              InkRibbon,
+                              ItemOfInterest,
+                              Document,
+                              GreenHerb,
+                              RedHerb,
+                              BlueHerb,
+                              FirstAidSpray,
+                              SelfDefense,
+                              Ammunition,
+                              Weapon,
+                          ]
+                      example: 'Weapon'
+                  description: Filter by item type
+                - name: name
+                  in: query
+                  schema:
+                      type: string
+                      example: 'Handgun'
+                  description: Filter by item name (partial match, case-insensitive)
+            responses:
+                '200':
+                    description: Successful response with filtered base items
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/ItemData'
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/items/rooms/all:
+        get:
+            tags: [Items]
+            summary: Get all items (room data)
+            description: |
+                Retrieves all items with complete room location data, including map IDs, room IDs, and difficulty availability.
+                Optionally filter by difficulty level to see which items are available on that difficulty.
+            parameters:
+                - name: difficulty
+                  in: query
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              JV-lvl-very-easy,
+                              JV-lvl-easy,
+                              JV-lvl-normal,
+                              JV-lvl-hard,
+                              CR-lvl-very-easy,
+                              CR-lvl-easy,
+                              CR-lvl-normal,
+                              CR-lvl-hard,
+                          ]
+                      example: 'JV-lvl-normal'
+                  description: Optional - Filter items by difficulty level to see availability
+            responses:
+                '200':
+                    description: Successful response with all room items
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/ItemRoomData'
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/items/rooms:
+        get:
+            tags: [Items]
+            summary: Get items by IDs (room data)
+            description: |
+                Retrieves items by their unique IDs with complete room location data. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found items and any unrecognized IDs. This returns room-specific instances with location and difficulty information.
             parameters:
                 - name: ids
                   in: query
@@ -68,10 +201,27 @@ paths:
                   schema:
                       type: string
                       example: 'selfDefenseJV-keepersRoom,document-keepersRoom'
-                  description: Comma-separated list of item IDs (e.g., 'selfDefenseJV-keepersRoom,document-keepersRoom'). Max 100 IDs.
+                  description: Comma-separated list of item instance IDs (format - itemType-roomId). Max 100 IDs.
+                - name: difficulty
+                  in: query
+                  schema:
+                      type: string
+                      enum:
+                          [
+                              JV-lvl-very-easy,
+                              JV-lvl-easy,
+                              JV-lvl-normal,
+                              JV-lvl-hard,
+                              CR-lvl-very-easy,
+                              CR-lvl-easy,
+                              CR-lvl-normal,
+                              CR-lvl-hard,
+                          ]
+                      example: 'JV-lvl-normal'
+                  description: Optional - Filter by difficulty level to check availability
             responses:
                 '200':
-                    description: Successful response with found items and unrecognized IDs
+                    description: Successful response with found room items and unrecognized IDs
                     content:
                         application/json:
                             schema:
@@ -93,20 +243,20 @@ paths:
                 '429':
                     $ref: '#/components/responses/RateLimitError'
 
-    /api/items/search:
+    /api/items/rooms/search:
         get:
             tags: [Items]
-            summary: Search and filter items
+            summary: Search and filter items (room data)
             description: |
-                Search items by room, difficulty level, type, or name. All parameters are optional and can be combined.
-                Returns items matching ALL specified criteria (AND logic).
+                Search items with complete room location data by room, difficulty level, type, or name. All parameters are optional and can be combined.
+                Returns items matching ALL specified criteria (AND logic). Includes room IDs, map IDs, and difficulty availability.
             parameters:
                 - name: room
                   in: query
                   schema:
                       type: string
                       example: 'keepersRoom'
-                  description: Filter by room ID (e.g., 'keepersRoom', 'diningRoom')
+                  description: Filter by room ID (e.g., 'keepersRoom', 'diningRoomF1', 'mainHallF1')
                 - name: difficulty
                   in: query
                   schema:
@@ -147,17 +297,17 @@ paths:
                               Ammunition,
                               Weapon,
                           ]
-                      example: 'Weapon'
+                      example: 'SelfDefense'
                   description: Filter by item type
                 - name: name
                   in: query
                   schema:
                       type: string
-                      example: 'Shotgun'
+                      example: 'Battery Pack'
                   description: Filter by item name (partial match, case-insensitive)
             responses:
                 '200':
-                    description: Successful response with filtered items
+                    description: Successful response with filtered room items
                     content:
                         application/json:
                             schema:
@@ -170,44 +320,142 @@ paths:
                     $ref: '#/components/responses/RateLimitError'
 
     # ============================================================================
-    # BIOHAZARDS ENDPOINTS
+    # PERSONS ENDPOINTS
     # ============================================================================
-    /api/biohazards/all:
+    /api/persons/all:
         get:
-            tags: [Biohazards]
-            summary: Get all biohazards
-            description: |
-                Retrieves all biohazards (enemies) without any filters. Returns the complete biohazard database including S.T.A.R.S. (Statistical Threat Analysis Rating Standard) classifications with threat levels (low to severe), Greek rankings (Eta to Alpha), star ratings (1-3), engagement directives (e.g., "Ignore else Engage", "Do Not Engage"), authorized response procedures, effective measures (weapon damage/shot counts), and detailed combat intelligence.
+            tags: [Persons]
+            summary: Get all persons (base data)
+            description: Retrieves all person data without any filters. Returns the complete person database with character information including S.T.A.R.S. team members.
             responses:
                 '200':
-                    description: Successful response with all biohazards
+                    description: Successful response with all persons
                     content:
                         application/json:
                             schema:
                                 type: array
                                 items:
-                                    $ref: '#/components/schemas/BiohazardRoomData'
+                                    $ref: '#/components/schemas/PersonData'
+                            example:
+                                - id: 'jillValentine'
+                                  name: 'Jill Valentine'
+                                  type: 'PersonOfInterest'
+                                  taxonomy: 'Persons'
+                                  imageSrc: 'https://placeholder-image-url.jpg'
+                                  bio: 'to be added'
+                                  exclusive: null
+                                - id: 'barryBurton'
+                                  name: 'Barry Burton'
+                                  type: 'PersonOfInterest'
+                                  taxonomy: 'Persons'
+                                  imageSrc: 'https://placeholder-image-url.jpg'
+                                  bio: 'to be added'
+                                  exclusive: 'JV'
+                                - id: 'albertWesker'
+                                  name: 'Albert Wesker'
+                                  type: 'PersonOfInterest'
+                                  taxonomy: 'Persons'
+                                  imageSrc: 'https://placeholder-image-url.jpg'
+                                  bio: 'to be added'
+                                  exclusive: null
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/persons:
+        get:
+            tags: [Persons]
+            summary: Get persons by IDs (base data)
+            description: |
+                Retrieves person definitions by their unique PersonID values. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found persons and any unrecognized IDs. This returns person data for S.T.A.R.S. team members and characters.
+            parameters:
+                - name: ids
+                  in: query
+                  required: true
+                  schema:
+                      type: string
+                      example: 'jillValentine,barryBurton'
+                  description: Comma-separated list of PersonID values (e.g., 'jillValentine,barryBurton,albertWesker'). Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found persons and unrecognized IDs
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundPersons:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/PersonData'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                                        description: IDs that were not found in the database
+                            example:
+                                foundPersons:
+                                    - id: 'jillValentine'
+                                      name: 'Jill Valentine'
+                                      type: 'PersonOfInterest'
+                                      taxonomy: 'Persons'
+                                      imageSrc: 'https://placeholder-image-url.jpg'
+                                      bio: 'to be added'
+                                      exclusive: null
+                                    - id: 'barryBurton'
+                                      name: 'Barry Burton'
+                                      type: 'PersonOfInterest'
+                                      taxonomy: 'Persons'
+                                      imageSrc: 'https://placeholder-image-url.jpg'
+                                      bio: 'to be added'
+                                      exclusive: 'JV'
+                                unrecognizedIds: ['unknownPerson']
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    # ============================================================================
+    # BIOHAZARDS ENDPOINTS
+    # ============================================================================
+    /api/biohazards/all:
+        get:
+            tags: [Biohazards]
+            summary: Get all biohazards (base data)
+            description: |
+                Retrieves all biohazards (enemies) base data without any filters. Returns the complete biohazard database with master biohazard definitions including names, types, and S.T.A.R.S. codes.
+            responses:
+                '200':
+                    description: Successful response with all base biohazards
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/BiohazardData'
                 '429':
                     $ref: '#/components/responses/RateLimitError'
 
     /api/biohazards:
         get:
             tags: [Biohazards]
-            summary: Get biohazards by IDs
+            summary: Get biohazards by IDs (base data)
             description: |
-                Retrieves biohazards by their unique IDs. Supports comma-separated batch queries (max 100 IDs).
-                Returns both found biohazards and any unrecognized IDs. Includes complete S.T.A.R.S. (Statistical Threat Analysis Rating Standard) classifications: threat levels, Greek rankings (Eta-Alpha), star ratings (1-3), engagement directives, weapon effectiveness ratings, shot counts, threat assessments, and combat strategies.
+                Retrieves base biohazard definitions by their unique BiohazardCode IDs. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found biohazards and any unrecognized IDs. This returns master biohazard definitions, not room-specific instances.
             parameters:
                 - name: ids
                   in: query
                   required: false
                   schema:
                       type: string
-                      example: 'zombie1-keepersRoom,zombie2-keepersRoom'
-                  description: Comma-separated list of biohazard IDs. Max 100 IDs.
+                      example: 'Zb,Ht,Cb'
+                  description: Comma-separated list of BiohazardCode IDs (e.g., 'Zb' for Zombie, 'Ht' for Hunter, 'Cb' for Cerberus, 'Ad' for Adder). Max 100 IDs.
             responses:
                 '200':
-                    description: Successful response with found biohazards and unrecognized IDs
+                    description: Successful response with found base biohazards and unrecognized IDs
                     content:
                         application/json:
                             schema:
@@ -216,7 +464,7 @@ paths:
                                     foundBiohazards:
                                         type: array
                                         items:
-                                            $ref: '#/components/schemas/BiohazardRoomData'
+                                            $ref: '#/components/schemas/BiohazardData'
                                     unrecognizedIds:
                                         type: array
                                         items:
@@ -269,17 +517,113 @@ paths:
     /api/biohazards/search:
         get:
             tags: [Biohazards]
-            summary: Search and filter biohazards
+            summary: Search and filter biohazards (base data)
             description: |
-                Search biohazards by room, difficulty level, S.T.A.R.S. code, or name. All parameters are optional.
-                Returns biohazards matching ALL specified criteria (AND logic). Includes complete S.T.A.R.S. (Statistical Threat Analysis Rating Standard) intelligence: threat classifications (low-severe), Greek rankings (Eta-Alpha), star ratings (1-3), engagement directives, authorized response procedures, effective measures (weapon damage/shot counts), threat profiles, behavioral patterns, and caution advisories for field operatives.
+                Search base biohazards by S.T.A.R.S. code or name. Returns master biohazard definitions without room locations or complete S.T.A.R.S. intelligence.
+                All parameters are optional and can be combined. Returns biohazards matching ALL specified criteria (AND logic).
+            parameters:
+                - name: code
+                  in: query
+                  schema:
+                      type: string
+                      example: 'Zb'
+                  description: Filter by S.T.A.R.S. code (e.g., 'Zb' for Zombie)
+                - name: name
+                  in: query
+                  schema:
+                      type: string
+                      example: 'Zombie'
+                  description: Filter by biohazard name (partial match, case-insensitive)
+            responses:
+                '200':
+                    description: Successful response with filtered base biohazards
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/BiohazardData'
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/biohazards/rooms/all:
+        get:
+            tags: [Biohazards]
+            summary: Get all biohazards (room data)
+            description: |
+                Retrieves all biohazards with complete room location data and S.T.A.R.S. (Statistical Threat Analysis Rating Standard) intelligence.
+                Includes threat classifications (low-severe), Greek rankings (Eta-Alpha), star ratings (1-3), engagement directives,
+                authorized response procedures, effective measures (weapon damage/shot counts), threat profiles, behavioral patterns,
+                and caution advisories for field operatives.
+            responses:
+                '200':
+                    description: Successful response with all room biohazards
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/BiohazardRoomData'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/biohazards/rooms:
+        get:
+            tags: [Biohazards]
+            summary: Get biohazards by IDs (room data)
+            description: |
+                Retrieves biohazards by their unique IDs with complete room location data and S.T.A.R.S. intelligence. Supports comma-separated batch queries (max 100 IDs).
+                Returns both found biohazards and any unrecognized IDs. This returns room-specific instances with location data and complete S.T.A.R.S. (Statistical Threat Analysis Rating Standard) classifications.
+            parameters:
+                - name: ids
+                  in: query
+                  required: false
+                  schema:
+                      type: string
+                      example: 'zombie1-keepersRoom,zombie2-keepersRoom'
+                  description: Comma-separated list of biohazard instance IDs (format - biohazardType-roomId). Max 100 IDs.
+            responses:
+                '200':
+                    description: Successful response with found room biohazards and unrecognized IDs
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    foundBiohazards:
+                                        type: array
+                                        items:
+                                            $ref: '#/components/schemas/BiohazardRoomData'
+                                    unrecognizedIds:
+                                        type: array
+                                        items:
+                                            type: string
+                                        description: IDs that were not found in the database
+                '400':
+                    $ref: '#/components/responses/ValidationError'
+                '404':
+                    $ref: '#/components/responses/NotFoundError'
+                '429':
+                    $ref: '#/components/responses/RateLimitError'
+
+    /api/biohazards/rooms/search:
+        get:
+            tags: [Biohazards]
+            summary: Search and filter biohazards (room data)
+            description: |
+                Search biohazards with complete room location data by room, difficulty level, S.T.A.R.S. code, or name. All parameters are optional.
+                Returns biohazards matching ALL specified criteria (AND logic). Includes complete S.T.A.R.S. (Statistical Threat Analysis Rating Standard) intelligence:
+                threat classifications (low-severe), Greek rankings (Eta-Alpha), star ratings (1-3), engagement directives, authorized response procedures,
+                effective measures (weapon damage/shot counts), threat profiles, behavioral patterns, and caution advisories for field operatives.
             parameters:
                 - name: room
                   in: query
                   schema:
                       type: string
                       example: 'keepersRoom'
-                  description: Filter by room ID
+                  description: Filter by room ID (e.g., 'keepersRoom', 'teaRoomCorridor', 'mainHallF1')
                 - name: difficulty
                   in: query
                   schema:
@@ -295,13 +639,14 @@ paths:
                               CR-lvl-normal,
                               CR-lvl-hard,
                           ]
+                      example: 'JV-lvl-normal'
                   description: Filter by difficulty level
                 - name: code
                   in: query
                   schema:
                       type: string
                       example: 'Zb'
-                  description: Filter by S.T.A.R.S. code (e.g., 'Zb' for Zombie)
+                  description: Filter by S.T.A.R.S. BiohazardCode (e.g., 'Zb' for Zombie, 'Ht' for Hunter, 'Cb' for Cerberus, 'Ad' for Adder)
                 - name: name
                   in: query
                   schema:
@@ -310,7 +655,7 @@ paths:
                   description: Filter by biohazard name (partial match, case-insensitive)
             responses:
                 '200':
-                    description: Successful response with filtered biohazards
+                    description: Successful response with filtered room biohazards
                     content:
                         application/json:
                             schema:
@@ -468,7 +813,7 @@ paths:
                   required: false
                   schema:
                       type: string
-                      example: 'keepersRoom,diningRoom,mainHall'
+                      example: 'keepersRoom,diningRoomF1,mainHallF1'
                   description: Comma-separated list of room IDs. Max 100 IDs.
             responses:
                 '200':
@@ -511,7 +856,7 @@ paths:
                   in: query
                   schema:
                       type: string
-                      example: 'shotgun'
+                      example: 'handgun'
                   description: Filter rooms containing specific item
                 - name: biohazard
                   in: query
@@ -541,7 +886,7 @@ paths:
                   in: query
                   schema:
                       type: string
-                      example: 'diningRoom'
+                      example: 'diningRoomF1'
                   description: Filter rooms connected to specific room
                 - name: accessControl
                   in: query
@@ -582,14 +927,177 @@ paths:
 # ==============================================================================
 components:
     schemas:
+        ItemData:
+            type: object
+            description: Base item data (master item definition)
+            properties:
+                id:
+                    type: string
+                    description: Unique item identifier
+                    example: 'typewriter'
+                name:
+                    type: string
+                    description: Display name of the item
+                    example: 'Typewriter'
+                type:
+                    type: string
+                    description: Item type/category
+                    example: 'Typewriter'
+                taxonomy:
+                    type: string
+                    description: Item taxonomy classification
+                    example: 'Key Items'
+                function:
+                    type: string
+                    nullable: true
+                    description: Item function description (for Typewriter, ItemBox, Kerosene only)
+                    example: 'Save Point'
+                imageSrc:
+                    type: string
+                    description: URL to item image
+                    example: 'https://s-media-cache-ak0.pinimg.com/originals/f1/26/57/f126578050920fc271fd8b33534a9605.jpg'
+                description:
+                    type: string
+                    description: Item description
+                    example: 'A typewriter that can be used to rudimentarily record progression when providing an Ink Ribbon.'
+                exclusive:
+                    type: string
+                    nullable: true
+                    description: Character exclusivity (JV/CR) if applicable
+                    example: null
+
+        PersonData:
+            type: object
+            description: Person data for S.T.A.R.S. team members and characters
+            properties:
+                id:
+                    type: string
+                    description: Unique person identifier (PersonID)
+                    example: 'jillValentine'
+                name:
+                    type: string
+                    description: Display name of the person (PersonDisplayName)
+                    example: 'Jill Valentine'
+                type:
+                    type: string
+                    description: Item type (always PersonOfInterest for persons)
+                    example: 'PersonOfInterest'
+                    enum: [PersonOfInterest]
+                taxonomy:
+                    type: string
+                    description: Taxonomy classification (always Persons)
+                    example: 'Persons'
+                    enum: [Persons]
+                imageSrc:
+                    type: string
+                    description: URL to person image
+                    example: 'https://placeholder-image-url.jpg'
+                bio:
+                    type: string
+                    description: Biography or description of the person
+                    example: 'to be added'
+                exclusive:
+                    type: string
+                    nullable: true
+                    description: Character exclusivity (JV for Jill Valentine campaign, CR for Chris Redfield campaign, null if appears in both)
+                    example: 'JV'
+
+        BiohazardData:
+            type: object
+            description: Base biohazard data (master biohazard definition)
+            properties:
+                id:
+                    type: string
+                    description: BiohazardCode - unique 2-letter identifier
+                    example: 'Zb'
+                name:
+                    type: string
+                    description: Biohazard name
+                    example: 'Zombie'
+                codeName:
+                    type: string
+                    nullable: true
+                    description: Code name if applicable
+                    example: null
+                threatLevel:
+                    type: string
+                    description: Threat level assessment
+                    example: 'Low-Moderate'
+                starsClassification:
+                    type: string
+                    description: S.T.A.R.S. classification (Greek letter name)
+                    example: 'Zeta'
+                starsRanking:
+                    type: string
+                    description: S.T.A.R.S. ranking number
+                    example: '0Half'
+                directive:
+                    type: string
+                    description: Tactical directive
+                    example: 'Avoid else Engage'
+                prevalence:
+                    type: string
+                    description: How common this biohazard is
+                    example: 'Common'
+                imageSrc:
+                    type: string
+                    description: URL to biohazard image
+                    example: 'https://s-media-cache-ak0.pinimg.com/originals/f1/26/57/f126578050920fc271fd8b33534a9605.jpg'
+                isVenomous:
+                    type: boolean
+                    description: Whether the biohazard is venomous
+                    example: false
+                authorizedResponseProcedures:
+                    type: array
+                    items:
+                        type: string
+                    description: Recommended response procedures
+                    example: ['Engage from secure distances', 'Avoid close proximity']
+                effectiveMeasures:
+                    type: string
+                    description: Effective weapons and measures
+                    example: 'short to long-range small or medium arms, defensive weapons, fire'
+                caution:
+                    type: string
+                    nullable: true
+                    description: Caution advisory
+                    example: 'Low-Moderate Risk threat level in close proximity with numbers in excess of 2.'
+                threats:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            threat:
+                                type: string
+                            description:
+                                type: string
+                    description: Specific threats posed
+                    example:
+                        [
+                            {
+                                threat: 'Mutation Threat',
+                                description: 'Crimson Head mutation, V-ACT (Virus-Activation) secondary infection stage',
+                            },
+                        ]
+                characteristics:
+                    type: array
+                    items:
+                        type: string
+                    description: Behavioral characteristics
+                    example: ['slow-moving', 'sedate', 'unperceptive']
+
         ItemRoomData:
             type: object
             description: Item data with room location information
             properties:
                 id:
                     type: string
-                    description: Unique item identifier
+                    description: Unique item instance identifier (format - itemType-roomId)
                     example: 'selfDefenseJV-keepersRoom'
+                itemId:
+                    type: string
+                    description: Reference to ItemData.id
+                    example: 'batteryPack'
                 name:
                     type: string
                     description: Display name of the item
@@ -601,12 +1109,25 @@ components:
                 qty:
                     type: integer
                     description: Quantity available
-                    example: 2
+                    example: 1
                 qtyItems:
                     type: integer
                     nullable: true
                     description: Quantity group identifier
                     example: null
+                uses:
+                    type: integer
+                    nullable: true
+                    description: Number of uses for this item
+                    example: null
+                isFeatured:
+                    type: boolean
+                    description: Whether this item is featured
+                    example: false
+                requirement:
+                    type: string
+                    description: Requirement to obtain item
+                    example: 'none'
                 map:
                     type: object
                     properties:
@@ -632,7 +1153,7 @@ components:
                                 CR-lvl-hard,
                             ]
                     description: Difficulty levels where this item appears
-                    example: ['JV-lvl-normal', 'JV-lvl-hard']
+                    example: ['JV-lvl-very-easy', 'JV-lvl-easy', 'JV-lvl-normal', 'JV-lvl-hard']
 
         BiohazardRoomData:
             type: object
@@ -640,7 +1161,7 @@ components:
             properties:
                 id:
                     type: string
-                    description: Unique biohazard identifier
+                    description: Unique biohazard instance identifier (format - biohazardType-roomId)
                     example: 'zombie1-keepersRoom'
                 name:
                     type: string
@@ -648,12 +1169,21 @@ components:
                     example: 'Zombie'
                 code:
                     type: string
-                    description: S.T.A.R.S. classification code
+                    description: S.T.A.R.S. BiohazardCode - references BiohazardData.id
                     example: 'Zb'
                 qty:
                     type: integer
                     description: Number of enemies
-                    example: 3
+                    example: 1
+                ambush:
+                    type: boolean
+                    nullable: true
+                    description: Whether this is an ambush encounter
+                    example: false
+                isFeatured:
+                    type: boolean
+                    description: Whether this biohazard is featured
+                    example: false
                 map:
                     type: object
                     properties:
@@ -667,8 +1197,29 @@ components:
                     type: array
                     items:
                         type: string
+                        enum:
+                            [
+                                JV-lvl-very-easy,
+                                JV-lvl-easy,
+                                JV-lvl-normal,
+                                JV-lvl-hard,
+                                CR-lvl-very-easy,
+                                CR-lvl-easy,
+                                CR-lvl-normal,
+                                CR-lvl-hard,
+                            ]
                     description: Difficulty levels where this biohazard appears
-                    example: ['JV-lvl-normal', 'JV-lvl-hard']
+                    example:
+                        [
+                            'JV-lvl-very-easy',
+                            'JV-lvl-easy',
+                            'JV-lvl-normal',
+                            'JV-lvl-hard',
+                            'CR-lvl-very-easy',
+                            'CR-lvl-easy',
+                            'CR-lvl-normal',
+                            'CR-lvl-hard',
+                        ]
 
         STARSRanking:
             type: object
@@ -765,26 +1316,26 @@ components:
                     type: array
                     items:
                         type: string
-                    description: Item IDs present in this room
+                    description: Item IDs present in this room (format - itemType-roomId)
                     example: ['selfDefenseJV-keepersRoom', 'document-keepersRoom']
                 biohazards:
                     type: array
                     items:
                         type: string
-                    description: Biohazard IDs present in this room
+                    description: Biohazard IDs present in this room (format - biohazardType-roomId)
                     example: ['zombie1-keepersRoom', 'zombie2-keepersRoom']
                 persons:
                     type: array
                     items:
                         type: string
                     description: Person IDs that appear in this room
-                    example: []
+                    example: ['barryBurton']
                 interactables:
                     type: array
                     items:
                         type: string
-                    description: Interactable object IDs
-                    example: ['desk', 'cabinet']
+                    description: Object IDs
+                    example: ['typewriter', 'itemBox']
                 roomFunction:
                     type: array
                     items:
@@ -796,7 +1347,7 @@ components:
                     items:
                         type: string
                     description: Connected room IDs
-                    example: ['corridor', 'diningRoom']
+                    example: ['diningRoomF1', 'teaRoomCorridor']
                 accessControl:
                     type: array
                     items:

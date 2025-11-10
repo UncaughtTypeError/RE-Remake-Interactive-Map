@@ -20,6 +20,7 @@ import { errorHandler } from './middleware/errorHandler';
 import itemsRouter from './routes/itemsRoutes';
 import biohazardsRouter from './routes/biohazardsRoutes';
 import mapsRouter from './routes/mapsRoutes';
+import personsRouter from './routes/personsRoutes';
 
 const app: Application = express();
 const PORT = process.env.PORT || 3000;
@@ -58,6 +59,7 @@ app.use(express.json());
 app.use('/api/items', itemsRouter);
 app.use('/api/biohazards', biohazardsRouter);
 app.use('/api/maps', mapsRouter);
+app.use('/api/persons', personsRouter);
 
 // Docs
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));

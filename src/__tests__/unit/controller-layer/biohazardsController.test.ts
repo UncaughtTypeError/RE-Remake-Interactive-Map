@@ -43,22 +43,22 @@ describe('Biohazards Controller', () => {
         });
     });
 
-    describe('getAllBiohazards', () => {
+    describe('getAllBiohazardsRoomData', () => {
         it('should return all biohazards', async () => {
             const mockResult = biohazardsRoomData as BiohazardRoomData[];
-            (biohazardsService.getAllBiohazards as jest.Mock).mockResolvedValue(mockResult);
+            (biohazardsService.getAllBiohazardsRoomData as jest.Mock).mockResolvedValue(mockResult);
 
-            await biohazardsController.getAllBiohazards(
+            await biohazardsController.getAllBiohazardsRoomData(
                 mockRequest as Request,
                 mockResponse as Response,
             );
 
-            expect(biohazardsService.getAllBiohazards).toHaveBeenCalled();
+            expect(biohazardsService.getAllBiohazardsRoomData).toHaveBeenCalled();
             expect(mockResponse.json).toHaveBeenCalledWith(mockResult);
         });
     });
 
-    describe('getBiohazardsByIds', () => {
+    describe('getBiohazardsRoomDataByIds', () => {
         it('should return found biohazards and unrecognized IDs', async () => {
             mockRequest.query = { ids: 'zombie1-keepersRoom,zombie2-keepersRoom' };
             const mockResult = {
@@ -74,14 +74,16 @@ describe('Biohazards Controller', () => {
                 ],
                 unrecognizedIds: [],
             };
-            (biohazardsService.getBiohazardsByIds as jest.Mock).mockResolvedValue(mockResult);
+            (biohazardsService.getBiohazardsRoomDataByIds as jest.Mock).mockResolvedValue(
+                mockResult,
+            );
 
-            await biohazardsController.getBiohazardsByIds(
+            await biohazardsController.getBiohazardsRoomDataByIds(
                 mockRequest as Request,
                 mockResponse as Response,
             );
 
-            expect(biohazardsService.getBiohazardsByIds).toHaveBeenCalledWith([
+            expect(biohazardsService.getBiohazardsRoomDataByIds).toHaveBeenCalledWith([
                 'zombie1-keepersRoom',
                 'zombie2-keepersRoom',
             ]);
@@ -103,14 +105,16 @@ describe('Biohazards Controller', () => {
                 ],
                 unrecognizedIds: ['invalid'],
             };
-            (biohazardsService.getBiohazardsByIds as jest.Mock).mockResolvedValue(mockResult);
+            (biohazardsService.getBiohazardsRoomDataByIds as jest.Mock).mockResolvedValue(
+                mockResult,
+            );
 
-            await biohazardsController.getBiohazardsByIds(
+            await biohazardsController.getBiohazardsRoomDataByIds(
                 mockRequest as Request,
                 mockResponse as Response,
             );
 
-            expect(biohazardsService.getBiohazardsByIds).toHaveBeenCalledWith([
+            expect(biohazardsService.getBiohazardsRoomDataByIds).toHaveBeenCalledWith([
                 'zombie1-keepersRoom',
                 'invalid',
             ]);
@@ -123,25 +127,27 @@ describe('Biohazards Controller', () => {
                 foundBiohazards: biohazardsRoomData as BiohazardRoomData[],
                 unrecognizedIds: [],
             };
-            (biohazardsService.getBiohazardsByIds as jest.Mock).mockResolvedValue(mockResult);
+            (biohazardsService.getBiohazardsRoomDataByIds as jest.Mock).mockResolvedValue(
+                mockResult,
+            );
 
-            await biohazardsController.getBiohazardsByIds(
+            await biohazardsController.getBiohazardsRoomDataByIds(
                 mockRequest as Request,
                 mockResponse as Response,
             );
 
-            expect(biohazardsService.getBiohazardsByIds).toHaveBeenCalledWith([]);
+            expect(biohazardsService.getBiohazardsRoomDataByIds).toHaveBeenCalledWith([]);
             expect(mockResponse.json).toHaveBeenCalledWith(mockResult);
         });
 
         it('should handle NotFoundError', async () => {
             mockRequest.query = { ids: 'invalid1,invalid2' };
-            (biohazardsService.getBiohazardsByIds as jest.Mock).mockRejectedValue(
+            (biohazardsService.getBiohazardsRoomDataByIds as jest.Mock).mockRejectedValue(
                 new NotFoundError(Messages.errors.notFound),
             );
 
             await expect(
-                biohazardsController.getBiohazardsByIds(
+                biohazardsController.getBiohazardsRoomDataByIds(
                     mockRequest as Request,
                     mockResponse as Response,
                 ),
@@ -162,13 +168,13 @@ describe('Biohazards Controller', () => {
             });
 
             await expect(
-                biohazardsController.getBiohazardsByIds(
+                biohazardsController.getBiohazardsRoomDataByIds(
                     mockRequest as Request,
                     mockResponse as Response,
                 ),
             ).rejects.toThrow(BadRequestError);
             await expect(
-                biohazardsController.getBiohazardsByIds(
+                biohazardsController.getBiohazardsRoomDataByIds(
                     mockRequest as Request,
                     mockResponse as Response,
                 ),
@@ -297,7 +303,7 @@ describe('Biohazards Controller', () => {
         });
     });
 
-    describe('searchBiohazards', () => {
+    describe('searchBiohazardsRoomData', () => {
         it('should return filtered biohazards', async () => {
             const mockBiohazards: BiohazardRoomData[] = [
                 {
@@ -340,14 +346,16 @@ describe('Biohazards Controller', () => {
                 },
             ];
             mockRequest.query = { room: 'keepersRoom' };
-            (biohazardsService.searchBiohazards as jest.Mock).mockResolvedValue(mockBiohazards);
+            (biohazardsService.searchBiohazardsRoomData as jest.Mock).mockResolvedValue(
+                mockBiohazards,
+            );
 
-            await biohazardsController.searchBiohazards(
+            await biohazardsController.searchBiohazardsRoomData(
                 mockRequest as Request,
                 mockResponse as Response,
             );
 
-            expect(biohazardsService.searchBiohazards).toHaveBeenCalledWith({
+            expect(biohazardsService.searchBiohazardsRoomData).toHaveBeenCalledWith({
                 room: 'keepersRoom',
             });
             expect(mockResponse.json).toHaveBeenCalledWith(mockBiohazards);
@@ -362,13 +370,13 @@ describe('Biohazards Controller', () => {
             });
 
             await expect(
-                biohazardsController.searchBiohazards(
+                biohazardsController.searchBiohazardsRoomData(
                     mockRequest as Request,
                     mockResponse as Response,
                 ),
             ).rejects.toThrow(BadRequestError);
             await expect(
-                biohazardsController.searchBiohazards(
+                biohazardsController.searchBiohazardsRoomData(
                     mockRequest as Request,
                     mockResponse as Response,
                 ),

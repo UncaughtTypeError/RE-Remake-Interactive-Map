@@ -5661,46 +5661,18 @@ header h1 {
     line-height: 20px;
 }
 
-.list-group-actions .stars-ranking-group .stars-ranking-type span {
-    font-size: 12px;
-    display: inline-block;
-    margin-left: 5px;
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type span:after {
+.list-group-actions .stars-ranking-group .stars-ranking-type span.greek-letter {
     font-style: italic;
     vertical-align: super;
-    margin-left: 3px;
+    margin-right: 3px;
     color: #ababab;
     font-weight: bold;
+    font-size: 12px;
 }
 
-.list-group-actions .stars-ranking-group .stars-ranking-type.eta span:after {
-    content: '\03B7';
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type.zeta span:after {
-    content: '\03B6';
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type.epsilon span:after {
-    content: '\03B5';
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type.delta span:after {
-    content: '\03B4';
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type.gamma span:after {
-    content: '\03B3';
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type.beta span:after {
-    content: '\03B2';
-}
-
-.list-group-actions .stars-ranking-group .stars-ranking-type.alpha span:after {
-    content: '\03B1';
+.list-group-actions .stars-ranking-group .stars-ranking-type span.classification {
+    font-size: 12px;
+    display: inline-block;
 }
 
 .stars-ranking-dropdown.toggle-state {

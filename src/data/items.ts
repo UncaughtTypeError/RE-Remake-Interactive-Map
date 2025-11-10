@@ -6,10 +6,22 @@
  * `difficultyLevel` as readonly tuple). Suitable for endpoints like `GET /api/items`.
  * @see {@link ./README.md} for data structure details.
  */
-import { ItemData, ItemRoomData, TranscriptionData } from '.';
+import { ItemData, PersonData, ItemRoomData, TranscriptionData } from '.';
 
 // Dictionary of thumbnail IDs and image source paths
 const thumbnailPaths: Record<string, string> = {
+    // Persons
+    jillValentine: 'https://placeholder-image-url.jpg',
+    chrisRedfield: 'https://placeholder-image-url.jpg',
+    barryBurton: 'https://placeholder-image-url.jpg',
+    rebeccaChambers: 'https://placeholder-image-url.jpg',
+    kennethJSullivan: 'https://placeholder-image-url.jpg',
+    richardAiken: 'https://placeholder-image-url.jpg',
+    albertWesker: 'https://placeholder-image-url.jpg',
+    bradVickers: 'https://placeholder-image-url.jpg',
+    forestSpeyer: 'https://placeholder-image-url.jpg',
+    josephFrost: 'https://placeholder-image-url.jpg',
+    enricoMarini: 'https://placeholder-image-url.jpg',
     // Interactable Items
     typewriter:
         'https://s-media-cache-ak0.pinimg.com/originals/f1/26/57/f126578050920fc271fd8b33534a9605.jpg',
@@ -308,7 +320,7 @@ export const itemsData: ReadonlyArray<ItemData> = [
     {
         id: 'radio',
         name: 'Radio',
-        type: 'Interactable',
+        type: 'ItemOfInterest',
         taxonomy: 'Interactable Items',
         function: 'NPC Interaction',
         imageSrc: thumbnailPaths.radio,
@@ -319,7 +331,7 @@ export const itemsData: ReadonlyArray<ItemData> = [
     {
         id: 'passCodeOutputTerminal',
         name: 'Pass Code Output Terminal',
-        type: 'Interactable',
+        type: 'ItemOfInterest',
         taxonomy: 'Interactable Items',
         function: 'Item Interaction',
         imageSrc: thumbnailPaths.radio,
@@ -1337,7 +1349,7 @@ export const itemsData: ReadonlyArray<ItemData> = [
         function: 'Documentation',
         imageSrc: thumbnailPaths.trevorsDiaryVol2,
         description:
-            "An undated handwritten note by George Trevor revealing his secret hiding place behind a painting in the art room.",
+            'An undated handwritten note by George Trevor revealing his secret hiding place behind a painting in the art room.',
         exclusive: null,
     },
     {
@@ -1436,7 +1448,7 @@ export const itemsData: ReadonlyArray<ItemData> = [
         function: 'Documentation',
         imageSrc: thumbnailPaths.plant42Report,
         description:
-            'Research report by Henry Sarton detailing Plant 42\'s rapid mutation, dual nutrient sources, and aggressive defensive behavior.',
+            "Research report by Henry Sarton detailing Plant 42's rapid mutation, dual nutrient sources, and aggressive defensive behavior.",
         exclusive: null,
     },
     {
@@ -1767,6 +1779,109 @@ export const itemsData: ReadonlyArray<ItemData> = [
         function: 'Offense',
         imageSrc: thumbnailPaths.rocketLauncherSingleBarrel,
         description: 'A single-shot rocket launcher with limited ammunition.',
+        exclusive: null,
+    },
+] as const;
+
+export const personsData: ReadonlyArray<PersonData> = [
+    // Persons
+    {
+        id: 'jillValentine',
+        name: 'Jill Valentine',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.jillValentine,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'chrisRedfield',
+        name: 'Chris Redfield',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.chrisRedfield,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'barryBurton',
+        name: 'Barry Burton',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.barryBurton,
+        bio: 'to be added',
+        exclusive: 'JV',
+    },
+    {
+        id: 'rebeccaChambers',
+        name: 'Rebecca Chambers',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.rebeccaChambers,
+        bio: 'to be added',
+        exclusive: 'CR',
+    },
+    {
+        id: 'kennethJSullivan',
+        name: 'Kenneth J. Sullivan',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.kennethJSullivan,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'richardAiken',
+        name: 'Richard Aiken',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.richardAiken,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'albertWesker',
+        name: 'Albert Wesker',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.albertWesker,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'bradVickers',
+        name: 'Brad Vickers',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.bradVickers,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'forestSpeyer',
+        name: 'Forest Speyer',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.forestSpeyer,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'josephFrost',
+        name: 'Joseph Frost',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.josephFrost,
+        bio: 'to be added',
+        exclusive: null,
+    },
+    {
+        id: 'enricoMarini',
+        name: 'Enrico Marini',
+        type: 'PersonOfInterest',
+        taxonomy: 'Persons',
+        imageSrc: thumbnailPaths.enricoMarini,
+        bio: 'to be added',
         exclusive: null,
     },
 ] as const;

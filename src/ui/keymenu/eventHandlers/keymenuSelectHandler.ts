@@ -49,5 +49,5 @@ export function handleKeymenuSelect(element: HTMLElement): void {
     }
 
     // Animate gears
-    animateGears();
+    animateGears('left', 1000);
 }

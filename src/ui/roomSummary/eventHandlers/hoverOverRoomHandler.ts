@@ -32,7 +32,7 @@ export async function handleMouseOverRoom(
         icon.classList.add('map-marker-active');
     });
 
-    animateGears(200);
+    animateGears('right', 200);
 
     // Fetch room data from API
     try {

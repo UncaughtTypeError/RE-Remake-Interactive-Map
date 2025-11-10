@@ -1,17 +1,17 @@
 /**
  * @file Service layer for biohazard-related business logic in the Express API.
  * @description Provides pure functions for querying and filtering biohazard data from
- * {@link biohazardsRoomData} in `src/data/biohazards.ts`. These functions handle business
- * logic and error conditions, keeping controllers focused on HTTP handling. The data is
- * readonly due to `as const` for immutability and type safety. It is static in-memory
- * data and could be replaced with DB queries in future. Used by controllers for endpoints
- * like `GET /api/biohazards/all` and `GET /api/biohazards/search`.
+ * {@link biohazardsData} (base data) and {@link biohazardsRoomData} (room instances) in `src/data/biohazards.ts`.
+ * These functions handle business logic and error conditions, keeping controllers focused on
+ * HTTP handling. The data is readonly due to `as const` for immutability and type safety.
  * @see {@link ../data/biohazards.ts}
  * @see {@link ../data/README.md} for data structure details.
  */
 import {
+    biohazardsData,
     biohazardsRoomData,
     starsRankingData,
+    BiohazardData,
     BiohazardRoomData,
     BiohazardDetailsData,
     STARSRankingData,
@@ -25,33 +25,114 @@ import { NotFoundError, BadRequestError } from '../errors/customErrors';
 import { Messages } from '../constants';
 
 /**
- * Retrieves all biohazards from the static in-memory data source.
+ * Retrieves all biohazards base data from the static in-memory data source.
  *
- * @description Fetches the entire dataset of biohazards stored in {@link biohazardsRoomData}.
- * The data is readonly due to the `as const` assertion, ensuring immutability and precise
- * type inference for properties like `difficultyLevel` and `code`. Suitable for the
- * `GET /api/biohazards/all` endpoint.
+ * @description Fetches the entire dataset of biohazards stored in {@link biohazardsData}.
+ * Returns master biohazard definitions (e.g., Zombie, Hunter), not room instances.
+ * The data is readonly due to the `as const` assertion, ensuring immutability.
+ * Suitable for the `GET /api/biohazards/all` endpoint.
  *
- * @returns {Promise<BiohazardRoomData[]>} A promise resolving to an array of all biohazard data.
+ * @returns {Promise<BiohazardData[]>} A promise resolving to an array of all biohazards base data.
  *
  * @example
  * ```typescript
  * // Endpoint: GET /api/biohazards/all
- * const biohazards = await getAllBiohazards();
+ * const biohazards = await getAllBiohazardsData();
+ * // Returns: [{ id: 'Zb', name: 'Zombie', taxonomy: 'T-Virus Infected Humans', ... }, ...]
+ * ```
+ */
+export const getAllBiohazardsData = async (): Promise<BiohazardData[]> =>
+    biohazardsData as BiohazardData[];
+
+/**
+ * Retrieves specific biohazards base data by their unique identifiers.
+ *
+ * @description Queries {@link biohazardsData} for biohazards matching the provided IDs.
+ * Returns an object with found biohazards and any unrecognized IDs. If no IDs are provided,
+ * returns all biohazards base data. Validates input for a maximum of 100 IDs and format (alphanumeric
+ * with hyphens). Uses a Map for O(1) lookups and deduplicates IDs to avoid redundant results.
+ * Suitable for the `GET /api/biohazards?ids=...` endpoint.
+ *
+ * @param ids - An array of unique biohazard identifiers (e.g., ['Zb', 'Ht']).
+ * @returns {Promise<{ foundBiohazards: BiohazardData[]; unrecognizedIds: string[] }>} A promise resolving
+ * to an object containing an array of found biohazards and an array of unrecognized IDs.
+ *
+ * @throws {BadRequestError} If more than 100 IDs are provided or any ID contains invalid characters.
+ * @throws {NotFoundError} If no provided IDs match any biohazards.
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards?ids=Zb,Ht
+ * const result = await getBiohazardsDataByIds(['Zb', 'Ht']);
+ * // Returns: { foundBiohazards: [{ id: 'Zb', name: 'Zombie', ... }, ...], unrecognizedIds: [] }
+ * ```
+ */
+export const getBiohazardsDataByIds = async (
+    ids: string[],
+): Promise<{ foundBiohazards: BiohazardData[]; unrecognizedIds: string[] }> => {
+    if (!ids || ids.length === 0) {
+        return { foundBiohazards: biohazardsData as BiohazardData[], unrecognizedIds: [] };
+    }
+    if (ids.length > 100) {
+        throw new BadRequestError(Messages.validation.tooManyIds);
+    }
+    if (ids.some((id) => typeof id !== 'string' || !id.match(/^[a-zA-Z0-9-]+$/))) {
+        throw new BadRequestError(Messages.validation.invalidIdFormat.replace('{subject}', 'IDs'));
+    }
+
+    const uniqueIds = [...new Set(ids)];
+    const idMap = new Map<string, BiohazardData>(
+        biohazardsData.map((biohazard) => [biohazard.id, biohazard]),
+    );
+    const foundBiohazards: BiohazardData[] = [];
+    const unrecognizedIds: string[] = [];
+
+    uniqueIds.forEach((id) => {
+        const biohazard = idMap.get(id);
+        if (biohazard) {
+            foundBiohazards.push(biohazard);
+        } else {
+            unrecognizedIds.push(id);
+        }
+    });
+
+    if (foundBiohazards.length === 0) {
+        throw new NotFoundError(Messages.errors.notFound);
+    }
+
+    return { foundBiohazards, unrecognizedIds };
+};
+
+/**
+ * Retrieves all biohazards room data from the static in-memory data source.
+ *
+ * @description Fetches the entire dataset of biohazards room data stored in {@link biohazardsRoomData}.
+ * Returns specific biohazard instances in rooms (e.g., zombie in keeper's room).
+ * The data is readonly due to the `as const` assertion, ensuring immutability and precise
+ * type inference for properties like `difficultyLevel` and `code`. Suitable for the
+ * `GET /api/biohazards/rooms/all` endpoint.
+ *
+ * @returns {Promise<BiohazardRoomData[]>} A promise resolving to an array of all biohazards room data.
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/rooms/all
+ * const biohazardsRoomData = await getAllBiohazardsRoomData();
  * // Returns: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...]
  * ```
  */
-export const getAllBiohazards = async (): Promise<BiohazardRoomData[]> =>
+export const getAllBiohazardsRoomData = async (): Promise<BiohazardRoomData[]> =>
     biohazardsRoomData as BiohazardRoomData[];
 
 /**
- * Retrieves specific biohazards by their unique identifiers, including associated S.T.A.R.S. ranking.
+ * Retrieves specific biohazards room data by their unique identifiers, including associated S.T.A.R.S. ranking.
  *
  * @description Queries {@link biohazardsRoomData} for biohazards matching the provided IDs.
  * Returns an object with found biohazards (extended with starsRanking) and any unrecognized IDs. If no IDs are provided,
  * returns all biohazards with their rankings. Validates input for a maximum of 100 IDs and format (alphanumeric
  * with hyphens). Uses a Map for O(1) lookups and deduplicates IDs to avoid redundant results.
  * The data is readonly due to `as const`. Fetches S.T.A.R.S. rankings using {@link getSTARSRankingByCodes}.
+ * Suitable for the `GET /api/biohazards/rooms?ids=...` endpoint.
  *
  * @param ids - An array of unique biohazard identifiers (e.g., ['zombie1-keepersRoom']).
  * @returns {Promise<{ foundBiohazards: BiohazardDetailsData[]; unrecognizedIds: string[] }>} A promise resolving
@@ -62,12 +143,12 @@ export const getAllBiohazards = async (): Promise<BiohazardRoomData[]> =>
  *
  * @example
  * ```typescript
- * // Endpoint: GET /api/biohazards?ids=zombie1-keepersRoom,zombie2-keepersRoom
- * const result = await getBiohazardsByIds(['zombie1-keepersRoom', 'zombie2-keepersRoom']);
+ * // Endpoint: GET /api/biohazards/rooms?ids=zombie1-keepersRoom,zombie2-keepersRoom
+ * const result = await getBiohazardsRoomDataByIds(['zombie1-keepersRoom', 'zombie2-keepersRoom']);
  * // Returns: { foundBiohazards: [{ id: 'zombie1-keepersRoom', code: 'Zb', starsRanking: { ... }, ... }, ...], unrecognizedIds: [] }
  * ```
  */
-export const getBiohazardsByIds = async (
+export const getBiohazardsRoomDataByIds = async (
     ids: string[],
 ): Promise<{ foundBiohazards: BiohazardDetailsData[]; unrecognizedIds: string[] }> => {
     let biohazards: BiohazardRoomData[] = [];
@@ -131,13 +212,32 @@ export const getBiohazardsByIds = async (
 };
 
 /**
+ * Retrieves all S.T.A.R.S. rankings from the static in-memory data source.
+ *
+ * @description Fetches the entire dataset of S.T.A.R.S. rankings stored in {@link starsRankingData}.
+ * Returns all rankings (Eta through Alpha). The data is readonly due to the `as const` assertion.
+ * Suitable for the `GET /api/biohazards/stars-rankings/all` endpoint.
+ *
+ * @returns {Promise<STARSRankingData[]>} A promise resolving to an array of all S.T.A.R.S. rankings.
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/stars-rankings/all
+ * const rankings = await getAllSTARSRankings();
+ * // Returns: [{ starsClassification: 'Eta', greeksClassification: 'η', ranking: '0', ... }, ...]
+ * ```
+ */
+export const getAllSTARSRankings = async (): Promise<STARSRankingData[]> =>
+    starsRankingData as STARSRankingData[];
+
+/**
  * Retrieves S.T.A.R.S. rankings by biohazard codes.
  *
  * @description Queries {@link starsRankingData} for rankings matching the provided codes.
  * Returns an object with found rankings (associated with codes) and any unrecognized codes. If no codes are provided,
  * returns all rankings for all codes. Validates input for a maximum of 100 codes and format (alphanumeric
  * with hyphens). Uses a Map for O(1) lookups and deduplicates codes to avoid redundant results.
- * The data is readonly due to `as const`.
+ * The data is readonly due to `as const`. Suitable for the `GET /api/biohazards/stars-rankings?codes=...` endpoint.
  *
  * @param codes - An array of biohazard codes (e.g., ['Zb', 'Cr']).
  * @returns {Promise<{ foundRankings: BiohazardSTARSRankingByCode[]; unrecognizedCodes: string[] }>} A promise resolving
@@ -148,7 +248,7 @@ export const getBiohazardsByIds = async (
  *
  * @example
  * ```typescript
- * // Endpoint: GET /api/stars-rankings?codes=Zb,Cr
+ * // Endpoint: GET /api/biohazards/stars-rankings?codes=Zb,Cr
  * const result = await getSTARSRankingByCodes(['Zb', 'Cr']);
  * // Returns: { foundRankings: [{ code: 'Zb', starsRanking: { ... } }, { code: 'Cr', starsRanking: { ... } }], unrecognizedCodes: [] }
  * ```
@@ -210,39 +310,75 @@ export const getSTARSRankingByCodes = async (
 };
 
 /**
- * Search filters for biohazards.
- * @typedef {Object} BiohazardSearchFilters
- * @property {RoomID} [room] - Finds biohazards located in a specific room (e.g., 'keepersRoom').
- * @property {DifficultyLevel} [difficulty] - Finds biohazards by a specific difficulty (e.g., 'JV-lvl-easy').
- * @property {BioHazardCode} [code] - Finds biohazards by unique code identifier (e.g., 'Zb').
- * @property {string} [name] - Finds biohazards matching or containing the full or partial item name (case-insensitive).
+ * Searches and filters biohazards base data based on specified criteria.
+ *
+ * @description Filters {@link biohazardsData} using optional criteria (code, name).
+ * Returns biohazards matching all provided filters. Name searches are case-insensitive.
+ * Suitable for the `GET /api/biohazards/search` endpoint.
+ *
+ * @param {BiohazardSearchFilters} filters - The criteria to filter biohazards, with optional properties.
+ * @returns {Promise<BiohazardData[]>} A promise resolving to an array of biohazards matching the filters.
+ *
+ * @throws {BadRequestError} If any filter value is invalid (e.g., invalid code).
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/search?code=Zb
+ * const results = await searchBiohazardsData({ code: 'Zb' });
+ * // Returns: [{ id: 'Zb', name: 'Zombie', taxonomy: 'T-Virus Infected Humans', ... }]
+ * ```
  */
+export const searchBiohazardsData = async ({
+    code,
+    name,
+}: {
+    code?: BiohazardCode;
+    name?: string;
+}): Promise<BiohazardData[]> => {
+    // Validate filter inputs
+    if (code && !Object.values(BiohazardCodeEnum).includes(code as BiohazardCodeEnum)) {
+        throw new BadRequestError(Messages.validation.invalidBiohazardCode);
+    }
+    if (name && (typeof name !== 'string' || !name.match(/^[a-zA-Z0-9-\s]+$/))) {
+        throw new BadRequestError(Messages.validation.invalidString);
+    }
+
+    let filtered: BiohazardData[] = biohazardsData as BiohazardData[];
+
+    if (code) filtered = filtered.filter((biohazard) => biohazard.id === code);
+    if (name)
+        filtered = filtered.filter((biohazard) =>
+            biohazard.name.toLowerCase().includes(name.toLowerCase()),
+        );
+
+    return filtered;
+};
 
 /**
- * Searches and filters biohazards based on specified criteria.
+ * Searches and filters biohazards room data based on specified criteria.
  *
  * @description Filters {@link biohazardsRoomData} using optional criteria (room, difficulty, code, name).
- * Returns biohazards matching all provided filters. Name searches are case-insensitive. Suitable for the
- * `GET /api/biohazards/search?room=keepersRoom&code=Zb` endpoint. The data is readonly
+ * Returns biohazard room instances matching all provided filters. Name searches are case-insensitive. Suitable for the
+ * `GET /api/biohazards/rooms/search?room=keepersRoom&code=Zb` endpoint. The data is readonly
  * due to the `as const` assertion, ensuring immutability and type safety for literal values
  * like `difficultyLevel` and `code`.
  *
- * @param {BiohazardSearchFilters} filters - The criteria to filter biohazards, with optional properties.
- * @returns {Promise<BiohazardRoomData[]>} A promise resolving to an array of biohazards matching the filters.
+ * @param {BiohazardSearchFilters} filters - The criteria to filter biohazards room data, with optional properties.
+ * @returns {Promise<BiohazardRoomData[]>} A promise resolving to an array of biohazards room data matching the filters.
  *
  * @throws {BadRequestError} If any filter value is invalid (e.g., invalid ID format, invalid code).
  *
  * @example
  * ```typescript
- * // Endpoint: GET /api/biohazards/search?room=keepersRoom&code=Zb
- * const results = await searchBiohazards({
+ * // Endpoint: GET /api/biohazards/rooms/search?room=keepersRoom&code=Zb
+ * const results = await searchBiohazardsRoomData({
  *   room: 'keepersRoom',
  *   code: 'Zb'
  * });
  * // Returns: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...]
  * ```
  */
-export const searchBiohazards = async ({
+export const searchBiohazardsRoomData = async ({
     room,
     difficulty,
     code,

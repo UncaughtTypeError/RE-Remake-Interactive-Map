@@ -1,61 +1,111 @@
 /**
- * Renders room tabs within keymenus by cloning icon marker tags
- * and setting up the necessary data attributes.
- * This should be called after the keymenu templates are loaded.
+ * @file Renderer for room tabs in the keymenu.
+ * @description Renders room tabs with icon marker tags dynamically from API data
+ * instead of cloning from the hard-coded map. Fetches items and biohazards room data,
+ * processes it, and creates icon markers for each room.
  */
-export function renderRoomTabs(): void {
-    // Clone all icon-marker-tag elements into both items and biohazards room tabs
-    document.querySelectorAll('.icon-marker-tag').forEach((tag) => {
-        const itemsRoomTab = document.querySelector('.items #tab-rooms');
-        const biohazardsRoomTab = document.querySelector('.biohazards #tab-rooms');
+import { fetchAllItemsRoomData } from 'src/client/api/itemsApi';
+import { fetchAllBiohazardsRoomData } from 'src/client/api/biohazardsApi';
+import { processRoomTabsData } from '../processors/roomTabsProcessor';
+import {
+    createItemIconMarkerTag,
+    createBiohazardIconMarkerTag,
+} from '../presenters/iconMarkerTagPresenter';
+import { DifficultyLevel } from 'src/data';
+import { getState } from '../../../state/globalState';
 
-        if (itemsRoomTab) {
-            const itemsClone = tag.cloneNode(true) as HTMLElement;
-            itemsRoomTab.appendChild(itemsClone);
-        }
-
-        if (biohazardsRoomTab) {
-            const biohazardsClone = tag.cloneNode(true) as HTMLElement;
-            biohazardsRoomTab.appendChild(biohazardsClone);
-        }
-    });
-
-    // Remove non-biohazard pins from biohazards room tab
-    const biohazardsRoomTab = document.querySelector('.biohazards #tab-rooms');
-    if (biohazardsRoomTab) {
-        biohazardsRoomTab.querySelectorAll('.icon-pin:not(.biohazard-info)').forEach((pin) => {
-            pin.remove();
-        });
+/**
+ * Renders room tabs for items keymenu by fetching and processing room data.
+ * Creates icon marker tags dynamically for each room that has items.
+ * @param containerSelector - The CSS selector for the items room tabs container.
+ * @param difficulty - The current difficulty level to filter by.
+ * @returns Promise that resolves when rendering is complete.
+ * @throws Error if the container is not found or API call fails.
+ */
+export async function renderItemsRoomTabs(
+    containerSelector: string,
+    difficulty: DifficultyLevel,
+): Promise<void> {
+    const container = document.querySelector(containerSelector);
+    if (!container) {
+        throw new Error(`Items room tabs container not found: ${containerSelector}`);
     }
 
-    // Remove biohazard-info pins from items room tab
-    const itemsRoomTab = document.querySelector('.items #tab-rooms');
-    if (itemsRoomTab) {
-        itemsRoomTab.querySelectorAll('.biohazard-info').forEach((pin) => {
-            pin.remove();
-        });
-    }
+    // Clear existing content
+    container.innerHTML = '';
 
-    // Add shadow icon markers and set data-room attributes
-    document.querySelectorAll('#tab-rooms .icon-marker-tag').forEach((tag) => {
-        // Append shadow icon marker if not already present
-        if (!tag.querySelector('.shadow-icon-marker')) {
-            const shadowMarker = document.createElement('i');
-            shadowMarker.className = 'icon-marker shadow-icon-marker';
-            shadowMarker.innerHTML = '<i class="fa"></i>';
-            tag.appendChild(shadowMarker);
-        }
+    try {
+        // Fetch data from API
+        const itemsRoomData = await fetchAllItemsRoomData();
+        const biohazardsRoomData = await fetchAllBiohazardsRoomData();
 
-        // Set data-room attribute based on room title
-        const roomTitleElement = tag.querySelector('.icon-marker-room-title');
-        if (roomTitleElement) {
-            const roomMarkerTitle = roomTitleElement.textContent
-                ?.toLowerCase()
-                .split(' ')
-                .join('-');
-            if (roomMarkerTitle) {
-                tag.setAttribute('data-room', roomMarkerTitle);
+        // Process data
+        const roomTabsMap = processRoomTabsData(itemsRoomData, biohazardsRoomData, difficulty);
+
+        // Create and append icon markers for each room (items only)
+        roomTabsMap.forEach((roomTab) => {
+            const iconMarker = createItemIconMarkerTag(roomTab);
+            if (iconMarker) {
+                container.appendChild(iconMarker);
             }
-        }
-    });
+        });
+    } catch (error) {
+        console.error('Failed to render items room tabs:', error);
+        throw error;
+    }
+}
+
+/**
+ * Renders room tabs for biohazards keymenu by fetching and processing room data.
+ * Creates icon marker tags dynamically for each room that has biohazards.
+ * @param containerSelector - The CSS selector for the biohazards room tabs container.
+ * @param difficulty - The current difficulty level to filter by.
+ * @returns Promise that resolves when rendering is complete.
+ * @throws Error if the container is not found or API call fails.
+ */
+export async function renderBiohazardsRoomTabs(
+    containerSelector: string,
+    difficulty: DifficultyLevel,
+): Promise<void> {
+    const container = document.querySelector(containerSelector);
+    if (!container) {
+        throw new Error(`Biohazards room tabs container not found: ${containerSelector}`);
+    }
+
+    // Clear existing content
+    container.innerHTML = '';
+
+    try {
+        // Fetch data from API
+        const itemsRoomData = await fetchAllItemsRoomData();
+        const biohazardsRoomData = await fetchAllBiohazardsRoomData();
+
+        // Process data
+        const roomTabsMap = processRoomTabsData(itemsRoomData, biohazardsRoomData, difficulty);
+
+        // Create and append icon markers for each room (biohazards only)
+        roomTabsMap.forEach((roomTab) => {
+            const iconMarker = createBiohazardIconMarkerTag(roomTab);
+            if (iconMarker) {
+                container.appendChild(iconMarker);
+            }
+        });
+    } catch (error) {
+        console.error('Failed to render biohazards room tabs:', error);
+        throw error;
+    }
+}
+
+/**
+ * Renders both items and biohazards room tabs.
+ * Convenience function that calls both render functions with the current difficulty.
+ * @returns Promise that resolves when both room tabs are rendered.
+ */
+export async function renderRoomTabs(): Promise<void> {
+    const difficulty = getState('difficulty');
+
+    await Promise.all([
+        renderItemsRoomTabs('.items #tab-rooms', difficulty),
+        renderBiohazardsRoomTabs('.biohazards #tab-rooms', difficulty),
+    ]);
 }

@@ -14,9 +14,9 @@ import { animateGears, stopGearsAnimation } from 'shared/renderers/gearsAnimator
 function setLoadingState(container: HTMLElement, isLoading: boolean): void {
     container.setAttribute('aria-busy', isLoading.toString());
     if (isLoading) {
-        animateGears(1000);
+        animateGears('right', 1000);
     } else {
-        stopGearsAnimation();
+        stopGearsAnimation('right');
     }
 }
 

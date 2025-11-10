@@ -47,7 +47,6 @@ type ItemType =
     | 'ItemBox'
     | 'Kerosene'
     | 'Map'
-    | 'Interactable'
     // General Items
     | 'PersonOfInterest'
     | 'DoorKey'
@@ -69,7 +68,6 @@ export enum ItemTypeEnum {
     ITEM_BOX = 'ItemBox',
     KEROSENE = 'Kerosene',
     MAP = 'Map',
-    INTERACTABLE = 'Interactable',
     // General Items
     PERSON = 'PersonOfInterest',
     DOOR_KEY = 'DoorKey',
@@ -86,12 +84,21 @@ export enum ItemTypeEnum {
     WEAPON = 'Weapon',
 }
 
-export type ItemID =
+export type PersonID =
     // Persons
+    | 'jillValentine'
+    | 'chrisRedfield'
     | 'barryBurton'
     | 'rebeccaChambers'
     | 'kennethJSullivan'
     | 'richardAiken'
+    | 'albertWesker'
+    | 'bradVickers'
+    | 'forestSpeyer'
+    | 'josephFrost'
+    | 'enricoMarini';
+
+export type ItemID =
     // Interactable Items
     | 'typewriter'
     | 'itemBox'
@@ -247,12 +254,22 @@ export type ItemID =
     | 'incendiaryShells'
     | 'magnumRounds';
 
-export enum ItemIDEnum {
+export enum PersonIDEnum {
     // Persons
+    JILL_VALENTINE = 'jillValentine',
+    CHRIS_REDFIELD = 'chrisRedfield',
     BARRY_BURTON = 'barryBurton',
     REBECCA_CHAMBERS = 'rebeccaChambers',
     KENNETH_J_SULLIVAN = 'kennethJSullivan',
     RICHARD_AIKEN = 'richardAiken',
+    ALBERT_WESKER = 'albertWesker',
+    BRAD_VICKERS = 'bradVickers',
+    FOREST_SPEYER = 'forestSpeyer',
+    JOSEPH_FROST = 'josephFrost',
+    ENRICO_MARINI = 'enricoMarini',
+}
+
+export enum ItemIDEnum {
     // Interactable Items
     TYPEWRITER = 'typewriter',
     ITEM_BOX = 'itemBox',
@@ -310,12 +327,21 @@ export enum ItemIDEnum {
     MAGNUM_ROUNDS = 'magnumRounds',
 }
 
-type ItemDisplayName =
+type PersonDisplayName =
     // Persons
+    | 'Jill Valentine'
+    | 'Chris Redfield'
     | 'Barry Burton'
     | 'Rebecca Chambers'
     | 'Kenneth J. Sullivan'
     | 'Richard Aiken'
+    | 'Albert Wesker'
+    | 'Brad Vickers'
+    | 'Forest Speyer'
+    | 'Joseph Frost'
+    | 'Enrico Marini';
+
+type ItemDisplayName =
     // Interactable Items
     | 'Typewriter'
     | 'Item Box'
@@ -478,7 +504,13 @@ type ItemDisplayName =
     | 'Incendiary Shells'
     | 'Magnum Rounds';
 
-type Taxonomy = 'Interactable Items' | 'Key Items' | 'Weaponry' | 'Documents' | 'Recovery Items';
+type Taxonomy =
+    | 'Interactable Items'
+    | 'Key Items'
+    | 'Weaponry'
+    | 'Documents'
+    | 'Recovery Items'
+    | 'Persons';
 
 type ItemFunction =
     | 'Save Point'
@@ -527,6 +559,16 @@ export interface ItemData {
     exclusive: CharacterCode | null; // e.g. JV
 }
 
+export interface PersonData {
+    id: PersonID; // e.g. "jillValentine"
+    name: PersonDisplayName; // e.g. "Jill Valentine"
+    type: ItemType; // e.g. "PersonOfInterest"
+    taxonomy: Taxonomy; // e.g. "Persons"
+    imageSrc: string; // e.g. "assets/images/jillValentine.jpg"
+    bio: string; // e.g. "A dedicated member of the S.T.A.R.S. Alpha Team..."
+    exclusive: CharacterCode | null; // e.g. JV
+}
+
 export interface TranscriptionData {
     itemId: ItemID; // Foreign key to ItemData.id - e.g. "keepersDiary"
     transcript: string; // Full text transcript of the document content
@@ -534,10 +576,10 @@ export interface TranscriptionData {
 
 export interface ItemRoomData {
     id: string; // e.g. "selfDefenseJV-keepersRoom"
-    itemId: ItemID; // e.g. "batteryPack"
+    itemId: ItemID | PersonID; // e.g. "batteryPack"
     map: RoomMapData; // e.g. { roomId: "keepersRoom", mapId: "mansionF1" }
     difficultyLevel: DifficultyLevel[]; // e.g. ["JV-lvl-very-easy", "JV-lvl-easy"]
-    name: ItemDisplayName; // e.g. "Battery Pack"
+    name: ItemDisplayName | PersonDisplayName; // e.g. "Battery Pack"
     type: ItemType; // e.g. "SelfDefense"
     qty: number; // e.g. 5
     qtyItems: QtyItems[] | number | null; // e.g. [{ qty: 3, difficultyLevel: ["JV-lvl-easy", "JV-lvl-normal", "JV-lvl-hard"] }] or 5
@@ -633,7 +675,7 @@ type BiohazardDisplayName =
     | 'Tyrant'
     | 'Lisa Trevor';
 
-type STARSClassification = 'Alpha' | 'Beta' | 'Gamma' | 'Delta' | 'Epsilon' | 'Zeta' | 'Eta';
+export type STARSClassification = 'Alpha' | 'Beta' | 'Gamma' | 'Delta' | 'Epsilon' | 'Zeta' | 'Eta';
 
 type greeksClassification =
     | '\u03B1'

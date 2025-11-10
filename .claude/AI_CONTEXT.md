@@ -122,15 +122,23 @@ MCP tools have a **strict dependency** on the OpenAPI specification. All three m
 
 1. ✅ Implement endpoint in Express (`src/routes/`, `src/middleware/`, etc.)
 2. ✅ **Update `openapi.yaml`** with exact parameter names, types, and enum values
-3. ✅ **Update MCP tools** in `mcp-server/src/tools/` to match OpenAPI spec **EXACTLY**
+3. ✅ **Use REAL data for examples** - ALWAYS reference actual data from `src/data/`:
+    - Item IDs: Check `src/data/items.ts` for actual item IDs (e.g., 'typewriter', 'itemBox', 'handgun' for base data)
+    - Room Item IDs: Use format `itemType-roomId` (e.g., 'selfDefenseJV-keepersRoom', 'document-keepersRoom')
+    - Biohazard Codes: Check `src/data/biohazards.ts` for BiohazardCodes (e.g., 'Zb', 'Ht', 'Cb', 'Ad')
+    - Room Biohazard IDs: Use format `biohazardType-roomId` (e.g., 'zombie1-keepersRoom', 'cerberus-mainHallF1')
+    - Room IDs: Use actual room IDs like 'keepersRoom', 'mainHallF1', 'diningRoomF1' (check integration tests)
+    - **NEVER invent example data** - all examples must be verifiable in source files or tests
+4. ✅ **Update MCP tools** in `mcp-server/src/tools/` to match OpenAPI spec **EXACTLY**
     - Parameter names must match API query parameters
     - Enum values must match API enum values (including case)
     - All optional/required parameters must be included
     - Examples must use actual valid values from the API
-4. ✅ Update MCP types in `mcp-server/src/types.ts` if response/request schemas change
-5. ✅ Update `docs/MCP_SERVER.md` with new tool documentation
-6. ✅ Rebuild MCP server: `cd mcp-server && npm run build`
-7. ✅ **Test** the MCP tool by making actual API requests to verify schema match
+    - Tool names must reflect base data vs room data (e.g., `get_items_data` vs `get_items_room_data`)
+5. ✅ Update MCP types in `mcp-server/src/types.ts` if response/request schemas change
+6. ✅ Update `docs/MCP_SERVER.md` with new tool documentation
+7. ✅ Rebuild MCP server: `cd mcp-server && npm run build`
+8. ✅ **Test** the MCP tool by making actual API requests to verify schema match
 
 **Why This Matters**:
 
@@ -506,15 +514,40 @@ subscribeState('roomId', (newValue) => {
 
 ### Items API (`/api/items`)
 
-- `GET /api/items/all` - Fetch all items
-- `GET /api/items?ids=...` - Fetch by IDs
-- `GET /api/items/search?room=...&difficulty=...&type=...&name=...` - Filter
+The API provides two tiers of item data:
+
+**Base Data Endpoints** (simple master definitions - id, name, type only):
+
+- `GET /api/items/all` - Fetch all base item data (no room/difficulty info)
+- `GET /api/items?ids=typewriter,itemBox,handgun` - Fetch base data by simple IDs
+- `GET /api/items/search?type=Weapon&name=Handgun` - Search base data (type, name only)
+
+**Room Data Endpoints** (detailed with locations and difficulty):
+
+- `GET /api/items/rooms/all` - Fetch all items with room data
+- `GET /api/items/rooms?ids=selfDefenseJV-keepersRoom,document-keepersRoom` - Fetch room data by IDs (format: itemType-roomId)
+- `GET /api/items/rooms/search?room=keepersRoom&difficulty=JV-lvl-normal&type=SelfDefense&name=Battery` - Full search with all filters
 
 ### Biohazards API (`/api/biohazards`)
 
-- `GET /api/biohazards/all` - Fetch all
-- `GET /api/biohazards?ids=...` - Fetch by IDs
-- `GET /api/biohazards/search?room=...&difficulty=...&code=...&name=...` - Filter
+The API provides two tiers of biohazard data:
+
+**Base Data Endpoints** (simple master definitions - id, name, code only):
+
+- `GET /api/biohazards/all` - Fetch all base biohazard data (no room/difficulty info)
+- `GET /api/biohazards?ids=Zb,Ht,Cb` - Fetch base data by BiohazardCodes (2-letter codes)
+- `GET /api/biohazards/search?code=Zb&name=Zombie` - Search base data (code, name only)
+
+**Room Data Endpoints** (detailed with S.T.A.R.S. intelligence and locations):
+
+- `GET /api/biohazards/rooms/all` - Fetch all biohazards with complete S.T.A.R.S. data
+- `GET /api/biohazards/rooms?ids=zombie1-keepersRoom,cerberus-mainHallF1` - Fetch room data by IDs (format: biohazardType-roomId)
+- `GET /api/biohazards/rooms/search?room=keepersRoom&difficulty=JV-lvl-normal&code=Zb` - Full search with all filters
+
+**S.T.A.R.S. Rankings:**
+
+- `GET /api/biohazards/stars-rankings/all` - All S.T.A.R.S. threat rankings
+- `GET /api/biohazards/stars-rankings?codes=Zb,Ht` - Rankings by BiohazardCodes
 
 ### Maps API (`/api/maps`)
 

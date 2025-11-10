@@ -14,39 +14,44 @@ import * as biohazardsService from '../services/biohazardsService';
 import { BadRequestError } from '../errors/customErrors';
 import { Messages } from '../constants';
 
-import { BiohazardRoomData, BiohazardSearchFilters } from '../data';
+import {
+    BiohazardData,
+    BiohazardRoomData,
+    BiohazardSearchFilters,
+    STARSRankingData,
+} from '../data';
 
 /**
- * Handles GET request to retrieve all biohazards.
+ * Handles GET request to retrieve all biohazards base data.
  *
- * @description Fetches all biohazards from {@link biohazardsService.getAllBiohazards} and returns them as JSON.
+ * @description Fetches all biohazards from {@link biohazardsService.getAllBiohazardsData} and returns them as JSON.
  * Suitable for the `GET /api/biohazards/all` endpoint. No query parameters are required.
  *
  * @param req - Express request object.
  * @param res - Express response object.
- * @returns {Promise<void>} Resolves with a 200 response containing an array of all biohazards.
+ * @returns {Promise<void>} Resolves with a 200 response containing an array of all biohazards base data.
  *
  * @example
  * ```typescript
  * // Endpoint: GET /api/biohazards/all
- * // Response: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...]
+ * // Response: [{ id: 'Zb', name: 'Zombie', taxonomy: 'T-Virus Infected Humans', ... }, ...]
  * ```
  */
-export const getAllBiohazards = async (req: Request, res: Response): Promise<void> => {
-    const biohazards: BiohazardRoomData[] = await biohazardsService.getAllBiohazards();
+export const getAllBiohazardsData = async (req: Request, res: Response): Promise<void> => {
+    const biohazards: BiohazardData[] = await biohazardsService.getAllBiohazardsData();
     res.status(200).json(biohazards);
 };
 
 /**
- * Handles GET request to retrieve biohazards by their IDs.
+ * Handles GET request to retrieve biohazards base data by their IDs.
  *
- * @description Fetches biohazards matching the provided IDs from {@link biohazardsService.getBiohazardsByIds}.
+ * @description Fetches biohazards matching the provided IDs from {@link biohazardsService.getBiohazardsDataByIds}.
  * Expects a comma-separated list of IDs in the `ids` query parameter. If no IDs are provided,
  * returns all biohazards wrapped in `{ foundBiohazards: [], unrecognizedIds: [] }`. Validates query parameters
  * using `express-validator` to prevent abuse/DoS or injection attacks. Suitable for the
  * `GET /api/biohazards?ids=...` endpoint.
  *
- * @param req - Express request object with `ids` query parameter (e.g., 'zombie1-keepersRoom,zombie2-keepersRoom').
+ * @param req - Express request object with `ids` query parameter (e.g., 'Zb,Ht').
  * @param res - Express response object.
  * @returns {Promise<void>} Resolves with a 200 response containing an object with found biohazards and unrecognized IDs.
  * @throws {BadRequestError} If query parameters fail validation (e.g., invalid ID format).
@@ -54,11 +59,11 @@ export const getAllBiohazards = async (req: Request, res: Response): Promise<voi
  *
  * @example
  * ```typescript
- * // Endpoint: GET /api/biohazards?ids=zombie1-keepersRoom,zombie2-keepersRoom
- * // Response: { foundBiohazards: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...], unrecognizedIds: [] }
+ * // Endpoint: GET /api/biohazards?ids=Zb,Ht
+ * // Response: { foundBiohazards: [{ id: 'Zb', name: 'Zombie', ... }, ...], unrecognizedIds: [] }
  * ```
  */
-export const getBiohazardsByIds = async (req: Request, res: Response): Promise<void> => {
+export const getBiohazardsDataByIds = async (req: Request, res: Response): Promise<void> => {
     // validate query parameters
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -73,8 +78,91 @@ export const getBiohazardsByIds = async (req: Request, res: Response): Promise<v
     const idsQuery = req.query.ids as string;
     const ids = idsQuery ? idsQuery.split(',').map((id) => id.trim()) : [];
 
-    const biohazards = await biohazardsService.getBiohazardsByIds(ids);
+    const biohazards = await biohazardsService.getBiohazardsDataByIds(ids);
     res.status(200).json(biohazards);
+};
+
+/**
+ * Handles GET request to retrieve all biohazards room data.
+ *
+ * @description Fetches all biohazards room data from {@link biohazardsService.getAllBiohazardsRoomData} and returns them as JSON.
+ * Suitable for the `GET /api/biohazards/rooms/all` endpoint. No query parameters are required.
+ *
+ * @param req - Express request object.
+ * @param res - Express response object.
+ * @returns {Promise<void>} Resolves with a 200 response containing an array of all biohazards room data.
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/rooms/all
+ * // Response: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...]
+ * ```
+ */
+export const getAllBiohazardsRoomData = async (req: Request, res: Response): Promise<void> => {
+    const biohazardsRoomData: BiohazardRoomData[] =
+        await biohazardsService.getAllBiohazardsRoomData();
+    res.status(200).json(biohazardsRoomData);
+};
+
+/**
+ * Handles GET request to retrieve biohazards room data by their IDs.
+ *
+ * @description Fetches biohazards matching the provided IDs from {@link biohazardsService.getBiohazardsRoomDataByIds}.
+ * Expects a comma-separated list of IDs in the `ids` query parameter. If no IDs are provided,
+ * returns all biohazards wrapped in `{ foundBiohazards: [], unrecognizedIds: [] }`. Validates query parameters
+ * using `express-validator` to prevent abuse/DoS or injection attacks. Suitable for the
+ * `GET /api/biohazards/rooms?ids=...` endpoint.
+ *
+ * @param req - Express request object with `ids` query parameter (e.g., 'zombie1-keepersRoom,zombie2-keepersRoom').
+ * @param res - Express response object.
+ * @returns {Promise<void>} Resolves with a 200 response containing an object with found biohazards and unrecognized IDs.
+ * @throws {BadRequestError} If query parameters fail validation (e.g., invalid ID format).
+ * @throws {NotFoundError} If no provided IDs match any biohazards.
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/rooms?ids=zombie1-keepersRoom,zombie2-keepersRoom
+ * // Response: { foundBiohazards: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...], unrecognizedIds: [] }
+ * ```
+ */
+export const getBiohazardsRoomDataByIds = async (req: Request, res: Response): Promise<void> => {
+    // validate query parameters
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        throw new BadRequestError(
+            `${Messages.validation.invalidQueryParameters}: ${errors
+                .array()
+                .map((e) => e.msg)
+                .join(', ')}`,
+        );
+    }
+
+    const idsQuery = req.query.ids as string;
+    const ids = idsQuery ? idsQuery.split(',').map((id) => id.trim()) : [];
+
+    const biohazards = await biohazardsService.getBiohazardsRoomDataByIds(ids);
+    res.status(200).json(biohazards);
+};
+
+/**
+ * Handles GET request to retrieve all S.T.A.R.S. rankings.
+ *
+ * @description Fetches all S.T.A.R.S. rankings from {@link biohazardsService.getAllSTARSRankings} and returns them as JSON.
+ * Suitable for the `GET /api/biohazards/stars-rankings/all` endpoint. No query parameters are required.
+ *
+ * @param req - Express request object.
+ * @param res - Express response object.
+ * @returns {Promise<void>} Resolves with a 200 response containing an array of all S.T.A.R.S. rankings.
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/stars-rankings/all
+ * // Response: [{ starsClassification: 'Eta', greeksClassification: 'η', ranking: '0', ... }, ...]
+ * ```
+ */
+export const getAllSTARSRankings = async (req: Request, res: Response): Promise<void> => {
+    const rankings: STARSRankingData[] = await biohazardsService.getAllSTARSRankings();
+    res.status(200).json(rankings);
 };
 
 /**
@@ -118,12 +206,12 @@ export const getSTARSRankingByCodes = async (req: Request, res: Response): Promi
 };
 
 /**
- * Handles GET request to search and filter biohazards based on criteria.
+ * Handles GET request to search and filter biohazards base data based on criteria.
  *
  * @description Filters biohazards using query parameters from {@link BiohazardSearchFilters} via
- * {@link biohazardsService.searchBiohazards}. Supports filtering by room, difficulty, code and name.
+ * {@link biohazardsService.searchBiohazardsData}. Supports filtering by code and name.
  * Validates query parameters using `express-validator`. Suitable for the
- * `GET /api/biohazards/search` endpoint with query parameters like `room=keepersRoom&code=Zb`.
+ * `GET /api/biohazards/search` endpoint with query parameters like `code=Zb&name=zombie`.
  *
  * @param req - Express request object with query parameters matching {@link BiohazardSearchFilters}.
  * @param res - Express response object.
@@ -132,11 +220,11 @@ export const getSTARSRankingByCodes = async (req: Request, res: Response): Promi
  *
  * @example
  * ```typescript
- * // Endpoint: GET /api/biohazards/search?room=keepersRoom&code=Zb
- * // Response: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...]
+ * // Endpoint: GET /api/biohazards/search?code=Zb
+ * // Response: [{ id: 'Zb', name: 'Zombie', taxonomy: 'T-Virus Infected Humans', ... }]
  * ```
  */
-export const searchBiohazards = async (req: Request, res: Response): Promise<void> => {
+export const searchBiohazardsData = async (req: Request, res: Response): Promise<void> => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         throw new BadRequestError(
@@ -148,6 +236,41 @@ export const searchBiohazards = async (req: Request, res: Response): Promise<voi
     }
 
     const filters = req.query as BiohazardSearchFilters;
-    const filtered = await biohazardsService.searchBiohazards(filters);
+    const filtered = await biohazardsService.searchBiohazardsData(filters);
+    res.status(200).json(filtered);
+};
+
+/**
+ * Handles GET request to search and filter biohazards room data based on criteria.
+ *
+ * @description Filters biohazards room data using query parameters from {@link BiohazardSearchFilters} via
+ * {@link biohazardsService.searchBiohazardsRoomData}. Supports filtering by room, difficulty, code and name.
+ * Validates query parameters using `express-validator`. Suitable for the
+ * `GET /api/biohazards/rooms/search` endpoint with query parameters like `room=keepersRoom&code=Zb`.
+ *
+ * @param req - Express request object with query parameters matching {@link BiohazardSearchFilters}.
+ * @param res - Express response object.
+ * @returns {Promise<void>} Resolves with a 200 response containing an array of filtered biohazards room data.
+ * @throws {BadRequestError} If query parameters fail validation (e.g., invalid code).
+ *
+ * @example
+ * ```typescript
+ * // Endpoint: GET /api/biohazards/rooms/search?room=keepersRoom&code=Zb
+ * // Response: [{ id: 'zombie1-keepersRoom', code: 'Zb', ... }, ...]
+ * ```
+ */
+export const searchBiohazardsRoomData = async (req: Request, res: Response): Promise<void> => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        throw new BadRequestError(
+            `${Messages.validation.invalidQueryParameters}: ${errors
+                .array()
+                .map((e) => e.msg)
+                .join(', ')}`,
+        );
+    }
+
+    const filters = req.query as BiohazardSearchFilters;
+    const filtered = await biohazardsService.searchBiohazardsRoomData(filters);
     res.status(200).json(filtered);
 };

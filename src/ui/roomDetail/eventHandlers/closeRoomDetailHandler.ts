@@ -29,7 +29,7 @@ export async function handleCloseRoomDetail(element: HTMLElement, event: Event):
         roomInfoWrapper.classList.add('room-detail-inactive');
     }
 
-    animateGears(500);
+    animateGears('right', 500);
 
     setState('roomId', 'unknown');
     setState('roomDetailActive', false);

@@ -43,19 +43,22 @@ describe('Items Controller', () => {
         });
     });
 
-    describe('getAllItems', () => {
+    describe('getAllItemsRoomData', () => {
         it('should return all items', async () => {
             const mockResult = itemsRoomData as ItemRoomData[];
-            (itemsService.getAllItems as jest.Mock).mockResolvedValue(mockResult);
+            (itemsService.getAllItemsRoomData as jest.Mock).mockResolvedValue(mockResult);
 
-            await itemsController.getAllItems(mockRequest as Request, mockResponse as Response);
+            await itemsController.getAllItemsRoomData(
+                mockRequest as Request,
+                mockResponse as Response,
+            );
 
-            expect(itemsService.getAllItems).toHaveBeenCalled();
+            expect(itemsService.getAllItemsRoomData).toHaveBeenCalled();
             expect(mockResponse.json).toHaveBeenCalledWith(mockResult);
         });
     });
 
-    describe('getItemsByIds', () => {
+    describe('getItemsRoomDataByIds', () => {
         it('should return found items and unrecognized IDs', async () => {
             mockRequest.query = {
                 ids: 'selfDefenseJV-keepersRoom,document-keepersRoom',
@@ -67,11 +70,14 @@ describe('Items Controller', () => {
                 ],
                 unrecognizedIds: [],
             };
-            (itemsService.getItemsByIds as jest.Mock).mockResolvedValue(mockResult);
+            (itemsService.getItemsRoomDataByIds as jest.Mock).mockResolvedValue(mockResult);
 
-            await itemsController.getItemsByIds(mockRequest as Request, mockResponse as Response);
+            await itemsController.getItemsRoomDataByIds(
+                mockRequest as Request,
+                mockResponse as Response,
+            );
 
-            expect(itemsService.getItemsByIds).toHaveBeenCalledWith([
+            expect(itemsService.getItemsRoomDataByIds).toHaveBeenCalledWith([
                 'selfDefenseJV-keepersRoom',
                 'document-keepersRoom',
             ]);
@@ -84,11 +90,14 @@ describe('Items Controller', () => {
                 foundItems: [{ id: 'selfDefenseJV-keepersRoom', name: 'Battery Pack' }],
                 unrecognizedIds: ['invalid'],
             };
-            (itemsService.getItemsByIds as jest.Mock).mockResolvedValue(mockResult);
+            (itemsService.getItemsRoomDataByIds as jest.Mock).mockResolvedValue(mockResult);
 
-            await itemsController.getItemsByIds(mockRequest as Request, mockResponse as Response);
+            await itemsController.getItemsRoomDataByIds(
+                mockRequest as Request,
+                mockResponse as Response,
+            );
 
-            expect(itemsService.getItemsByIds).toHaveBeenCalledWith([
+            expect(itemsService.getItemsRoomDataByIds).toHaveBeenCalledWith([
                 'selfDefenseJV-keepersRoom',
                 'invalid',
             ]);
@@ -101,22 +110,28 @@ describe('Items Controller', () => {
                 foundItems: itemsRoomData as ItemRoomData[],
                 unrecognizedIds: [],
             };
-            (itemsService.getItemsByIds as jest.Mock).mockResolvedValue(mockResult);
+            (itemsService.getItemsRoomDataByIds as jest.Mock).mockResolvedValue(mockResult);
 
-            await itemsController.getItemsByIds(mockRequest as Request, mockResponse as Response);
+            await itemsController.getItemsRoomDataByIds(
+                mockRequest as Request,
+                mockResponse as Response,
+            );
 
-            expect(itemsService.getItemsByIds).toHaveBeenCalledWith([]);
+            expect(itemsService.getItemsRoomDataByIds).toHaveBeenCalledWith([]);
             expect(mockResponse.json).toHaveBeenCalledWith(mockResult);
         });
 
         it('should handle NotFoundError', async () => {
             mockRequest.query = { ids: 'invalid1,invalid2' };
-            (itemsService.getItemsByIds as jest.Mock).mockRejectedValue(
+            (itemsService.getItemsRoomDataByIds as jest.Mock).mockRejectedValue(
                 new NotFoundError(Messages.errors.notFound),
             );
 
             await expect(
-                itemsController.getItemsByIds(mockRequest as Request, mockResponse as Response),
+                itemsController.getItemsRoomDataByIds(
+                    mockRequest as Request,
+                    mockResponse as Response,
+                ),
             ).rejects.toThrow(NotFoundError);
         });
 
@@ -134,17 +149,23 @@ describe('Items Controller', () => {
             });
 
             await expect(
-                itemsController.getItemsByIds(mockRequest as Request, mockResponse as Response),
+                itemsController.getItemsRoomDataByIds(
+                    mockRequest as Request,
+                    mockResponse as Response,
+                ),
             ).rejects.toThrow(BadRequestError);
             await expect(
-                itemsController.getItemsByIds(mockRequest as Request, mockResponse as Response),
+                itemsController.getItemsRoomDataByIds(
+                    mockRequest as Request,
+                    mockResponse as Response,
+                ),
             ).rejects.toThrow(
                 `${Messages.validation.invalidQueryParameters}: ${Messages.validation.invalidCommaSeparatedString.replace('{subject}', 'IDs')}`,
             );
         });
     });
 
-    describe('searchItems', () => {
+    describe('searchItemsRoomData', () => {
         it('should return filtered items', async () => {
             const mockItems: ItemRoomData[] = [
                 {
@@ -191,11 +212,14 @@ describe('Items Controller', () => {
                 },
             ];
             mockRequest.query = { room: 'keepersRoom' };
-            (itemsService.searchItems as jest.Mock).mockResolvedValue(mockItems);
+            (itemsService.searchItemsRoomData as jest.Mock).mockResolvedValue(mockItems);
 
-            await itemsController.searchItems(mockRequest as Request, mockResponse as Response);
+            await itemsController.searchItemsRoomData(
+                mockRequest as Request,
+                mockResponse as Response,
+            );
 
-            expect(itemsService.searchItems).toHaveBeenCalledWith({ room: 'keepersRoom' });
+            expect(itemsService.searchItemsRoomData).toHaveBeenCalledWith({ room: 'keepersRoom' });
             expect(mockResponse.json).toHaveBeenCalledWith(mockItems);
         });
 
@@ -208,10 +232,16 @@ describe('Items Controller', () => {
             });
 
             await expect(
-                itemsController.searchItems(mockRequest as Request, mockResponse as Response),
+                itemsController.searchItemsRoomData(
+                    mockRequest as Request,
+                    mockResponse as Response,
+                ),
             ).rejects.toThrow(BadRequestError);
             await expect(
-                itemsController.searchItems(mockRequest as Request, mockResponse as Response),
+                itemsController.searchItemsRoomData(
+                    mockRequest as Request,
+                    mockResponse as Response,
+                ),
             ).rejects.toThrow(
                 `${Messages.validation.invalidQueryParameters}: ${Messages.validation.invalidRoomIdFormat}`,
             );

@@ -27,5 +27,5 @@ export function handleMouseLeaveRoom(element: HTMLElement, event: Event | MouseE
     clearActiveIcons();
 
     // Trigger gears animation (200ms duration to match jQuery behavior)
-    animateGears(200);
+    animateGears('right', 200);
 }

@@ -253,13 +253,13 @@ export const getRoomsByIds = async (
 
                 // Conditionally call services only when there are ids to lookup
                 const itemsPromise = allItemIds.length
-                    ? itemsService.getItemsByIds(allItemIds)
+                    ? itemsService.getItemsRoomDataByIds(allItemIds)
                     : Promise.resolve({
                           foundItems: [] as ItemRoomData[],
                           unrecognizedIds: [] as string[],
                       });
                 const biohazardsPromise = room.detailList.biohazards.length
-                    ? biohazardsService.getBiohazardsByIds(room.detailList.biohazards)
+                    ? biohazardsService.getBiohazardsRoomDataByIds(room.detailList.biohazards)
                     : Promise.resolve({
                           foundBiohazards: [] as BiohazardDetailsData[],
                           unrecognizedIds: [] as BiohazardCode[],
@@ -307,13 +307,13 @@ export const getRoomsByIds = async (
 
             // Conditionally call services only when arrays are non-empty
             const itemsPromise = allItemIds.length
-                ? itemsService.getItemsByIds(allItemIds)
+                ? itemsService.getItemsRoomDataByIds(allItemIds)
                 : Promise.resolve({
                       foundItems: [] as ItemRoomData[],
                       unrecognizedIds: [] as string[],
                   });
             const biohazardsPromise = room.detailList.biohazards.length
-                ? biohazardsService.getBiohazardsByIds(room.detailList.biohazards)
+                ? biohazardsService.getBiohazardsRoomDataByIds(room.detailList.biohazards)
                 : Promise.resolve({
                       foundBiohazards: [] as BiohazardDetailsData[],
                       unrecognizedIds: [] as BiohazardCode[],

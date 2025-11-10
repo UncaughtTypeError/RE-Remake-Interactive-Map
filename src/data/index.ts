@@ -6,8 +6,8 @@
  * @see {@link ./README.md} for data structure details.
  */
 export * from './types';
-export { itemsRoomData } from './items';
+export { itemsRoomData, itemsData, personsData } from './items';
 export { areaData } from './areas';
 export { mapData } from './maps';
 export { roomData } from './rooms';
-export { biohazardsRoomData, starsRankingData } from './biohazards';
+export { biohazardsRoomData, biohazardsData, starsRankingData } from './biohazards';

@@ -26,19 +26,19 @@ app.use('/api/items', itemsRouter);
 app.use(errorHandler);
 
 describe('Items Routes', () => {
-    describe('GET /api/items/all', () => {
-        it('should return all items', async () => {
-            const response = await request(app).get('/api/items/all');
+    describe('GET /api/items/rooms/all', () => {
+        it('should return all items room data', async () => {
+            const response = await request(app).get('/api/items/rooms/all');
             expect(response.status).toBe(200);
             expect(response.body.length).toBe(itemsRoomData.length);
             expect(response.body).toEqual(itemsRoomData);
         });
     });
 
-    describe('GET /api/items?ids=...', () => {
+    describe('GET /api/items/rooms?ids=...', () => {
         it('should return all found items and no unrecognized IDs', async () => {
             const response = await request(app).get(
-                '/api/items?ids=selfDefenseJV-keepersRoom,document-keepersRoom',
+                '/api/items/rooms?ids=selfDefenseJV-keepersRoom,document-keepersRoom',
             );
             expect(response.status).toBe(200);
             expect(response.body.foundItems.length).toBe(2);
@@ -47,7 +47,7 @@ describe('Items Routes', () => {
 
         it('should return partial found items and unrecognized IDs', async () => {
             const response = await request(app).get(
-                '/api/items?ids=selfDefenseJV-keepersRoom,invalid,document-keepersRoom',
+                '/api/items/rooms?ids=selfDefenseJV-keepersRoom,invalid,document-keepersRoom',
             );
             expect(response.status).toBe(200);
             expect(response.body.foundItems.length).toBe(2);
@@ -55,20 +55,20 @@ describe('Items Routes', () => {
         });
 
         it('should return all items if no IDs provided', async () => {
-            const response = await request(app).get('/api/items');
+            const response = await request(app).get('/api/items/rooms');
             expect(response.status).toBe(200);
             expect(response.body.foundItems.length).toBe(itemsRoomData.length);
             expect(response.body.unrecognizedIds).toEqual([]);
         });
 
         it('should return 404 if no items found', async () => {
-            const response = await request(app).get('/api/items?ids=invalid1,invalid2');
+            const response = await request(app).get('/api/items/rooms?ids=invalid1,invalid2');
             expect(response.status).toBe(404);
             expect(response.body.error).toBe(Messages.errors.notFound);
         });
 
         it('should return 400 for invalid ID format', async () => {
-            const response = await request(app).get('/api/items?ids=invalid@id');
+            const response = await request(app).get('/api/items/rooms?ids=invalid@id');
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(
                 Messages.validation.invalidIdFormat.replace('{subject}', 'IDs'),
@@ -76,9 +76,9 @@ describe('Items Routes', () => {
         });
     });
 
-    describe('GET /api/items/search', () => {
+    describe('GET /api/items/rooms/search', () => {
         it('should return filtered items by room', async () => {
-            const response = await request(app).get('/api/items/search?room=keepersRoom');
+            const response = await request(app).get('/api/items/rooms/search?room=keepersRoom');
             expect(response.status).toBe(200);
             expect(response.body).toBeInstanceOf(Array);
             expect(response.body.length).toBe(
@@ -90,32 +90,32 @@ describe('Items Routes', () => {
         });
 
         it('should return filtered items by type', async () => {
-            const response = await request(app).get('/api/items/search?type=SelfDefense');
+            const response = await request(app).get('/api/items/rooms/search?type=SelfDefense');
             expect(response.status).toBe(200);
             expect(response.body).toBeInstanceOf(Array);
             expect(response.body.every((item: any) => item.type === 'SelfDefense')).toBe(true);
         });
 
         it('should return empty array for no matches', async () => {
-            const response = await request(app).get('/api/items/search?room=nonexistent');
+            const response = await request(app).get('/api/items/rooms/search?room=nonexistent');
             expect(response.status).toBe(200);
             expect(response.body).toEqual([]);
         });
 
         it('should return 400 for invalid room ID format', async () => {
-            const response = await request(app).get('/api/items/search?room=invalid@room');
+            const response = await request(app).get('/api/items/rooms/search?room=invalid@room');
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(Messages.validation.invalidRoomIdFormat);
         });
 
         it('should return 400 for invalid difficulty', async () => {
-            const response = await request(app).get('/api/items/search?difficulty=invalid');
+            const response = await request(app).get('/api/items/rooms/search?difficulty=invalid');
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(Messages.validation.invalidDifficultyLevel);
         });
 
         it('should return 400 for unrecognized query parameters', async () => {
-            const response = await request(app).get('/api/items/search?invalidParam=invalid');
+            const response = await request(app).get('/api/items/rooms/search?invalidParam=invalid');
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(
                 Messages.validation.unrecognizedQueryParameters.replace('{params}', 'invalidParam'),

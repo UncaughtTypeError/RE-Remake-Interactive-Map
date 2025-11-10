@@ -26,19 +26,19 @@ app.use('/api/biohazards', biohazardsRouter);
 app.use(errorHandler);
 
 describe('Biohazards Routes', () => {
-    describe('GET /api/biohazards/all', () => {
-        it('should return all biohazards', async () => {
-            const response = await request(app).get('/api/biohazards/all');
+    describe('GET /api/biohazards/rooms/all', () => {
+        it('should return all biohazards room data', async () => {
+            const response = await request(app).get('/api/biohazards/rooms/all');
             expect(response.status).toBe(200);
             expect(response.body.length).toBe(biohazardsRoomData.length);
             expect(response.body).toEqual(biohazardsRoomData);
         });
     });
 
-    describe('GET /api/biohazards?ids=...', () => {
+    describe('GET /api/biohazards/rooms?ids=...', () => {
         it('should return all found biohazards and no unrecognized IDs', async () => {
             const response = await request(app).get(
-                '/api/biohazards?ids=zombie1-keepersRoom,zombie2-keepersRoom',
+                '/api/biohazards/rooms?ids=zombie1-keepersRoom,zombie2-keepersRoom',
             );
             expect(response.status).toBe(200);
             expect(response.body.foundBiohazards.length).toBe(2);
@@ -47,7 +47,7 @@ describe('Biohazards Routes', () => {
 
         it('should return partial found biohazards and unrecognized IDs', async () => {
             const response = await request(app).get(
-                '/api/biohazards?ids=zombie1-keepersRoom,invalid',
+                '/api/biohazards/rooms?ids=zombie1-keepersRoom,invalid',
             );
             expect(response.status).toBe(200);
             expect(response.body.foundBiohazards.length).toBe(1);
@@ -55,20 +55,20 @@ describe('Biohazards Routes', () => {
         });
 
         it('should return all biohazards if no IDs provided', async () => {
-            const response = await request(app).get('/api/biohazards');
+            const response = await request(app).get('/api/biohazards/rooms');
             expect(response.status).toBe(200);
             expect(response.body.foundBiohazards.length).toBe(biohazardsRoomData.length);
             expect(response.body.unrecognizedIds).toEqual([]);
         });
 
         it('should return 404 if no biohazards found', async () => {
-            const response = await request(app).get('/api/biohazards?ids=invalid1,invalid2');
+            const response = await request(app).get('/api/biohazards/rooms?ids=invalid1,invalid2');
             expect(response.status).toBe(404);
             expect(response.body.error).toBe(Messages.errors.notFound);
         });
 
         it('should return 400 for invalid ID format', async () => {
-            const response = await request(app).get('/api/biohazards?ids=invalid@id');
+            const response = await request(app).get('/api/biohazards/rooms?ids=invalid@id');
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(
                 Messages.validation.invalidIdFormat.replace('{subject}', 'IDs'),
@@ -123,9 +123,11 @@ describe('Biohazards Routes', () => {
         });
     });
 
-    describe('GET /api/biohazards/search', () => {
+    describe('GET /api/biohazards/rooms/search', () => {
         it('should return filtered biohazards by room', async () => {
-            const response = await request(app).get('/api/biohazards/search?room=keepersRoom');
+            const response = await request(app).get(
+                '/api/biohazards/rooms/search?room=keepersRoom',
+            );
             expect(response.status).toBe(200);
             expect(response.body).toBeInstanceOf(Array);
             expect(response.body.length).toBe(
@@ -138,32 +140,38 @@ describe('Biohazards Routes', () => {
         });
 
         it('should return filtered biohazards by code', async () => {
-            const response = await request(app).get('/api/biohazards/search?code=Zb');
+            const response = await request(app).get('/api/biohazards/rooms/search?code=Zb');
             expect(response.status).toBe(200);
             expect(response.body).toBeInstanceOf(Array);
             expect(response.body.every((biohazard: any) => biohazard.code === 'Zb')).toBe(true);
         });
 
         it('should return empty array for no matches', async () => {
-            const response = await request(app).get('/api/biohazards/search?room=nonexistent');
+            const response = await request(app).get(
+                '/api/biohazards/rooms/search?room=nonexistent',
+            );
             expect(response.status).toBe(200);
             expect(response.body).toEqual([]);
         });
 
         it('should return 400 for invalid room ID format', async () => {
-            const response = await request(app).get('/api/biohazards/search?room=invalid@room');
+            const response = await request(app).get(
+                '/api/biohazards/rooms/search?room=invalid@room',
+            );
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(Messages.validation.invalidRoomIdFormat);
         });
 
         it('should return 400 for invalid biohazard code', async () => {
-            const response = await request(app).get('/api/biohazards/search?code=invalid');
+            const response = await request(app).get('/api/biohazards/rooms/search?code=invalid');
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(Messages.validation.invalidBiohazardCode);
         });
 
         it('should return 400 for unrecognized query parameters', async () => {
-            const response = await request(app).get('/api/biohazards/search?invalidParam=invalid');
+            const response = await request(app).get(
+                '/api/biohazards/rooms/search?invalidParam=invalid',
+            );
             expect(response.status).toBe(400);
             expect(response.body.error).toContain(
                 Messages.validation.unrecognizedQueryParameters.replace('{params}', 'invalidParam'),
