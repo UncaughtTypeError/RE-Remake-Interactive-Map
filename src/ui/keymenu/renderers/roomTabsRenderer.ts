@@ -6,6 +6,7 @@
  */
 import { fetchAllItemsRoomData } from 'src/client/api/itemsApi';
 import { fetchAllBiohazardsRoomData } from 'src/client/api/biohazardsApi';
+import { fetchAllRooms } from 'src/client/api/mapsApi';
 import { processRoomTabsData } from '../processors/roomTabsProcessor';
 import {
     createItemIconMarkerTag,
@@ -18,14 +19,11 @@ import { getState } from '../../../state/globalState';
  * Renders room tabs for items keymenu by fetching and processing room data.
  * Creates icon marker tags dynamically for each room that has items.
  * @param containerSelector - The CSS selector for the items room tabs container.
- * @param difficulty - The current difficulty level to filter by.
+ * @param difficulty - The difficulty level to filter items by.
  * @returns Promise that resolves when rendering is complete.
  * @throws Error if the container is not found or API call fails.
  */
-export async function renderItemsRoomTabs(
-    containerSelector: string,
-    difficulty: DifficultyLevel,
-): Promise<void> {
+export async function renderItemsRoomTabs(containerSelector: string, difficulty: DifficultyLevel): Promise<void> {
     const container = document.querySelector(containerSelector);
     if (!container) {
         throw new Error(`Items room tabs container not found: ${containerSelector}`);
@@ -36,18 +34,25 @@ export async function renderItemsRoomTabs(
 
     try {
         // Fetch data from API
-        const itemsRoomData = await fetchAllItemsRoomData();
-        const biohazardsRoomData = await fetchAllBiohazardsRoomData();
+        const [itemsRoomData, biohazardsRoomData, roomsData] = await Promise.all([
+            fetchAllItemsRoomData(),
+            fetchAllBiohazardsRoomData(),
+            fetchAllRooms(),
+        ]);
 
-        // Process data
-        const roomTabsMap = processRoomTabsData(itemsRoomData, biohazardsRoomData, difficulty);
+        // Process data - groups items/biohazards by type within each room
+        const roomTabsMap = processRoomTabsData(itemsRoomData, biohazardsRoomData, roomsData, difficulty);
 
-        // Create and append icon markers for each room (items only)
-        roomTabsMap.forEach((roomTab) => {
-            const iconMarker = createItemIconMarkerTag(roomTab);
-            if (iconMarker) {
-                container.appendChild(iconMarker);
-            }
+        // Create and append icon markers for ALL rooms (sorted by room number)
+        const sortedRooms = Array.from(roomTabsMap.values()).sort((a, b) => {
+            if (a.roomNumber === null) return 1;
+            if (b.roomNumber === null) return -1;
+            return a.roomNumber - b.roomNumber;
+        });
+
+        sortedRooms.forEach((roomTab) => {
+            const iconMarker = createItemIconMarkerTag(roomTab, difficulty);
+            container.appendChild(iconMarker);
         });
     } catch (error) {
         console.error('Failed to render items room tabs:', error);
@@ -59,14 +64,11 @@ export async function renderItemsRoomTabs(
  * Renders room tabs for biohazards keymenu by fetching and processing room data.
  * Creates icon marker tags dynamically for each room that has biohazards.
  * @param containerSelector - The CSS selector for the biohazards room tabs container.
- * @param difficulty - The current difficulty level to filter by.
+ * @param difficulty - The difficulty level to filter biohazards by.
  * @returns Promise that resolves when rendering is complete.
  * @throws Error if the container is not found or API call fails.
  */
-export async function renderBiohazardsRoomTabs(
-    containerSelector: string,
-    difficulty: DifficultyLevel,
-): Promise<void> {
+export async function renderBiohazardsRoomTabs(containerSelector: string, difficulty: DifficultyLevel): Promise<void> {
     const container = document.querySelector(containerSelector);
     if (!container) {
         throw new Error(`Biohazards room tabs container not found: ${containerSelector}`);
@@ -77,18 +79,25 @@ export async function renderBiohazardsRoomTabs(
 
     try {
         // Fetch data from API
-        const itemsRoomData = await fetchAllItemsRoomData();
-        const biohazardsRoomData = await fetchAllBiohazardsRoomData();
+        const [itemsRoomData, biohazardsRoomData, roomsData] = await Promise.all([
+            fetchAllItemsRoomData(),
+            fetchAllBiohazardsRoomData(),
+            fetchAllRooms(),
+        ]);
 
-        // Process data
-        const roomTabsMap = processRoomTabsData(itemsRoomData, biohazardsRoomData, difficulty);
+        // Process data - groups items/biohazards by type within each room
+        const roomTabsMap = processRoomTabsData(itemsRoomData, biohazardsRoomData, roomsData, difficulty);
 
-        // Create and append icon markers for each room (biohazards only)
-        roomTabsMap.forEach((roomTab) => {
+        // Create and append icon markers for ALL rooms (sorted by room number)
+        const sortedRooms = Array.from(roomTabsMap.values()).sort((a, b) => {
+            if (a.roomNumber === null) return 1;
+            if (b.roomNumber === null) return -1;
+            return a.roomNumber - b.roomNumber;
+        });
+
+        sortedRooms.forEach((roomTab) => {
             const iconMarker = createBiohazardIconMarkerTag(roomTab);
-            if (iconMarker) {
-                container.appendChild(iconMarker);
-            }
+            container.appendChild(iconMarker);
         });
     } catch (error) {
         console.error('Failed to render biohazards room tabs:', error);
@@ -98,14 +107,14 @@ export async function renderBiohazardsRoomTabs(
 
 /**
  * Renders both items and biohazards room tabs.
- * Convenience function that calls both render functions with the current difficulty.
+ * Convenience function that calls both render functions.
+ * @param difficulty - The difficulty level to filter by. If not provided, gets from global state.
  * @returns Promise that resolves when both room tabs are rendered.
  */
-export async function renderRoomTabs(): Promise<void> {
-    const difficulty = getState('difficulty');
-
+export async function renderRoomTabs(difficulty?: DifficultyLevel): Promise<void> {
+    const difficultyLevel = difficulty ?? getState('difficulty');
     await Promise.all([
-        renderItemsRoomTabs('.items #tab-rooms', difficulty),
-        renderBiohazardsRoomTabs('.biohazards #tab-rooms', difficulty),
+        renderItemsRoomTabs('.items #tab-rooms', difficultyLevel),
+        renderBiohazardsRoomTabs('.biohazards #tab-rooms', difficultyLevel),
     ]);
 }

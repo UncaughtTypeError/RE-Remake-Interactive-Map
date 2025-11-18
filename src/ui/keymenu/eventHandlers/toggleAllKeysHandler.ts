@@ -6,6 +6,7 @@ export function handleToggleAllKeys(element: HTMLElement): void {
     const triggerID = element.id;
     const icon = element.querySelector('.fa');
     if (!icon) return;
+    console.log({ triggerID });
 
     if (icon.classList.contains('keys-inactive')) {
         // Activate all keys

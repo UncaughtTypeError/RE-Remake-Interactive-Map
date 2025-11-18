@@ -19,8 +19,8 @@ export async function renderKeymenu(): Promise<void> {
     try {
         // Render all components in parallel for better performance
         await Promise.all([
-            renderItemsList('.items .list-group'),
-            renderBiohazardsList('.biohazards .list-group'),
+            renderItemsList('.items .list-group-container'),
+            renderBiohazardsList('.biohazards .list-group-container'),
             renderRankingsDropdown('.biohazards .dropdown-menu'),
             renderRankingsDisplay('.biohazards .stars-ranking-display'),
             renderRoomTabs(), // Renders both items and biohazards room tabs

@@ -782,7 +782,7 @@ body.nocturnal-theme {
     color: rgb(38, 38, 38);
 }
 
-.nocturnal-theme .list-group-wrapper > .icon-marker-tooltip {
+.nocturnal-theme .list-group-item .icon-marker-tooltip {
     background: #383838;
 }
 

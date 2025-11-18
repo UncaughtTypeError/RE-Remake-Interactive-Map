@@ -4,12 +4,17 @@
  * All functions implement Map-based caching with 10-second timeout to reduce redundant requests.
  * Supports both base data (master biohazard definitions) and room data (biohazard instances in rooms).
  */
-import { BiohazardData, BiohazardDetailsData, BiohazardSearchFilters } from 'src/data';
+import {
+    BiohazardData,
+    BiohazardRoomData,
+    BiohazardDetailsData,
+    BiohazardSearchFilters,
+} from 'src/data';
 import { ApiConstants } from 'src/constants';
 
 // Caches for biohazards data to avoid redundant API calls
 const biohazardsDataCache: Map<string, BiohazardData[]> = new Map();
-const biohazardsRoomDataCache: Map<string, BiohazardDetailsData[]> = new Map();
+const biohazardsRoomDataCache: Map<string, BiohazardRoomData[]> = new Map();
 const biohazardsRoomDataByIdsCache: Map<
     string,
     { foundBiohazards: BiohazardDetailsData[]; unrecognizedIds: string[] }
@@ -129,10 +134,10 @@ export async function fetchBiohazardsDataByIds(
 
 /**
  * Fetches all biohazards room data from the API.
- * @returns A promise resolving to an array of all biohazards room data with S.T.A.R.S. rankings.
+ * @returns A promise resolving to an array of all biohazards room data (without starsRanking).
  * @throws Error if the request fails.
  */
-export async function fetchAllBiohazardsRoomData(): Promise<BiohazardDetailsData[]> {
+export async function fetchAllBiohazardsRoomData(): Promise<BiohazardRoomData[]> {
     const cacheKey = 'all';
 
     // Check cache first
@@ -155,7 +160,7 @@ export async function fetchAllBiohazardsRoomData(): Promise<BiohazardDetailsData
             throw new Error(`Server error: ${response.status}`);
         }
 
-        const data: BiohazardDetailsData[] = await response.json();
+        const data: BiohazardRoomData[] = await response.json();
         // Cache the response
         biohazardsRoomDataCache.set(cacheKey, data);
         return data;
@@ -286,7 +291,7 @@ export async function searchBiohazardsData(
  */
 export async function searchBiohazardsRoomData(
     filters: BiohazardSearchFilters,
-): Promise<BiohazardDetailsData[]> {
+): Promise<BiohazardRoomData[]> {
     const cacheKey = createCacheKey(filters as Record<string, unknown>);
 
     // Check cache first
@@ -320,7 +325,7 @@ export async function searchBiohazardsRoomData(
             throw new Error(`Server error: ${response.status}`);
         }
 
-        const data: BiohazardDetailsData[] = await response.json();
+        const data: BiohazardRoomData[] = await response.json();
         // Cache the response
         biohazardsRoomDataCache.set(cacheKey, data);
         return data;

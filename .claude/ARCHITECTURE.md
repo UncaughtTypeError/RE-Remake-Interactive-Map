@@ -533,8 +533,12 @@ src/ui/componentName/
 │   └── index.ts
 ├── processors/             # Data processing
 │   └── processData.ts
+├── presenters/             # DOM element creation
+│   └── itemPresenter.ts
 ├── orchestrator/           # Coordination (if complex)
 │   └── orchestrator.ts
+├── helpers/                # Shared utility functions
+│   └── helperFunctions.ts
 ├── logic/                  # Business logic
 │   └── api/                # API client
 │       └── apiClient.ts

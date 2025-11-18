@@ -11,6 +11,7 @@ import { subscribeState, setState, getState } from './globalState';
 import { renderRoomData } from 'roomDetail/orchestrator/orchestrator';
 import { updateElementVisibility } from 'difficultySelect/renderers/elementVisibilityRenderer';
 import { updateDifficultyTags } from 'difficultySelect/renderers/difficultyTagsRenderer';
+import { renderRoomTabs } from 'keymenu/renderers/roomTabsRenderer';
 
 /**
  * Initializes all global state subscriptions.
@@ -25,6 +26,10 @@ export function initializeGlobalSubscriptions(): void {
         if (!isStartUp) {
             updateDifficultyTags(difficulty);
             updateElementVisibility(difficulty);
+            // Re-render room tabs to show difficulty-filtered items/biohazards
+            renderRoomTabs(difficulty).catch((error) =>
+                console.error('Failed to re-render room tabs on difficulty change:', error),
+            );
         }
 
         const isRoomDetailActive = getState('roomDetailActive');

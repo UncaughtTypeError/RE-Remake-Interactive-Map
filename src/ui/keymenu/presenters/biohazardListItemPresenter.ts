@@ -4,6 +4,7 @@
  */
 import { ProcessedBiohazardData } from '../processors/biohazardsListProcessor';
 import { STARSRanking } from 'src/data';
+import { getStarIconClasses, getVisibleStarIconClasses } from '../helpers/starIconHelpers';
 
 /**
  * Maps S.T.A.R.S. ranking to star class name for CSS.
@@ -12,28 +13,6 @@ import { STARSRanking } from 'src/data';
  */
 function getStarClassName(ranking: STARSRanking): string {
     return `star-${ranking}`;
-}
-
-/**
- * Gets the appropriate FontAwesome star icon class based on ranking.
- * @param ranking - The S.T.A.R.S. ranking value.
- * @returns The FontAwesome icon class.
- */
-function getStarIconClass(ranking: STARSRanking): string {
-    switch (ranking) {
-        case '0':
-            return 'fa-star-o'; // Empty star for Eta
-        case '0Half':
-            return 'fa-star-half-o'; // Half star for Zeta
-        case '1':
-        case '1Half':
-        case '2':
-        case '2Half':
-        case '3':
-            return 'fa-star'; // Full star for higher rankings
-        default:
-            return 'fa-star-o';
-    }
 }
 
 /**
@@ -58,7 +37,6 @@ export function createBiohazardListItem(biohazard: ProcessedBiohazardData): HTML
     const kebabName = toKebabCase(biohazard.name);
     const rankingLowercase = biohazard.starsClassification.toLowerCase();
     const starClassName = getStarClassName(biohazard.starsRanking);
-    const starIconClass = getStarIconClass(biohazard.starsRanking);
 
     // Create main list item container
     const listItem = document.createElement('div');
@@ -66,12 +44,17 @@ export function createBiohazardListItem(biohazard: ProcessedBiohazardData): HTML
     listItem.dataset.biohazardId = biohazard.id;
     listItem.dataset.biohazardCode = biohazard.code;
 
-    // Create icon group with star icon
+    // Create icon group with star icons (only visible stars, no empty ones)
     const iconGroup = document.createElement('div');
     iconGroup.className = 'icon-group fa-stack fa-fw';
-    const starIcon = document.createElement('i');
-    starIcon.className = `fa ${starIconClass} fa-stack-1x fa-inverse`;
-    iconGroup.appendChild(starIcon);
+
+    // Get only visible star icon classes (excludes empty stars)
+    const visibleStarIconClasses = getVisibleStarIconClasses(biohazard.starsRanking);
+    visibleStarIconClasses.forEach((iconClass) => {
+        const starIcon = document.createElement('i');
+        starIcon.className = `fa ${iconClass} fa-stack-1x fa-inverse`;
+        iconGroup.appendChild(starIcon);
+    });
 
     // Create info icon
     const infoIcon = document.createElement('i');
@@ -87,11 +70,34 @@ export function createBiohazardListItem(biohazard: ProcessedBiohazardData): HTML
     filterKey.dataset.ranking = rankingLowercase;
     filterKey.dataset.key = biohazard.code;
 
+    // Create icon marker tooltip with star rating
+    const tooltip = document.createElement('div');
+    tooltip.className = `icon-marker-tooltip ${rankingLowercase}`;
+
+    const tooltipName = document.createElement('div');
+    tooltipName.textContent = biohazard.name + ' ';
+
+    // Add biohazard code
+    const codeSmall = document.createElement('small');
+    codeSmall.textContent = biohazard.code;
+    tooltipName.appendChild(codeSmall);
+
+    tooltip.appendChild(tooltipName);
+
+    // Add 3 star icons based on ranking
+    const starIconClasses = getStarIconClasses(biohazard.starsRanking);
+    starIconClasses.forEach((iconClass) => {
+        const starIcon = document.createElement('i');
+        starIcon.className = `fa ${iconClass}`;
+        tooltip.appendChild(starIcon);
+    });
+
     // Assemble the list item in correct order
     listItem.appendChild(iconGroup);
     listItem.appendChild(infoIcon);
     listItem.appendChild(nameText);
     listItem.appendChild(filterKey);
+    listItem.appendChild(tooltip);
 
     return listItem;
 }

@@ -1525,7 +1525,7 @@ header h1 {
 .room-detail-wrapper .list-group-wrapper .list-group-item > small {
     vertical-align: top;
     position: absolute;
-    right: 55px;
+    right: 60px;
     top: 10px;
 }
 
@@ -1676,7 +1676,7 @@ header h1 {
 
 .room-detail-wrapper .icon-group,
 .room-detail-wrapper .list-group-item > .fa:first-child {
-    margin-left: 5px;
+    margin-left: 10px;
 }
 
 .room-summary-wrapper {
@@ -5066,15 +5066,14 @@ header h1 {
     line-height: 25px;
     transition: 0.7s;
     z-index: 1;
-    counter-increment: room-counter;
 }
 
 #tab-rooms .icon-marker-tag:hover {
     z-index: 9;
 }
 
-#tab-rooms .icon-marker-tag:before {
-    content: counter(room-counter);
+/* Room number styling - now using inline element instead of CSS counter */
+#tab-rooms .icon-marker-room-number {
     float: left;
     font-size: 12px;
     min-width: 15px;
@@ -5131,11 +5130,6 @@ header h1 {
 
 .icon-marker-tag .icon-marker.shadow-icon-marker {
     float: right;
-    display: none;
-}
-
-.icon-marker-tag .icon-marker.shadow-icon-marker:nth-child(2) {
-    display: block;
 }
 
 .icon-marker-tag .icon-pin.difficulty-invalid + .icon-marker.shadow-icon-marker {
@@ -6116,7 +6110,26 @@ header h1 {
     transition: 0.5s;
 }
 
-.list-group-expand .list-group-item:hover + .icon-marker-tooltip {
+.list-group-item .icon-marker-tooltip {
+    top: 0;
+    bottom: 0;
+    padding: 8px;
+    font-size: 12px;
+    right: -300px;
+    max-width: 100px;
+    width: 100%;
+    border: 0;
+    text-align: center;
+}
+
+.list-group-expand .list-group-item .icon-marker-tooltip .fa[class*='star'] {
+    top: 0;
+    left: auto;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+.list-group-expand .list-group-item:hover .icon-marker-tooltip {
     visibility: visible;
     opacity: 1;
     position: absolute;
@@ -6142,7 +6155,6 @@ header h1 {
     position: absolute;
     bottom: 0;
     max-width: 350px;
-    counter-reset: room-counter;
 }
 
 #tab-rooms {
@@ -6207,13 +6219,6 @@ header h1 {
     overflow-x: hidden;
     height: 100%;
     margin-top: 32px;
-}
-
-.list-group-wrapper .icon-marker-tooltip {
-    left: 300px;
-    top: 0px;
-    padding: 8px 15px;
-    font-size: 12px;
 }
 
 .list-group-wrapper > .icon-marker-tooltip {
@@ -6531,11 +6536,9 @@ header h1 {
     min-height: inherit;
     min-width: 0px;
     line-height: normal;
-    left: -1px;
     top: 15px;
     margin-top: -5px;
     width: auto;
-    letter-spacing: -2px;
     font-size: 13px;
     display: inline-block;
 }

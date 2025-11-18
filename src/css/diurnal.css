@@ -780,7 +780,7 @@ body.diurnal-theme {
     color: rgb(255, 255, 255);
 }
 
-.diurnal-theme .list-group-wrapper .icon-marker-tooltip {
+.diurnal-theme .list-group-item .icon-marker-tooltip {
     background: whitesmoke;
 }
 
